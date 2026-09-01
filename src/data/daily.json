@@ -1,0 +1,1958 @@
+{
+  "version": 1,
+  "date": "2026-08-31",
+  "generated_at": "2026-08-31T22:40:14.850747Z",
+  "persona": "Avinash",
+  "totals": {
+    "published": 27,
+    "categories": 8
+  },
+  "categories": [
+    {
+      "key": "geopolitics",
+      "label": "Geopolitics",
+      "emoji": "🌍",
+      "blurb": "Power, conflict, diplomacy, and statecraft that shift international relations.",
+      "count": 6
+    },
+    {
+      "key": "business",
+      "label": "Business & Markets",
+      "emoji": "💼",
+      "blurb": "Markets, companies, policy, and macro forces shaping the global economy.",
+      "count": 5
+    },
+    {
+      "key": "technology",
+      "label": "Technology",
+      "emoji": "🧠",
+      "blurb": "AI, software, chips, platforms, and cybersecurity shaping digital systems.",
+      "count": 3
+    },
+    {
+      "key": "science",
+      "label": "Science",
+      "emoji": "🔬",
+      "blurb": "New findings from research, space exploration, and peer-reviewed discovery.",
+      "count": 1
+    },
+    {
+      "key": "climate",
+      "label": "Climate & Energy",
+      "emoji": "🌡️",
+      "blurb": "Climate impacts, emissions policy, and the transition across energy systems.",
+      "count": 4
+    },
+    {
+      "key": "health",
+      "label": "Health",
+      "emoji": "🩺",
+      "blurb": "Public health, medicine, regulation, and clinical evidence affecting care.",
+      "count": 2
+    },
+    {
+      "key": "sports",
+      "label": "Sport",
+      "emoji": "🏅",
+      "blurb": "Elite competition, leagues, tournaments, and major athlete or team moves.",
+      "count": 3
+    },
+    {
+      "key": "culture",
+      "label": "Culture",
+      "emoji": "🎭",
+      "blurb": "Arts, entertainment, books, music, and ideas shaping public culture.",
+      "count": 3
+    }
+  ],
+  "stories": [
+    {
+      "id": "us-and-iran-trade-strikes-for-first-time-in-weeks-9243ff",
+      "category": "geopolitics",
+      "rank": 1,
+      "tier": "lead",
+      "score": 8.6,
+      "headline": "US and Iran trade strikes for first time in weeks",
+      "dek": "Iran and the US have traded strikes after American forces attacked two rocket launchers on Larak Island in the Strait of Hormuz.",
+      "body": "Iran and the US have traded strikes after American forces attacked two rocket launchers on Larak Island in the Strait of Hormuz. The first known US strikes on Iran since late July killed two people and injured two others, according to Iran's Islamic Revolutionary Guard Corps (IRGC), which vowed \"response and punishment\". US Central Command (Centcom) said it took \"limited, precise action\" after observing Iran preparing to \"launch rockets and deploy sea mines into the Strait of Hormuz\", according to its spokesperson.",
+      "so_what": "Since the conflict began in February, the strait has effectively been closed, causing wild fluctuations in the price of oil on world markets.",
+      "what_now": "",
+      "region": "Middle East",
+      "pattern": "standoff",
+      "topics": [
+        "iran",
+        "strikes",
+        "hormuz",
+        "attacks",
+        "trade",
+        "trump",
+        "calm",
+        "coming"
+      ],
+      "countries": [
+        {
+          "name": "Iran",
+          "flag": "🇮🇷",
+          "role": "actor"
+        },
+        {
+          "name": "United States",
+          "flag": "🇺🇸",
+          "role": "secondary"
+        },
+        {
+          "name": "United Arab Emirates",
+          "flag": "🇦🇪",
+          "role": "secondary"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "Euronews",
+          "title": "Iran launches strikes on Jordan after US attacks an island in Hormuz",
+          "url": "http://www.euronews.com/2026/08/31/iran-fires-retaliatory-strikes-following-us-attacks-on-larak-island-in-the-strait-of-hormu"
+        },
+        {
+          "source": "NYT World",
+          "title": "U.S. and Iran Exchange Strikes Overnight After Monthlong Calm",
+          "url": "https://www.nytimes.com/2026/08/31/world/middleeast/us-iran-uae-jordan-attacks.html"
+        },
+        {
+          "source": "BBC World",
+          "title": "US and Iran trade strikes for first time in weeks",
+          "url": "https://www.bbc.co.uk/news/articles/cx2z72x5z1po?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "source": "Axios",
+          "title": "Trump weighing limited strikes against Iran to curb Hormuz attacks",
+          "url": "https://www.axios.com/2026/08/31/trump-iran-war-hormuz-hegseth-centcom"
+        },
+        {
+          "source": "CBS World",
+          "title": "Trump says more coming as U.S., Iran trade strikes for first time in weeks",
+          "url": "https://www.cbsnews.com/live-updates/iran-war-us-strikes-strait-of-hormuz-larak-island/"
+        }
+      ],
+      "source_count": 5,
+      "why_ranked": "Published at lead with composite 8.600; key drivers were Enduring Significance 9.1, Evidence Strength 8.8.",
+      "scores": {
+        "enduring_significance": 9.1,
+        "breaking_urgency": 10.0,
+        "evidence_strength": 8.8,
+        "attention_deficit": 0.0,
+        "manufactured_attention": 4.2,
+        "reader_consequence": 4.128,
+        "marginal_information_gain": 9.4
+      },
+      "consequence": {
+        "wallet": 5.477,
+        "job": 1.8,
+        "safety": 7.614,
+        "rights": 1.8,
+        "travel": 1.8,
+        "civic": 5.477
+      }
+    },
+    {
+      "id": "kalshi-bans-ex-congressman-george-santos-from-prediction-pla-04814a",
+      "category": "geopolitics",
+      "rank": 2,
+      "tier": "front",
+      "score": 8.179,
+      "headline": "Kalshi bans ex-congressman George Santos from prediction platform for life",
+      "dek": "George Santos, the former Republican congressman whose political career collapsed under a mountain of lies, has become the first person ever handed a lifetime ban by the…",
+      "body": "George Santos, the former Republican congressman whose political career collapsed under a mountain of lies, has become the first person ever handed a lifetime ban by the prediction-market platform Kalshi. The company announced the permanent suspension on Monday, along with a $71,356 fine, after federal regulators accused Santos of profiting from bets tied to his own attendance at Donald Trump's State of the Union address earlier this year.",
+      "so_what": "Laurie Buckhout, a Trump-endorsed Republican congressional candidate in North Carolina, was banned for three years and fined $2,590 after wagering under $1,000 on her own campaign, calling it a mistake she moved to fix as soon as she noticed it.",
+      "what_now": "",
+      "region": "Americas",
+      "pattern": "economic",
+      "topics": [
+        "george",
+        "santos",
+        "kalshi",
+        "bans",
+        "life",
+        "congressman",
+        "platform",
+        "former"
+      ],
+      "countries": [
+        {
+          "name": "United States",
+          "flag": "🇺🇸",
+          "role": "actor"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "Wired",
+          "title": "George Santos Just Got Hit With Kalshi’s First-Ever Lifetime Ban",
+          "url": "https://www.wired.com/story/george-santos-gets-a-lifetime-ban-from-kalshi/"
+        },
+        {
+          "source": "CNBC Top News",
+          "title": "Kalshi permanently bans former GOP Rep. George Santos over illegal trading",
+          "url": "https://www.cnbc.com/2026/08/31/kalshi-perman.html"
+        },
+        {
+          "source": "BBC World",
+          "title": "Ex-congressman George Santos banned from betting platform for life",
+          "url": "https://www.bbc.co.uk/news/articles/cpwlxy49225o?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "source": "Guardian World",
+          "title": "Kalshi bans ex-congressman George Santos from prediction platform for life",
+          "url": "https://www.theguardian.com/us-news/2026/aug/31/george-santos-kalshi-lifetime-ban"
+        },
+        {
+          "source": "CBS MoneyWatch",
+          "title": "Kalshi bans ex-congressman George Santos for life after suspicious trades",
+          "url": "https://www.cbsnews.com/news/george-santos-kalshi-lifetime-ban/"
+        },
+        {
+          "source": "TechCrunch",
+          "title": "Kalshi bans George Santos for life over State of the Union bets",
+          "url": "https://techcrunch.com/2026/08/31/kalshi-bans-george-santos-for-life-over-state-of-the-union-bets/"
+        },
+        {
+          "source": "NYT Business",
+          "title": "Kalshi Permanently Bars George Santos From the Platform",
+          "url": "https://www.nytimes.com/2026/08/31/business/kalshi-bans-george-santos.html"
+        },
+        {
+          "source": "The Hill",
+          "title": "Kalshi bans George Santos for life",
+          "url": "https://thehill.com/newsletters/technology/6061870-kalshi-bans-george-santos-for-life/"
+        },
+        {
+          "source": "NPR Technology",
+          "title": "Kalshi bans former congressman George Santos for life after State of the Union trades",
+          "url": "https://www.npr.org/2026/08/31/nx-s1-5950432/kalshi-bans-former-congressman-george-santos-for-life-after-state-of-the-union-trades"
+        }
+      ],
+      "source_count": 9,
+      "why_ranked": "Published at front with composite 8.179; key drivers were Evidence Strength 8.8, Marginal Information Gain 10.0.",
+      "scores": {
+        "enduring_significance": 6.5,
+        "breaking_urgency": 10.0,
+        "evidence_strength": 8.8,
+        "attention_deficit": 0.0,
+        "manufactured_attention": 2.8,
+        "reader_consequence": 3.921,
+        "marginal_information_gain": 10.0
+      },
+      "consequence": {
+        "wallet": 6.303,
+        "job": 4.4,
+        "safety": 1.8,
+        "rights": 1.8,
+        "travel": 1.8,
+        "civic": 4.4
+      }
+    },
+    {
+      "id": "spain-pm-blames-russia-israel-for-ceuta-migrant-crisis-disin-7725c5",
+      "category": "geopolitics",
+      "rank": 3,
+      "tier": "front",
+      "score": 8.096,
+      "headline": "Spain PM blames Russia, Israel for Ceuta migrant crisis’ disinformation",
+      "dek": "Spanish Prime Minister Pedro Sanchez said on Monday there were signs Russia and Israel had spread the disinformation over Spain 's migration policy that triggered last month's…",
+      "body": "Spanish Prime Minister Pedro Sanchez said on Monday there were signs Russia and Israel had spread the disinformation over Spain 's migration policy that triggered last month's rush of migrants into Ceuta, but no evidence of Moroccan involvement. Over 72,000 migrants irregularly crossed from Morocco into the tiny Spanish territory between July 30 and 31 in an unprecedented surge at one of the European Union 's only two land borders with Africa, prompting alarm across the bloc. At least 100 people died in the attempt, according to Ceuta's local authorities.",
+      "so_what": "Spanish opposition parties and some human rights groups have accused Rabat of deliberately allowing the mass crossing, an accusation Morocco has denied.",
+      "what_now": "",
+      "region": "Europe",
+      "pattern": "negotiation",
+      "topics": [
+        "ceuta",
+        "crisis",
+        "disinformation",
+        "israel",
+        "migrant",
+        "russia",
+        "spanish",
+        "blames"
+      ],
+      "countries": [
+        {
+          "name": "Spain",
+          "flag": "🇪🇸",
+          "role": "actor"
+        },
+        {
+          "name": "Russia",
+          "flag": "🇷🇺",
+          "role": "secondary"
+        },
+        {
+          "name": "Israel",
+          "flag": "🇮🇱",
+          "role": "secondary"
+        },
+        {
+          "name": "Morocco",
+          "flag": "🇲🇦",
+          "role": "secondary"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "Times of Israel",
+          "title": "Spanish PM accuses Israel, Russia of spreading disinformation on Ceuta migrant crisis",
+          "url": "https://www.timesofisrael.com/spanish-pm-accuses-israel-russia-of-spreading-disinformation-around-ceuta-migrant-crisis/"
+        },
+        {
+          "source": "SCMP",
+          "title": "Spain PM blames Russia, Israel for Ceuta migrant crisis’ disinformation",
+          "url": "https://www.scmp.com/news/world/europe/article/3365881/spain-pm-blames-russia-israel-ceuta-migrant-crisis-disinformation?utm_source=rss_feed"
+        },
+        {
+          "source": "The Hindu International",
+          "title": "Spanish PM blames Russia, Israel for disinformation in Ceuta migrant crisis",
+          "url": "https://www.thehindu.com/news/international/spanish-pm-blames-russia-israel-for-disinformation-in-ceuta-migrant-crisis/article71412495.ece"
+        },
+        {
+          "source": "The Hill",
+          "title": "Spanish prime minister points finger at Israel, Russia disinformation over Ceuta migrant crisis",
+          "url": "https://thehill.com/policy/international/6061529-spain-russia-israel-morocco-ceuta-migrant-crisis/"
+        }
+      ],
+      "source_count": 4,
+      "why_ranked": "Published at front with composite 8.096; key drivers were Marginal Information Gain 10.0, Evidence Strength 8.2.",
+      "scores": {
+        "enduring_significance": 6.2,
+        "breaking_urgency": 10.0,
+        "evidence_strength": 8.2,
+        "attention_deficit": 0.0,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 3.251,
+        "marginal_information_gain": 10.0
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 4.4,
+        "safety": 1.8,
+        "rights": 1.8,
+        "travel": 4.4,
+        "civic": 5.477
+      }
+    },
+    {
+      "id": "algeria-president-seeks-death-penalty-for-arsonists-after-de-107a98",
+      "category": "geopolitics",
+      "rank": 4,
+      "tier": "front",
+      "score": 8.085,
+      "headline": "Algeria president seeks death penalty for arsonists after deadly forest fires",
+      "dek": "Algerian President Abdelmadjid Tebboune has said he wants to reinstate the death penalty for arsonists, following a wave of forest fires that have killed at least 12 people.",
+      "body": "Algerian President Abdelmadjid Tebboune has said he wants to reinstate the death penalty for arsonists, following a wave of forest fires that have killed at least 12 people. The president ordered the justice ministry to introduce changes to the criminal law introducing capital punishment for arsonists. Capital punishment remains in the country's penal code for some offences, but no execution has been carried out since 1993. More than 100 wildfires have been recorded in recent days in the north-east of the country, most of which have been extinguished.",
+      "so_what": "On Sunday, he gave a 15 September deadline for amendments to provide for the death sentence for anyone convicted of intentionally starting a fire in forested areas.",
+      "what_now": "",
+      "region": "Africa",
+      "pattern": "crisis",
+      "topics": [
+        "arsonists",
+        "death",
+        "penalty",
+        "president",
+        "seeks",
+        "algeria",
+        "algerian",
+        "deadly"
+      ],
+      "countries": [
+        {
+          "name": "Algeria",
+          "flag": "🇩🇿",
+          "role": "actor"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "BBC World",
+          "title": "Algeria president seeks death penalty for arsonists after deadly forest fires",
+          "url": "https://www.bbc.co.uk/news/articles/cvgy41lwe0jo?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "source": "Euronews",
+          "title": "Algerian president seeks to impose death penalty on arsonists",
+          "url": "http://www.euronews.com/2026/08/31/algerian-president-seeks-to-impose-death-penalty-on-arsonists"
+        }
+      ],
+      "source_count": 2,
+      "why_ranked": "Published at front with composite 8.085; key drivers were Marginal Information Gain 10.0, Breaking Urgency 10.0.",
+      "scores": {
+        "enduring_significance": 4.1,
+        "breaking_urgency": 10.0,
+        "evidence_strength": 7.2,
+        "attention_deficit": 2.6,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 3.144,
+        "marginal_information_gain": 10.0
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 1.8,
+        "safety": 6.303,
+        "rights": 4.4,
+        "travel": 1.8,
+        "civic": 4.4
+      }
+    },
+    {
+      "id": "police-appeal-after-unidentified-woman-s-body-found-in-liver-d478c2",
+      "category": "geopolitics",
+      "rank": 5,
+      "tier": "page_two",
+      "score": 8.058,
+      "headline": "Police appeal after unidentified woman’s body found in Liverpool park",
+      "dek": "Police in Liverpool have urged members of the public to come forward with information after the body of an unknown woman believed to be in her 70s was found in a black bin bag in…",
+      "body": "Police in Liverpool have urged members of the public to come forward with information after the body of an unknown woman believed to be in her 70s was found in a black bin bag in a popular park. Merseyside police were contacted by a passerby who had found the woman's body in Stanley Park, in the Anfield area of Liverpool, at about 5.25pm on Friday 28 August. The body was found in a black bin bag in the walled garden area of the park. It is believed that it may have lain there undiscovered for a number of weeks.",
+      "so_what": "Potential witnesses are urged to contact Merseyside police via social media or to call 101, quoting reference number 26000706383.",
+      "what_now": "",
+      "region": "Global",
+      "pattern": "standoff",
+      "topics": [
+        "body",
+        "found",
+        "liverpool",
+        "park",
+        "police",
+        "woman",
+        "appeal",
+        "inside"
+      ],
+      "countries": [],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "Sky UK",
+          "title": "Body of woman found in Liverpool park was inside a bin bag, police say",
+          "url": "https://news.sky.com/story/body-of-woman-found-in-liverpool-park-was-inside-a-bin-bag-police-say-13579420"
+        },
+        {
+          "source": "Guardian World",
+          "title": "Police appeal after unidentified woman’s body found in Liverpool park",
+          "url": "https://www.theguardian.com/uk-news/2026/aug/31/police-appeal-unidentified-womans-body-liverpool-stanley-park"
+        }
+      ],
+      "source_count": 2,
+      "why_ranked": "Published at page_two with composite 8.058; key drivers were Marginal Information Gain 10.0, Breaking Urgency 10.0.",
+      "scores": {
+        "enduring_significance": 3.0,
+        "breaking_urgency": 10.0,
+        "evidence_strength": 7.2,
+        "attention_deficit": 1.5,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 1.8,
+        "marginal_information_gain": 10.0
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 1.8,
+        "safety": 1.8,
+        "rights": 1.8,
+        "travel": 1.8,
+        "civic": 1.8
+      }
+    },
+    {
+      "id": "more-public-control-is-only-way-to-grow-uk-economy-burnham-t-cb6aa2",
+      "category": "geopolitics",
+      "rank": 6,
+      "tier": "page_two",
+      "score": 7.89,
+      "headline": "More public control is only way to grow UK economy, Burnham to tell MPs",
+      "dek": "Andy Burnham will drive home his pledge to bring more essential services back into public control, telling MPs in the Commons on Tuesday that it will be the only way to improve…",
+      "body": "Andy Burnham will drive home his pledge to bring more essential services back into public control, telling MPs in the Commons on Tuesday that it will be the only way to improve growth across the country. Burnham will address the house for the first time in 16 years from the frontbench, and six weeks since he became prime minister, after spending the summer recess announcing a slew of policies that will now be put before MPs.",
+      "so_what": "Burnham will say that the cost of everyday services to family budgets is holding back the economy and promise a plan to regain control of the costs.",
+      "what_now": "Opposition MPs are expected to ask tough questions on how the pledges will be funded as well as how Burnham expects to fill a £4.7bn gap in the defence investment plan left by his predecessor, Keir Starmer.",
+      "region": "Global",
+      "pattern": "economic",
+      "topics": [
+        "burnham",
+        "control",
+        "public",
+        "asylum",
+        "economy",
+        "grow",
+        "push",
+        "system"
+      ],
+      "countries": [],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "Japan Times",
+          "title": "U.K. asylum system tests Burnham’s push for more public control",
+          "url": "https://www.japantimes.co.jp/news/2026/08/31/world/politics/uk-asylum-burnham-public-control/"
+        },
+        {
+          "source": "Guardian World",
+          "title": "More public control is only way to grow UK economy, Burnham to tell MPs",
+          "url": "https://www.theguardian.com/politics/2026/aug/31/andy-burnham-commons-more-public-ownership-only-way-to-grow-uk-economy"
+        }
+      ],
+      "source_count": 2,
+      "why_ranked": "Published at page_two with composite 7.890; key drivers were Marginal Information Gain 10.0, Breaking Urgency 10.0.",
+      "scores": {
+        "enduring_significance": 3.0,
+        "breaking_urgency": 10.0,
+        "evidence_strength": 7.2,
+        "attention_deficit": 1.5,
+        "manufactured_attention": 2.0,
+        "reader_consequence": 3.306,
+        "marginal_information_gain": 10.0
+      },
+      "consequence": {
+        "wallet": 5.477,
+        "job": 1.8,
+        "safety": 1.8,
+        "rights": 4.4,
+        "travel": 1.8,
+        "civic": 4.4
+      }
+    },
+    {
+      "id": "ai-could-cause-global-economic-downturn-bank-of-england-gove-1a80b3",
+      "category": "business",
+      "rank": 1,
+      "tier": "lead",
+      "score": 8.854,
+      "headline": "AI could cause global economic downturn, Bank of England governor tells G20",
+      "dek": "The Bank of England's governor, Andrew Bailey, has joined the throng of figures warning about the global risks posed by the most advanced artificial intelligence technology.",
+      "body": "The Bank of England's governor, Andrew Bailey, has joined the throng of figures warning about the global risks posed by the most advanced artificial intelligence technology. In a two-page letter sent to international finance ministers and central bank governors as part of his role as chair of the international Financial Stability Board (FSB), Bailey said \"frontier\" AI models were \"showing increasingly sophisticated autonomy and problem-solving abilities, as well as threat capabilities\".",
+      "so_what": "Frontier AI may have the ability materially to alter the speed, scale and economics of cyber-risk, which could undermine market confidence system-wide, especially due to highly concentrated third-party service providers.\"",
+      "what_now": "",
+      "region": "Global",
+      "pattern": "standoff",
+      "topics": [
+        "cause",
+        "downturn",
+        "economic",
+        "global",
+        "bank",
+        "england",
+        "warns",
+        "andrew"
+      ],
+      "countries": [
+        {
+          "name": "United Kingdom",
+          "flag": "🇬🇧",
+          "role": "actor"
+        },
+        {
+          "name": "Iran",
+          "flag": "🇮🇷",
+          "role": "secondary"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "Guardian Business",
+          "title": "AI could cause global economic downturn, Bank of England governor tells G20",
+          "url": "https://www.theguardian.com/business/2026/aug/31/advanced-frontier-ai-financial-stability-andrew-bailey-g20"
+        },
+        {
+          "source": "Sky Business",
+          "title": "AI could cause global economic downturn, Bank of England head warns",
+          "url": "https://news.sky.com/story/artificial-intelligence-could-cause-global-economic-downturn-bank-of-england-governor-warns-13579423"
+        },
+        {
+          "source": "BBC Business",
+          "title": "AI could cause global economic downturn, Andrew Bailey warns G20",
+          "url": "https://www.bbc.co.uk/news/articles/c99dym3prl1o?at_medium=RSS&at_campaign=rss"
+        }
+      ],
+      "source_count": 3,
+      "why_ranked": "Published at lead with composite 8.854; key drivers were Enduring Significance 9.5, Evidence Strength 8.8.",
+      "scores": {
+        "enduring_significance": 9.5,
+        "breaking_urgency": 10.0,
+        "evidence_strength": 8.8,
+        "attention_deficit": 6.5,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 4.311,
+        "marginal_information_gain": 9.0
+      },
+      "consequence": {
+        "wallet": 4.4,
+        "job": 5.477,
+        "safety": 4.4,
+        "rights": 1.8,
+        "travel": 1.8,
+        "civic": 5.477
+      }
+    },
+    {
+      "id": "india-rejects-hague-court-order-to-restore-indus-waters-pact-0f1529",
+      "category": "business",
+      "rank": 2,
+      "tier": "front",
+      "score": 9.07,
+      "headline": "India rejects Hague court order to restore Indus waters pact with Pakistan",
+      "dek": "India has rejected a ruling by the Permanent Court of Arbitration in The Hague ordering it to uphold the 1960 Indus Waters Treaty with Pakistan, saying the tribunal has no…",
+      "body": "India has rejected a ruling by the Permanent Court of Arbitration in The Hague ordering it to uphold the 1960 Indus Waters Treaty with Pakistan, saying the tribunal has no jurisdiction over the matter. India suspended the treaty in April last year after identifying two of three assailants as Pakistani in an attack that killed 26 people at a Kashmir tourist destination. Pakistan denied any involvement in the attack. list of 3 items list 1 of 3 War and heat: Why are wheat prices soaring? list 2 of 3 Why is piracy picking up off Somalia's coast again?",
+      "so_what": "India's rejection follows the international court's ruling on Monday that the pact remains fully binding and that India had no justification for ending or suspending it.",
+      "what_now": "",
+      "region": "Asia Pacific",
+      "pattern": "standoff",
+      "topics": [
+        "court",
+        "india",
+        "rejects",
+        "hague",
+        "indus",
+        "pakistan",
+        "ruling",
+        "treaty"
+      ],
+      "countries": [
+        {
+          "name": "India",
+          "flag": "🇮🇳",
+          "role": "actor"
+        },
+        {
+          "name": "Pakistan",
+          "flag": "🇵🇰",
+          "role": "secondary"
+        },
+        {
+          "name": "Netherlands",
+          "flag": "🇳🇱",
+          "role": "secondary"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "SCMP",
+          "title": "India rejects ruling on water-sharing treaty with Pakistan by international court",
+          "url": "https://www.scmp.com/news/asia/south-asia/article/3365887/india-rejects-ruling-water-sharing-treaty-pakistan-international-court?utm_source=rss_feed"
+        },
+        {
+          "source": "Al Jazeera",
+          "title": "India rejects Hague court order to restore Indus waters pact with Pakistan",
+          "url": "https://www.aljazeera.com/news/2026/8/31/india-rejects-hague-court-order-to-restore-indus-waters-pact-with-pakistan?traffic_source=rss"
+        },
+        {
+          "source": "The Hindu International",
+          "title": "Citing lack of jurisdiction, India rejects Hague court’s Indus Waters Treaty ruling",
+          "url": "https://www.thehindu.com/news/national/citing-lack-of-jurisdiction-india-rejects-hague-courts-indus-waters-treaty-ruling/article71411927.ece"
+        }
+      ],
+      "source_count": 3,
+      "why_ranked": "Published at front with composite 9.070; key drivers were Enduring Significance 10.0, Evidence Strength 8.8.",
+      "scores": {
+        "enduring_significance": 10.0,
+        "breaking_urgency": 10.0,
+        "evidence_strength": 8.8,
+        "attention_deficit": 7.0,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 3.099,
+        "marginal_information_gain": 9.667
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 1.8,
+        "safety": 5.477,
+        "rights": 6.303,
+        "travel": 4.4,
+        "civic": 1.8
+      }
+    },
+    {
+      "id": "jury-hears-closing-arguments-in-tupac-shakur-murder-trial-723444",
+      "category": "business",
+      "rank": 3,
+      "tier": "front",
+      "score": 8.011,
+      "headline": "Jury hears closing arguments in Tupac Shakur murder trial",
+      "dek": "A jury heard closing arguments on Monday in the trial of a former Los Angeles gang leader accused of involvement in the sensational murder three decades ago of chart-topping…",
+      "body": "A jury heard closing arguments on Monday in the trial of a former Los Angeles gang leader accused of involvement in the sensational murder three decades ago of chart-topping rapper Tupac Shakur. Duane \"Keffe D\" Davis, 63, a one-time leader of the South Side Compton Crips, is accused of ordering the September 7, 1996 killing after his nephew had been beaten by members of Shakur's entourage in Las Vegas. \"Duane Davis, in the culture of gangs, could not let that stand,\" prosecutor Binu Palal said. \"So what did he do?",
+      "so_what": "According to prosecutors, Davis handed the gun to someone sitting in the back seat of the Cadillac and ordered that person to shoot Shakur, who died six days later.",
+      "what_now": "",
+      "region": "Global",
+      "pattern": "longgame",
+      "topics": [
+        "murder",
+        "shakur",
+        "trial",
+        "tupac",
+        "arguments",
+        "closing",
+        "hears",
+        "jury"
+      ],
+      "countries": [],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "NYT Arts",
+          "title": "Tupac Shakur Murder Trial: Takeaways From Week 2",
+          "url": "https://www.nytimes.com/2026/08/29/arts/music/tupac-shakur-trial-murder-week-2.html"
+        },
+        {
+          "source": "SCMP",
+          "title": "Jury hears closing arguments in Tupac Shakur murder trial",
+          "url": "https://www.scmp.com/news/world/united-states-canada/article/3365893/jury-hears-closing-arguments-tupac-shakur-murder-trial?utm_source=rss_feed"
+        }
+      ],
+      "source_count": 2,
+      "why_ranked": "Published at front with composite 8.011; key drivers were Marginal Information Gain 10.0, Breaking Urgency 10.0.",
+      "scores": {
+        "enduring_significance": 4.2,
+        "breaking_urgency": 10.0,
+        "evidence_strength": 7.2,
+        "attention_deficit": 2.7,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 2.216,
+        "marginal_information_gain": 10.0
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 1.8,
+        "safety": 4.4,
+        "rights": 1.8,
+        "travel": 1.8,
+        "civic": 1.8
+      }
+    },
+    {
+      "id": "ftc-accuses-amazon-of-running-a-secret-ad-surcharge-scheme-i-d58c96",
+      "category": "business",
+      "rank": 4,
+      "tier": "front",
+      "score": 7.71,
+      "headline": "FTC accuses Amazon of running a ‘secret ad surcharge scheme’ in new lawsuit",
+      "dek": "Amazon is facing a new lawsuit from the Federal Trade Commission (FTC) and 22 states, which accuse the company of secretly charging businesses more for advertising on its platform.",
+      "body": "Amazon is facing a new lawsuit from the Federal Trade Commission (FTC) and 22 states, which accuse the company of secretly charging businesses more for advertising on its platform. The lawsuit, filed Monday, claims Amazon spent more than seven years quietly increasing the prices advertisers paid through its online ad auctions. According to the complaint, the alleged practice affected more than one million brands and sellers and may have generated tens of billions of dollars in additional revenue for Amazon.",
+      "so_what": "As a result, the FTC claims Amazon charged Sponsored Products advertisers their own full winning bid close to 80% of the time - effectively turning what was marketed as a second-price auction into a first-price one.",
+      "what_now": "",
+      "region": "Global",
+      "pattern": "economic",
+      "topics": [
+        "amazon",
+        "scheme",
+        "secret",
+        "surcharge",
+        "accuses",
+        "alleged",
+        "lawsuit",
+        "running"
+      ],
+      "countries": [],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "CBS MoneyWatch",
+          "title": "FTC and 22 states sue Amazon over alleged secret ad surcharge scheme",
+          "url": "https://www.cbsnews.com/news/ftc-22-states-sue-amazon-alleged-ad-scheme/"
+        },
+        {
+          "source": "TechCrunch",
+          "title": "FTC accuses Amazon of running a ‘secret ad surcharge scheme’ in new lawsuit",
+          "url": "https://techcrunch.com/2026/08/31/ftc-accuses-amazon-of-running-a-secret-ad-surcharge-scheme-in-new-lawsuit/"
+        }
+      ],
+      "source_count": 2,
+      "why_ranked": "Published at front with composite 7.710; key drivers were Marginal Information Gain 10.0, Breaking Urgency 10.0.",
+      "scores": {
+        "enduring_significance": 3.0,
+        "breaking_urgency": 10.0,
+        "evidence_strength": 6.6,
+        "attention_deficit": 1.5,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 2.682,
+        "marginal_information_gain": 10.0
+      },
+      "consequence": {
+        "wallet": 5.477,
+        "job": 1.8,
+        "safety": 1.8,
+        "rights": 1.8,
+        "travel": 1.8,
+        "civic": 1.8
+      }
+    },
+    {
+      "id": "trump-hails-historic-deal-to-control-65-billion-barrels-of-v-b67b0a",
+      "category": "business",
+      "rank": 5,
+      "tier": "page_two",
+      "score": 7.02,
+      "headline": "Trump hails 'historic' deal to control 65 billion barrels of Venezuelan oil",
+      "dek": "The US has struck a deal with Venezuela to control more than 65 billion barrels of its proven oil reserves, Donald Trump said.",
+      "body": "The US has struck a deal with Venezuela to control more than 65 billion barrels of its proven oil reserves, Donald Trump said. The US president wrote that the agreement would more than double American oil reserves and \"substantially lower Gas Prices for all Americans\". In a late-night address on Saturday, Venezuela's interim President Delcy Rodríguez hailed the deal as one that would help her nation's economic revival. But some analysts have reacted with scepticism, including questioning whether it would address long-running obstacles that have deterred investment in its oil industry.",
+      "so_what": "Earlier, she said in a statement that the deal calls for the development of 17 strategic oil fields with a proven potential of 65 billion barrels, as well as \"an investment of more than $100bn and more than $209bn in taxes\" for Venezuela.",
+      "what_now": "",
+      "region": "Americas",
+      "pattern": "economic",
+      "topics": [
+        "trump",
+        "deal",
+        "barrels",
+        "billion",
+        "control",
+        "venezuela",
+        "reserves",
+        "venezuelan"
+      ],
+      "countries": [
+        {
+          "name": "United States",
+          "flag": "🇺🇸",
+          "role": "actor"
+        },
+        {
+          "name": "Venezuela",
+          "flag": "🇻🇪",
+          "role": "secondary"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "Euronews",
+          "title": "US strikes deal to control 65 billion barrels of Venezuela's oil reserves, Trump says",
+          "url": "http://www.euronews.com/2026/08/29/us-strikes-deal-to-control-more-than-65-billion-barrels-of-venezuelas-oil-reserves"
+        },
+        {
+          "source": "CBS MoneyWatch",
+          "title": "Trump says U.S. now has control of over 60 billion barrels of Venezuelan oil reserves",
+          "url": "https://www.cbsnews.com/news/trump-venezuela-oil-u-s-majority-control-65-billion-barrels/"
+        },
+        {
+          "source": "BBC Business",
+          "title": "Trump hails 'historic' deal to control 65 billion barrels of Venezuelan oil",
+          "url": "https://www.bbc.co.uk/news/articles/cx2zlwe7qj1o?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "source": "NYT Business",
+          "title": "Trump Says U.S. Struck Deal for Control of More Than 65 Billion Barrels of Venezuela’s Oil",
+          "url": "https://www.nytimes.com/2026/08/28/business/trump-venezuela-oil-deal.html"
+        }
+      ],
+      "source_count": 4,
+      "why_ranked": "Published at page_two with composite 7.020; key drivers were Evidence Strength 8.8, Marginal Information Gain 8.2.",
+      "scores": {
+        "enduring_significance": 3.0,
+        "breaking_urgency": 8.5,
+        "evidence_strength": 8.8,
+        "attention_deficit": 0.0,
+        "manufactured_attention": 3.9,
+        "reader_consequence": 3.975,
+        "marginal_information_gain": 8.167
+      },
+      "consequence": {
+        "wallet": 7.614,
+        "job": 1.8,
+        "safety": 4.4,
+        "rights": 1.8,
+        "travel": 1.8,
+        "civic": 4.4
+      }
+    },
+    {
+      "id": "tim-cook-s-parting-message-apple-is-in-the-hands-of-a-produc-e82478",
+      "category": "technology",
+      "rank": 1,
+      "tier": "lead",
+      "score": 7.702,
+      "headline": "Tim Cook’s parting message: Apple is in the hands of a product builder",
+      "dek": "On his last day as Apple CEO, Tim Cook offered a rousing endorsement of his successor: John Ternus, the company's senior vice president of hardware engineering.",
+      "body": "On his last day as Apple CEO, Tim Cook offered a rousing endorsement of his successor: John Ternus, the company's senior vice president of hardware engineering. In a memo to employees, Cook reminded staff that he's \"not leaving Apple,\" just stepping away from the role of CEO, while declaring that \"few people understand what it takes to build products that change the world the way John does.\" Ternus' elevation to the top job suggests that Apple's next era will see a renewed focus on hardware and product execution.",
+      "so_what": "Under Ternus, Apple shipped a number of notable products, most recently, the new ultra-thin iPhone Air, the lower-cost MacBook Neo, and AirPods with hearing health features.",
+      "what_now": "",
+      "region": "Global",
+      "pattern": "standoff",
+      "topics": [
+        "apple",
+        "cook",
+        "message",
+        "builder",
+        "final",
+        "hands",
+        "last",
+        "parting"
+      ],
+      "countries": [],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "CNBC Top News",
+          "title": "End of an era at Apple: Tim Cook's last day as CEO",
+          "url": "https://www.cnbc.com/video/2026/08/31/end-of-an-era-at-apple-tim-cooks-last-day-as-ceo.html"
+        },
+        {
+          "source": "The Verge",
+          "title": "Read Tim Cook’s final message to Apple staff as CEO",
+          "url": "https://www.theverge.com/tech/986832/read-tim-cooks-final-message-as-ceo-to-apple-staff"
+        },
+        {
+          "source": "TechCrunch",
+          "title": "Tim Cook’s parting message: Apple is in the hands of a product builder",
+          "url": "https://techcrunch.com/2026/08/31/tim-cooks-parting-message-apple-is-in-the-hands-of-a-product-builder/"
+        }
+      ],
+      "source_count": 3,
+      "why_ranked": "Published at lead with composite 7.702; key drivers were Marginal Information Gain 9.7, Evidence Strength 8.2.",
+      "scores": {
+        "enduring_significance": 3.0,
+        "breaking_urgency": 10.0,
+        "evidence_strength": 8.2,
+        "attention_deficit": 0.0,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 2.756,
+        "marginal_information_gain": 9.667
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 5.477,
+        "safety": 1.8,
+        "rights": 1.8,
+        "travel": 1.8,
+        "civic": 1.8
+      }
+    },
+    {
+      "id": "trump-attacks-datacenter-backlash-claiming-communities-pushi-256614",
+      "category": "technology",
+      "rank": 2,
+      "tier": "front",
+      "score": 7.549,
+      "headline": "Trump attacks datacenter backlash, claiming communities pushing back risk becoming ‘backwards and poor’",
+      "dek": "Donald Trump has criticized communities pushing back against datacenter projects across the US amid a growing backlash, warning those that reject them risk becoming \"backwards…",
+      "body": "Donald Trump has criticized communities pushing back against datacenter projects across the US amid a growing backlash, warning those that reject them risk becoming \"backwards and poor\". As controversy surrounding local datacenter plans continues to swirl around election campaigns nationwide ahead of November's midterm elections, the US president declared Americans \"will only have yourselves to blame\" if they are canceled.",
+      "so_what": "If they want to be successful and rich, with far lower taxes and jobs all over the place, let Data Reign.\"The good news is that there are plenty of other places that want them.",
+      "what_now": "",
+      "region": "Asia Pacific",
+      "pattern": "standoff",
+      "topics": [
+        "backwards",
+        "communities",
+        "poor",
+        "trump",
+        "attacks",
+        "backlash",
+        "becoming",
+        "centers"
+      ],
+      "countries": [
+        {
+          "name": "United States",
+          "flag": "🇺🇸",
+          "role": "actor"
+        },
+        {
+          "name": "China",
+          "flag": "🇨🇳",
+          "role": "secondary"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "Guardian Technology",
+          "title": "Trump attacks datacenter backlash, claiming communities pushing back risk becoming ‘backwards and poor’",
+          "url": "https://www.theguardian.com/us-news/2026/aug/31/trump-datacenter-comments"
+        },
+        {
+          "source": "CNBC Top News",
+          "title": "Trump says U.S. communities opposing AI data centers could end up 'backwards and poor'",
+          "url": "https://www.cnbc.com/2026/08/31/trump-data-centers-backlash-elections-congress.html"
+        }
+      ],
+      "source_count": 2,
+      "why_ranked": "Published at front with composite 7.549; key drivers were Breaking Urgency 10.0, Evidence Strength 7.2.",
+      "scores": {
+        "enduring_significance": 5.2,
+        "breaking_urgency": 10.0,
+        "evidence_strength": 7.2,
+        "attention_deficit": 3.7,
+        "manufactured_attention": 2.2,
+        "reader_consequence": 4.017,
+        "marginal_information_gain": 7.786
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 6.303,
+        "safety": 4.4,
+        "rights": 1.8,
+        "travel": 1.8,
+        "civic": 6.303
+      }
+    },
+    {
+      "id": "meta-settles-social-media-addiction-suit-for-up-to-17-1-bill-f52b53",
+      "category": "technology",
+      "rank": 3,
+      "tier": "brief",
+      "score": 4.883,
+      "headline": "Meta settles social media addiction suit for up to $17.1 billion",
+      "dek": "Meta, the owner of Facebook and Instagram, settled a landmark social media addiction lawsuit on Wednesday brought by dozens of states, according to a court filing.",
+      "body": "Meta, the owner of Facebook and Instagram, settled a landmark social media addiction lawsuit on Wednesday brought by dozens of states, according to a court filing. Meta agreed to pay up to $17.1 billion to the states that sued and add child-safety measures to its platforms. The settlement resolves claims filed by 47 states and cuts short a trial that kicked off last week in Oakland, California. The settlement was approved later Wednesday by Judge Yvonne Gonzalez Rogers, according to court documents.",
+      "so_what": "The $17.1 billion settlement, which remains subject to court approval, amounts to a fraction of Meta's 2025 revenue of $201 billion.",
+      "what_now": "Georgia is expected to receive nearly $100 million from the settlement and could ultimately receive as much as $135 million, according to the attorney general's office.",
+      "region": "Global",
+      "pattern": "norm",
+      "topics": [
+        "billion",
+        "media",
+        "meta",
+        "social",
+        "addiction",
+        "settlement",
+        "came",
+        "family"
+      ],
+      "countries": [],
+      "read_time_min": 1,
+      "date": "2026-08-29",
+      "sources": [
+        {
+          "source": "NYT Technology",
+          "title": "How Meta’s $17.1 Billion Social Media Settlement Came Together",
+          "url": "https://www.nytimes.com/2026/08/29/technology/meta-states-settlement.html"
+        },
+        {
+          "source": "CBS MoneyWatch",
+          "title": "Meta settles social media addiction suit for up to $17.1 billion",
+          "url": "https://www.cbsnews.com/news/meta-settles-social-media-addiction-lawsuit/"
+        }
+      ],
+      "source_count": 2,
+      "why_ranked": "Published at brief with composite 4.883; key drivers were Evidence Strength 7.2, Enduring Significance 3.0.",
+      "scores": {
+        "enduring_significance": 3.0,
+        "breaking_urgency": 5.5,
+        "evidence_strength": 7.2,
+        "attention_deficit": 1.5,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 2.06,
+        "marginal_information_gain": 0.0
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 1.8,
+        "safety": 1.8,
+        "rights": 4.4,
+        "travel": 1.8,
+        "civic": 1.8
+      }
+    },
+    {
+      "id": "nasa-space-telescope-launches-after-surviving-trump-budget-c-39ad99",
+      "category": "science",
+      "rank": 1,
+      "tier": "front",
+      "score": 6.733,
+      "headline": "Nasa space telescope launches after surviving Trump budget cuts",
+      "dek": "A $4.3bn space telescope that Donald Trump tried to kill has lifted off from Florida as Nasa embarks on the next stage of its quest to unlock the secrets of the universe.",
+      "body": "A $4.3bn space telescope that Donald Trump tried to kill has lifted off from Florida as Nasa embarks on the next stage of its quest to unlock the secrets of the universe. The Nancy Grace Roman space telescope survived two rounds of proposed White House budget cuts, and began a million-mile journey into deep space from a launchpad at the Kennedy Space Center on Sunday morning..",
+      "so_what": "A 2025 White House proposal for what analysts said would be \"extinction level cuts\" to Nasa's science budget, including the axing of the Roman project, was roundly rejected in January by Congress, which restored the agency's 2026 funding level to $24.4bn.",
+      "what_now": "",
+      "region": "Americas",
+      "pattern": "longgame",
+      "topics": [
+        "nasa",
+        "telescope",
+        "grace",
+        "nancy",
+        "roman",
+        "space",
+        "launches",
+        "leap"
+      ],
+      "countries": [
+        {
+          "name": "United States",
+          "flag": "🇺🇸",
+          "role": "actor"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "Wired",
+          "title": "NASA’s Nancy Grace Roman Space Telescope Has a Hidden Technological Leap",
+          "url": "https://www.wired.com/story/nasas-nancy-grace-roman-space-telescope-coronagraph-leap/"
+        },
+        {
+          "source": "Guardian Science",
+          "title": "Nasa space telescope launches after surviving Trump budget cuts",
+          "url": "https://www.theguardian.com/science/2026/aug/29/nasa-telescope-launch-nancy-grace-roman"
+        },
+        {
+          "source": "NASA Breaking News",
+          "title": "NASA’s Dark Universe-Seeking Nancy Grace Roman Space Telescope Launches",
+          "url": "https://www.nasa.gov/news-release/nasas-dark-universe-seeking-nancy-grace-roman-space-telescope-launches/"
+        },
+        {
+          "source": "NYT Science",
+          "title": "NASA’s Nancy Grace Roman Telescope Promises a Breakthrough in Cosmic Exploration",
+          "url": "https://www.nytimes.com/2026/08/28/science/nasa-nancy-grace-roman-space-telescope.html"
+        },
+        {
+          "source": "BBC Science",
+          "title": "'A giant leap forward': Nasa launches powerful new space telescope",
+          "url": "https://www.bbc.co.uk/news/articles/ce87e55vgpjo?at_medium=RSS&at_campaign=rss"
+        }
+      ],
+      "source_count": 5,
+      "why_ranked": "Published at front with composite 6.733; key drivers were Evidence Strength 8.8, Breaking Urgency 8.3. Total penalties applied: 0.500.",
+      "scores": {
+        "enduring_significance": 4.3,
+        "breaking_urgency": 8.312,
+        "evidence_strength": 8.8,
+        "attention_deficit": 0.0,
+        "manufactured_attention": 3.0,
+        "reader_consequence": 2.424,
+        "marginal_information_gain": 7.0
+      },
+      "consequence": {
+        "wallet": 4.4,
+        "job": 1.8,
+        "safety": 1.8,
+        "rights": 1.8,
+        "travel": 1.8,
+        "civic": 1.8
+      }
+    },
+    {
+      "id": "two-dead-and-more-than-a-dozen-missing-after-terrifying-flas-4d0274",
+      "category": "climate",
+      "rank": 1,
+      "tier": "lead",
+      "score": 7.973,
+      "headline": "Two dead and more than a dozen missing after 'terrifying' flash flood hits Grand Canyon",
+      "dek": "Two people have died and 14 remain missing or unaccounted for after flash flooding swept through parts of the Grand Canyon, the National Park Service (NPS) has said.",
+      "body": "Two people have died and 14 remain missing or unaccounted for after flash flooding swept through parts of the Grand Canyon, the National Park Service (NPS) has said. The flood hit Bright Angel Canyon and the Phantom Ranch area on Saturday afternoon, wiping out footbridges and propelling boulders downstream. The body of a 46-year-old man was found on Sunday evening near Crystal Rapids along the Colorado River, the park service told CBS News, the BBC's US partner. Sixty-two people have so far been airlifted out of the area.",
+      "so_what": "Martin said he and roughly 16 other workers were there and coordinated with NPS once it became clear conditions were unsafe.",
+      "what_now": "The NPS also warned that more thunderstorms and heavy rainfall were forecast for Monday, which could lead to \"additional flash flooding, debris flows, rockfall and changing trail and river conditions\".",
+      "region": "Americas",
+      "pattern": "crisis",
+      "topics": [
+        "canyon",
+        "flash",
+        "grand",
+        "flood",
+        "missing",
+        "dead",
+        "arizona",
+        "hits"
+      ],
+      "countries": [],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "Euronews",
+          "title": "Body of 46-year-old man recovered after Grand Canyon flash flood, park service says",
+          "url": "http://www.euronews.com/2026/08/31/body-of-46-year-old-man-recovered-after-grand-canyon-flash-flood-park-service-says"
+        },
+        {
+          "source": "Sky World",
+          "title": "Grand Canyon flash floods leave one dead and 15 missing",
+          "url": "https://news.sky.com/story/grand-canyon-flash-floods-leave-one-dead-and-15-missing-13579329"
+        },
+        {
+          "source": "The Hindu International",
+          "title": "Grand Canyon flash flood leaves one dead, around 15 missing",
+          "url": "https://www.thehindu.com/news/international/flash-flood-in-grand-canyon-several-dead-and-many-people-missing/article71410663.ece"
+        },
+        {
+          "source": "Guardian Environment",
+          "title": "Two dead and at least 15 missing after flash flood in Arizona’s Grand Canyon",
+          "url": "https://www.theguardian.com/us-news/2026/aug/31/grand-canyon-storms-flash-flood"
+        },
+        {
+          "source": "BBC World",
+          "title": "Two dead and more than a dozen missing after 'terrifying' flash flood hits Grand Canyon",
+          "url": "https://www.bbc.co.uk/news/articles/clylkjyez1do?at_medium=RSS&at_campaign=rss"
+        }
+      ],
+      "source_count": 5,
+      "why_ranked": "Published at lead with composite 7.973; key drivers were Evidence Strength 8.8, Marginal Information Gain 9.7.",
+      "scores": {
+        "enduring_significance": 4.3,
+        "breaking_urgency": 10.0,
+        "evidence_strength": 8.8,
+        "attention_deficit": 0.0,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 3.666,
+        "marginal_information_gain": 9.667
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 4.4,
+        "safety": 7.614,
+        "rights": 1.8,
+        "travel": 4.4,
+        "civic": 1.8
+      }
+    },
+    {
+      "id": "g20-countries-should-consider-more-trade-barriers-on-china-t-fdf72b",
+      "category": "climate",
+      "rank": 2,
+      "tier": "front",
+      "score": 7.628,
+      "headline": "G20 countries should consider more trade barriers on China to cut imbalances, Bessent says",
+      "dek": "U.S. Treasury Secretary Scott Bessent said on Sunday (August 30, 2026) he will encourage G20 members to re-examine terms of trade with China to shrink global imbalances and press…",
+      "body": "U.S. Treasury Secretary Scott Bessent said on Sunday (August 30, 2026) he will encourage G20 members to re-examine terms of trade with China to shrink global imbalances and press Beijing to rebalance its economy away from exports and toward domestic consumption. Mr. Bessent said in an interview ahead of a G20 finance leaders meeting that the current flood of exports from China was unsustainable, even though the U.S. direct trade position with China was \"rapidly improving.\" \"The world cannot have a China with a $1.2 trillion trade surplus,\" Mr. Bessent said.",
+      "so_what": "The September summit comes as the U.S. has been rebuilding Mr. Trump's tariffs after the U.S. Supreme Court struck down broad duties imposed under an emergency law, including 20% on Chinese imports.",
+      "what_now": "The U.S. Treasury Department is likely to unveil weekly new secondary sanctions aimed at increasing economic pressure on Iran, with an initial focus on banks, U.S. Treasury Secretary Scott Bessent told Reuters on Sunday (August 30, 2026).",
+      "region": "Asia Pacific",
+      "pattern": "economic",
+      "topics": [
+        "consider",
+        "countries",
+        "committee",
+        "reparations",
+        "trade",
+        "slave",
+        "barriers",
+        "bessent"
+      ],
+      "countries": [
+        {
+          "name": "China",
+          "flag": "🇨🇳",
+          "role": "actor"
+        },
+        {
+          "name": "United States",
+          "flag": "🇺🇸",
+          "role": "secondary"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "The Hindu International",
+          "title": "G20 countries should consider more trade barriers on China to cut imbalances, Bessent says",
+          "url": "https://www.thehindu.com/news/international/g20-countries-should-consider-more-trade-barriers-on-china-to-cut-imbalances-bessent-says/article71409702.ece"
+        },
+        {
+          "source": "SCMP",
+          "title": "Countries must consider reparations for slave trade, UN committee says",
+          "url": "https://www.scmp.com/news/world/article/3365856/countries-must-consider-reparations-slave-trade-un-committee-says?utm_source=rss_feed"
+        },
+        {
+          "source": "Guardian World",
+          "title": "Countries legally obliged to consider slavery reparations, says UN committee",
+          "url": "https://www.theguardian.com/world/2026/aug/31/countries-legally-obliged-consider-slavery-reparations-un-committee"
+        }
+      ],
+      "source_count": 3,
+      "why_ranked": "Published at front with composite 7.628; key drivers were Evidence Strength 8.8, Breaking Urgency 10.0.",
+      "scores": {
+        "enduring_significance": 4.3,
+        "breaking_urgency": 10.0,
+        "evidence_strength": 8.8,
+        "attention_deficit": 1.3,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 3.208,
+        "marginal_information_gain": 6.667
+      },
+      "consequence": {
+        "wallet": 4.4,
+        "job": 1.8,
+        "safety": 4.4,
+        "rights": 5.477,
+        "travel": 1.8,
+        "civic": 1.8
+      }
+    },
+    {
+      "id": "china-is-concealing-scale-of-flood-disaster-say-tibet-campai-af000a",
+      "category": "climate",
+      "rank": 3,
+      "tier": "front",
+      "score": 7.597,
+      "headline": "China is concealing scale of flood disaster, say Tibet campaigners",
+      "dek": "A Tibetan advocacy group says hundreds of homes were destroyed on the Tibetan side of the border in last week's deadly floods, raising questions about Beijing's official account…",
+      "body": "A Tibetan advocacy group says hundreds of homes were destroyed on the Tibetan side of the border in last week's deadly floods, raising questions about Beijing's official account of the scale of the disaster. Public discussion about the flash floods has been restricted, with security officials in Tibet announcing on Sunday that it had penalised at least 10 people for sharing \"false disaster information\". There was no further information on the nature of the penalties. Chinese authorities say 16 people have been confirmed dead and 546 are missing, including 261 foreign citizens.",
+      "so_what": "In one case, a user identified only as Zhang disputed the official death toll, posting: \"Clearly thousands of people were swept away, yet the authorities reported only three deaths and 265 people missing.\"",
+      "what_now": "",
+      "region": "Asia Pacific",
+      "pattern": "crisis",
+      "topics": [
+        "china",
+        "disaster",
+        "flood",
+        "tibet",
+        "buried",
+        "campaigners",
+        "concealing",
+        "images"
+      ],
+      "countries": [
+        {
+          "name": "China",
+          "flag": "🇨🇳",
+          "role": "actor"
+        },
+        {
+          "name": "Nepal",
+          "flag": "🇳🇵",
+          "role": "secondary"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "Guardian World",
+          "title": "China is concealing scale of flood disaster, say Tibet campaigners",
+          "url": "https://www.theguardian.com/world/2026/aug/31/china-concealing-scale-nepal-flood-disaster-say-tibet-campaigners"
+        },
+        {
+          "source": "DW World",
+          "title": "How China buried Tibet flood images after Nepal disaster",
+          "url": "https://www.dw.com/en/how-china-buried-tibet-flood-images-after-nepal-disaster/a-78576472?maca=en-rss-en-world-4025-rdf"
+        }
+      ],
+      "source_count": 2,
+      "why_ranked": "Published at front with composite 7.597; key drivers were Breaking Urgency 10.0, Evidence Strength 7.2.",
+      "scores": {
+        "enduring_significance": 5.0,
+        "breaking_urgency": 10.0,
+        "evidence_strength": 7.2,
+        "attention_deficit": 3.5,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 2.908,
+        "marginal_information_gain": 8.167
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 1.8,
+        "safety": 5.477,
+        "rights": 4.4,
+        "travel": 4.4,
+        "civic": 1.8
+      }
+    },
+    {
+      "id": "celebrating-60-years-of-notting-hill-carnival-a696c3",
+      "category": "climate",
+      "rank": 4,
+      "tier": "front",
+      "score": 7.179,
+      "headline": "Celebrating 60 years of Notting Hill Carnival",
+      "dek": "As I walk into the heart of the 60th Notting Hill Carnival, the sun is shining and bouncing off the sequins, gems and sparkles of the costumes and decorations surrounding me.",
+      "body": "As I walk into the heart of the 60th Notting Hill Carnival, the sun is shining and bouncing off the sequins, gems and sparkles of the costumes and decorations surrounding me. Flags from all over the Caribbean and Africa have been hung from the windows of the houses and are draped over the shoulders of people passing by. Everyone is dressed for sunshine, despite the rain that was forecast. It seems the spirit of Carnival has seen off those dark clouds.",
+      "so_what": "Triny-Savannah is just 18 months old, and is here with her mum Twinsy, all the way from Paris.",
+      "what_now": "Sunday's event is a much smaller version than the huge parade that will be here on Monday, but this is still very impressive, and beautiful.",
+      "region": "Europe",
+      "pattern": "standoff",
+      "topics": [
+        "carnival",
+        "hill",
+        "notting",
+        "60th",
+        "anniversary",
+        "arrests",
+        "celebrates",
+        "celebrating"
+      ],
+      "countries": [
+        {
+          "name": "United Kingdom",
+          "flag": "🇬🇧",
+          "role": "actor"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "BBC UK",
+          "title": "Celebrating 60 years of Notting Hill Carnival",
+          "url": "https://www.bbc.co.uk/news/articles/c4gvze8p758o?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "source": "Sky UK",
+          "title": "Notting Hill Carnival 'overwhelmingly positive' despite 169 arrests",
+          "url": "https://news.sky.com/story/notting-hill-carnival-overwhelmingly-positive-despite-169-arrests-13579321"
+        }
+      ],
+      "source_count": 2,
+      "why_ranked": "Published at front with composite 7.179; key drivers were Marginal Information Gain 8.5, Breaking Urgency 9.6.",
+      "scores": {
+        "enduring_significance": 3.0,
+        "breaking_urgency": 9.625,
+        "evidence_strength": 7.2,
+        "attention_deficit": 1.5,
+        "manufactured_attention": 3.0,
+        "reader_consequence": 3.048,
+        "marginal_information_gain": 8.5
+      },
+      "consequence": {
+        "wallet": 4.4,
+        "job": 1.8,
+        "safety": 1.8,
+        "rights": 4.4,
+        "travel": 1.8,
+        "civic": 4.4
+      }
+    },
+    {
+      "id": "palestinian-farmers-rebuild-what-israeli-settlers-destroy-in-cd2927",
+      "category": "health",
+      "rank": 1,
+      "tier": "lead",
+      "score": 7.51,
+      "headline": "Palestinian farmers rebuild what Israeli settlers destroy in West Bank",
+      "dek": "Burin, occupied West Bank - Ghassan Najjar's phone starts ringing the moment the Israeli army rolls into Burin.",
+      "body": "Burin, occupied West Bank - Ghassan Najjar's phone starts ringing the moment the Israeli army rolls into Burin. It happens most days now - the whirring convoy of armoured personnel carriers working its way through the village's narrow streets as soldiers fan out to shutter shops one by one. Along with roughly two dozen other farmers, Najjar is a member of Burin's Land and Farming Cooperative. They know that they don't have the capability to fight back against Israel's military might with arms so instead focus on the land and keeping their connection to it.",
+      "so_what": "As closed military zones have become the norm, Burin - sandwiched between the notoriously violent settlements of Yitzhar and Har Brakha and the Givat Ronen outpost - has seen 13 outposts established or expanded in recent months, by Najjar's count.",
+      "what_now": "",
+      "region": "Middle East",
+      "pattern": "standoff",
+      "topics": [
+        "bank",
+        "israeli",
+        "palestinian",
+        "settlers",
+        "west",
+        "attack",
+        "crew",
+        "destroy"
+      ],
+      "countries": [
+        {
+          "name": "Palestine",
+          "flag": "🇵🇸",
+          "role": "actor"
+        },
+        {
+          "name": "Israel",
+          "flag": "🇮🇱",
+          "role": "secondary"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "DW World",
+          "title": "Israeli settlers attack Palestinian homes in West Bank",
+          "url": "https://www.dw.com/en/israeli-settlers-attack-palestinian-homes-in-west-bank/a-78560116?maca=en-rss-en-world-4025-rdf"
+        },
+        {
+          "source": "CBS World",
+          "title": "Israeli settlers attack NBC News crew, Palestinian woman in West Bank",
+          "url": "https://www.cbsnews.com/video/israeli-settlers-attack-nbc-news-crew-palestinian-woman-west-bank/"
+        },
+        {
+          "source": "Al Jazeera",
+          "title": "Palestinian farmers rebuild what Israeli settlers destroy in West Bank",
+          "url": "https://www.aljazeera.com/news/2026/8/31/palestinian-farmers-rebuild-what-israeli-settlers-destroy-in-west-bank?traffic_source=rss"
+        }
+      ],
+      "source_count": 3,
+      "why_ranked": "Published at lead with composite 7.510; key drivers were Evidence Strength 8.8, Marginal Information Gain 9.1.",
+      "scores": {
+        "enduring_significance": 3.0,
+        "breaking_urgency": 8.5,
+        "evidence_strength": 8.8,
+        "attention_deficit": 0.0,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 3.204,
+        "marginal_information_gain": 9.067
+      },
+      "consequence": {
+        "wallet": 4.4,
+        "job": 1.8,
+        "safety": 4.4,
+        "rights": 1.8,
+        "travel": 1.8,
+        "civic": 4.4
+      }
+    },
+    {
+      "id": "putin-modi-meeting-at-sco-can-russia-india-ties-hold-7d97c0",
+      "category": "health",
+      "rank": 2,
+      "tier": "front",
+      "score": 7.394,
+      "headline": "Putin-Modi meeting at SCO: Can Russia-India ties hold?",
+      "dek": "Indian Prime Minister Narendra Modi and Russian President Vladimir Putin are set to meet in Kyrgyzstan's capital, Bishkek, on Monday on the sidelines of the Shanghai Cooperation…",
+      "body": "Indian Prime Minister Narendra Modi and Russian President Vladimir Putin are set to meet in Kyrgyzstan's capital, Bishkek, on Monday on the sidelines of the Shanghai Cooperation Organization (SCO) summit - a bloc often seen as a counterweight to US influence. The meeting comes against the backdrop of the fallout from the US-Israel war on Iran, which has disrupted global energy markets, and Russia's war in Ukraine, now in its fifth year. India has remained engaged with the SCO while resisting efforts to turn it into an anti-Western bloc.",
+      "so_what": "Since the full-scale Russian invasion of Ukraine began in early 2022, China has become indispensable to Russia as a market, supplier and economic partner.",
+      "what_now": "The bigger test will come in Delhi in September, when Putin is expected to return for the BRICS summit.",
+      "region": "Europe",
+      "pattern": "standoff",
+      "topics": [
+        "india",
+        "modi",
+        "putin",
+        "russia",
+        "hold",
+        "meeting",
+        "ties",
+        "ukraine"
+      ],
+      "countries": [
+        {
+          "name": "Russia",
+          "flag": "🇷🇺",
+          "role": "actor"
+        },
+        {
+          "name": "India",
+          "flag": "🇮🇳",
+          "role": "secondary"
+        },
+        {
+          "name": "United States",
+          "flag": "🇺🇸",
+          "role": "secondary"
+        },
+        {
+          "name": "Ukraine",
+          "flag": "🇺🇦",
+          "role": "secondary"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "DW World",
+          "title": "Putin-Modi meeting at SCO: Can Russia-India ties hold?",
+          "url": "https://www.dw.com/en/putin-modi-meeting-at-sco-can-russia-india-ties-hold/a-78575121?maca=en-rss-en-world-4025-rdf"
+        },
+        {
+          "source": "Al Jazeera",
+          "title": "India’s PM Modi urges end to Ukraine war in talks with Russia’s Putin",
+          "url": "https://www.aljazeera.com/video/newsfeed/2026/8/31/indias-pm-modi-urges-end-to-ukraine-war-in-talks-with-russias-putin?traffic_source=rss"
+        }
+      ],
+      "source_count": 2,
+      "why_ranked": "Published at front with composite 7.394; key drivers were Marginal Information Gain 8.9, Enduring Significance 6.1.",
+      "scores": {
+        "enduring_significance": 6.1,
+        "breaking_urgency": 10.0,
+        "evidence_strength": 7.2,
+        "attention_deficit": 4.6,
+        "manufactured_attention": 1.8,
+        "reader_consequence": 2.731,
+        "marginal_information_gain": 8.917
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 1.8,
+        "safety": 4.4,
+        "rights": 1.8,
+        "travel": 1.8,
+        "civic": 5.477
+      }
+    },
+    {
+      "id": "is-now-the-right-time-for-djokovic-to-retire-after-heart-bre-a2ce49",
+      "category": "sports",
+      "rank": 1,
+      "tier": "lead",
+      "score": 8.074,
+      "headline": "Is now the right time for Djokovic to retire after 'heart-breaking' US Open loss?",
+      "dek": "US Open: Is now the right time for Novak Djokovic to retire after 'heart-breaking' first-round exit in New York?",
+      "body": "US Open: Is now the right time for Novak Djokovic to retire after 'heart-breaking' first-round exit in New York? Novak Djokovic said he \"despised\" every moment of the five-set, near five-hour ordeal which ended his US Open hopes in the first round, so now the question is whether he calls time on his trophy-laden career. The 24-time Grand Slam champion was knocked out in the first round of the US Open for the first time, beaten by Mariano Navone of Argentina.",
+      "so_what": "Djokovic was 19-0 in the US Open first round and hadn't lost his opening match in any major since Paul Goldstein beat him at the Australian Open in 2006.",
+      "what_now": "",
+      "region": "Americas",
+      "pattern": "norm",
+      "topics": [
+        "djokovic",
+        "loss",
+        "open",
+        "breaking",
+        "emotion",
+        "heart",
+        "overcome",
+        "retire"
+      ],
+      "countries": [
+        {
+          "name": "Argentina",
+          "flag": "🇦🇷",
+          "role": "actor"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "BBC Sport",
+          "title": "Watch: Djokovic overcome with emotion during US Open loss",
+          "url": "https://www.bbc.co.uk/sport/tennis/videos/clyk5gmvmero?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "source": "Sky Sports",
+          "title": "Is now the right time for Djokovic to retire after 'heart-breaking' US Open loss?",
+          "url": "https://www.skysports.com/tennis/news/12040/13579465/us-open-is-now-the-right-time-for-novak-djokovic-to-retire-after-heart-breaking-first-round-exit-in-new-york"
+        }
+      ],
+      "source_count": 2,
+      "why_ranked": "Published at lead with composite 8.074; key drivers were Marginal Information Gain 10.0, Breaking Urgency 10.0.",
+      "scores": {
+        "enduring_significance": 3.0,
+        "breaking_urgency": 10.0,
+        "evidence_strength": 7.2,
+        "attention_deficit": 1.5,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 2.06,
+        "marginal_information_gain": 10.0
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 1.8,
+        "safety": 1.8,
+        "rights": 4.4,
+        "travel": 1.8,
+        "civic": 1.8
+      }
+    },
+    {
+      "id": "man-city-open-talks-with-chelsea-to-sign-fernandez-4cc508",
+      "category": "sports",
+      "rank": 2,
+      "tier": "front",
+      "score": 8.058,
+      "headline": "Man City open talks with Chelsea to sign Fernandez",
+      "dek": "Manchester City have opened direct club-to-club talks with Chelsea to sign Enzo Fernandez, according to Sky in Italy.",
+      "body": "Manchester City have opened direct club-to-club talks with Chelsea to sign Enzo Fernandez, according to Sky in Italy. Sky Sports News reported that Chelsea were prepared to sell Enzo Fernandez to Manchester City for the right price - and if they can improve their squad before the window closes. Man City's interest in Fernandez remains despite missing Chelsea's August 14 deadline to bid for him. Chelsea had agreed with Fernandez's representatives that he could be sold for £120m by that deadline, but an offer never arrived.",
+      "so_what": "Nico Gonzalez has also left to join Newcastle in a transfer worth up to £50m, with Tijjani Reijnders recently departing for Al Qadsiah for £51m.",
+      "what_now": "Chelsea had agreed with Fernandez's representatives that he could be sold for £120m by that deadline, but an offer never arrived.",
+      "region": "Europe",
+      "pattern": "negotiation",
+      "topics": [
+        "city",
+        "fernandez",
+        "open",
+        "sign",
+        "chelsea",
+        "gossip",
+        "tuesday"
+      ],
+      "countries": [
+        {
+          "name": "Italy",
+          "flag": "🇮🇹",
+          "role": "actor"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "Sky Sports",
+          "title": "Man City open talks with Chelsea to sign Fernandez",
+          "url": "https://www.skysports.com/football/news/12040/13577767/enzo-fernandez-transfer-news-man-city-open-talks-with-chelsea-to-sign-argentina-midfielder"
+        },
+        {
+          "source": "BBC Sport",
+          "title": "Man City open talks to sign Fernandez - Tuesday gossip",
+          "url": "https://www.bbc.co.uk/sport/football/articles/cwyz130nxkro?at_medium=RSS&at_campaign=rss"
+        }
+      ],
+      "source_count": 2,
+      "why_ranked": "Published at front with composite 8.058; key drivers were Marginal Information Gain 10.0, Breaking Urgency 10.0.",
+      "scores": {
+        "enduring_significance": 3.0,
+        "breaking_urgency": 10.0,
+        "evidence_strength": 7.2,
+        "attention_deficit": 1.5,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 1.8,
+        "marginal_information_gain": 10.0
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 1.8,
+        "safety": 1.8,
+        "rights": 1.8,
+        "travel": 1.8,
+        "civic": 1.8
+      }
+    },
+    {
+      "id": "smyth-returns-to-saints-practice-squad-fb0e5f",
+      "category": "sports",
+      "rank": 3,
+      "tier": "front",
+      "score": 8.058,
+      "headline": "Smyth returns to Saints' practice squad",
+      "dek": "Charlie Smyth will stay in New Orleans with the Saints re-signing the County Down kicker to their practice squad.",
+      "body": "Charlie Smyth will stay in New Orleans with the Saints re-signing the County Down kicker to their practice squad. On Sunday, it was confirmed the Mayobridge man had not made the cut for a place on the NFC South franchise's 53-man squad before the start of the NFL season and was placed on the waiver wire. That gave other teams the option to offer for former Gaelic footballer a contract, but that did not come to pass before Monday's 17:00 BST deadline.",
+      "so_what": "Last season, he made 12 of 16 field goal attempts and was perfect from 13 extra-point tries, putting him in a strong position to earn the number one slot for this season.",
+      "what_now": "As Smyth retains his international player pathway [IPP] status, he can be added as a 17th member and the Saints have decided to take up that option, ensuring he will remain in New Orleans for a third season since graduating from the IPP.",
+      "region": "Global",
+      "pattern": "standoff",
+      "topics": [
+        "practice",
+        "squad",
+        "tracker",
+        "roster",
+        "saints",
+        "eagles",
+        "returns",
+        "smyth"
+      ],
+      "countries": [],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "Yahoo Sports NFL",
+          "title": "New Orleans Saints 2026 Practice Squad Tracker",
+          "url": "https://sports.yahoo.com/articles/orleans-saints-2026-practice-squad-180804438.html"
+        },
+        {
+          "source": "BBC Sport",
+          "title": "Smyth returns to Saints' practice squad",
+          "url": "https://www.bbc.co.uk/sport/american-football/articles/cwyzegwwze3o?at_medium=RSS&at_campaign=rss"
+        }
+      ],
+      "source_count": 2,
+      "why_ranked": "Published at front with composite 8.058; key drivers were Marginal Information Gain 10.0, Breaking Urgency 10.0.",
+      "scores": {
+        "enduring_significance": 3.0,
+        "breaking_urgency": 10.0,
+        "evidence_strength": 7.2,
+        "attention_deficit": 1.5,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 1.8,
+        "marginal_information_gain": 10.0
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 1.8,
+        "safety": 1.8,
+        "rights": 1.8,
+        "travel": 1.8,
+        "civic": 1.8
+      }
+    },
+    {
+      "id": "daisy-chain-fields-review-olivia-rodrigo-s-women-led-festiva-6162ec",
+      "category": "culture",
+      "rank": 1,
+      "tier": "lead",
+      "score": 7.933,
+      "headline": "Daisy Chain Fields review – Olivia Rodrigo’s women-led festival is electric amid extreme heat",
+      "dek": "Great Park, Irvine, California Performances from Rodrigo, Stevie Nicks, Chappell Roan and Sarah McLachlan raise $20m for charity yet are marred by poor planning for heatwave…",
+      "body": "Great Park, Irvine, California Performances from Rodrigo, Stevie Nicks, Chappell Roan and Sarah McLachlan raise $20m for charity yet are marred by poor planning for heatwave Shortly after singing the closing notes of her indie pop gem LES Artistes on Saturday afternoon, Santigold gazes out at the sweat-laced crowd at the Daisy Chain Fields festival - a benefit concert hosted by Olivia Rodrigo for charities focused on women and girls - in disbelief. \"I can't believe she pulled this shit off!\" Santigold cries into the microphone, beaming.",
+      "so_what": "The festival raised $10m to be distributed evenly among 10 non-profits, including Baby2Baby, which distributes supplies to children and parents in need, and the National Women's Law Center.",
+      "what_now": "",
+      "region": "Europe",
+      "pattern": "standoff",
+      "topics": [
+        "chain",
+        "daisy",
+        "fields",
+        "olivia",
+        "rodrigo",
+        "festival",
+        "donation",
+        "doubles"
+      ],
+      "countries": [
+        {
+          "name": "France",
+          "flag": "🇫🇷",
+          "role": "actor"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "Rolling Stone Music News",
+          "title": "Melinda French Gates Doubles Olivia Rodrigo’s Daisy Chain Fields Donation to $20 Million",
+          "url": "https://www.rollingstone.com/music/music-news/melinda-french-gates-doubles-olivia-rodrigo-donation-1235617839/"
+        },
+        {
+          "source": "Guardian Culture",
+          "title": "Daisy Chain Fields review – Olivia Rodrigo’s women-led festival is electric amid extreme heat",
+          "url": "https://www.theguardian.com/music/2026/aug/30/daisy-chain-fields-festival-review-olivia-rodrigo"
+        },
+        {
+          "source": "NYT Arts",
+          "title": "Olivia Rodrigo’s Daisy Chain Fields: A New Feminist Music Festival Takes Shape",
+          "url": "https://www.nytimes.com/2026/08/31/arts/music/daisy-chain-fields-olivia-rodrigo.html"
+        }
+      ],
+      "source_count": 3,
+      "why_ranked": "Published at lead with composite 7.933; key drivers were Evidence Strength 8.8, Marginal Information Gain 10.0.",
+      "scores": {
+        "enduring_significance": 3.0,
+        "breaking_urgency": 9.0,
+        "evidence_strength": 8.8,
+        "attention_deficit": 0.0,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 1.8,
+        "marginal_information_gain": 10.0
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 1.8,
+        "safety": 1.8,
+        "rights": 1.8,
+        "travel": 1.8,
+        "civic": 1.8
+      }
+    },
+    {
+      "id": "dolly-parton-laid-to-rest-in-private-nashville-funeral-150391",
+      "category": "culture",
+      "rank": 2,
+      "tier": "front",
+      "score": 7.597,
+      "headline": "Dolly Parton laid to rest in private Nashville funeral",
+      "dek": "Dolly Parton was laid to rest in a private ceremony in Nashville on Friday, her family has confirmed.",
+      "body": "Dolly Parton was laid to rest in a private ceremony in Nashville on Friday, her family has confirmed. The queen of country music, who died aged 80 on 25 August \"after bravely facing a brief battle with cancer\", was interred at Woodlawn Memorial Park and Mausoleum alongside her husband of 60 years, Carl Thomas. Parton's great-niece Lainey Parton wrote on Instagram on Saturday: \"I wanted to wait until after my granny was laid to rest yesterday before I tried to put any of this into words. \"From the time I was little, my granny always had a way of making me feel like I was enough.",
+      "so_what": "Before her death, Parton had been planning the festival for January 2026 but had to take a step back due to health issues.",
+      "what_now": "On Monday, the estate of Parton announced DollyFest, a two-weekend event which will take place in Nashville and London next year.",
+      "region": "Global",
+      "pattern": "standoff",
+      "topics": [
+        "dolly",
+        "parton",
+        "nashville",
+        "laid",
+        "rest",
+        "airport",
+        "funeral",
+        "private"
+      ],
+      "countries": [],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "CBS Entertainment",
+          "title": "Nashville airport could be renamed for Dolly Parton under new proposal",
+          "url": "https://www.cbsnews.com/news/dolly-parton-nashville-airport-rename-proposal/"
+        },
+        {
+          "source": "BBC World",
+          "title": "Dolly Parton laid to rest alongside husband in Nashville",
+          "url": "https://www.bbc.co.uk/news/articles/cew95ke74l7o?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "source": "Sky News Home",
+          "title": "Dolly Parton laid to rest in private family funeral",
+          "url": "https://news.sky.com/story/dolly-parton-laid-to-rest-in-private-family-funeral-13579425"
+        },
+        {
+          "source": "Guardian Culture",
+          "title": "Dolly Parton laid to rest in private Nashville funeral",
+          "url": "https://www.theguardian.com/music/2026/aug/31/dolly-parton-funeral"
+        }
+      ],
+      "source_count": 4,
+      "why_ranked": "Published at front with composite 7.597; key drivers were Evidence Strength 8.8, Marginal Information Gain 10.0.",
+      "scores": {
+        "enduring_significance": 3.0,
+        "breaking_urgency": 8.2,
+        "evidence_strength": 8.8,
+        "attention_deficit": 0.0,
+        "manufactured_attention": 3.6,
+        "reader_consequence": 2.84,
+        "marginal_information_gain": 10.0
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 1.8,
+        "safety": 4.4,
+        "rights": 1.8,
+        "travel": 4.4,
+        "civic": 4.4
+      }
+    },
+    {
+      "id": "emo-might-have-been-a-phase-to-some-but-not-for-us-09f442",
+      "category": "culture",
+      "rank": 3,
+      "tier": "front",
+      "score": 7.515,
+      "headline": "'Emo might have been a phase to some, but not for us'",
+      "dek": "When My Chemical Romance headlined Wembley for three sold-out shows in July, for many it was a trip down memory lane to a time when they classed themselves as \"emo\" - wearing…",
+      "body": "When My Chemical Romance headlined Wembley for three sold-out shows in July, for many it was a trip down memory lane to a time when they classed themselves as \"emo\" - wearing black, having piercings and listening to alternative music. But for others, this was never just a phase of their youth. This was a way of life. Sophie Baxter, 31, from Hull, describes herself as alternative and runs a social group for \"emos, goths and moshers\" to meet like-minded people who \"understand where you're coming from\".",
+      "so_what": "The life of Sophie Lancaster, who was kicked to death by teenage boys in 2007 because she was a goth, continues to be celebrated through a foundation set up in her honour.",
+      "what_now": "",
+      "region": "Asia Pacific",
+      "pattern": "economic",
+      "topics": [
+        "might",
+        "dollar",
+        "phase"
+      ],
+      "countries": [
+        {
+          "name": "Japan",
+          "flag": "🇯🇵",
+          "role": "actor"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "BBC Entertainment & Arts",
+          "title": "'Emo might have been a phase to some, but not for us'",
+          "url": "https://www.bbc.co.uk/news/articles/cn0nd96rdpwo?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "source": "Japan Times",
+          "title": "Yen might be on its way to ¥164 to the dollar",
+          "url": "https://www.japantimes.co.jp/business/2026/08/31/tech/yen-market/"
+        }
+      ],
+      "source_count": 2,
+      "why_ranked": "Published at front with composite 7.515; key drivers were Marginal Information Gain 10.0, Evidence Strength 7.2.",
+      "scores": {
+        "enduring_significance": 3.0,
+        "breaking_urgency": 9.25,
+        "evidence_strength": 7.2,
+        "attention_deficit": 1.5,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 2.881,
+        "marginal_information_gain": 10.0
+      },
+      "consequence": {
+        "wallet": 6.303,
+        "job": 1.8,
+        "safety": 1.8,
+        "rights": 1.8,
+        "travel": 1.8,
+        "civic": 1.8
+      }
+    }
+  ]
+}

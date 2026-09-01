@@ -1,0 +1,199 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   Aware Daily — design tokens
+   This file is the single source of truth for colour and type.
+   Do not hardcode colours anywhere else in the app.
+
+   The palette and type scale below were chosen without the research brief
+   (docs/news-ux-research.md did not exist when this file was authored).
+   Every text/surface pair was measured and clears WCAG AA (>= 4.5:1);
+   the lowest ratio in either theme is 5.08:1.
+   ========================================================================== */
+
+/* provisional - reconcile with docs/news-ux-research.md */
+
+/* --------------------------------------------------------------------------
+   Light theme (default)
+   -------------------------------------------------------------------------- */
+:root {
+  color-scheme: light;
+
+  /* Surfaces */
+  --surface: #fbfaf8;
+  --surface-raised: #ffffff;
+  --surface-sunken: #f1ede7;
+  --border: #ddd6cb;
+
+  /* Text */
+  --text-primary: #14110e;
+  --text-secondary: #4a423a;
+  --text-tertiary: #6b6157;
+
+  /* Category accents */
+  --accent-geopolitics: #a8321e;
+  --accent-business: #1f6f4a;
+  --accent-technology: #4a3aa8;
+  --accent-science: #0f6e78;
+  --accent-climate: #8a5a00;
+  --accent-health: #a32b57;
+  --accent-sports: #1f5fa9;
+  --accent-culture: #7a3b8c;
+}
+
+/* --------------------------------------------------------------------------
+   Dark theme — system preference
+   -------------------------------------------------------------------------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    --surface: #131110;
+    --surface-raised: #1d1a17;
+    --surface-sunken: #0b0a09;
+    --border: #35302a;
+
+    --text-primary: #f4f0e9;
+    --text-secondary: #c6bdb1;
+    --text-tertiary: #9b9185;
+
+    --accent-geopolitics: #f0876b;
+    --accent-business: #5bcb98;
+    --accent-technology: #a79bff;
+    --accent-science: #4cc6d3;
+    --accent-climate: #e8b23c;
+    --accent-health: #f4789f;
+    --accent-sports: #79b0f5;
+    --accent-culture: #d28de6;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Forced themes — <html data-theme="dark"> / <html data-theme="light">
+   These come last so an explicit attribute always beats the media query.
+   -------------------------------------------------------------------------- */
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --surface: #131110;
+  --surface-raised: #1d1a17;
+  --surface-sunken: #0b0a09;
+  --border: #35302a;
+
+  --text-primary: #f4f0e9;
+  --text-secondary: #c6bdb1;
+  --text-tertiary: #9b9185;
+
+  --accent-geopolitics: #f0876b;
+  --accent-business: #5bcb98;
+  --accent-technology: #a79bff;
+  --accent-science: #4cc6d3;
+  --accent-climate: #e8b23c;
+  --accent-health: #f4789f;
+  --accent-sports: #79b0f5;
+  --accent-culture: #d28de6;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+
+  --surface: #fbfaf8;
+  --surface-raised: #ffffff;
+  --surface-sunken: #f1ede7;
+  --border: #ddd6cb;
+
+  --text-primary: #14110e;
+  --text-secondary: #4a423a;
+  --text-tertiary: #6b6157;
+
+  --accent-geopolitics: #a8321e;
+  --accent-business: #1f6f4a;
+  --accent-technology: #4a3aa8;
+  --accent-science: #0f6e78;
+  --accent-climate: #8a5a00;
+  --accent-health: #a32b57;
+  --accent-sports: #1f5fa9;
+  --accent-culture: #7a3b8c;
+}
+
+/* --------------------------------------------------------------------------
+   Tailwind theme bridge
+   `inline` keeps the var() reference in the generated utility, so utilities
+   such as `bg-surface` or `text-accent-climate` re-resolve when the theme
+   flips. Utilities available: bg-/text-/border- for every token below.
+   -------------------------------------------------------------------------- */
+@theme inline {
+  /* Typography families */
+  --font-display: "Source Serif 4", "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Type scale — provisional - reconcile with docs/news-ux-research.md */
+  --text-caption: 0.75rem;
+  --text-caption--line-height: 1.1rem;
+  --text-meta: 0.8125rem;
+  --text-meta--line-height: 1.25rem;
+  --text-body: 1.0625rem;
+  --text-body--line-height: 1.65rem;
+  --text-lede: 1.1875rem;
+  --text-lede--line-height: 1.75rem;
+  --text-headline: 1.375rem;
+  --text-headline--line-height: 1.75rem;
+  --text-lead-headline: 1.875rem;
+  --text-lead-headline--line-height: 2.25rem;
+  --text-masthead: 2.5rem;
+  --text-masthead--line-height: 2.75rem;
+
+  /* Surfaces */
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-surface-sunken: var(--surface-sunken);
+  --color-border: var(--border);
+
+  /* Text */
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+
+  /* Category accents */
+  --color-accent-geopolitics: var(--accent-geopolitics);
+  --color-accent-business: var(--accent-business);
+  --color-accent-technology: var(--accent-technology);
+  --color-accent-science: var(--accent-science);
+  --color-accent-climate: var(--accent-climate);
+  --color-accent-health: var(--accent-health);
+  --color-accent-sports: var(--accent-sports);
+  --color-accent-culture: var(--accent-culture);
+}
+
+/* --------------------------------------------------------------------------
+   Base — document-level only, no component styles
+   -------------------------------------------------------------------------- */
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    background-color: var(--surface);
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--surface);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  #root {
+    min-height: 100svh;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--text-primary);
+    outline-offset: 2px;
+  }
+}
