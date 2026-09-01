@@ -1,10 +1,10 @@
 {
   "version": 1,
   "date": "2026-08-31",
-  "generated_at": "2026-08-31T22:40:14.850747Z",
+  "generated_at": "2026-09-01T02:53:18.928117Z",
   "persona": "Avinash",
   "totals": {
-    "published": 27,
+    "published": 56,
     "categories": 8
   },
   "categories": [
@@ -13,21 +13,21 @@
       "label": "Geopolitics",
       "emoji": "🌍",
       "blurb": "Power, conflict, diplomacy, and statecraft that shift international relations.",
-      "count": 6
+      "count": 20
     },
     {
       "key": "business",
       "label": "Business & Markets",
       "emoji": "💼",
       "blurb": "Markets, companies, policy, and macro forces shaping the global economy.",
-      "count": 5
+      "count": 8
     },
     {
       "key": "technology",
       "label": "Technology",
       "emoji": "🧠",
       "blurb": "AI, software, chips, platforms, and cybersecurity shaping digital systems.",
-      "count": 3
+      "count": 4
     },
     {
       "key": "science",
@@ -41,7 +41,7 @@
       "label": "Climate & Energy",
       "emoji": "🌡️",
       "blurb": "Climate impacts, emissions policy, and the transition across energy systems.",
-      "count": 4
+      "count": 6
     },
     {
       "key": "health",
@@ -55,14 +55,14 @@
       "label": "Sport",
       "emoji": "🏅",
       "blurb": "Elite competition, leagues, tournaments, and major athlete or team moves.",
-      "count": 3
+      "count": 11
     },
     {
       "key": "culture",
       "label": "Culture",
       "emoji": "🎭",
       "blurb": "Arts, entertainment, books, music, and ideas shaping public culture.",
-      "count": 3
+      "count": 4
     }
   ],
   "stories": [
@@ -71,7 +71,7 @@
       "category": "geopolitics",
       "rank": 1,
       "tier": "lead",
-      "score": 8.6,
+      "score": 8.541,
       "headline": "US and Iran trade strikes for first time in weeks",
       "dek": "Iran and the US have traded strikes after American forces attacked two rocket launchers on Larak Island in the Strait of Hormuz.",
       "body": "Iran and the US have traded strikes after American forces attacked two rocket launchers on Larak Island in the Strait of Hormuz. The first known US strikes on Iran since late July killed two people and injured two others, according to Iran's Islamic Revolutionary Guard Corps (IRGC), which vowed \"response and punishment\". US Central Command (Centcom) said it took \"limited, precise action\" after observing Iran preparing to \"launch rockets and deploy sea mines into the Strait of Hormuz\", according to its spokesperson.",
@@ -136,7 +136,7 @@
         }
       ],
       "source_count": 5,
-      "why_ranked": "Published at lead with composite 8.600; key drivers were Enduring Significance 9.1, Evidence Strength 8.8.",
+      "why_ranked": "Published at lead with composite 8.541; key drivers were Enduring Significance 9.1, Evidence Strength 8.8.",
       "scores": {
         "enduring_significance": 9.1,
         "breaking_urgency": 10.0,
@@ -144,7 +144,7 @@
         "attention_deficit": 0.0,
         "manufactured_attention": 4.2,
         "reader_consequence": 4.128,
-        "marginal_information_gain": 9.4
+        "marginal_information_gain": 8.917
       },
       "consequence": {
         "wallet": 5.477,
@@ -156,108 +156,9 @@
       }
     },
     {
-      "id": "kalshi-bans-ex-congressman-george-santos-from-prediction-pla-04814a",
-      "category": "geopolitics",
-      "rank": 2,
-      "tier": "front",
-      "score": 8.179,
-      "headline": "Kalshi bans ex-congressman George Santos from prediction platform for life",
-      "dek": "George Santos, the former Republican congressman whose political career collapsed under a mountain of lies, has become the first person ever handed a lifetime ban by the…",
-      "body": "George Santos, the former Republican congressman whose political career collapsed under a mountain of lies, has become the first person ever handed a lifetime ban by the prediction-market platform Kalshi. The company announced the permanent suspension on Monday, along with a $71,356 fine, after federal regulators accused Santos of profiting from bets tied to his own attendance at Donald Trump's State of the Union address earlier this year.",
-      "so_what": "Laurie Buckhout, a Trump-endorsed Republican congressional candidate in North Carolina, was banned for three years and fined $2,590 after wagering under $1,000 on her own campaign, calling it a mistake she moved to fix as soon as she noticed it.",
-      "what_now": "",
-      "region": "Americas",
-      "pattern": "economic",
-      "topics": [
-        "george",
-        "santos",
-        "kalshi",
-        "bans",
-        "life",
-        "congressman",
-        "platform",
-        "former"
-      ],
-      "countries": [
-        {
-          "name": "United States",
-          "flag": "🇺🇸",
-          "role": "actor"
-        }
-      ],
-      "read_time_min": 1,
-      "date": "2026-08-31",
-      "sources": [
-        {
-          "source": "Wired",
-          "title": "George Santos Just Got Hit With Kalshi’s First-Ever Lifetime Ban",
-          "url": "https://www.wired.com/story/george-santos-gets-a-lifetime-ban-from-kalshi/"
-        },
-        {
-          "source": "CNBC Top News",
-          "title": "Kalshi permanently bans former GOP Rep. George Santos over illegal trading",
-          "url": "https://www.cnbc.com/2026/08/31/kalshi-perman.html"
-        },
-        {
-          "source": "BBC World",
-          "title": "Ex-congressman George Santos banned from betting platform for life",
-          "url": "https://www.bbc.co.uk/news/articles/cpwlxy49225o?at_medium=RSS&at_campaign=rss"
-        },
-        {
-          "source": "Guardian World",
-          "title": "Kalshi bans ex-congressman George Santos from prediction platform for life",
-          "url": "https://www.theguardian.com/us-news/2026/aug/31/george-santos-kalshi-lifetime-ban"
-        },
-        {
-          "source": "CBS MoneyWatch",
-          "title": "Kalshi bans ex-congressman George Santos for life after suspicious trades",
-          "url": "https://www.cbsnews.com/news/george-santos-kalshi-lifetime-ban/"
-        },
-        {
-          "source": "TechCrunch",
-          "title": "Kalshi bans George Santos for life over State of the Union bets",
-          "url": "https://techcrunch.com/2026/08/31/kalshi-bans-george-santos-for-life-over-state-of-the-union-bets/"
-        },
-        {
-          "source": "NYT Business",
-          "title": "Kalshi Permanently Bars George Santos From the Platform",
-          "url": "https://www.nytimes.com/2026/08/31/business/kalshi-bans-george-santos.html"
-        },
-        {
-          "source": "The Hill",
-          "title": "Kalshi bans George Santos for life",
-          "url": "https://thehill.com/newsletters/technology/6061870-kalshi-bans-george-santos-for-life/"
-        },
-        {
-          "source": "NPR Technology",
-          "title": "Kalshi bans former congressman George Santos for life after State of the Union trades",
-          "url": "https://www.npr.org/2026/08/31/nx-s1-5950432/kalshi-bans-former-congressman-george-santos-for-life-after-state-of-the-union-trades"
-        }
-      ],
-      "source_count": 9,
-      "why_ranked": "Published at front with composite 8.179; key drivers were Evidence Strength 8.8, Marginal Information Gain 10.0.",
-      "scores": {
-        "enduring_significance": 6.5,
-        "breaking_urgency": 10.0,
-        "evidence_strength": 8.8,
-        "attention_deficit": 0.0,
-        "manufactured_attention": 2.8,
-        "reader_consequence": 3.921,
-        "marginal_information_gain": 10.0
-      },
-      "consequence": {
-        "wallet": 6.303,
-        "job": 4.4,
-        "safety": 1.8,
-        "rights": 1.8,
-        "travel": 1.8,
-        "civic": 4.4
-      }
-    },
-    {
       "id": "spain-pm-blames-russia-israel-for-ceuta-migrant-crisis-disin-7725c5",
       "category": "geopolitics",
-      "rank": 3,
+      "rank": 2,
       "tier": "front",
       "score": 8.096,
       "headline": "Spain PM blames Russia, Israel for Ceuta migrant crisis’ disinformation",
@@ -346,7 +247,7 @@
     {
       "id": "algeria-president-seeks-death-penalty-for-arsonists-after-de-107a98",
       "category": "geopolitics",
-      "rank": 4,
+      "rank": 3,
       "tier": "front",
       "score": 8.085,
       "headline": "Algeria president seeks death penalty for arsonists after deadly forest fires",
@@ -408,10 +309,74 @@
       }
     },
     {
+      "id": "south-african-airline-defends-low-altitude-aerial-stunt-over-1431a6",
+      "category": "geopolitics",
+      "rank": 4,
+      "tier": "front",
+      "score": 8.074,
+      "headline": "South African airline defends low-altitude aerial stunt over packed stadium",
+      "dek": "A South African airline has defended itself against some criticism of a dramatic stunt that saw two of its aircraft in close formation fly reportedly within feet of the top of a…",
+      "body": "A South African airline has defended itself against some criticism of a dramatic stunt that saw two of its aircraft in close formation fly reportedly within feet of the top of a stadium. The jets roared over Cape Town's DHL Stadium, filled with more than 50,000 fans, as smoke flares shot up before the start of a rugby match featuring fierce rivals South Africa and New Zealand. As videos of Saturday's aerial feat were shared, some labelled the startling manoeuvre reckless, while others have praised the precision and expertise required to pull it off.",
+      "so_what": "The flight tracking website Flightradar24 said that according to its analysis \"the lead aircraft passed less than 50 feet (15 metres) above the top of the stadium\".",
+      "what_now": "",
+      "region": "Global",
+      "pattern": "standoff",
+      "topics": [
+        "african",
+        "airline",
+        "defends",
+        "south",
+        "stadium",
+        "aerial",
+        "airlink",
+        "altitude"
+      ],
+      "countries": [
+        {
+          "name": "South Africa",
+          "flag": "🇿🇦",
+          "role": "actor"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "BBC World",
+          "title": "South African airline defends low-altitude aerial stunt over packed stadium",
+          "url": "https://www.bbc.co.uk/news/articles/c3rew8jqny5o?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "source": "Euronews",
+          "title": "South African airline Airlink defends dramatic stadium flyover",
+          "url": "http://www.euronews.com/2026/08/31/south-african-airline-airlink-defends-dramatic-stadium-flyover"
+        }
+      ],
+      "source_count": 2,
+      "why_ranked": "Published at front with composite 8.074; key drivers were Marginal Information Gain 10.0, Breaking Urgency 10.0.",
+      "scores": {
+        "enduring_significance": 3.0,
+        "breaking_urgency": 10.0,
+        "evidence_strength": 7.2,
+        "attention_deficit": 1.5,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 2.06,
+        "marginal_information_gain": 10.0
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 1.8,
+        "safety": 1.8,
+        "rights": 1.8,
+        "travel": 4.4,
+        "civic": 1.8
+      }
+    },
+    {
       "id": "police-appeal-after-unidentified-woman-s-body-found-in-liver-d478c2",
       "category": "geopolitics",
       "rank": 5,
-      "tier": "page_two",
+      "tier": "front",
       "score": 8.058,
       "headline": "Police appeal after unidentified woman’s body found in Liverpool park",
       "dek": "Police in Liverpool have urged members of the public to come forward with information after the body of an unknown woman believed to be in her 70s was found in a black bin bag in…",
@@ -446,7 +411,7 @@
         }
       ],
       "source_count": 2,
-      "why_ranked": "Published at page_two with composite 8.058; key drivers were Marginal Information Gain 10.0, Breaking Urgency 10.0.",
+      "why_ranked": "Published at front with composite 8.058; key drivers were Marginal Information Gain 10.0, Breaking Urgency 10.0.",
       "scores": {
         "enduring_significance": 3.0,
         "breaking_urgency": 10.0,
@@ -466,11 +431,369 @@
       }
     },
     {
-      "id": "more-public-control-is-only-way-to-grow-uk-economy-burnham-t-cb6aa2",
+      "id": "defense-lawyers-for-singer-d4vd-withdraw-from-murder-case-c965a7",
       "category": "geopolitics",
       "rank": 6,
+      "tier": "front",
+      "score": 8.045,
+      "headline": "Defense lawyers for singer D4vd withdraw from murder case",
+      "dek": "Singer D4vd lost his high-profile private lawyers on Monday at a hearing where he entered a new not guilty plea to charges that he killed, sexually abused and dismembered…",
+      "body": "Singer D4vd lost his high-profile private lawyers on Monday at a hearing where he entered a new not guilty plea to charges that he killed, sexually abused and dismembered 14-year-old Celeste Rivas Hernandez. It is not clear why Blair Berk and her colleagues Marilyn Bednarski and Regina Peter parted ways with the singer, whose legal name is David Anthony Burke. They were replaced by a lawyer from the Los Angeles county public defender's office.",
+      "so_what": "Olmedo ruled after a five-day evidentiary hearing in July that there was enough evidence for Burke to stand trial on charges of murder, continuous lewd and lascivious acts with a child under 14 and unlawful mutilation of human remains.",
+      "what_now": "",
+      "region": "Global",
+      "pattern": "norm",
+      "topics": [
+        "case",
+        "d4vd",
+        "lawyers",
+        "murder",
+        "singer",
+        "withdraw",
+        "celebrity",
+        "defense"
+      ],
+      "countries": [],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "BBC World",
+          "title": "US singer D4vd's celebrity lawyers withdraw from murder case",
+          "url": "https://www.bbc.co.uk/news/articles/crr451lpl4no?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "source": "Guardian World",
+          "title": "Defense lawyers for singer D4vd withdraw from murder case",
+          "url": "https://www.theguardian.com/us-news/2026/aug/31/d4vd-case-lawyers"
+        }
+      ],
+      "source_count": 2,
+      "why_ranked": "Published at front with composite 8.045; key drivers were Marginal Information Gain 10.0, Breaking Urgency 10.0.",
+      "scores": {
+        "enduring_significance": 4.2,
+        "breaking_urgency": 10.0,
+        "evidence_strength": 7.2,
+        "attention_deficit": 2.7,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 2.584,
+        "marginal_information_gain": 10.0
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 1.8,
+        "safety": 4.4,
+        "rights": 5.477,
+        "travel": 1.8,
+        "civic": 1.8
+      }
+    },
+    {
+      "id": "morocco-not-to-blame-for-ceuta-border-breach-says-spanish-pm-0faaa0",
+      "category": "geopolitics",
+      "rank": 7,
+      "tier": "front",
+      "score": 7.831,
+      "headline": "Morocco not to blame for Ceuta border breach, says Spanish PM",
+      "dek": "Spain's prime minister, Pedro Sánchez, has said there is no evidence to suggest the Moroccan government was behind last month's massive border crossing into Ceuta but accused…",
+      "body": "Spain's prime minister, Pedro Sánchez, has said there is no evidence to suggest the Moroccan government was behind last month's massive border crossing into Ceuta but accused Israel and Russia of spreading disinformation. As many as 141 people are thought to have died trying to enter the Spanish enclave at the end of July. The influx of about 70,000 men, women and children unleashed a political crisis, a humanitarian emergency and reignited tensions within the EU over immigration.",
+      "so_what": "Sánchez repeated his assertion that the influx was due to the activities of \"criminal gangs\" who had used disinformation to falsely claim that a ruling by Spain's supreme court meant that no one who entered Ceuta by swimming could be deported back to Morocco.",
+      "what_now": "",
+      "region": "Europe",
+      "pattern": "crisis",
+      "topics": [
+        "border",
+        "ceuta",
+        "spanish",
+        "blame",
+        "breach",
+        "leader",
+        "migrants",
+        "morocco"
+      ],
+      "countries": [
+        {
+          "name": "Morocco",
+          "flag": "🇲🇦",
+          "role": "actor"
+        },
+        {
+          "name": "Spain",
+          "flag": "🇪🇸",
+          "role": "secondary"
+        },
+        {
+          "name": "Israel",
+          "flag": "🇮🇱",
+          "role": "secondary"
+        },
+        {
+          "name": "Russia",
+          "flag": "🇷🇺",
+          "role": "secondary"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "Guardian World",
+          "title": "Morocco not to blame for Ceuta border breach, says Spanish PM",
+          "url": "https://www.theguardian.com/world/2026/aug/31/morocco-ceuta-border-breach-spanish-pm-migration-pedro-sanchez"
+        },
+        {
+          "source": "NYT World",
+          "title": "Spanish Leader Says 5,000 Migrants Are Still in Ceuta, Weeks After Border Surge",
+          "url": "https://www.nytimes.com/2026/08/31/world/europe/ceuta-migrants-pedro-sanchez-north-africa.html"
+        }
+      ],
+      "source_count": 2,
+      "why_ranked": "Published at front with composite 7.831; key drivers were Marginal Information Gain 10.0, Enduring Significance 6.2.",
+      "scores": {
+        "enduring_significance": 6.2,
+        "breaking_urgency": 10.0,
+        "evidence_strength": 7.2,
+        "attention_deficit": 4.7,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 2.682,
+        "marginal_information_gain": 10.0
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 1.8,
+        "safety": 1.8,
+        "rights": 1.8,
+        "travel": 5.477,
+        "civic": 5.477
+      }
+    },
+    {
+      "id": "us-supreme-court-clears-way-for-trump-to-keep-building-white-fdd27c",
+      "category": "geopolitics",
+      "rank": 8,
       "tier": "page_two",
-      "score": 7.89,
+      "score": 7.798,
+      "headline": "US Supreme Court clears way for Trump to keep building White House ballroom",
+      "dek": "The US Supreme Court has ruled that construction of a $400m (£297m) ballroom at the White House can go ahead, handing a win to President Donald Trump.",
+      "body": "The US Supreme Court has ruled that construction of a $400m (£297m) ballroom at the White House can go ahead, handing a win to President Donald Trump. In a 5-4 ruling, the justices granted the Trump administration's emergency request, blocking lower court rulings that would have halted construction of an above-ground portion of the project. The National Trust for Historic Preservation filed the legal challenge, arguing that the president did not have unilateral authority to proceed with construction.",
+      "so_what": "Trump demolished the historic East Wing of the executive residence last autumn to begin building the ballroom.",
+      "what_now": "",
+      "region": "Americas",
+      "pattern": "norm",
+      "topics": [
+        "ballroom",
+        "court",
+        "supreme",
+        "house",
+        "trump",
+        "white",
+        "allows",
+        "construction"
+      ],
+      "countries": [
+        {
+          "name": "United States",
+          "flag": "🇺🇸",
+          "role": "actor"
+        },
+        {
+          "name": "Iran",
+          "flag": "🇮🇷",
+          "role": "secondary"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "The Hill",
+          "title": "Divided Supreme Court rules White House ballroom construction may proceed",
+          "url": "https://thehill.com/regulation/court-battles/6061878-trump-wins-ballroom-construction-lawsuit/"
+        },
+        {
+          "source": "Axios",
+          "title": "Supreme Court allows Trump's ballroom to proceed",
+          "url": "https://www.axios.com/2026/08/31/supreme-court-trump-white-house-ballroom-construction-ok"
+        },
+        {
+          "source": "CNBC Top News",
+          "title": "Supreme Court says Trump can build White House ballroom as lawsuit continues",
+          "url": "https://www.cnbc.com/2026/08/31/supreme-court-white-house-ballroom.html"
+        },
+        {
+          "source": "NYT Politics",
+          "title": "Supreme Court Allows Trump’s White House Ballroom Construction",
+          "url": "https://www.nytimes.com/2026/08/31/us/politics/supreme-court-trump-ballroom.html"
+        },
+        {
+          "source": "BBC World",
+          "title": "US Supreme Court clears way for Trump to keep building White House ballroom",
+          "url": "https://www.bbc.co.uk/news/articles/c9w457e7ydlo?at_medium=RSS&at_campaign=rss"
+        }
+      ],
+      "source_count": 5,
+      "why_ranked": "Published at page_two with composite 7.798; key drivers were Evidence Strength 8.8, Marginal Information Gain 8.7.",
+      "scores": {
+        "enduring_significance": 6.0,
+        "breaking_urgency": 10.0,
+        "evidence_strength": 8.8,
+        "attention_deficit": 0.0,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 3.722,
+        "marginal_information_gain": 8.667
+      },
+      "consequence": {
+        "wallet": 4.4,
+        "job": 1.8,
+        "safety": 4.4,
+        "rights": 5.477,
+        "travel": 1.8,
+        "civic": 5.477
+      }
+    },
+    {
+      "id": "kalshi-suspends-republican-house-candidate-for-betting-on-he-f4d06c",
+      "category": "geopolitics",
+      "rank": 9,
+      "tier": "page_two",
+      "score": 7.766,
+      "headline": "Kalshi Suspends Republican House Candidate for Betting on Her Own Race",
+      "dek": "The trading platform Kalshi issued a three-year suspension to the candidate, Laurie Buckhout, and fined her nearly $2,600.",
+      "body": "The trading platform Kalshi issued a three-year suspension to the candidate, Laurie Buckhout, and fined her nearly $2,600. Ms. Buckhout said she had made a \"dumb mistake.\"",
+      "so_what": "The trading platform Kalshi issued a three-year suspension to the candidate, Laurie Buckhout, and fined her nearly $2,600.",
+      "what_now": "",
+      "region": "Global",
+      "pattern": "economic",
+      "topics": [
+        "betting",
+        "candidate",
+        "house",
+        "kalshi",
+        "race",
+        "suspends",
+        "carolina",
+        "north"
+      ],
+      "countries": [],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "The Hill",
+          "title": "Kalshi suspends GOP House candidate in North Carolina for betting on own race",
+          "url": "https://thehill.com/policy/technology/6061531-kalshi-prediction-market-ban-laurie-buckhout-north-carolina-gop-house-race/"
+        },
+        {
+          "source": "NYT Politics",
+          "title": "Kalshi Suspends Republican House Candidate for Betting on Her Own Race",
+          "url": "https://www.nytimes.com/2026/08/31/us/politics/house-candidate-kalshi-gambling.html"
+        }
+      ],
+      "source_count": 2,
+      "why_ranked": "Published at page_two with composite 7.766; key drivers were Marginal Information Gain 10.0, Breaking Urgency 10.0.",
+      "scores": {
+        "enduring_significance": 3.0,
+        "breaking_urgency": 10.0,
+        "evidence_strength": 7.2,
+        "attention_deficit": 1.5,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 2.424,
+        "marginal_information_gain": 10.0
+      },
+      "consequence": {
+        "wallet": 4.4,
+        "job": 1.8,
+        "safety": 1.8,
+        "rights": 1.8,
+        "travel": 1.8,
+        "civic": 1.8
+      }
+    },
+    {
+      "id": "photos-nearly-1-000-dead-thousands-missing-in-nepal-china-bo-ede988",
+      "category": "geopolitics",
+      "rank": 10,
+      "tier": "page_two",
+      "score": 7.764,
+      "headline": "Photos: Nearly 1,000 dead, thousands missing in Nepal–China border floods",
+      "dek": "Devastating floods near Nepal's border with China have killed at least 939 people, the country's disaster authority says, as the death toll continues to rise and rescue efforts…",
+      "body": "Devastating floods near Nepal's border with China have killed at least 939 people, the country's disaster authority says, as the death toll continues to rise and rescue efforts enter a sixth day. Chinese state media has confirmed a further 16 deaths in Tibet, bringing the known regional toll to 955, with 4,471 people still missing on both sides of the border. Nepal's latest figures list 3,925 people missing nationwide, including 592 foreigners.",
+      "so_what": "Many of the missing are workers from hydropower projects that took the full force of the torrent, although officials say the number of unaccounted-for hydropower staff fell to 639 on Monday from an earlier count of 933.",
+      "what_now": "",
+      "region": "Asia Pacific",
+      "pattern": "crisis",
+      "topics": [
+        "missing",
+        "nepal",
+        "border",
+        "china",
+        "floods",
+        "thousands",
+        "almost",
+        "area"
+      ],
+      "countries": [
+        {
+          "name": "Nepal",
+          "flag": "🇳🇵",
+          "role": "actor"
+        },
+        {
+          "name": "China",
+          "flag": "🇨🇳",
+          "role": "secondary"
+        },
+        {
+          "name": "Australia",
+          "flag": "🇦🇺",
+          "role": "secondary"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "NYT World",
+          "title": "Nepal Turns to Mass Burials as Thousands Remain Missing from Floods",
+          "url": "https://www.nytimes.com/2026/08/30/world/asia/nepal-floods-mass-burials-missing.html"
+        },
+        {
+          "source": "Guardian World",
+          "title": "Border area between Nepal and China where 33 Australians are missing still almost entirely cut off",
+          "url": "https://www.theguardian.com/world/2026/sep/01/nepal-china-border-area-gyirong-port-almost-entirely-cut-off-missing-australians-ntwnfb"
+        },
+        {
+          "source": "Al Jazeera",
+          "title": "Photos: Nearly 1,000 dead, thousands missing in Nepal–China border floods",
+          "url": "https://www.aljazeera.com/gallery/2026/8/31/photos-nearly-1000-dead-thousands-missing-in-nepal-china-border?traffic_source=rss"
+        }
+      ],
+      "source_count": 3,
+      "why_ranked": "Published at page_two with composite 7.764; key drivers were Evidence Strength 8.8, Marginal Information Gain 8.7.",
+      "scores": {
+        "enduring_significance": 6.0,
+        "breaking_urgency": 10.0,
+        "evidence_strength": 8.8,
+        "attention_deficit": 3.0,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 3.0,
+        "marginal_information_gain": 8.667
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 1.8,
+        "safety": 7.0,
+        "rights": 1.8,
+        "travel": 5.477,
+        "civic": 1.8
+      }
+    },
+    {
+      "id": "more-public-control-is-only-way-to-grow-uk-economy-burnham-t-cb6aa2",
+      "category": "geopolitics",
+      "rank": 11,
+      "tier": "page_two",
+      "score": 7.761,
       "headline": "More public control is only way to grow UK economy, Burnham to tell MPs",
       "dek": "Andy Burnham will drive home his pledge to bring more essential services back into public control, telling MPs in the Commons on Tuesday that it will be the only way to improve…",
       "body": "Andy Burnham will drive home his pledge to bring more essential services back into public control, telling MPs in the Commons on Tuesday that it will be the only way to improve growth across the country. Burnham will address the house for the first time in 16 years from the frontbench, and six weeks since he became prime minister, after spending the summer recess announcing a slew of policies that will now be put before MPs.",
@@ -504,7 +827,7 @@
         }
       ],
       "source_count": 2,
-      "why_ranked": "Published at page_two with composite 7.890; key drivers were Marginal Information Gain 10.0, Breaking Urgency 10.0.",
+      "why_ranked": "Published at page_two with composite 7.761; key drivers were Marginal Information Gain 9.7, Breaking Urgency 10.0.",
       "scores": {
         "enduring_significance": 3.0,
         "breaking_urgency": 10.0,
@@ -512,7 +835,7 @@
         "attention_deficit": 1.5,
         "manufactured_attention": 2.0,
         "reader_consequence": 3.306,
-        "marginal_information_gain": 10.0
+        "marginal_information_gain": 9.667
       },
       "consequence": {
         "wallet": 5.477,
@@ -520,6 +843,677 @@
         "safety": 1.8,
         "rights": 4.4,
         "travel": 1.8,
+        "civic": 4.4
+      }
+    },
+    {
+      "id": "man-arrested-after-swiss-rave-shooting-that-killed-woman-64d5d4",
+      "category": "geopolitics",
+      "rank": 12,
+      "tier": "page_two",
+      "score": 7.754,
+      "headline": "Man arrested after Swiss rave shooting that killed woman",
+      "dek": "A 43-year-old Swiss man has been arrested following a shooting at a rave in Switzerland in which a woman was killed.",
+      "body": "A 43-year-old Swiss man has been arrested following a shooting at a rave in Switzerland in which a woman was killed. Italian 22-year-old Maria Spinelli was killed and several others injured at a techno rave being held at a horse racing track in Aarau, a town about 46km (29 miles) west of Zurich on Sunday. The shooting initiated a nearly 24-hour manhunt before Aarau cantonal police confirmed they apprehended the suspect shortly before 01:00 local time on Monday (23:00 GMT on Sunday).",
+      "so_what": "Spinelli died at the scene, while four men and a woman, aged between 24 and 27, were taken to hospital with injuries \"ranging from minor to severe\".",
+      "what_now": "",
+      "region": "Europe",
+      "pattern": "standoff",
+      "topics": [
+        "rave",
+        "shooting",
+        "arrested",
+        "deadly",
+        "switzerland",
+        "killed",
+        "swiss",
+        "hunt"
+      ],
+      "countries": [
+        {
+          "name": "Switzerland",
+          "flag": "🇨🇭",
+          "role": "actor"
+        },
+        {
+          "name": "Italy",
+          "flag": "🇮🇹",
+          "role": "secondary"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "CBS World",
+          "title": "At least 1 killed, 5 injured in shooting at rave in Switzerland",
+          "url": "https://www.cbsnews.com/news/switzerland-aarau-rave-shooting/"
+        },
+        {
+          "source": "Sky World",
+          "title": "Suspect arrested after deadly shooting at rave in Switzerland",
+          "url": "https://news.sky.com/story/suspect-arrested-after-deadly-shooting-at-rave-in-switzerland-13579389"
+        },
+        {
+          "source": "BBC World",
+          "title": "Man arrested after Swiss rave shooting that killed woman",
+          "url": "https://www.bbc.co.uk/news/articles/cddv92n194vo?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "source": "NYT World",
+          "title": "Man Arrested in Switzerland After Deadly Shooting at Rave",
+          "url": "https://www.nytimes.com/2026/08/31/world/europe/switzerland-shooting-rave-suspect-arrest.html"
+        }
+      ],
+      "source_count": 4,
+      "why_ranked": "Published at page_two with composite 7.754; key drivers were Evidence Strength 8.8, Marginal Information Gain 10.0.",
+      "scores": {
+        "enduring_significance": 3.0,
+        "breaking_urgency": 9.4,
+        "evidence_strength": 8.8,
+        "attention_deficit": 0.0,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 2.752,
+        "marginal_information_gain": 10.0
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 1.8,
+        "safety": 5.477,
+        "rights": 1.8,
+        "travel": 1.8,
+        "civic": 4.4
+      }
+    },
+    {
+      "id": "south-korea-s-unification-church-leader-han-hak-ja-jailed-2-7db886",
+      "category": "geopolitics",
+      "rank": 13,
+      "tier": "page_two",
+      "score": 7.738,
+      "headline": "South Korea’s Unification Church leader Han Hak-ja jailed 2 years for bribing officials",
+      "dek": "A South Korean court sentenced the leader of the secretive and powerful Unification Church on Monday to two years in prison on charges of bribing officials, including the…",
+      "body": "A South Korean court sentenced the leader of the secretive and powerful Unification Church on Monday to two years in prison on charges of bribing officials, including the then-president's wife. Han Hak-ja, 83, was accused of providing luxury items, including a designer handbag, to former first lady Kim Keon-hee while her husband, Yoon Suk-yeol, was president, in an attempt to secure policy favours. She arrived for sentencing at court on Monday in a wheelchair, wearing pyjamas and a surgical mask, surrounded by aides.",
+      "so_what": "\"We have confirmed that she has been sentenced to two years,\" by the Seoul Central District Court, a spokesman for the Unification Church said, adding that the church would issue a statement.",
+      "what_now": "",
+      "region": "Asia Pacific",
+      "pattern": "norm",
+      "topics": [
+        "church",
+        "korea",
+        "leader",
+        "south",
+        "unification",
+        "bribing",
+        "corruption",
+        "court"
+      ],
+      "countries": [
+        {
+          "name": "South Korea",
+          "flag": "🇰🇷",
+          "role": "actor"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "SCMP",
+          "title": "South Korea’s Unification Church leader Han Hak-ja jailed 2 years for bribing officials",
+          "url": "https://www.scmp.com/news/asia/east-asia/article/3365824/south-koreas-unification-church-leader-han-hak-ja-jailed-2-years-bribing-officials?utm_source=rss_feed"
+        },
+        {
+          "source": "Japan Times",
+          "title": "South Korea court sentences Unification Church leader to jail",
+          "url": "https://www.japantimes.co.jp/news/2026/08/31/asia-pacific/crime-legal/south-korea-unification-church-leader-jail/"
+        },
+        {
+          "source": "NYT World",
+          "title": "South Korea’s Unification Church Leader Gets 2 Years in Prison for Corruption",
+          "url": "https://www.nytimes.com/2026/08/31/world/asia/south-korea-unification-church-leader-prison.html"
+        }
+      ],
+      "source_count": 3,
+      "why_ranked": "Published at page_two with composite 7.738; key drivers were Evidence Strength 8.8, Marginal Information Gain 9.7.",
+      "scores": {
+        "enduring_significance": 3.0,
+        "breaking_urgency": 10.0,
+        "evidence_strength": 8.8,
+        "attention_deficit": 0.0,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 2.682,
+        "marginal_information_gain": 9.667
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 1.8,
+        "safety": 1.8,
+        "rights": 5.477,
+        "travel": 1.8,
+        "civic": 5.477
+      }
+    },
+    {
+      "id": "kalshi-bans-ex-congressman-george-santos-from-prediction-pla-04814a",
+      "category": "geopolitics",
+      "rank": 14,
+      "tier": "page_two",
+      "score": 7.693,
+      "headline": "Kalshi bans ex-congressman George Santos from prediction platform for life",
+      "dek": "George Santos, the former Republican congressman whose political career collapsed under a mountain of lies, has become the first person ever handed a lifetime ban by the…",
+      "body": "George Santos, the former Republican congressman whose political career collapsed under a mountain of lies, has become the first person ever handed a lifetime ban by the prediction-market platform Kalshi. The company announced the permanent suspension on Monday, along with a $71,356 fine, after federal regulators accused Santos of profiting from bets tied to his own attendance at Donald Trump's State of the Union address earlier this year.",
+      "so_what": "Laurie Buckhout, a Trump-endorsed Republican congressional candidate in North Carolina, was banned for three years and fined $2,590 after wagering under $1,000 on her own campaign, calling it a mistake she moved to fix as soon as she noticed it.",
+      "what_now": "",
+      "region": "Americas",
+      "pattern": "economic",
+      "topics": [
+        "george",
+        "santos",
+        "kalshi",
+        "bans",
+        "life",
+        "congressman",
+        "platform",
+        "former"
+      ],
+      "countries": [
+        {
+          "name": "United States",
+          "flag": "🇺🇸",
+          "role": "actor"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "Wired",
+          "title": "George Santos Just Got Hit With Kalshi’s First-Ever Lifetime Ban",
+          "url": "https://www.wired.com/story/george-santos-gets-a-lifetime-ban-from-kalshi/"
+        },
+        {
+          "source": "CNBC Top News",
+          "title": "Kalshi permanently bans former GOP Rep. George Santos over illegal trading",
+          "url": "https://www.cnbc.com/2026/08/31/kalshi-perman.html"
+        },
+        {
+          "source": "BBC World",
+          "title": "Ex-congressman George Santos banned from betting platform for life",
+          "url": "https://www.bbc.co.uk/news/articles/cpwlxy49225o?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "source": "Guardian World",
+          "title": "Kalshi bans ex-congressman George Santos from prediction platform for life",
+          "url": "https://www.theguardian.com/us-news/2026/aug/31/george-santos-kalshi-lifetime-ban"
+        },
+        {
+          "source": "CBS MoneyWatch",
+          "title": "Kalshi bans ex-congressman George Santos for life after suspicious trades",
+          "url": "https://www.cbsnews.com/news/george-santos-kalshi-lifetime-ban/"
+        },
+        {
+          "source": "TechCrunch",
+          "title": "Kalshi bans George Santos for life over State of the Union bets",
+          "url": "https://techcrunch.com/2026/08/31/kalshi-bans-george-santos-for-life-over-state-of-the-union-bets/"
+        },
+        {
+          "source": "NYT Business",
+          "title": "Kalshi Permanently Bars George Santos From the Platform",
+          "url": "https://www.nytimes.com/2026/08/31/business/kalshi-bans-george-santos.html"
+        },
+        {
+          "source": "The Hill",
+          "title": "Kalshi bans George Santos for life",
+          "url": "https://thehill.com/newsletters/technology/6061870-kalshi-bans-george-santos-for-life/"
+        },
+        {
+          "source": "NPR Technology",
+          "title": "Kalshi bans former congressman George Santos for life after State of the Union trades",
+          "url": "https://www.npr.org/2026/08/31/nx-s1-5950432/kalshi-bans-former-congressman-george-santos-for-life-after-state-of-the-union-trades"
+        }
+      ],
+      "source_count": 9,
+      "why_ranked": "Published at page_two with composite 7.693; key drivers were Evidence Strength 8.8, Enduring Significance 6.5.",
+      "scores": {
+        "enduring_significance": 6.5,
+        "breaking_urgency": 10.0,
+        "evidence_strength": 8.8,
+        "attention_deficit": 0.0,
+        "manufactured_attention": 2.8,
+        "reader_consequence": 3.921,
+        "marginal_information_gain": 8.5
+      },
+      "consequence": {
+        "wallet": 6.303,
+        "job": 4.4,
+        "safety": 1.8,
+        "rights": 1.8,
+        "travel": 1.8,
+        "civic": 4.4
+      }
+    },
+    {
+      "id": "israel-and-greece-sign-us-3-5-billion-defence-deal-largest-e-e06ef3",
+      "category": "geopolitics",
+      "rank": 15,
+      "tier": "page_two",
+      "score": 7.675,
+      "headline": "Israel and Greece sign US$3.5 billion defence deal, largest ever between the 2",
+      "dek": "Israel signed a multibillion-dollar weapons deal with Greece, the largest between the two Mediterranean countries, as Israeli defence exports soar.",
+      "body": "Israel signed a multibillion-dollar weapons deal with Greece, the largest between the two Mediterranean countries, as Israeli defence exports soar. Israel's Defence Ministry said on Monday the nearly €3 billion (US$3.5 billion) defence export deal, coined Achilles Shield, was one of the country's largest and included a multilayered air defence system for Greece using Israeli technology. \"Israel and Greece share common strategic interests and face shared regional challenges.",
+      "so_what": "Experts say governments look to Israel because its weapons are battle-tested and they are able to see in real time that the munitions and systems work.",
+      "what_now": "",
+      "region": "Middle East",
+      "pattern": "negotiation",
+      "topics": [
+        "billion",
+        "deal",
+        "greece",
+        "israel",
+        "defence",
+        "defense",
+        "largest",
+        "reach"
+      ],
+      "countries": [
+        {
+          "name": "Israel",
+          "flag": "🇮🇱",
+          "role": "actor"
+        },
+        {
+          "name": "Greece",
+          "flag": "🇬🇷",
+          "role": "secondary"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "SCMP",
+          "title": "Israel and Greece sign US$3.5 billion defence deal, largest ever between the 2",
+          "url": "https://www.scmp.com/news/world/middle-east/article/3365876/israel-and-greece-sign-us35-billion-defence-deal-largest-ever-between-two?utm_source=rss_feed"
+        },
+        {
+          "source": "NYT World",
+          "title": "Israel and Greece Reach $3.5 Billion Defense Deal",
+          "url": "https://www.nytimes.com/2026/08/31/world/middleeast/israel-greece-defense-deal.html"
+        }
+      ],
+      "source_count": 2,
+      "why_ranked": "Published at page_two with composite 7.675; key drivers were Marginal Information Gain 9.3, Enduring Significance 6.5.",
+      "scores": {
+        "enduring_significance": 6.5,
+        "breaking_urgency": 10.0,
+        "evidence_strength": 7.2,
+        "attention_deficit": 5.0,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 2.788,
+        "marginal_information_gain": 9.286
+      },
+      "consequence": {
+        "wallet": 4.4,
+        "job": 1.8,
+        "safety": 1.8,
+        "rights": 1.8,
+        "travel": 1.8,
+        "civic": 4.4
+      }
+    },
+    {
+      "id": "john-galliano-exhibition-at-new-york-met-cancelled-after-bac-0c1e79",
+      "category": "geopolitics",
+      "rank": 16,
+      "tier": "page_two",
+      "score": 7.55,
+      "headline": "John Galliano exhibition at New York Met cancelled after backlash",
+      "dek": "John Galliano has cancelled an upcoming major exhibition celebrating his work as a fashion designer after it prompted criticism due to his previous conviction for making…",
+      "body": "John Galliano has cancelled an upcoming major exhibition celebrating his work as a fashion designer after it prompted criticism due to his previous conviction for making antisemitic remarks. The Metropolitan Museum of Art in New York had announced an exhibition titled John Galliano: Horizons that was due to open in May 2027.",
+      "so_what": "Galliano is regarded by some as one of the greatest fashion designers and returned to the fashion industry following his conviction, serving as creative director of Margiela for a decade until 2024.",
+      "what_now": "",
+      "region": "Middle East",
+      "pattern": "standoff",
+      "topics": [
+        "backlash",
+        "galliano",
+        "john",
+        "exhibit",
+        "antisemitism",
+        "gala",
+        "canceled",
+        "cancelled"
+      ],
+      "countries": [
+        {
+          "name": "United Kingdom",
+          "flag": "🇬🇧",
+          "role": "actor"
+        },
+        {
+          "name": "Israel",
+          "flag": "🇮🇱",
+          "role": "secondary"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "BBC World",
+          "title": "John Galliano exhibition at New York Met cancelled after backlash",
+          "url": "https://www.bbc.co.uk/news/articles/c4gkp6pgy03o?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "source": "Times of Israel",
+          "title": "Met Museum cancels planned John Galliano exhibit after backlash over antisemitism",
+          "url": "https://www.timesofisrael.com/met-museum-cancels-planned-john-galliano-exhibit-after-backlash-over-antisemitism/"
+        },
+        {
+          "source": "CBS Entertainment",
+          "title": "John Galliano's Met Gala exhibit canceled amid backlash",
+          "url": "https://www.cbsnews.com/news/john-galliano-met-gala-exhibit-dropped-backlash/"
+        },
+        {
+          "source": "SCMP",
+          "title": "John Galliano pulls out of Met Gala exhibit after antisemitism backlash",
+          "url": "https://www.scmp.com/news/world/united-states-canada/article/3365897/john-galliano-pulls-out-met-gala-exhibit-after-antisemitism-backlash?utm_source=rss_feed"
+        }
+      ],
+      "source_count": 4,
+      "why_ranked": "Published at page_two with composite 7.550; key drivers were Evidence Strength 8.8, Marginal Information Gain 9.0.",
+      "scores": {
+        "enduring_significance": 3.0,
+        "breaking_urgency": 10.0,
+        "evidence_strength": 8.8,
+        "attention_deficit": 0.0,
+        "manufactured_attention": 4.4,
+        "reader_consequence": 1.8,
+        "marginal_information_gain": 9.0
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 1.8,
+        "safety": 1.8,
+        "rights": 1.8,
+        "travel": 1.8,
+        "civic": 1.8
+      }
+    },
+    {
+      "id": "a-principal-saved-900-students-before-his-school-was-washed-7410de",
+      "category": "geopolitics",
+      "rank": 17,
+      "tier": "page_two",
+      "score": 6.914,
+      "headline": "A Principal Saved 900 Students Before His School Was Washed Away in Nepal",
+      "dek": "Rajendra Dawadi had less than 15 minutes to act on a warning of approaching floodwaters.",
+      "body": "Rajendra Dawadi had less than 15 minutes to act on a warning of approaching floodwaters. His swift evacuation plan saved hundreds of lives.",
+      "so_what": "Rajendra Dawadi had less than 15 minutes to act on a warning of approaching floodwaters.",
+      "what_now": "",
+      "region": "Asia Pacific",
+      "pattern": "crisis",
+      "topics": [
+        "nepal",
+        "principal",
+        "saved",
+        "students",
+        "away",
+        "devastating",
+        "flood",
+        "recalls"
+      ],
+      "countries": [
+        {
+          "name": "Nepal",
+          "flag": "🇳🇵",
+          "role": "actor"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "Al Jazeera",
+          "title": "Principal who saved 900 students recalls Nepal’s devastating flood",
+          "url": "https://www.aljazeera.com/video/newsfeed/2026/8/31/principal-who-saved-900-students-recalls-nepals-devastating-flood?traffic_source=rss"
+        },
+        {
+          "source": "NYT World",
+          "title": "A Principal Saved 900 Students Before His School Was Washed Away in Nepal",
+          "url": "https://www.nytimes.com/2026/08/31/world/asia/nepal-floods-teacher.html"
+        }
+      ],
+      "source_count": 2,
+      "why_ranked": "Published at page_two with composite 6.914; key drivers were Breaking Urgency 10.0, Evidence Strength 7.2.",
+      "scores": {
+        "enduring_significance": 3.0,
+        "breaking_urgency": 10.0,
+        "evidence_strength": 7.2,
+        "attention_deficit": 1.5,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 2.388,
+        "marginal_information_gain": 6.286
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 1.8,
+        "safety": 5.477,
+        "rights": 1.8,
+        "travel": 1.8,
+        "civic": 1.8
+      }
+    },
+    {
+      "id": "fifteen-britons-among-261-foreigners-missing-in-china-after-79aaf6",
+      "category": "geopolitics",
+      "rank": 18,
+      "tier": "page_two",
+      "score": 6.82,
+      "headline": "Fifteen Britons among 261 foreigners missing in China after floods",
+      "dek": "Fifteen British nationals are reported to be missing in China as the search continues for survivors of the devastating flooding in Nepal and Tibet.",
+      "body": "Fifteen British nationals are reported to be missing in China as the search continues for survivors of the devastating flooding in Nepal and Tibet. Nepali and Chinese authorities confirmed an updated death toll of at least 810 on Sunday. More than 3,000 people are believed missing after flash floods triggered by a massive glacier collapse in the Himalayas on Wednesday engulfed Gyirong port on the Nepal-China border.",
+      "so_what": "Police in Nepal said 794 people had been confirmed to have died there and at least 2,742 injured.",
+      "what_now": "",
+      "region": "Asia Pacific",
+      "pattern": "crisis",
+      "topics": [
+        "china",
+        "foreigners",
+        "missing",
+        "britons",
+        "countries",
+        "fifteen",
+        "flood",
+        "floods"
+      ],
+      "countries": [
+        {
+          "name": "China",
+          "flag": "🇨🇳",
+          "role": "actor"
+        },
+        {
+          "name": "Nepal",
+          "flag": "🇳🇵",
+          "role": "secondary"
+        },
+        {
+          "name": "United Kingdom",
+          "flag": "🇬🇧",
+          "role": "secondary"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-30",
+      "sources": [
+        {
+          "source": "NYT World",
+          "title": "China Says 261 Foreigners From 23 Countries Are Missing in Tibet Flood",
+          "url": "https://www.nytimes.com/2026/08/30/world/asia/tibet-nepal-flood-death-toll-china.html"
+        },
+        {
+          "source": "Guardian World",
+          "title": "Fifteen Britons among 261 foreigners missing in China after floods",
+          "url": "https://www.theguardian.com/world/2026/aug/30/britons-foreigners-missing-china-tibet-nepal-floods"
+        }
+      ],
+      "source_count": 2,
+      "why_ranked": "Published at page_two with composite 6.820; key drivers were Marginal Information Gain 8.7, Enduring Significance 6.0.",
+      "scores": {
+        "enduring_significance": 6.0,
+        "breaking_urgency": 8.5,
+        "evidence_strength": 7.2,
+        "attention_deficit": 4.5,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 3.568,
+        "marginal_information_gain": 8.667
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 4.4,
+        "safety": 7.0,
+        "rights": 1.8,
+        "travel": 4.4,
+        "civic": 1.8
+      }
+    },
+    {
+      "id": "british-woman-killed-in-stabbing-at-german-railway-station-s-a384b0",
+      "category": "geopolitics",
+      "rank": 19,
+      "tier": "page_two",
+      "score": 6.609,
+      "headline": "British woman killed in stabbing at German railway station; suspect detained",
+      "dek": "The train station in the city of Rosenheim, Germany, where a British woman was fatally stabbed in the early hours of Sunday (August 30, 2026).",
+      "body": "The train station in the city of Rosenheim, Germany, where a British woman was fatally stabbed in the early hours of Sunday (August 30, 2026). A man suspected of fatally stabbing a 31-year-old British woman with a knife early Sunday morning (August 30, 2026) in the southern German town of Rosenheim was detained, authorities said. The woman, who was attacked at the Rosenheim train station, was taken to a nearby hospital, where she died due to serious injuries, Rosenheim police said. Federal police officers, called to the scene, detained the suspect right after the stabbing.",
+      "so_what": "Police identified him as a 27-year-old German man from the nearby county of Furstenfeldbruck.",
+      "what_now": "",
+      "region": "Europe",
+      "pattern": "standoff",
+      "topics": [
+        "british",
+        "detained",
+        "stabbing",
+        "suspect",
+        "woman",
+        "fatal",
+        "german",
+        "germany"
+      ],
+      "countries": [
+        {
+          "name": "United Kingdom",
+          "flag": "🇬🇧",
+          "role": "actor"
+        },
+        {
+          "name": "Germany",
+          "flag": "🇩🇪",
+          "role": "secondary"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "The Hindu International",
+          "title": "British woman killed in stabbing at German railway station; suspect detained",
+          "url": "https://www.thehindu.com/news/international/british-woman-fatally-stabbed-at-germany-station-suspect-detained/article71407624.ece"
+        },
+        {
+          "source": "Sky World",
+          "title": "Suspect in fatal stabbing of British woman in Germany detained in psychiatric hospital",
+          "url": "https://news.sky.com/story/suspect-in-fatal-stabbing-of-british-woman-in-germany-detainedin-psychiatric-hospital-13579374"
+        }
+      ],
+      "source_count": 2,
+      "why_ranked": "Published at page_two with composite 6.609; key drivers were Breaking Urgency 9.2, Evidence Strength 6.6.",
+      "scores": {
+        "enduring_significance": 3.0,
+        "breaking_urgency": 9.25,
+        "evidence_strength": 6.6,
+        "attention_deficit": 1.5,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 2.736,
+        "marginal_information_gain": 6.667
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 1.8,
+        "safety": 4.4,
+        "rights": 4.4,
+        "travel": 4.4,
+        "civic": 1.8
+      }
+    },
+    {
+      "id": "ferry-carrying-nearly-270-people-capsizes-off-cyprus-killing-f05aef",
+      "category": "geopolitics",
+      "rank": 20,
+      "tier": "brief",
+      "score": 6.06,
+      "headline": "Ferry carrying nearly 270 people capsizes off Cyprus, killing at least 7",
+      "dek": "At least seven people have died after a ferry carrying nearly 270 passengers and crew capsized off the coast of northern Cyprus on Sunday, Turkish media reported.",
+      "body": "At least seven people have died after a ferry carrying nearly 270 passengers and crew capsized off the coast of northern Cyprus on Sunday, Turkish media reported. The prime minister of the breakaway north of ethnically divided Cyprus, Unal Ustel, said 237 people have been rescued. A search is underway for another 24 people, he told the Turkish state-run TRT news channel. Ustel said the ferry faced adverse weather conditions and began taking on water just 15 minutes after departure. A call for help was issued shortly after, he said.",
+      "so_what": "Survivors arrive on shore after being rescued from the sea following a boat capsize off Kyrenia, northern Cyprus, August 30, 2026.",
+      "what_now": "",
+      "region": "Middle East",
+      "pattern": "crisis",
+      "topics": [
+        "capsizes",
+        "carrying",
+        "cyprus",
+        "ferry",
+        "least",
+        "nearly",
+        "passengers",
+        "coast"
+      ],
+      "countries": [
+        {
+          "name": "Turkey",
+          "flag": "🇹🇷",
+          "role": "actor"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-30",
+      "sources": [
+        {
+          "source": "The Hindu International",
+          "title": "At least seven dead after ferry carrying nearly 270 passengers, crew capsizes off northern Cyprus",
+          "url": "https://www.thehindu.com/news/international/ferry-capsizes-off-northern-cyprus-updates/article71407727.ece"
+        },
+        {
+          "source": "CBS World",
+          "title": "Ferry carrying nearly 270 people capsizes off Cyprus, killing at least 7",
+          "url": "https://www.cbsnews.com/news/ferry-passengers-capsizes-northern-cyprus/"
+        },
+        {
+          "source": "NYT World",
+          "title": "Ferry Carrying Hundreds of Passengers Capsizes Off Coast of Cyprus",
+          "url": "https://www.nytimes.com/2026/08/30/world/europe/cyprus-ferry-capsizes-turkey.html"
+        }
+      ],
+      "source_count": 3,
+      "why_ranked": "Published at brief with composite 6.060; key drivers were Evidence Strength 8.8, Breaking Urgency 6.7.",
+      "scores": {
+        "enduring_significance": 3.0,
+        "breaking_urgency": 8.5,
+        "evidence_strength": 8.8,
+        "attention_deficit": 0.0,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 2.84,
+        "marginal_information_gain": 0.0
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 1.8,
+        "safety": 4.4,
+        "rights": 1.8,
+        "travel": 4.4,
         "civic": 4.4
       }
     },
@@ -681,7 +1675,7 @@
       "category": "business",
       "rank": 3,
       "tier": "front",
-      "score": 8.011,
+      "score": 7.879,
       "headline": "Jury hears closing arguments in Tupac Shakur murder trial",
       "dek": "A jury heard closing arguments on Monday in the trial of a former Los Angeles gang leader accused of involvement in the sensational murder three decades ago of chart-topping…",
       "body": "A jury heard closing arguments on Monday in the trial of a former Los Angeles gang leader accused of involvement in the sensational murder three decades ago of chart-topping rapper Tupac Shakur. Duane \"Keffe D\" Davis, 63, a one-time leader of the South Side Compton Crips, is accused of ordering the September 7, 1996 killing after his nephew had been beaten by members of Shakur's entourage in Las Vegas. \"Duane Davis, in the culture of gangs, could not let that stand,\" prosecutor Binu Palal said. \"So what did he do?",
@@ -715,7 +1709,7 @@
         }
       ],
       "source_count": 2,
-      "why_ranked": "Published at front with composite 8.011; key drivers were Marginal Information Gain 10.0, Breaking Urgency 10.0.",
+      "why_ranked": "Published at front with composite 7.879; key drivers were Marginal Information Gain 9.7, Breaking Urgency 10.0.",
       "scores": {
         "enduring_significance": 4.2,
         "breaking_urgency": 10.0,
@@ -723,7 +1717,7 @@
         "attention_deficit": 2.7,
         "manufactured_attention": 1.0,
         "reader_consequence": 2.216,
-        "marginal_information_gain": 10.0
+        "marginal_information_gain": 9.667
       },
       "consequence": {
         "wallet": 1.8,
@@ -793,26 +1787,146 @@
       }
     },
     {
-      "id": "trump-hails-historic-deal-to-control-65-billion-barrels-of-v-b67b0a",
+      "id": "u-s-sues-amazon-over-its-advertising-prices-3b7922",
       "category": "business",
       "rank": 5,
+      "tier": "front",
+      "score": 7.021,
+      "headline": "U.S. sues Amazon over its advertising prices",
+      "dek": "Federal regulators sued Amazon, alleging the tech giant overcharged advertisers on its platform.",
+      "body": "Federal regulators sued Amazon, alleging the tech giant overcharged advertisers on its platform. Federal regulators sued Amazon on Monday, alleging the company has pocketed tens of billions of dollars by \"secretly and systemically overcharging\" advertisers on its platform. A bipartisan group of 22 state attorneys general joined the Federal Trade Commission's lawsuit, which marks the third major lawsuit against Amazon by federal regulators.",
+      "so_what": "The FTC's case comes just over a year since Amazon agreed to pay a historic $2.5 billion settlement to resolve another federal lawsuit over its Prime membership program.",
+      "what_now": "",
+      "region": "Global",
+      "pattern": "economic",
+      "topics": [
+        "advertising",
+        "amazon",
+        "practices",
+        "prices",
+        "states",
+        "sues"
+      ],
+      "countries": [
+        {
+          "name": "United States",
+          "flag": "🇺🇸",
+          "role": "actor"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "NYT Technology",
+          "title": "FTC and 22 States Sue Amazon Over Advertising Practices",
+          "url": "https://www.nytimes.com/2026/08/31/technology/ftc-amazon-lawsuit-ad-prices.html"
+        },
+        {
+          "source": "NPR Business",
+          "title": "U.S. sues Amazon over its advertising prices",
+          "url": "https://www.npr.org/2026/08/31/nx-s1-5950482/ftc-amazon-advertising-lawsuit"
+        }
+      ],
+      "source_count": 2,
+      "why_ranked": "Published at front with composite 7.021; key drivers were Breaking Urgency 10.0, Evidence Strength 7.2.",
+      "scores": {
+        "enduring_significance": 3.0,
+        "breaking_urgency": 10.0,
+        "evidence_strength": 7.2,
+        "attention_deficit": 1.5,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 2.424,
+        "marginal_information_gain": 7.0
+      },
+      "consequence": {
+        "wallet": 4.4,
+        "job": 1.8,
+        "safety": 1.8,
+        "rights": 1.8,
+        "travel": 1.8,
+        "civic": 1.8
+      }
+    },
+    {
+      "id": "court-hands-states-a-win-in-fight-over-who-regulates-predict-7500f2",
+      "category": "business",
+      "rank": 6,
       "tier": "page_two",
-      "score": 7.02,
+      "score": 6.0,
+      "headline": "Court hands states a win in fight over who regulates prediction markets",
+      "dek": "A federal appeals court on Friday rejected Kalshi's efforts to stop Nevada from regulating speculation on sporting events on its platform, handing states an important win in the…",
+      "body": "A federal appeals court on Friday rejected Kalshi's efforts to stop Nevada from regulating speculation on sporting events on its platform, handing states an important win in the battle over which level of government has authority to oversee the rapidly growing prediction-markets business. The 9th Circuit Court of Appeals said Kalshi failed to show that the 1936 Commodity Exchange Act, which regulates commodity futures trading, preempts Nevada gambling laws and bars the state from regulating wagers related to sporting events.",
+      "so_what": "States are locked in an ongoing legal fight with the federal government over which level of government has primary regulatory oversight of prediction markets, which allow users to bet on the outcomes of sports, elections and many other events.",
+      "what_now": "",
+      "region": "Global",
+      "pattern": "norm",
+      "topics": [
+        "court",
+        "markets",
+        "prediction",
+        "appeals",
+        "fight",
+        "gambling",
+        "hands",
+        "regulated"
+      ],
+      "countries": [],
+      "read_time_min": 1,
+      "date": "2026-08-28",
+      "sources": [
+        {
+          "source": "CBS MoneyWatch",
+          "title": "Court hands states a win in fight over who regulates prediction markets",
+          "url": "https://www.cbsnews.com/news/kalshi-appeals-court-nevada-gambling-ruling/"
+        },
+        {
+          "source": "NYT Business",
+          "title": "Prediction Markets Should Be Regulated as Gambling, Appeals Court Says",
+          "url": "https://www.nytimes.com/2026/08/28/technology/kalshi-prediction-markets-federal-courts.html"
+        }
+      ],
+      "source_count": 2,
+      "why_ranked": "Published at page_two with composite 6.000; key drivers were Enduring Significance 7.1, Evidence Strength 7.2.",
+      "scores": {
+        "enduring_significance": 7.1,
+        "breaking_urgency": 5.5,
+        "evidence_strength": 7.2,
+        "attention_deficit": 5.6,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 2.792,
+        "marginal_information_gain": 0.0
+      },
+      "consequence": {
+        "wallet": 4.4,
+        "job": 1.8,
+        "safety": 1.8,
+        "rights": 5.477,
+        "travel": 1.8,
+        "civic": 1.8
+      }
+    },
+    {
+      "id": "trump-hails-historic-deal-to-control-65-billion-barrels-of-v-b67b0a",
+      "category": "business",
+      "rank": 7,
+      "tier": "page_two",
+      "score": 5.653,
       "headline": "Trump hails 'historic' deal to control 65 billion barrels of Venezuelan oil",
       "dek": "The US has struck a deal with Venezuela to control more than 65 billion barrels of its proven oil reserves, Donald Trump said.",
       "body": "The US has struck a deal with Venezuela to control more than 65 billion barrels of its proven oil reserves, Donald Trump said. The US president wrote that the agreement would more than double American oil reserves and \"substantially lower Gas Prices for all Americans\". In a late-night address on Saturday, Venezuela's interim President Delcy Rodríguez hailed the deal as one that would help her nation's economic revival. But some analysts have reacted with scepticism, including questioning whether it would address long-running obstacles that have deterred investment in its oil industry.",
       "so_what": "Earlier, she said in a statement that the deal calls for the development of 17 strategic oil fields with a proven potential of 65 billion barrels, as well as \"an investment of more than $100bn and more than $209bn in taxes\" for Venezuela.",
       "what_now": "",
       "region": "Americas",
-      "pattern": "economic",
+      "pattern": "negotiation",
       "topics": [
-        "trump",
-        "deal",
         "barrels",
         "billion",
         "control",
-        "venezuela",
+        "trump",
+        "deal",
         "reserves",
+        "venezuela",
         "venezuelan"
       ],
       "countries": [
@@ -828,7 +1942,7 @@
         }
       ],
       "read_time_min": 1,
-      "date": "2026-08-31",
+      "date": "2026-08-30",
       "sources": [
         {
           "source": "Euronews",
@@ -852,23 +1966,92 @@
         }
       ],
       "source_count": 4,
-      "why_ranked": "Published at page_two with composite 7.020; key drivers were Evidence Strength 8.8, Marginal Information Gain 8.2.",
+      "why_ranked": "Published at page_two with composite 5.653; key drivers were Evidence Strength 8.8, Reader Consequence 3.5.",
       "scores": {
         "enduring_significance": 3.0,
-        "breaking_urgency": 8.5,
+        "breaking_urgency": 7.75,
         "evidence_strength": 8.8,
         "attention_deficit": 0.0,
         "manufactured_attention": 3.9,
-        "reader_consequence": 3.975,
-        "marginal_information_gain": 8.167
+        "reader_consequence": 3.462,
+        "marginal_information_gain": 0.0
       },
       "consequence": {
-        "wallet": 7.614,
+        "wallet": 5.477,
         "job": 1.8,
         "safety": 4.4,
         "rights": 1.8,
         "travel": 1.8,
         "civic": 4.4
+      }
+    },
+    {
+      "id": "aa-could-face-5bn-takeover-move-by-german-insurer-allianz-re-e0b027",
+      "category": "business",
+      "rank": 8,
+      "tier": "brief",
+      "score": 5.18,
+      "headline": "AA could face £5bn takeover move by German insurer Allianz, reports claim",
+      "dek": "The German-based financial services company Allianz is considering a £5bn takeover swoop for AA, the breakdown recovery group, Sky News has reported.",
+      "body": "The German-based financial services company Allianz is considering a £5bn takeover swoop for AA, the breakdown recovery group, Sky News has reported. Allianz was one of a small number of parties holding talks with advisers to AA about a deal, Sky News said, adding that the private equity outfit EQT was another bidder. AA was founded by a group of motoring enthusiasts in 1905 and known in Britain for its yellow recovery vehicles.",
+      "so_what": "Back in 2020, AA was taken private by its private equity investors TowerBrook and Warburg Pincus, having been floated on the stock market in 2014.",
+      "what_now": "",
+      "region": "Europe",
+      "pattern": "negotiation",
+      "topics": [
+        "allianz",
+        "german",
+        "insurer",
+        "takeover",
+        "claim",
+        "face",
+        "giant",
+        "move"
+      ],
+      "countries": [
+        {
+          "name": "Germany",
+          "flag": "🇩🇪",
+          "role": "actor"
+        },
+        {
+          "name": "United Kingdom",
+          "flag": "🇬🇧",
+          "role": "secondary"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-30",
+      "sources": [
+        {
+          "source": "Sky Business",
+          "title": "German insurer Allianz weighs £5bn takeover of AA roadside rescue giant",
+          "url": "https://news.sky.com/story/german-insurer-allianz-weighs-5bn-takeover-of-aa-roadside-rescue-giant-13578449"
+        },
+        {
+          "source": "Guardian Business",
+          "title": "AA could face £5bn takeover move by German insurer Allianz, reports claim",
+          "url": "https://www.theguardian.com/business/2026/aug/30/aa-takeover-german-insurer-allianz"
+        }
+      ],
+      "source_count": 2,
+      "why_ranked": "Published at brief with composite 5.180; key drivers were Evidence Strength 7.2, Breaking Urgency 5.6.",
+      "scores": {
+        "enduring_significance": 3.0,
+        "breaking_urgency": 7.0,
+        "evidence_strength": 7.2,
+        "attention_deficit": 1.5,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 2.216,
+        "marginal_information_gain": 0.0
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 1.8,
+        "safety": 4.4,
+        "rights": 1.8,
+        "travel": 1.8,
+        "civic": 1.8
       }
     },
     {
@@ -1004,9 +2187,71 @@
       }
     },
     {
-      "id": "meta-settles-social-media-addiction-suit-for-up-to-17-1-bill-f52b53",
+      "id": "the-pentagon-now-has-its-own-version-of-chatgpt-and-grok-bef216",
       "category": "technology",
       "rank": 3,
+      "tier": "front",
+      "score": 7.156,
+      "headline": "The Pentagon now has its own version of ChatGPT and Grok",
+      "dek": "The Pentagon has launched versions of OpenAI's ChatGPT and xAI's Grok, giving 3 million civilian and military personnel access to generative AI tools that have been tailored to…",
+      "body": "The Pentagon has launched versions of OpenAI's ChatGPT and xAI's Grok, giving 3 million civilian and military personnel access to generative AI tools that have been tailored to \"warfighter needs.\" ChatGPT Mil and Grok for Government - custom versions of the popular consumer generative AI tools - are now part of GenAI.mil, a centralized, secure portal launched last year.",
+      "so_what": "Anthropic was labeled a supply-chain risk by the Trump administration - a designation that it is currently fighting in court - after it refused to give the Pentagon unrestricted use of its AI tools and instead insisted on certain safety guardrails.",
+      "what_now": "",
+      "region": "Americas",
+      "pattern": "standoff",
+      "topics": [
+        "chatgpt",
+        "grok",
+        "pentagon",
+        "brings",
+        "military",
+        "version"
+      ],
+      "countries": [
+        {
+          "name": "United States",
+          "flag": "🇺🇸",
+          "role": "actor"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "The Hill",
+          "title": "Pentagon brings on Grok and ChatGPT for military use",
+          "url": "https://thehill.com/policy/defense/6061714-pentagon-adds-grok-chatgpt-ai/"
+        },
+        {
+          "source": "TechCrunch",
+          "title": "The Pentagon now has its own version of ChatGPT and Grok",
+          "url": "https://techcrunch.com/2026/08/31/the-pentagon-now-has-its-own-version-of-chatgpt-and-grok/"
+        }
+      ],
+      "source_count": 2,
+      "why_ranked": "Published at front with composite 7.156; key drivers were Breaking Urgency 10.0, Evidence Strength 6.6.",
+      "scores": {
+        "enduring_significance": 4.4,
+        "breaking_urgency": 10.0,
+        "evidence_strength": 6.6,
+        "attention_deficit": 2.9,
+        "manufactured_attention": 2.8,
+        "reader_consequence": 2.84,
+        "marginal_information_gain": 7.0
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 4.4,
+        "safety": 1.8,
+        "rights": 1.8,
+        "travel": 1.8,
+        "civic": 4.4
+      }
+    },
+    {
+      "id": "meta-settles-social-media-addiction-suit-for-up-to-17-1-bill-f52b53",
+      "category": "technology",
+      "rank": 4,
       "tier": "brief",
       "score": 4.883,
       "headline": "Meta settles social media addiction suit for up to $17.1 billion",
@@ -1145,7 +2390,7 @@
       "category": "climate",
       "rank": 1,
       "tier": "lead",
-      "score": 7.973,
+      "score": 7.889,
       "headline": "Two dead and more than a dozen missing after 'terrifying' flash flood hits Grand Canyon",
       "dek": "Two people have died and 14 remain missing or unaccounted for after flash flooding swept through parts of the Grand Canyon, the National Park Service (NPS) has said.",
       "body": "Two people have died and 14 remain missing or unaccounted for after flash flooding swept through parts of the Grand Canyon, the National Park Service (NPS) has said. The flood hit Bright Angel Canyon and the Phantom Ranch area on Saturday afternoon, wiping out footbridges and propelling boulders downstream. The body of a 46-year-old man was found on Sunday evening near Crystal Rapids along the Colorado River, the park service told CBS News, the BBC's US partner. Sixty-two people have so far been airlifted out of the area.",
@@ -1194,7 +2439,7 @@
         }
       ],
       "source_count": 5,
-      "why_ranked": "Published at lead with composite 7.973; key drivers were Evidence Strength 8.8, Marginal Information Gain 9.7.",
+      "why_ranked": "Published at lead with composite 7.889; key drivers were Evidence Strength 8.8, Marginal Information Gain 9.3.",
       "scores": {
         "enduring_significance": 4.3,
         "breaking_urgency": 10.0,
@@ -1202,7 +2447,7 @@
         "attention_deficit": 0.0,
         "manufactured_attention": 1.0,
         "reader_consequence": 3.666,
-        "marginal_information_gain": 9.667
+        "marginal_information_gain": 9.286
       },
       "consequence": {
         "wallet": 1.8,
@@ -1292,7 +2537,7 @@
       "category": "climate",
       "rank": 3,
       "tier": "front",
-      "score": 7.597,
+      "score": 7.471,
       "headline": "China is concealing scale of flood disaster, say Tibet campaigners",
       "dek": "A Tibetan advocacy group says hundreds of homes were destroyed on the Tibetan side of the border in last week's deadly floods, raising questions about Beijing's official account…",
       "body": "A Tibetan advocacy group says hundreds of homes were destroyed on the Tibetan side of the border in last week's deadly floods, raising questions about Beijing's official account of the scale of the disaster. Public discussion about the flash floods has been restricted, with security officials in Tibet announcing on Sunday that it had penalised at least 10 people for sharing \"false disaster information\". There was no further information on the nature of the penalties. Chinese authorities say 16 people have been confirmed dead and 546 are missing, including 261 foreign citizens.",
@@ -1337,7 +2582,7 @@
         }
       ],
       "source_count": 2,
-      "why_ranked": "Published at front with composite 7.597; key drivers were Breaking Urgency 10.0, Evidence Strength 7.2.",
+      "why_ranked": "Published at front with composite 7.471; key drivers were Breaking Urgency 10.0, Evidence Strength 7.2.",
       "scores": {
         "enduring_significance": 5.0,
         "breaking_urgency": 10.0,
@@ -1345,7 +2590,7 @@
         "attention_deficit": 3.5,
         "manufactured_attention": 1.0,
         "reader_consequence": 2.908,
-        "marginal_information_gain": 8.167
+        "marginal_information_gain": 7.286
       },
       "consequence": {
         "wallet": 1.8,
@@ -1357,9 +2602,98 @@
       }
     },
     {
-      "id": "celebrating-60-years-of-notting-hill-carnival-a696c3",
+      "id": "headteacher-saves-900-children-from-deadly-flash-flood-in-ne-a4a676",
       "category": "climate",
       "rank": 4,
+      "tier": "front",
+      "score": 7.375,
+      "headline": "Headteacher saves 900 children from deadly flash flood in Nepal",
+      "dek": "A headteacher in Nepal evacuated 900 children from a school moments before a deadly wall of water struck their town amid the devastating flash floods that have killed almost 800…",
+      "body": "A headteacher in Nepal evacuated 900 children from a school moments before a deadly wall of water struck their town amid the devastating flash floods that have killed almost 800 people and left thousands missing. Rajendra Dawadi decided to halt classes and order children to higher ground after receiving warnings about the scale of the flooding heading their way. Dawadi, the headteacher at Tribhuvan Trishuli secondary school in Nuwakot, which has 1,600 pupils, said he had received four warnings from different people within minutes, including one from Betrawati, a town directly upstream.",
+      "so_what": "Others in the area escaped when teachers told them to quickly evacuate classrooms just before the waters came crashing in.",
+      "what_now": "",
+      "region": "Asia Pacific",
+      "pattern": "crisis",
+      "topics": [
+        "deadly",
+        "flood",
+        "nepal",
+        "tibet",
+        "border",
+        "children",
+        "contributed",
+        "flash"
+      ],
+      "countries": [
+        {
+          "name": "Nepal",
+          "flag": "🇳🇵",
+          "role": "actor"
+        },
+        {
+          "name": "United States",
+          "flag": "🇺🇸",
+          "role": "secondary"
+        },
+        {
+          "name": "China",
+          "flag": "🇨🇳",
+          "role": "secondary"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "Axios",
+          "title": "Why Nepal's rare, deadly flood struck without warning",
+          "url": "https://www.axios.com/2026/08/29/nepal-flood-cause-warning-alert-system"
+        },
+        {
+          "source": "Grist",
+          "title": "How rising temperatures likely contributed to Nepal’s deadly flood",
+          "url": "https://grist.org/extreme-weather/how-rising-temperatures-likely-contributed-to-nepals-deadly-flood/"
+        },
+        {
+          "source": "Guardian World",
+          "title": "Headteacher saves 900 children from deadly flash flood in Nepal",
+          "url": "https://www.theguardian.com/world/2026/aug/30/headteacher-saves-children-flash-flood-nepal"
+        },
+        {
+          "source": "NPR World",
+          "title": "Rescuers search for the missing after deadly flood along Nepal-Tibet border",
+          "url": "https://www.npr.org/2026/08/31/nx-s1-5949292/rescuers-search-for-the-missing-after-deadly-flood-along-nepal-tibet-border"
+        },
+        {
+          "source": "NYT Climate",
+          "title": "Photos: A Deadly Flood Tears Through Nepal and Tibet",
+          "url": "https://www.nytimes.com/2026/08/26/world/asia/flood-nepal-tibet.html"
+        }
+      ],
+      "source_count": 5,
+      "why_ranked": "Published at front with composite 7.375; key drivers were Enduring Significance 7.5, Evidence Strength 8.8.",
+      "scores": {
+        "enduring_significance": 7.5,
+        "breaking_urgency": 7.9,
+        "evidence_strength": 8.8,
+        "attention_deficit": 0.0,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 2.892,
+        "marginal_information_gain": 7.286
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 1.8,
+        "safety": 7.0,
+        "rights": 1.8,
+        "travel": 4.4,
+        "civic": 1.8
+      }
+    },
+    {
+      "id": "celebrating-60-years-of-notting-hill-carnival-a696c3",
+      "category": "climate",
+      "rank": 5,
       "tier": "front",
       "score": 7.179,
       "headline": "Celebrating 60 years of Notting Hill Carnival",
@@ -1421,11 +2755,105 @@
       }
     },
     {
+      "id": "nepal-flash-floods-live-death-toll-rises-to-939-missing-peop-59c496",
+      "category": "climate",
+      "rank": 6,
+      "tier": "front",
+      "score": 7.151,
+      "headline": "Nepal flash floods LIVE: Death toll rises to 939, missing people drops to 3,925: disaster authority",
+      "dek": "D evastating floods near the border with China have killed at least 939 people in Nepal, while the number of missing in the country dropped to 3,925, its disaster authority said…",
+      "body": "D evastating floods near the border with China have killed at least 939 people in Nepal, while the number of missing in the country dropped to 3,925, its disaster authority said on Monday (August 31, 2026), as rescue efforts entered a sixth day. Indian authorities are seeking to identify the bodies, and they are not included in the toll. Chinese state media earlier confirmed 16 dead and 546 people missing in Tibet, taking the overall toll to 955 dead and 4,471 missing. Nepal's list of the missing includes 592 foreigners.",
+      "so_what": "Devastating floods near the border with China have killed at least 939 people in Nepal, while the number of missing in the country dropped to 3,925, its disaster authority said on Monday, as rescue efforts entered a sixth day.",
+      "what_now": "In south-central Nepal's Chitwan district, the scale of the catastrophe was evident in some 250 bodies awaiting identification and the hastily dug trenches for their temporary burial following Wednesday's catastrophic floods and mudslides.",
+      "region": "Asia Pacific",
+      "pattern": "crisis",
+      "topics": [
+        "nepal",
+        "death",
+        "toll",
+        "missing",
+        "flash",
+        "flood",
+        "floods",
+        "continues"
+      ],
+      "countries": [
+        {
+          "name": "Nepal",
+          "flag": "🇳🇵",
+          "role": "actor"
+        },
+        {
+          "name": "China",
+          "flag": "🇨🇳",
+          "role": "secondary"
+        },
+        {
+          "name": "Israel",
+          "flag": "🇮🇱",
+          "role": "secondary"
+        },
+        {
+          "name": "Belarus",
+          "flag": "🇧🇾",
+          "role": "secondary"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "DW World",
+          "title": "Nepal issues fresh flood warning as 3,000 still missing",
+          "url": "https://www.dw.com/en/nepal-issues-fresh-flood-warning-as-3-000-still-missing/a-78561068?maca=en-rss-en-world-4025-rdf"
+        },
+        {
+          "source": "CBS World",
+          "title": "Nepal flash flood death toll reaches 800, with around 3,000 still missing",
+          "url": "https://www.cbsnews.com/news/nepal-flash-flood-death-missing-americans-rescue/"
+        },
+        {
+          "source": "Euronews",
+          "title": "Nepal flood death toll passes 900 as search for survivors continues",
+          "url": "http://www.euronews.com/video/2026/08/31/nepal-flood-death-toll-passes-900-as-search-for-survivors-continues"
+        },
+        {
+          "source": "Times of Israel",
+          "title": "Second Israeli confirmed missing as death toll continues to climb in Nepal floods",
+          "url": "https://www.timesofisrael.com/second-israeli-confirmed-missing-as-death-toll-continues-to-climb-in-nepal-floods/"
+        },
+        {
+          "source": "The Hindu International",
+          "title": "Nepal flash floods LIVE: Death toll rises to 939, missing people drops to 3,925: disaster authority",
+          "url": "https://www.thehindu.com/news/international/nepal-flash-floods-aftermath-live-udpates-rescue-work-august-31-2026/article71409646.ece"
+        }
+      ],
+      "source_count": 5,
+      "why_ranked": "Published at front with composite 7.151; key drivers were Evidence Strength 8.2, Enduring Significance 6.0.",
+      "scores": {
+        "enduring_significance": 6.0,
+        "breaking_urgency": 9.25,
+        "evidence_strength": 8.2,
+        "attention_deficit": 0.0,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 3.666,
+        "marginal_information_gain": 7.646
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 4.4,
+        "safety": 7.614,
+        "rights": 1.8,
+        "travel": 4.4,
+        "civic": 1.8
+      }
+    },
+    {
       "id": "palestinian-farmers-rebuild-what-israeli-settlers-destroy-in-cd2927",
       "category": "health",
       "rank": 1,
-      "tier": "lead",
-      "score": 7.51,
+      "tier": "front",
+      "score": 7.421,
       "headline": "Palestinian farmers rebuild what Israeli settlers destroy in West Bank",
       "dek": "Burin, occupied West Bank - Ghassan Najjar's phone starts ringing the moment the Israeli army rolls into Burin.",
       "body": "Burin, occupied West Bank - Ghassan Najjar's phone starts ringing the moment the Israeli army rolls into Burin. It happens most days now - the whirring convoy of armoured personnel carriers working its way through the village's narrow streets as soldiers fan out to shutter shops one by one. Along with roughly two dozen other farmers, Najjar is a member of Burin's Land and Farming Cooperative. They know that they don't have the capability to fight back against Israel's military might with arms so instead focus on the land and keeping their connection to it.",
@@ -1475,7 +2903,7 @@
         }
       ],
       "source_count": 3,
-      "why_ranked": "Published at lead with composite 7.510; key drivers were Evidence Strength 8.8, Marginal Information Gain 9.1.",
+      "why_ranked": "Published at front with composite 7.421; key drivers were Evidence Strength 8.8, Marginal Information Gain 8.7.",
       "scores": {
         "enduring_significance": 3.0,
         "breaking_urgency": 8.5,
@@ -1483,7 +2911,7 @@
         "attention_deficit": 0.0,
         "manufactured_attention": 1.0,
         "reader_consequence": 3.204,
-        "marginal_information_gain": 9.067
+        "marginal_information_gain": 8.667
       },
       "consequence": {
         "wallet": 4.4,
@@ -1638,72 +3066,9 @@
       }
     },
     {
-      "id": "man-city-open-talks-with-chelsea-to-sign-fernandez-4cc508",
-      "category": "sports",
-      "rank": 2,
-      "tier": "front",
-      "score": 8.058,
-      "headline": "Man City open talks with Chelsea to sign Fernandez",
-      "dek": "Manchester City have opened direct club-to-club talks with Chelsea to sign Enzo Fernandez, according to Sky in Italy.",
-      "body": "Manchester City have opened direct club-to-club talks with Chelsea to sign Enzo Fernandez, according to Sky in Italy. Sky Sports News reported that Chelsea were prepared to sell Enzo Fernandez to Manchester City for the right price - and if they can improve their squad before the window closes. Man City's interest in Fernandez remains despite missing Chelsea's August 14 deadline to bid for him. Chelsea had agreed with Fernandez's representatives that he could be sold for £120m by that deadline, but an offer never arrived.",
-      "so_what": "Nico Gonzalez has also left to join Newcastle in a transfer worth up to £50m, with Tijjani Reijnders recently departing for Al Qadsiah for £51m.",
-      "what_now": "Chelsea had agreed with Fernandez's representatives that he could be sold for £120m by that deadline, but an offer never arrived.",
-      "region": "Europe",
-      "pattern": "negotiation",
-      "topics": [
-        "city",
-        "fernandez",
-        "open",
-        "sign",
-        "chelsea",
-        "gossip",
-        "tuesday"
-      ],
-      "countries": [
-        {
-          "name": "Italy",
-          "flag": "🇮🇹",
-          "role": "actor"
-        }
-      ],
-      "read_time_min": 1,
-      "date": "2026-08-31",
-      "sources": [
-        {
-          "source": "Sky Sports",
-          "title": "Man City open talks with Chelsea to sign Fernandez",
-          "url": "https://www.skysports.com/football/news/12040/13577767/enzo-fernandez-transfer-news-man-city-open-talks-with-chelsea-to-sign-argentina-midfielder"
-        },
-        {
-          "source": "BBC Sport",
-          "title": "Man City open talks to sign Fernandez - Tuesday gossip",
-          "url": "https://www.bbc.co.uk/sport/football/articles/cwyz130nxkro?at_medium=RSS&at_campaign=rss"
-        }
-      ],
-      "source_count": 2,
-      "why_ranked": "Published at front with composite 8.058; key drivers were Marginal Information Gain 10.0, Breaking Urgency 10.0.",
-      "scores": {
-        "enduring_significance": 3.0,
-        "breaking_urgency": 10.0,
-        "evidence_strength": 7.2,
-        "attention_deficit": 1.5,
-        "manufactured_attention": 1.0,
-        "reader_consequence": 1.8,
-        "marginal_information_gain": 10.0
-      },
-      "consequence": {
-        "wallet": 1.8,
-        "job": 1.8,
-        "safety": 1.8,
-        "rights": 1.8,
-        "travel": 1.8,
-        "civic": 1.8
-      }
-    },
-    {
       "id": "smyth-returns-to-saints-practice-squad-fb0e5f",
       "category": "sports",
-      "rank": 3,
+      "rank": 2,
       "tier": "front",
       "score": 8.058,
       "headline": "Smyth returns to Saints' practice squad",
@@ -1759,11 +3124,734 @@
       }
     },
     {
-      "id": "daisy-chain-fields-review-olivia-rodrigo-s-women-led-festiva-6162ec",
+      "id": "man-city-agree-65m-deal-for-everton-s-ndiaye-bf78bd",
+      "category": "sports",
+      "rank": 3,
+      "tier": "front",
+      "score": 7.923,
+      "headline": "Man City agree £65m deal for Everton's Ndiaye",
+      "dek": "Manchester City have agreed a deal worth up to £65m to sign Iliman Ndiaye from Everton.",
+      "body": "Manchester City have agreed a deal worth up to £65m to sign Iliman Ndiaye from Everton. The agreement for the Senegal winger is worth £60m plus a further £5m in add-ons. Tottenham agreed terms with Everton on Friday night for Ndiaye, 26, when it looked as though Richarlison would move the other way in a separate transfer. However, sources are indicating Richarlison failed to agree personal terms with his former club Everton, who are understood to have made a £35m offer for the Brazil forward. As a result, Tottenham have been unable to proceed with the Ndiaye transfer.",
+      "so_what": "Manchester City's move for Ndiaye comes after an £80m move for Liverpool forward Cody Gakpo looked set to collapse on Monday.",
+      "what_now": "Liverpool are now expected to keep Gakpo, 27, unless they are able to revive a deal for a new winger before Tuesday's deadline.",
+      "region": "Global",
+      "pattern": "negotiation",
+      "topics": [
+        "agree",
+        "city",
+        "deal",
+        "ndiaye",
+        "attention",
+        "everton",
+        "mudryk",
+        "spurs"
+      ],
+      "countries": [],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "BBC Sport",
+          "title": "Man City agree £65m deal for Everton's Ndiaye",
+          "url": "https://www.bbc.co.uk/sport/football/articles/c80453nj9gno?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "source": "Sky Sports",
+          "title": "Man City agree £65m Ndiaye deal as Spurs turn attention to Mudryk",
+          "url": "https://www.skysports.com/football/news/12040/13579541/iliman-ndiaye-transfer-news-man-city-agree-65m-deal-for-everton-winger-as-tottenham-turn-attention-to-mykhailo-mudryk"
+        }
+      ],
+      "source_count": 2,
+      "why_ranked": "Published at front with composite 7.923; key drivers were Marginal Information Gain 9.7, Breaking Urgency 10.0.",
+      "scores": {
+        "enduring_significance": 3.0,
+        "breaking_urgency": 10.0,
+        "evidence_strength": 7.2,
+        "attention_deficit": 1.5,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 1.8,
+        "marginal_information_gain": 9.667
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 1.8,
+        "safety": 1.8,
+        "rights": 1.8,
+        "travel": 1.8,
+        "civic": 1.8
+      }
+    },
+    {
+      "id": "everton-agree-40m-fee-for-monaco-striker-balogun-b3cda1",
+      "category": "sports",
+      "rank": 4,
+      "tier": "front",
+      "score": 7.782,
+      "headline": "Everton agree £40m fee for Monaco striker Balogun",
+      "dek": "Everton have made an offer for Monaco forward Folarin Balogun - who is valued at £40m by the French club.",
+      "body": "Everton have made an offer for Monaco forward Folarin Balogun - who is valued at £40m by the French club. The Toffees want to strengthen their forward line before Tuesday's transfer deadline, with Balogun and Tottenham attacker Richarlison among their targets. Richarlison is believed to have reservations about returning to Everton, the club he left to join Spurs in 2022. But Everton are pressing ahead with their interest in United States striker Balogun and have made a bid for the 25-year-old. Whether the offer is enough for Monaco to part with Balogun remains to be seen.",
+      "so_what": "England's Jarell Quansah was similarly shown a red card in England's 3-2 win over Mexico following a high challenge on Jesus Gallardo, and the same committee ruled he should serve a two-match ban.",
+      "what_now": "The Toffees want to strengthen their forward line before Tuesday's transfer deadline, with Balogun and Tottenham attacker Richarlison among their targets.",
+      "region": "Europe",
+      "pattern": "negotiation",
+      "topics": [
+        "everton",
+        "balogun",
+        "monaco",
+        "agree",
+        "agreement",
+        "reach",
+        "sign",
+        "folarin"
+      ],
+      "countries": [
+        {
+          "name": "United States",
+          "flag": "🇺🇸",
+          "role": "actor"
+        },
+        {
+          "name": "Germany",
+          "flag": "🇩🇪",
+          "role": "secondary"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "Guardian Sport",
+          "title": "Transfer latest: Juventus in Woltemade loan talks, Everton agree £40m Balogun fee",
+          "url": "https://www.theguardian.com/football/2026/aug/31/transfer-latest-nick-woltemade-newcastle-juventus-everton-folarin-balogun"
+        },
+        {
+          "source": "Yahoo Sports",
+          "title": "Everton reach agreement with Monaco to sign Folarin Balogun",
+          "url": "https://sports.yahoo.com/articles/everton-reach-agreement-monaco-sign-201500055.html"
+        },
+        {
+          "source": "BBC Sport",
+          "title": "Everton agree £40m fee for Monaco striker Balogun",
+          "url": "https://www.bbc.co.uk/sport/football/articles/c780wzlzl45o?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "source": "Sky Sports",
+          "title": "Everton latest: Toffees agree £40m Balogun deal",
+          "url": "https://www.skysports.com/football/live-blog/12040/13279303/everton-transfers-latest-news-rumours-and-gossip-live-updates-goals-and-highlights"
+        }
+      ],
+      "source_count": 4,
+      "why_ranked": "Published at front with composite 7.782; key drivers were Evidence Strength 8.8, Breaking Urgency 10.0.",
+      "scores": {
+        "enduring_significance": 3.0,
+        "breaking_urgency": 10.0,
+        "evidence_strength": 8.8,
+        "attention_deficit": 0.0,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 2.06,
+        "marginal_information_gain": 8.167
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 1.8,
+        "safety": 1.8,
+        "rights": 4.4,
+        "travel": 1.8,
+        "civic": 1.8
+      }
+    },
+    {
+      "id": "aston-villa-v-arsenal-premier-league-live-3911be",
+      "category": "sports",
+      "rank": 5,
+      "tier": "front",
+      "score": 7.759,
+      "headline": "Aston Villa v Arsenal: Premier League – live",
+      "dek": "83 min: Arsenal are sitting back, holding their shape.",
+      "body": "83 min: Arsenal are sitting back, holding their shape. Villa seeing the majority of the ball for the first time this evening. 81 min: Now McGinn goes into the book for an agricultural lunge through the back of Merino. That wasn't so great, and he's lucky the referee has been, for the most part, in a laissez-faire mood tonight. 80 min: Alysson is booked for a late clip on Gabriel.",
+      "so_what": "37 min: Arsenal have enjoyed 73 percent of possession over the last ten minutes.",
+      "what_now": "",
+      "region": "Global",
+      "pattern": "standoff",
+      "topics": [
+        "arsenal",
+        "aston",
+        "league",
+        "premier",
+        "villa",
+        "grades",
+        "gunners",
+        "match"
+      ],
+      "countries": [],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "Al Jazeera",
+          "title": "Aston Villa vs Arsenal LIVE: Premier League",
+          "url": "https://www.aljazeera.com/sports/liveblog/2026/8/31/live-aston-villa-vs-arsenal-premier-league?traffic_source=rss"
+        },
+        {
+          "source": "Yahoo Sports",
+          "title": "Aston Villa vs. Arsenal player ratings: Live grades for Gunners, Villains in 2026 Premier League match",
+          "url": "https://sports.yahoo.com/articles/aston-villa-vs-arsenal-player-183001084.html"
+        },
+        {
+          "source": "Guardian Sport",
+          "title": "Aston Villa v Arsenal: Premier League – live",
+          "url": "https://www.theguardian.com/football/live/2026/aug/31/aston-villa-v-arsenal-premier-league-live"
+        }
+      ],
+      "source_count": 3,
+      "why_ranked": "Published at front with composite 7.759; key drivers were Evidence Strength 8.8, Marginal Information Gain 10.0.",
+      "scores": {
+        "enduring_significance": 3.0,
+        "breaking_urgency": 10.0,
+        "evidence_strength": 8.8,
+        "attention_deficit": 0.0,
+        "manufactured_attention": 2.2,
+        "reader_consequence": 2.424,
+        "marginal_information_gain": 10.0
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 1.8,
+        "safety": 1.8,
+        "rights": 1.8,
+        "travel": 4.4,
+        "civic": 4.4
+      }
+    },
+    {
+      "id": "pakistan-sack-head-coach-and-send-seven-players-home-after-e-010209",
+      "category": "sports",
+      "rank": 6,
+      "tier": "front",
+      "score": 7.743,
+      "headline": "Pakistan sack head coach and send seven players home after England Test series defeat",
+      "dek": "Pakistan have decided to rip up their plans during an already chaotic tour of England by announcing that seven players and head coach Sarfaraz Ahmed have been sent home before…",
+      "body": "Pakistan have decided to rip up their plans during an already chaotic tour of England by announcing that seven players and head coach Sarfaraz Ahmed have been sent home before the third Test at Edgbaston next week. Already confirmed to lose the series after going 2-0 down with a 194-run defeat at Lord's on Sunday, Pakistan have now asked Mike Hesson, the New Zealander who runs their white-ball teams, to replace Sarfaraz as head coach. Umar Gul, their bowling coach, has also been swapped out for the Australian Ashley Noffke.",
+      "so_what": "Among the discarded players is Salman Ali Agha, who captained the team in the first Test while Babar Azam was injured, only to then be dropped at Lord's.",
+      "what_now": "Pakistan have decided to rip up their plans during an already chaotic tour of England by announcing that seven players and head coach Sarfaraz Ahmed have been sent home before the third Test at Edgbaston next week.",
+      "region": "Asia Pacific",
+      "pattern": "standoff",
+      "topics": [
+        "pakistan",
+        "players",
+        "seven",
+        "coach",
+        "defeat",
+        "drop",
+        "england",
+        "head"
+      ],
+      "countries": [
+        {
+          "name": "Pakistan",
+          "flag": "🇵🇰",
+          "role": "actor"
+        },
+        {
+          "name": "United Kingdom",
+          "flag": "🇬🇧",
+          "role": "secondary"
+        },
+        {
+          "name": "Australia",
+          "flag": "🇦🇺",
+          "role": "secondary"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "BBC Sport",
+          "title": "Pakistan drop seven players and release head coach",
+          "url": "https://www.bbc.co.uk/sport/cricket/articles/cvgy9qqvwzxo?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "source": "Guardian Sport",
+          "title": "Pakistan sack head coach and send seven players home after England Test series defeat",
+          "url": "https://www.theguardian.com/sport/2026/aug/31/pakistan-sack-head-coach-sarfaraz-ahmed-send-seven-players-home-after-england-test-series-defeat-cricket"
+        },
+        {
+          "source": "Sky Sports",
+          "title": "Pakistan drop seven players from Test squad after England series defeat",
+          "url": "https://www.skysports.com/cricket/news/12040/13579469/pakistan-make-seven-changes-to-test-squad-after-england-series-defeat-ahead-of-final-test-at-edgbaston"
+        }
+      ],
+      "source_count": 3,
+      "why_ranked": "Published at front with composite 7.743; key drivers were Evidence Strength 8.8, Marginal Information Gain 8.7.",
+      "scores": {
+        "enduring_significance": 3.0,
+        "breaking_urgency": 10.0,
+        "evidence_strength": 8.8,
+        "attention_deficit": 0.0,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 1.8,
+        "marginal_information_gain": 8.667
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 1.8,
+        "safety": 1.8,
+        "rights": 1.8,
+        "travel": 1.8,
+        "civic": 1.8
+      }
+    },
+    {
+      "id": "tennessee-to-wear-dolly-parton-tribute-on-helmets-during-202-27bbd0",
+      "category": "sports",
+      "rank": 7,
+      "tier": "front",
+      "score": 7.709,
+      "headline": "Tennessee to wear Dolly Parton tribute on helmets during 2026 college football season",
+      "dek": "The Tennessee Volunteers will be honoring Dolly Parton with a helmet sticker this season, the college football team's head coach, Josh Heupel, announced on Monday.",
+      "body": "The Tennessee Volunteers will be honoring Dolly Parton with a helmet sticker this season, the college football team's head coach, Josh Heupel, announced on Monday. Parton, a Tennessee native, died last week at the age of 80 from cancer. \"I'd be remiss if I didn't also talk about the passing of Dolly Parton,\" Heupel said Monday. \"All that she's meant across the world, this country, and certainly, the queen of East Tennessee - a lady that was extremely proud of her roots.\" The singer grew up in Sevierville, roughly 30 miles east of Knoxville, where the University of Tennessee is located.",
+      "so_what": "Parton often spoke about her upbringing as one of 12 children in what she described as a \"dirt poor\" family.",
+      "what_now": "The Tennessee Volunteers will be honoring Dolly Parton with a helmet sticker this season, the college football team's head coach, Josh Heupel, announced on Monday.",
+      "region": "Global",
+      "pattern": "longgame",
+      "topics": [
+        "dolly",
+        "parton",
+        "tribute",
+        "football",
+        "season",
+        "tennessee",
+        "college",
+        "helmet"
+      ],
+      "countries": [],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "CBS Entertainment",
+          "title": "The one and only Dolly Parton: A tribute",
+          "url": "https://www.cbsnews.com/news/the-one-and-only-dolly-parton-a-tribute/"
+        },
+        {
+          "source": "CBS Sports Headlines",
+          "title": "LOOK: Tennessee football to honor Dolly Parton with helmet sticker throughout 2026 season",
+          "url": "https://www.cbssports.com/college-football/news/tennessee-dolly-parton-helmet-sticker-2026-season/"
+        },
+        {
+          "source": "Guardian World",
+          "title": "Tennessee to wear Dolly Parton tribute on helmets during 2026 college football season",
+          "url": "https://www.theguardian.com/sport/2026/aug/31/tennessee-to-wear-dolly-parton-tribute-on-helmets-during-2026-college-football-season"
+        }
+      ],
+      "source_count": 3,
+      "why_ranked": "Published at front with composite 7.709; key drivers were Evidence Strength 8.8, Marginal Information Gain 10.0.",
+      "scores": {
+        "enduring_significance": 3.0,
+        "breaking_urgency": 9.25,
+        "evidence_strength": 8.8,
+        "attention_deficit": 0.0,
+        "manufactured_attention": 2.8,
+        "reader_consequence": 1.8,
+        "marginal_information_gain": 10.0
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 1.8,
+        "safety": 1.8,
+        "rights": 1.8,
+        "travel": 1.8,
+        "civic": 1.8
+      }
+    },
+    {
+      "id": "us-open-2026-alcaraz-wins-in-straight-sets-on-return-while-s-f7e0e9",
+      "category": "sports",
+      "rank": 8,
+      "tier": "page_two",
+      "score": 7.679,
+      "headline": "US Open 2026: Alcaraz wins in straight sets on return while Sabalenka also progresses – live",
+      "dek": "Stefanos Tsitsipas has spoken to Sky about his impressive victory against the in-form 10th seed Arthur Fils.",
+      "body": "Stefanos Tsitsipas has spoken to Sky about his impressive victory against the in-form 10th seed Arthur Fils. Today I feel like I wasn't thinking too much, which was a great thing - I played simple tennis, I wished it would work … and the philosophies during the match? Not too many. Today, to be entirely honest, I wasn't expecting too much. If the serve goes well, on the line, perfect. I don't think I can do that every single point. I was on an 80% mentality - I wasn't striving for 100%.",
+      "so_what": "A mammoth five-set battle on Court 7, in which the world No 24 Rublev battles back from two sets down to see off the Finnish player Otto Virtanen, ranked 109.",
+      "what_now": "",
+      "region": "Europe",
+      "pattern": "standoff",
+      "topics": [
+        "alcaraz",
+        "return",
+        "sabalenka",
+        "wins",
+        "impresses",
+        "injury",
+        "open",
+        "progresses"
+      ],
+      "countries": [
+        {
+          "name": "Colombia",
+          "flag": "🇨🇴",
+          "role": "actor"
+        },
+        {
+          "name": "Russia",
+          "flag": "🇷🇺",
+          "role": "secondary"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "Guardian Sport",
+          "title": "US Open 2026: Alcaraz wins in straight sets on return while Sabalenka also progresses – live",
+          "url": "https://www.theguardian.com/sport/live/2026/aug/31/us-open-2026-alcaraz-sabalenka-day-two-tennis-live"
+        },
+        {
+          "source": "Sky Sports",
+          "title": "Alcaraz impresses on return from injury as Sabalenka also wins",
+          "url": "https://www.skysports.com/tennis/news/12040/13579551/us-open-2026-carlos-alcaraz-impresses-on-return-from-injury-as-aryna-sabalenka-harriet-dart-also-win"
+        }
+      ],
+      "source_count": 2,
+      "why_ranked": "Published at page_two with composite 7.679; key drivers were Marginal Information Gain 9.1, Breaking Urgency 10.0.",
+      "scores": {
+        "enduring_significance": 3.0,
+        "breaking_urgency": 10.0,
+        "evidence_strength": 7.2,
+        "attention_deficit": 1.5,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 1.8,
+        "marginal_information_gain": 9.067
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 1.8,
+        "safety": 1.8,
+        "rights": 1.8,
+        "travel": 1.8,
+        "civic": 1.8
+      }
+    },
+    {
+      "id": "man-city-open-talks-with-chelsea-to-sign-fernandez-4cc508",
+      "category": "sports",
+      "rank": 9,
+      "tier": "page_two",
+      "score": 7.638,
+      "headline": "Man City open talks with Chelsea to sign Fernandez",
+      "dek": "Manchester City have opened direct club-to-club talks with Chelsea to sign Enzo Fernandez, according to Sky in Italy.",
+      "body": "Manchester City have opened direct club-to-club talks with Chelsea to sign Enzo Fernandez, according to Sky in Italy. Sky Sports News reported that Chelsea were prepared to sell Enzo Fernandez to Manchester City for the right price - and if they can improve their squad before the window closes. Man City's interest in Fernandez remains despite missing Chelsea's August 14 deadline to bid for him. Chelsea had agreed with Fernandez's representatives that he could be sold for £120m by that deadline, but an offer never arrived.",
+      "so_what": "Nico Gonzalez has also left to join Newcastle in a transfer worth up to £50m, with Tijjani Reijnders recently departing for Al Qadsiah for £51m.",
+      "what_now": "Chelsea had agreed with Fernandez's representatives that he could be sold for £120m by that deadline, but an offer never arrived.",
+      "region": "Europe",
+      "pattern": "negotiation",
+      "topics": [
+        "city",
+        "fernandez",
+        "open",
+        "sign",
+        "chelsea",
+        "gossip",
+        "tuesday"
+      ],
+      "countries": [
+        {
+          "name": "Italy",
+          "flag": "🇮🇹",
+          "role": "actor"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "Sky Sports",
+          "title": "Man City open talks with Chelsea to sign Fernandez",
+          "url": "https://www.skysports.com/football/news/12040/13577767/enzo-fernandez-transfer-news-man-city-open-talks-with-chelsea-to-sign-argentina-midfielder"
+        },
+        {
+          "source": "BBC Sport",
+          "title": "Man City open talks to sign Fernandez - Tuesday gossip",
+          "url": "https://www.bbc.co.uk/sport/football/articles/cwyz130nxkro?at_medium=RSS&at_campaign=rss"
+        }
+      ],
+      "source_count": 2,
+      "why_ranked": "Published at page_two with composite 7.638; key drivers were Breaking Urgency 10.0, Marginal Information Gain 8.5.",
+      "scores": {
+        "enduring_significance": 3.0,
+        "breaking_urgency": 10.0,
+        "evidence_strength": 7.2,
+        "attention_deficit": 1.5,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 1.8,
+        "marginal_information_gain": 8.5
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 1.8,
+        "safety": 1.8,
+        "rights": 1.8,
+        "travel": 1.8,
+        "civic": 1.8
+      }
+    },
+    {
+      "id": "liverpool-sign-barcola-in-123m-deal-and-expect-gakpo-to-stay-c0e707",
+      "category": "sports",
+      "rank": 10,
+      "tier": "page_two",
+      "score": 7.401,
+      "headline": "Liverpool sign Barcola in £123m deal and expect Gakpo to stay after City offer £80m",
+      "dek": "Bradley Barcola is aiming to win the Premier League after completing his move to Liverpool from Paris Saint‑Germain for an initial £106m, which could rise to £123m.",
+      "body": "Bradley Barcola is aiming to win the Premier League after completing his move to Liverpool from Paris Saint‑Germain for an initial £106m, which could rise to £123m. The France international has signed a five-year deal. Andoni Iraola has prioritised signing wingers this summer after replacing Arne Slot. Barcola follows the arrival of Victor Muñoz as the former Bournemouth head coach aims to rebuild the front line. \"It took a long time but I'm really happy today to be able to play for Liverpool and all I want is to be on the pitch and be able to play,\" Barcola said.",
+      "so_what": "The club are expecting Cody Gakpo to stay after rejecting an £80m offer from Manchester City for the Dutchman over the weekend.",
+      "what_now": "Barcola, who will be 24 on Wednesday, was a long-term target for Liverpool, who have tracked his progress over a number of seasons.",
+      "region": "Europe",
+      "pattern": "negotiation",
+      "topics": [
+        "city",
+        "gakpo",
+        "liverpool",
+        "offer",
+        "123m",
+        "barcola",
+        "bumper",
+        "deal"
+      ],
+      "countries": [
+        {
+          "name": "France",
+          "flag": "🇫🇷",
+          "role": "actor"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "Sky Sports",
+          "title": "Liverpool reject bumper £80m Man City offer for Gakpo",
+          "url": "https://www.skysports.com/football/news/12040/13578880/cody-gakpo-transfer-news-man-city-consider-options-after-liverpool-reject-80m-bid-for-winger"
+        },
+        {
+          "source": "Guardian Sport",
+          "title": "Liverpool sign Barcola in £123m deal and expect Gakpo to stay after City offer £80m",
+          "url": "https://www.theguardian.com/football/2026/aug/31/liverpool-confirm-bradley-barcola-signing-psg"
+        }
+      ],
+      "source_count": 2,
+      "why_ranked": "Published at page_two with composite 7.401; key drivers were Marginal Information Gain 9.7, Evidence Strength 7.2.",
+      "scores": {
+        "enduring_significance": 3.0,
+        "breaking_urgency": 7.75,
+        "evidence_strength": 7.2,
+        "attention_deficit": 1.5,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 1.8,
+        "marginal_information_gain": 9.667
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 1.8,
+        "safety": 1.8,
+        "rights": 1.8,
+        "travel": 1.8,
+        "civic": 1.8
+      }
+    },
+    {
+      "id": "calvert-lewin-cancels-out-schade-s-opener-as-leeds-salvage-p-68f691",
+      "category": "sports",
+      "rank": 11,
+      "tier": "brief",
+      "score": 5.338,
+      "headline": "Calvert-Lewin cancels out Schade’s opener as Leeds salvage point against Brentford",
+      "dek": "These nascent moments of the new season can often provide false hope but, as both sets of players shook hands after what was indisputably the correct result at Elland Road, it…",
+      "body": "These nascent moments of the new season can often provide false hope but, as both sets of players shook hands after what was indisputably the correct result at Elland Road, it was difficult not to imagine we had just witnessed a contest between two sides that should have lofty ­ambitions for the months ahead. Leeds and Brentford were vic­torious on the opening weekend in differing circumstances. Leeds crafted a hard-earned but ultimately deserved win at Nottingham Forest, while Brentford dismantled Tottenham.",
+      "so_what": "Time will tell what the ceiling of these sides is but, as they each continued their unbeaten starts here, hopes should be high.",
+      "what_now": "",
+      "region": "Global",
+      "pattern": "crisis",
+      "topics": [
+        "brentford",
+        "calvert",
+        "leeds",
+        "lewin",
+        "point",
+        "cancels",
+        "opener",
+        "rescues"
+      ],
+      "countries": [],
+      "read_time_min": 1,
+      "date": "2026-08-30",
+      "sources": [
+        {
+          "source": "Guardian Football",
+          "title": "Calvert-Lewin cancels out Schade’s opener as Leeds salvage point against Brentford",
+          "url": "https://www.theguardian.com/football/2026/aug/30/leeds-brentford-premier-league-match-report"
+        },
+        {
+          "source": "BBC Sport",
+          "title": "Calvert-Lewin rescues point for Leeds against Brentford",
+          "url": "https://www.bbc.co.uk/sport/football/videos/cn0jx60ekk0o?at_medium=RSS&at_campaign=rss"
+        }
+      ],
+      "source_count": 2,
+      "why_ranked": "Published at brief with composite 5.338; key drivers were Evidence Strength 7.2, Breaking Urgency 6.7.",
+      "scores": {
+        "enduring_significance": 3.0,
+        "breaking_urgency": 8.5,
+        "evidence_strength": 7.2,
+        "attention_deficit": 1.5,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 2.476,
+        "marginal_information_gain": 0.0
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 1.8,
+        "safety": 4.4,
+        "rights": 1.8,
+        "travel": 4.4,
+        "civic": 1.8
+      }
+    },
+    {
+      "id": "emo-might-have-been-a-phase-to-some-but-not-for-us-09f442",
       "category": "culture",
       "rank": 1,
       "tier": "lead",
-      "score": 7.933,
+      "score": 7.515,
+      "headline": "'Emo might have been a phase to some, but not for us'",
+      "dek": "When My Chemical Romance headlined Wembley for three sold-out shows in July, for many it was a trip down memory lane to a time when they classed themselves as \"emo\" - wearing…",
+      "body": "When My Chemical Romance headlined Wembley for three sold-out shows in July, for many it was a trip down memory lane to a time when they classed themselves as \"emo\" - wearing black, having piercings and listening to alternative music. But for others, this was never just a phase of their youth. This was a way of life. Sophie Baxter, 31, from Hull, describes herself as alternative and runs a social group for \"emos, goths and moshers\" to meet like-minded people who \"understand where you're coming from\".",
+      "so_what": "The life of Sophie Lancaster, who was kicked to death by teenage boys in 2007 because she was a goth, continues to be celebrated through a foundation set up in her honour.",
+      "what_now": "",
+      "region": "Asia Pacific",
+      "pattern": "economic",
+      "topics": [
+        "might",
+        "dollar",
+        "phase"
+      ],
+      "countries": [
+        {
+          "name": "Japan",
+          "flag": "🇯🇵",
+          "role": "actor"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "BBC Entertainment & Arts",
+          "title": "'Emo might have been a phase to some, but not for us'",
+          "url": "https://www.bbc.co.uk/news/articles/cn0nd96rdpwo?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "source": "Japan Times",
+          "title": "Yen might be on its way to ¥164 to the dollar",
+          "url": "https://www.japantimes.co.jp/business/2026/08/31/tech/yen-market/"
+        }
+      ],
+      "source_count": 2,
+      "why_ranked": "Published at lead with composite 7.515; key drivers were Marginal Information Gain 10.0, Evidence Strength 7.2.",
+      "scores": {
+        "enduring_significance": 3.0,
+        "breaking_urgency": 9.25,
+        "evidence_strength": 7.2,
+        "attention_deficit": 1.5,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 2.881,
+        "marginal_information_gain": 10.0
+      },
+      "consequence": {
+        "wallet": 6.303,
+        "job": 1.8,
+        "safety": 1.8,
+        "rights": 1.8,
+        "travel": 1.8,
+        "civic": 1.8
+      }
+    },
+    {
+      "id": "dolly-parton-laid-to-rest-in-private-nashville-funeral-150391",
+      "category": "culture",
+      "rank": 2,
+      "tier": "front",
+      "score": 7.439,
+      "headline": "Dolly Parton laid to rest in private Nashville funeral",
+      "dek": "Dolly Parton was laid to rest in a private ceremony in Nashville on Friday, her family has confirmed.",
+      "body": "Dolly Parton was laid to rest in a private ceremony in Nashville on Friday, her family has confirmed. The queen of country music, who died aged 80 on 25 August \"after bravely facing a brief battle with cancer\", was interred at Woodlawn Memorial Park and Mausoleum alongside her husband of 60 years, Carl Thomas. Parton's great-niece Lainey Parton wrote on Instagram on Saturday: \"I wanted to wait until after my granny was laid to rest yesterday before I tried to put any of this into words. \"From the time I was little, my granny always had a way of making me feel like I was enough.",
+      "so_what": "Before her death, Parton had been planning the festival for January 2026 but had to take a step back due to health issues.",
+      "what_now": "On Monday, the estate of Parton announced DollyFest, a two-weekend event which will take place in Nashville and London next year.",
+      "region": "Global",
+      "pattern": "standoff",
+      "topics": [
+        "dolly",
+        "parton",
+        "nashville",
+        "laid",
+        "rest",
+        "airport",
+        "funeral",
+        "private"
+      ],
+      "countries": [],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "CBS Entertainment",
+          "title": "Nashville airport could be renamed for Dolly Parton under new proposal",
+          "url": "https://www.cbsnews.com/news/dolly-parton-nashville-airport-rename-proposal/"
+        },
+        {
+          "source": "BBC World",
+          "title": "Dolly Parton laid to rest alongside husband in Nashville",
+          "url": "https://www.bbc.co.uk/news/articles/cew95ke74l7o?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "source": "Sky News Home",
+          "title": "Dolly Parton laid to rest in private family funeral",
+          "url": "https://news.sky.com/story/dolly-parton-laid-to-rest-in-private-family-funeral-13579425"
+        },
+        {
+          "source": "Guardian Culture",
+          "title": "Dolly Parton laid to rest in private Nashville funeral",
+          "url": "https://www.theguardian.com/music/2026/aug/31/dolly-parton-funeral"
+        }
+      ],
+      "source_count": 4,
+      "why_ranked": "Published at front with composite 7.439; key drivers were Evidence Strength 8.8, Marginal Information Gain 9.3.",
+      "scores": {
+        "enduring_significance": 3.0,
+        "breaking_urgency": 8.2,
+        "evidence_strength": 8.8,
+        "attention_deficit": 0.0,
+        "manufactured_attention": 3.6,
+        "reader_consequence": 2.84,
+        "marginal_information_gain": 9.286
+      },
+      "consequence": {
+        "wallet": 1.8,
+        "job": 1.8,
+        "safety": 4.4,
+        "rights": 1.8,
+        "travel": 4.4,
+        "civic": 4.4
+      }
+    },
+    {
+      "id": "daisy-chain-fields-review-olivia-rodrigo-s-women-led-festiva-6162ec",
+      "category": "culture",
+      "rank": 3,
+      "tier": "front",
+      "score": 7.402,
       "headline": "Daisy Chain Fields review – Olivia Rodrigo’s women-led festival is electric amid extreme heat",
       "dek": "Great Park, Irvine, California Performances from Rodrigo, Stevie Nicks, Chappell Roan and Sarah McLachlan raise $20m for charity yet are marred by poor planning for heatwave…",
       "body": "Great Park, Irvine, California Performances from Rodrigo, Stevie Nicks, Chappell Roan and Sarah McLachlan raise $20m for charity yet are marred by poor planning for heatwave Shortly after singing the closing notes of her indie pop gem LES Artistes on Saturday afternoon, Santigold gazes out at the sweat-laced crowd at the Daisy Chain Fields festival - a benefit concert hosted by Olivia Rodrigo for charities focused on women and girls - in disbelief. \"I can't believe she pulled this shit off!\" Santigold cries into the microphone, beaming.",
@@ -1808,7 +3896,7 @@
         }
       ],
       "source_count": 3,
-      "why_ranked": "Published at lead with composite 7.933; key drivers were Evidence Strength 8.8, Marginal Information Gain 10.0.",
+      "why_ranked": "Published at front with composite 7.402; key drivers were Evidence Strength 8.8, Breaking Urgency 9.0.",
       "scores": {
         "enduring_significance": 3.0,
         "breaking_urgency": 9.0,
@@ -1816,7 +3904,7 @@
         "attention_deficit": 0.0,
         "manufactured_attention": 1.0,
         "reader_consequence": 1.8,
-        "marginal_information_gain": 10.0
+        "marginal_information_gain": 7.0
       },
       "consequence": {
         "wallet": 1.8,
@@ -1828,127 +3916,70 @@
       }
     },
     {
-      "id": "dolly-parton-laid-to-rest-in-private-nashville-funeral-150391",
+      "id": "sunday-puzzle-thing-from-thing-a3aa1f",
       "category": "culture",
-      "rank": 2,
-      "tier": "front",
-      "score": 7.597,
-      "headline": "Dolly Parton laid to rest in private Nashville funeral",
-      "dek": "Dolly Parton was laid to rest in a private ceremony in Nashville on Friday, her family has confirmed.",
-      "body": "Dolly Parton was laid to rest in a private ceremony in Nashville on Friday, her family has confirmed. The queen of country music, who died aged 80 on 25 August \"after bravely facing a brief battle with cancer\", was interred at Woodlawn Memorial Park and Mausoleum alongside her husband of 60 years, Carl Thomas. Parton's great-niece Lainey Parton wrote on Instagram on Saturday: \"I wanted to wait until after my granny was laid to rest yesterday before I tried to put any of this into words. \"From the time I was little, my granny always had a way of making me feel like I was enough.",
-      "so_what": "Before her death, Parton had been planning the festival for January 2026 but had to take a step back due to health issues.",
-      "what_now": "On Monday, the estate of Parton announced DollyFest, a two-weekend event which will take place in Nashville and London next year.",
-      "region": "Global",
+      "rank": 4,
+      "tier": "brief",
+      "score": 5.488,
+      "headline": "Sunday Puzzle: Thing from thing",
+      "dek": "NPR's Ayesha Rascoe plays the puzzle along with Weekend Edition Puzzlemaster Will Shortz and KNOW listener Karen Hillerman of Minneapolis, Minnesota.",
+      "body": "NPR's Ayesha Rascoe plays the puzzle along with Weekend Edition Puzzlemaster Will Shortz and KNOW listener Karen Hillerman of Minneapolis, Minnesota.",
+      "so_what": "NPR's Ayesha Rascoe plays the puzzle along with Weekend Edition Puzzlemaster Will Shortz and KNOW listener Karen Hillerman of Minneapolis, Minnesota.",
+      "what_now": "",
+      "region": "Middle East",
       "pattern": "standoff",
       "topics": [
-        "dolly",
-        "parton",
-        "nashville",
-        "laid",
-        "rest",
-        "airport",
-        "funeral",
-        "private"
-      ],
-      "countries": [],
-      "read_time_min": 1,
-      "date": "2026-08-31",
-      "sources": [
-        {
-          "source": "CBS Entertainment",
-          "title": "Nashville airport could be renamed for Dolly Parton under new proposal",
-          "url": "https://www.cbsnews.com/news/dolly-parton-nashville-airport-rename-proposal/"
-        },
-        {
-          "source": "BBC World",
-          "title": "Dolly Parton laid to rest alongside husband in Nashville",
-          "url": "https://www.bbc.co.uk/news/articles/cew95ke74l7o?at_medium=RSS&at_campaign=rss"
-        },
-        {
-          "source": "Sky News Home",
-          "title": "Dolly Parton laid to rest in private family funeral",
-          "url": "https://news.sky.com/story/dolly-parton-laid-to-rest-in-private-family-funeral-13579425"
-        },
-        {
-          "source": "Guardian Culture",
-          "title": "Dolly Parton laid to rest in private Nashville funeral",
-          "url": "https://www.theguardian.com/music/2026/aug/31/dolly-parton-funeral"
-        }
-      ],
-      "source_count": 4,
-      "why_ranked": "Published at front with composite 7.597; key drivers were Evidence Strength 8.8, Marginal Information Gain 10.0.",
-      "scores": {
-        "enduring_significance": 3.0,
-        "breaking_urgency": 8.2,
-        "evidence_strength": 8.8,
-        "attention_deficit": 0.0,
-        "manufactured_attention": 3.6,
-        "reader_consequence": 2.84,
-        "marginal_information_gain": 10.0
-      },
-      "consequence": {
-        "wallet": 1.8,
-        "job": 1.8,
-        "safety": 4.4,
-        "rights": 1.8,
-        "travel": 4.4,
-        "civic": 4.4
-      }
-    },
-    {
-      "id": "emo-might-have-been-a-phase-to-some-but-not-for-us-09f442",
-      "category": "culture",
-      "rank": 3,
-      "tier": "front",
-      "score": 7.515,
-      "headline": "'Emo might have been a phase to some, but not for us'",
-      "dek": "When My Chemical Romance headlined Wembley for three sold-out shows in July, for many it was a trip down memory lane to a time when they classed themselves as \"emo\" - wearing…",
-      "body": "When My Chemical Romance headlined Wembley for three sold-out shows in July, for many it was a trip down memory lane to a time when they classed themselves as \"emo\" - wearing black, having piercings and listening to alternative music. But for others, this was never just a phase of their youth. This was a way of life. Sophie Baxter, 31, from Hull, describes herself as alternative and runs a social group for \"emos, goths and moshers\" to meet like-minded people who \"understand where you're coming from\".",
-      "so_what": "The life of Sophie Lancaster, who was kicked to death by teenage boys in 2007 because she was a goth, continues to be celebrated through a foundation set up in her honour.",
-      "what_now": "",
-      "region": "Asia Pacific",
-      "pattern": "economic",
-      "topics": [
-        "might",
-        "dollar",
-        "phase"
+        "morning",
+        "sunday",
+        "puzzle",
+        "saturday"
       ],
       "countries": [
         {
-          "name": "Japan",
-          "flag": "🇯🇵",
+          "name": "Finland",
+          "flag": "🇫🇮",
           "role": "actor"
+        },
+        {
+          "name": "Nepal",
+          "flag": "🇳🇵",
+          "role": "secondary"
+        },
+        {
+          "name": "Iran",
+          "flag": "🇮🇷",
+          "role": "secondary"
         }
       ],
       "read_time_min": 1,
-      "date": "2026-08-31",
+      "date": "2026-08-30",
       "sources": [
         {
-          "source": "BBC Entertainment & Arts",
-          "title": "'Emo might have been a phase to some, but not for us'",
-          "url": "https://www.bbc.co.uk/news/articles/cn0nd96rdpwo?at_medium=RSS&at_campaign=rss"
+          "source": "NPR Arts",
+          "title": "Sunday Puzzle: Thing from thing",
+          "url": "https://www.npr.org/2026/08/30/g-s1-140500/sunday-puzzle-thing-from-thing"
         },
         {
-          "source": "Japan Times",
-          "title": "Yen might be on its way to ¥164 to the dollar",
-          "url": "https://www.japantimes.co.jp/business/2026/08/31/tech/yen-market/"
+          "source": "CBS World",
+          "title": "8/30: Sunday Morning",
+          "url": "https://www.cbsnews.com/video/083026-sunday-morning/"
         }
       ],
       "source_count": 2,
-      "why_ranked": "Published at front with composite 7.515; key drivers were Marginal Information Gain 10.0, Evidence Strength 7.2.",
+      "why_ranked": "Published at brief with composite 5.488; key drivers were Evidence Strength 7.2, Enduring Significance 5.2.",
       "scores": {
-        "enduring_significance": 3.0,
-        "breaking_urgency": 9.25,
+        "enduring_significance": 5.2,
+        "breaking_urgency": 7.5,
         "evidence_strength": 7.2,
-        "attention_deficit": 1.5,
+        "attention_deficit": 3.7,
         "manufactured_attention": 1.0,
-        "reader_consequence": 2.881,
-        "marginal_information_gain": 10.0
+        "reader_consequence": 3.012,
+        "marginal_information_gain": 0.0
       },
       "consequence": {
-        "wallet": 6.303,
+        "wallet": 4.4,
         "job": 1.8,
-        "safety": 1.8,
+        "safety": 5.477,
         "rights": 1.8,
         "travel": 1.8,
         "civic": 1.8
