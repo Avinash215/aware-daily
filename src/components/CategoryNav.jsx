@@ -1,5 +1,10 @@
 import { useMemo, useRef } from 'react'
 
+function chipBackground(accent) {
+  if (typeof accent !== 'string' || !accent.startsWith('--accent-')) return 'var(--surface-raised)'
+  return `var(${accent}-light, var(--surface-raised))`
+}
+
 function buildItems(categories) {
   const allCount = categories.reduce((sum, category) => sum + (category?.stories?.length ?? category?.count ?? 0), 0)
   return [
@@ -66,7 +71,7 @@ export default function CategoryNav({ categories = [], activeCategory = 'all', o
             ? {
                 color: `var(${item.accent})`,
                 borderColor: `var(${item.accent})`,
-                backgroundColor: `color-mix(in oklab, var(${item.accent}) 14%, var(--surface-raised))`,
+                backgroundColor: chipBackground(item.accent),
               }
             : {
                 color: 'var(--text-secondary)',
@@ -96,7 +101,10 @@ export default function CategoryNav({ categories = [], activeCategory = 'all', o
                   : 'cursor-pointer hover:text-text-primary hover:[background-color:var(--surface)]'
               }`}
             >
-              {item.label} <span style={{ color: 'var(--text-tertiary)' }}>({item.count})</span>
+              {item.label}{' '}
+              <span style={{ color: isActive ? `var(${item.accent})` : 'var(--text-tertiary)' }}>
+                ({item.count})
+              </span>
             </button>
           )
         })}

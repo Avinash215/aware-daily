@@ -1,6 +1,5 @@
 import { useMemo } from 'react'
 import { categories as dataCategories, stories as dataStories, storiesByCategory } from '../lib/data.js'
-import useSavedStories from '../hooks/useSavedStories.js'
 import LeadStory from './LeadStory.jsx'
 import StoryCard from './StoryCard.jsx'
 
@@ -41,12 +40,13 @@ export default function Feed(props) {
     readStoryIds = [],
     readLookup,
     onOpenStory,
+    isSaved,
+    onToggleSave,
   } = props
-  const savedStories = useSavedStories()
   const fallbackSavedLookup = useMemo(() => readLookup ?? new Set(readStoryIds), [readLookup, readStoryIds])
-  const isStorySaved = (id) => savedStories?.isSaved?.(id) ?? fallbackSavedLookup.has(id)
+  const isStorySaved = (id) => isSaved?.(id) ?? fallbackSavedLookup.has(id)
   const toggleStorySaved = (id) => {
-    if (savedStories?.toggleSave) savedStories.toggleSave(id)
+    if (onToggleSave) onToggleSave(id)
   }
   const sourceStories = allStories?.length ? allStories : stories
 

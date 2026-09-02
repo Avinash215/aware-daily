@@ -12,6 +12,8 @@ import { formatDate, formatUpdated } from './lib/format.js'
 
 const READ_STORAGE_KEY = 'aware-daily:read'
 const THEME_STORAGE_KEY = 'aware-daily:theme'
+const DAY_MS = 24 * 60 * 60 * 1000
+const APP_BOOT_TIME = Date.now()
 
 /** One container width for the masthead, the rail and every page. */
 const SHELL = 'mx-auto w-full max-w-[720px] px-4 sm:px-5 lg:max-w-[960px] lg:px-8'
@@ -53,6 +55,20 @@ function Wordmark() {
       </span>
     </span>
   )
+}
+
+function parseLocalDate(value) {
+  if (typeof value !== 'string') return null
+  const trimmed = value.trim()
+  if (!trimmed) return null
+  const dateOnly = /^(\d{4})-(\d{2})-(\d{2})$/.exec(trimmed)
+  if (dateOnly) {
+    const [, y, m, d] = dateOnly
+    const parsed = new Date(Number(y), Number(m) - 1, Number(d))
+    return Number.isNaN(parsed.getTime()) ? null : parsed
+  }
+  const parsed = new Date(trimmed)
+  return Number.isNaN(parsed.getTime()) ? null : parsed
 }
 
 /**
@@ -99,6 +115,15 @@ export default function App() {
   const updatedLabel = formatUpdated(meta.generatedAt)
   const openStory = openStoryId ? getStory(openStoryId) : null
   const openCategory = openStory ? getCategory(openStory.category) : null
+  const editionDate = parseLocalDate(meta.date)
+  const staleAgeMs = editionDate ? APP_BOOT_TIME - editionDate.getTime() : 0
+  const staleInfo =
+    editionDate && staleAgeMs > DAY_MS
+      ? {
+          ageDays: Math.max(1, Math.floor(staleAgeMs / DAY_MS)),
+          editionDateLabel: formatDate(meta.date) || meta.date,
+        }
+      : null
 
   const freshness = [
     `${meta.publishedCount} ${meta.publishedCount === 1 ? 'story' : 'stories'}`,
@@ -214,8 +239,21 @@ export default function App() {
             </p>
           ) : null}
           {freshness ? <p className="mt-0.5 mb-0 text-caption text-text-muted">{freshness}</p> : null}
+          <p className="mt-1 mb-0 text-caption text-text-muted">
+            Automated daily briefing that summarizes reporting from named news organizations
+            and links to original coverage; it does no original reporting.
+          </p>
         </div>
       </header>
+
+      {staleInfo ? (
+        <div role="status" className="border-b border-border-subtle bg-surface-card">
+          <p className={`${SHELL} py-2 text-meta font-semibold text-text-primary`}>
+            This briefing is {staleInfo.ageDays} {staleInfo.ageDays === 1 ? 'day' : 'days'} old
+            ({staleInfo.editionDateLabel}).
+          </p>
+        </div>
+      ) : null}
 
       {activeTab === 'today' ? (
         <ErrorBoundary label="The category navigation">
@@ -237,7 +275,12 @@ export default function App() {
       >
         {activeTab === 'today' ? (
           <ErrorBoundary label="The feed">
-            <div id="feed-panel">
+            <div
+              id="feed-panel"
+              role="tabpanel"
+              aria-labelledby={`tab-${activeCategory}`}
+              tabIndex={0}
+            >
               <Feed
                 categories={categories}
                 stories={visibleStories}
@@ -284,17 +327,29 @@ export default function App() {
               dateLabel={dateLabel}
               updatedLabel={updatedLabel}
               categoryCount={meta.categoryCount}
-              persona={meta.persona}
             />
           </ErrorBoundary>
         ) : null}
       </main>
 
+      <footer className="border-t border-border-subtle bg-surface">
+        <p className={`${SHELL} py-3 text-caption text-text-muted`}>
+          Automated daily briefing that summarizes reporting from named news organizations
+          and links to original coverage; it does no original reporting.
+        </p>
+      </footer>
+
       <BottomNav activeTab={activeTab} onTabChange={handleTabChange} savedCount={savedCount} />
 
       <ErrorBoundary label="The story reader">
         {openStory ? (
-          <StoryReader story={openStory} category={openCategory} onClose={handleCloseReader} />
+          <StoryReader
+            story={openStory}
+            category={openCategory}
+            onClose={handleCloseReader}
+            isSaved={isSaved}
+            onToggleSave={toggleSave}
+          />
         ) : null}
       </ErrorBoundary>
     </div>

@@ -44,7 +44,6 @@ export default function YouPage({
   dateLabel = '',
   updatedLabel = '',
   categoryCount = 0,
-  persona = '',
 }) {
   const readIds = Array.isArray(readStoryIds) ? readStoryIds : []
 
@@ -220,11 +219,12 @@ export default function YouPage({
               .filter(Boolean)
               .join(' · ')}
           </p>
-          {persona ? (
-            <p className="mt-1 text-meta text-text-muted">Edited for: {persona}</p>
-          ) : null}
           <p className="mt-1 text-meta text-text-muted">
             {savedCount} saved · progress and saved stories never leave this browser.
+          </p>
+          <p className="mt-1 text-meta text-text-muted">
+            Automated daily briefing that summarizes reporting from named news organizations and
+            links to original coverage; it does no original reporting.
           </p>
         </div>
       </section>

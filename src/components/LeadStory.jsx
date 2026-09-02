@@ -12,7 +12,10 @@ function clampLines(lines) {
 }
 
 function tintBackground(accent) {
-  return `color-mix(in oklab, var(${accent}) 14%, var(--surface-raised))`
+  if (typeof accent === 'string' && accent.startsWith('--accent-')) {
+    return `var(${accent}-light, var(--surface-raised))`
+  }
+  return 'var(--surface-raised)'
 }
 
 export default function LeadStory({ story, category, isSaved = false, onToggleSave, onOpenStory }) {
@@ -56,7 +59,7 @@ export default function LeadStory({ story, category, isSaved = false, onToggleSa
           saved={isSaved}
           onToggle={() => onToggleSave?.(story.id)}
           size="md"
-          className="absolute right-3 top-3 bg-surface-raised/90 backdrop-blur-[1px]"
+          className="absolute right-3 top-3 bg-surface-raised/90 backdrop-blur-[1px] [scroll-margin-top:5.5rem]"
         />
       </div>
 
@@ -72,7 +75,7 @@ export default function LeadStory({ story, category, isSaved = false, onToggleSa
           <button
             type="button"
             onClick={(event) => onOpenStory?.(story.id, event.currentTarget)}
-            className="block w-full cursor-pointer border-0 bg-transparent p-0 text-left leading-[1.15]"
+            className="block w-full cursor-pointer border-0 bg-transparent p-0 text-left leading-[1.15] [scroll-margin-top:5.5rem]"
             style={clampLines(3)}
           >
             {story.headline || 'Untitled story'}
@@ -96,7 +99,7 @@ export default function LeadStory({ story, category, isSaved = false, onToggleSa
 
         <div className="mt-1 flex items-center gap-x-3 text-[11px] leading-[1]" style={{ color: 'var(--text-tertiary)' }}>
           {readLabel ? <span>{readLabel}</span> : null}
-          <span>{sourceCount} {sourceCount === 1 ? 'source' : 'sources'}</span>
+          {sourceCount > 0 ? <span>{sourceCount} {sourceCount === 1 ? 'source' : 'sources'}</span> : null}
         </div>
       </div>
     </article>

@@ -11,7 +11,10 @@ function clampLines(lines) {
 }
 
 function tintBackground(accent) {
-  return `color-mix(in oklab, var(${accent}) 14%, var(--surface-raised))`
+  if (typeof accent === 'string' && accent.startsWith('--accent-')) {
+    return `var(${accent}-light, var(--surface-raised))`
+  }
+  return 'var(--surface-raised)'
 }
 
 function FlagRow({ countries = [] }) {
@@ -38,7 +41,10 @@ export default function StoryCard({ story, category, isSaved = false, onToggleSa
   const countries = Array.isArray(story.countries) ? story.countries : []
   const sourceCount = story.source_count || (Array.isArray(story.sources) ? story.sources.length : 0)
   const timing = readTime(story.read_time_min)
-  const metaParts = [timing, `${sourceCount} ${sourceCount === 1 ? 'source' : 'sources'}`].filter(Boolean)
+  const metaParts = [
+    timing,
+    sourceCount > 0 ? `${sourceCount} ${sourceCount === 1 ? 'source' : 'sources'}` : '',
+  ].filter(Boolean)
 
   return (
     <article className="border-b py-3" style={{ borderColor: 'var(--border)' }} aria-labelledby={`headline-${story.id}`}>
@@ -66,7 +72,7 @@ export default function StoryCard({ story, category, isSaved = false, onToggleSa
             <button
               type="button"
               onClick={(event) => onOpenStory?.(story.id, event.currentTarget)}
-              className="block w-full cursor-pointer border-0 bg-transparent p-0 text-left text-[15px] leading-[1.3]"
+              className="block w-full cursor-pointer border-0 bg-transparent p-0 text-left text-[15px] leading-[1.3] [scroll-margin-top:5.5rem]"
               style={clampLines(3)}
             >
               {story.headline || 'Untitled story'}
@@ -98,7 +104,7 @@ export default function StoryCard({ story, category, isSaved = false, onToggleSa
           saved={isSaved}
           onToggle={() => onToggleSave?.(story.id)}
           size="sm"
-          className="mt-0.5"
+          className="mt-0.5 [scroll-margin-top:5.5rem]"
         />
       </div>
     </article>

@@ -3,7 +3,6 @@ import ConsequenceMeter from './ConsequenceMeter.jsx'
 import SaveButton from './SaveButton'
 import SourceList from './SourceList.jsx'
 import StakesCallout from './StakesCallout.jsx'
-import useSavedStories from '../hooks/useSavedStories'
 import { formatDate, readTime } from '../lib/format.js'
 
 /**
@@ -84,18 +83,23 @@ function trimmedString(value) {
   return typeof value === 'string' ? value.trim() : ''
 }
 
-export default function StoryReader({ story, category, onClose }) {
+export default function StoryReader({ story, category, onClose, isSaved, onToggleSave }) {
   if (!story || typeof story !== 'object' || Array.isArray(story)) return null
-  return <Reader story={story} category={category} onClose={onClose} />
+  return (
+    <Reader
+      story={story}
+      category={category}
+      onClose={onClose}
+      isSaved={isSaved}
+      onToggleSave={onToggleSave}
+    />
+  )
 }
 
-function Reader({ story, category, onClose }) {
+function Reader({ story, category, onClose, isSaved, onToggleSave }) {
   const dialogRef = useRef(null)
-  const closeRef = useRef(null)
   const [visible, setVisible] = useState(false)
   const [imageFailed, setImageFailed] = useState(false)
-
-  const savedStories = useSavedStories()
 
   const handleClose = useCallback(() => {
     if (typeof onClose === 'function') onClose()
@@ -104,39 +108,62 @@ function Reader({ story, category, onClose }) {
   // Focus moves to the close control on open and returns to the opener on close.
   useEffect(() => {
     const previous = document.activeElement
-    closeRef.current?.focus()
+    dialogRef.current?.focus()
 
     return () => {
       if (previous instanceof HTMLElement && document.contains(previous)) previous.focus()
     }
   }, [])
 
-  // The briefing behind the overlay must not scroll with it. The app shell
-  // locks `body`, so lock the document element instead: fighting over the same
-  // inline style leaves whichever cleanup runs last holding a locked page.
-  useEffect(() => {
-    const root = document.documentElement
-    const previous = root.style.overflow
-    root.style.overflow = 'hidden'
-
-    return () => {
-      root.style.overflow = previous
-    }
-  }, [])
-
   // Escape closes; Tab is trapped inside the dialog.
   useEffect(() => {
     function onKeyDown(event) {
+      const node = dialogRef.current
+      if (!node) return
+
       if (event.key === 'Escape') {
         event.preventDefault()
         handleClose()
         return
       }
 
-      if (event.key !== 'Tab') return
+      if (event.key === 'PageDown') {
+        event.preventDefault()
+        node.scrollBy({ top: Math.max(120, Math.floor(node.clientHeight * 0.9)), behavior: 'auto' })
+        return
+      }
 
-      const node = dialogRef.current
-      if (!node) return
+      if (event.key === 'PageUp') {
+        event.preventDefault()
+        node.scrollBy({ top: -Math.max(120, Math.floor(node.clientHeight * 0.9)), behavior: 'auto' })
+        return
+      }
+
+      if (event.key === 'ArrowDown') {
+        event.preventDefault()
+        node.scrollBy({ top: 48, behavior: 'auto' })
+        return
+      }
+
+      if (event.key === 'ArrowUp') {
+        event.preventDefault()
+        node.scrollBy({ top: -48, behavior: 'auto' })
+        return
+      }
+
+      if (event.key === 'Home') {
+        event.preventDefault()
+        node.scrollTo({ top: 0, behavior: 'auto' })
+        return
+      }
+
+      if (event.key === 'End') {
+        event.preventDefault()
+        node.scrollTo({ top: node.scrollHeight, behavior: 'auto' })
+        return
+      }
+
+      if (event.key !== 'Tab') return
 
       const items = Array.from(node.querySelectorAll(FOCUSABLE)).filter(
         (element) => element.getClientRects().length > 0,
@@ -180,10 +207,10 @@ function Reader({ story, category, onClose }) {
     : 'var(--surface-sunken)'
 
   const storyId = trimmedString(story.id)
-  const isStorySaved = Boolean(storyId) && Boolean(savedStories?.isSaved?.(storyId))
+  const isStorySaved = Boolean(storyId) && Boolean(isSaved?.(storyId))
   const handleToggleSave = useCallback(() => {
-    if (storyId) savedStories?.toggleSave?.(storyId)
-  }, [savedStories, storyId])
+    if (storyId) onToggleSave?.(storyId)
+  }, [onToggleSave, storyId])
 
   const categoryLabel = sentenceCase(category?.label || story.category)
   const rank = typeof story.rank === 'number' && Number.isFinite(story.rank) ? story.rank : null
@@ -225,6 +252,7 @@ function Reader({ story, category, onClose }) {
       role="dialog"
       aria-modal="true"
       aria-labelledby="story-reader-headline"
+      tabIndex={-1}
       style={{ '--story-accent': accent, '--story-accent-light': accentLight }}
       className={`fixed inset-0 z-50 overflow-y-auto overscroll-contain bg-surface transition-opacity duration-150 ease-out motion-reduce:transition-none ${
         visible ? 'opacity-100' : 'opacity-0'
@@ -244,7 +272,6 @@ function Reader({ story, category, onClose }) {
         <div className="mx-auto flex w-full max-w-[760px] items-center justify-between gap-2 px-4 py-1 sm:px-6 lg:px-8">
           <button
             type="button"
-            ref={closeRef}
             onClick={handleClose}
             className="-ml-2 inline-flex min-h-[44px] cursor-pointer items-center gap-2 rounded-lg border-0 bg-transparent px-2 text-[0.875rem] leading-[1.125rem] font-semibold text-text-primary"
           >
@@ -376,9 +403,11 @@ function Reader({ story, category, onClose }) {
             <StakesCallout variant="what-now">{story.what_now}</StakesCallout>
           </div>
 
-          <div className="mt-8">
-            <SourceList sources={story.sources} />
-          </div>
+          {sources.length > 0 ? (
+            <div className="mt-8">
+              <SourceList sources={sources} />
+            </div>
+          ) : null}
 
           {topics.length > 0 ? (
             <p className="mt-6 mb-0 max-w-[66ch] text-[0.75rem] leading-[1.25rem] tracking-[0.01em] text-text-secondary">
