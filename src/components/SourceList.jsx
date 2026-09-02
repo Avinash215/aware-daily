@@ -16,6 +16,9 @@ import { hostFromUrl } from '../lib/format.js'
  * "(opens in a new tab)" so the briefing is not lost behind the reader.
  */
 
+/** Matches the reader headline: Newsreader, with the shell token behind it. */
+const SERIF = "'Newsreader', var(--font-display, Georgia, serif)"
+
 function normaliseSource(raw) {
   const entry = typeof raw === 'string' ? { url: raw } : raw
   if (!entry || typeof entry !== 'object' || Array.isArray(entry)) return null
@@ -59,7 +62,8 @@ export default function SourceList({ sources }) {
     <section aria-labelledby="story-sources-heading">
       <h2
         id="story-sources-heading"
-        className="m-0 font-display text-[1.375rem] leading-[1.75rem] font-bold tracking-[-0.01em] text-text-primary"
+        className="m-0 text-[1.25rem] leading-[1.5rem] font-semibold tracking-[-0.01em] text-text-primary"
+        style={{ fontFamily: SERIF }}
       >
         Sources ({list.length})
       </h2>

@@ -1,17 +1,57 @@
 @import "tailwindcss";
 
 /* ==========================================================================
-   Aware Daily — design tokens
-   This file is the single source of truth for colour and type.
-   Do not hardcode colours anywhere else in the app.
+   Aware Daily — design tokens (v2)
 
-   The palette and type scale below were chosen without the research brief
-   (docs/news-ux-research.md did not exist when this file was authored).
-   Every text/surface pair was measured and clears WCAG AA (>= 4.5:1);
-   the lowest ratio in either theme is 5.08:1.
+   THE shared contract. Implements docs/redesign-spec.md § "Design tokens".
+   Every other unit consumes these BY NAME and must not hardcode a colour
+   or invent a token.
+
+     --surface            page background
+     --surface-card       raised card background
+     --surface-muted      chip / subtle fill
+     --border             standard divider
+     --border-subtle      hairline divider between list rows
+     --text-primary       headlines and body
+     --text-secondary     deks
+     --text-muted         meta, timestamps, chips
+     --accent-{key}       eight category accents
+     --accent-{key}-light tinted chip background for the same eight
+     --shadow-card        the single card elevation
+
+   Consume from JSX either as a Tailwind utility (`bg-surface-card`,
+   `text-text-secondary`, `border-border-subtle`, `text-accent-climate`) or as
+   a raw var — `style={{ background: 'var(--accent-climate-light)' }}`,
+   `className="shadow-[var(--shadow-card)]"`.
+
+   ── Measured contrast (WCAG 2.1, sRGB). Body text holds 4.5:1 everywhere. ──
+
+   LIGHT
+     text-primary   on surface 16.70:1 · card 17.57:1 · surface-muted 15.31:1
+     text-secondary on surface  7.65:1 · card  8.05:1 · surface-muted  7.02:1
+     text-muted     on surface  5.52:1 · card  5.81:1 · surface-muted  5.06:1
+     accent on surface / card / its own -light tint:
+       geopolitics 5.72 / 6.02 / 5.33      business   5.84 / 6.15 / 5.53
+       technology  5.98 / 6.29 / 5.55      science    5.09 / 5.36 / 4.96
+       climate     5.15 / 5.42 / 4.98      health     5.74 / 6.04 / 5.35
+       sports      6.37 / 6.70 / 5.87      culture    6.64 / 6.98 / 6.10
+     text-primary on any -light tint: 15.34:1 - 16.26:1
+
+   DARK
+     text-primary   on surface 16.75:1 · card 15.53:1 · surface-muted 14.00:1
+     text-secondary on surface 10.06:1 · card  9.33:1 · surface-muted  8.41:1
+     text-muted     on surface  6.10:1 · card  5.66:1 · surface-muted  5.10:1
+     accent on surface / card / its own -light tint:
+       geopolitics 7.65 / 7.09 / 6.30     business   9.32 / 8.64 / 7.56
+       technology  8.08 / 7.50 / 6.85     science    9.31 / 8.63 / 7.45
+       climate     9.72 / 9.02 / 7.92     health     7.46 / 6.92 / 6.37
+       sports      8.54 / 7.92 / 7.17     culture    8.11 / 7.52 / 6.93
+     text-primary on any -light tint: 13.41:1 - 14.32:1
+
+   Lowest ratio anywhere: 4.96:1 (light `--accent-science` on
+   `--accent-science-light`). Dividers (--border, --border-subtle) are
+   decorative hairlines and are exempt from the text threshold.
    ========================================================================== */
-
-/* provisional - reconcile with docs/news-ux-research.md */
 
 /* --------------------------------------------------------------------------
    Light theme (default)
@@ -20,25 +60,44 @@
   color-scheme: light;
 
   /* Surfaces */
-  --surface: #fbfaf8;
-  --surface-raised: #ffffff;
-  --surface-sunken: #f1ede7;
-  --border: #ddd6cb;
+  --surface: #faf9f7;
+  --surface-card: #ffffff;
+  --surface-muted: #f1efec;
+  --border: #d6d3d1;
+  --border-subtle: #e7e5e4;
 
   /* Text */
-  --text-primary: #14110e;
-  --text-secondary: #4a423a;
-  --text-tertiary: #6b6157;
+  --text-primary: #1a1917;
+  --text-secondary: #52504b;
+  --text-muted: #68655f;
 
   /* Category accents */
-  --accent-geopolitics: #a8321e;
-  --accent-business: #1f6f4a;
-  --accent-technology: #4a3aa8;
-  --accent-science: #0f6e78;
-  --accent-climate: #8a5a00;
-  --accent-health: #a32b57;
-  --accent-sports: #1f5fa9;
-  --accent-culture: #7a3b8c;
+  --accent-geopolitics: #b03a2e;
+  --accent-business: #15703c;
+  --accent-technology: #4f46e5;
+  --accent-science: #0e7490;
+  --accent-climate: #9a5b06;
+  --accent-health: #be185d;
+  --accent-sports: #1d4ed8;
+  --accent-culture: #7e22ce;
+
+  /* Category accent tints — chip / lead-image fallback backgrounds */
+  --accent-geopolitics-light: #fdeeeb;
+  --accent-business-light: #e9f6ee;
+  --accent-technology-light: #eef0fe;
+  --accent-science-light: #edf8fc;
+  --accent-climate-light: #fdf4e8;
+  --accent-health-light: #fdedf4;
+  --accent-sports-light: #eaf0fe;
+  --accent-culture-light: #f6ecfd;
+
+  /* Elevation — the app has exactly one card shadow */
+  --shadow-card: 0 1px 3px rgb(0 0 0 / 0.08), 0 1px 2px rgb(0 0 0 / 0.04);
+
+  /* Compatibility aliases (v1 names, still referenced by some components) */
+  --surface-raised: var(--surface-card);
+  --surface-sunken: var(--surface-muted);
+  --text-tertiary: var(--text-muted);
 }
 
 /* --------------------------------------------------------------------------
@@ -48,23 +107,36 @@
   :root {
     color-scheme: dark;
 
-    --surface: #131110;
-    --surface-raised: #1d1a17;
-    --surface-sunken: #0b0a09;
-    --border: #35302a;
+    --surface: #131211;
+    --surface-card: #1c1a18;
+    --surface-muted: #26231f;
+    --border: #3a3531;
+    --border-subtle: #2a2622;
 
-    --text-primary: #f4f0e9;
-    --text-secondary: #c6bdb1;
-    --text-tertiary: #9b9185;
+    --text-primary: #f5f2ec;
+    --text-secondary: #c5bdb2;
+    --text-muted: #9a9289;
 
-    --accent-geopolitics: #f0876b;
-    --accent-business: #5bcb98;
-    --accent-technology: #a79bff;
-    --accent-science: #4cc6d3;
-    --accent-climate: #e8b23c;
-    --accent-health: #f4789f;
-    --accent-sports: #79b0f5;
-    --accent-culture: #d28de6;
+    --accent-geopolitics: #f08a72;
+    --accent-business: #5fcb94;
+    --accent-technology: #a5a0ff;
+    --accent-science: #54c6d8;
+    --accent-climate: #e6b34a;
+    --accent-health: #f77ca4;
+    --accent-sports: #82b1f7;
+    --accent-culture: #d492ea;
+
+    /* Dark tints stay dark: a chip fill, not a light wash */
+    --accent-geopolitics-light: #33201b;
+    --accent-business-light: #152a20;
+    --accent-technology-light: #221f3a;
+    --accent-science-light: #132a30;
+    --accent-climate-light: #2e2413;
+    --accent-health-light: #331a25;
+    --accent-sports-light: #16233a;
+    --accent-culture-light: #2a1c33;
+
+    --shadow-card: 0 1px 3px rgb(0 0 0 / 0.5), 0 1px 2px rgb(0 0 0 / 0.35);
   }
 }
 
@@ -75,84 +147,128 @@
 [data-theme="dark"] {
   color-scheme: dark;
 
-  --surface: #131110;
-  --surface-raised: #1d1a17;
-  --surface-sunken: #0b0a09;
-  --border: #35302a;
+  --surface: #131211;
+  --surface-card: #1c1a18;
+  --surface-muted: #26231f;
+  --border: #3a3531;
+  --border-subtle: #2a2622;
 
-  --text-primary: #f4f0e9;
-  --text-secondary: #c6bdb1;
-  --text-tertiary: #9b9185;
+  --text-primary: #f5f2ec;
+  --text-secondary: #c5bdb2;
+  --text-muted: #9a9289;
 
-  --accent-geopolitics: #f0876b;
-  --accent-business: #5bcb98;
-  --accent-technology: #a79bff;
-  --accent-science: #4cc6d3;
-  --accent-climate: #e8b23c;
-  --accent-health: #f4789f;
-  --accent-sports: #79b0f5;
-  --accent-culture: #d28de6;
+  --accent-geopolitics: #f08a72;
+  --accent-business: #5fcb94;
+  --accent-technology: #a5a0ff;
+  --accent-science: #54c6d8;
+  --accent-climate: #e6b34a;
+  --accent-health: #f77ca4;
+  --accent-sports: #82b1f7;
+  --accent-culture: #d492ea;
+
+  --accent-geopolitics-light: #33201b;
+  --accent-business-light: #152a20;
+  --accent-technology-light: #221f3a;
+  --accent-science-light: #132a30;
+  --accent-climate-light: #2e2413;
+  --accent-health-light: #331a25;
+  --accent-sports-light: #16233a;
+  --accent-culture-light: #2a1c33;
+
+  --shadow-card: 0 1px 3px rgb(0 0 0 / 0.5), 0 1px 2px rgb(0 0 0 / 0.35);
 }
 
 [data-theme="light"] {
   color-scheme: light;
 
-  --surface: #fbfaf8;
-  --surface-raised: #ffffff;
-  --surface-sunken: #f1ede7;
-  --border: #ddd6cb;
+  --surface: #faf9f7;
+  --surface-card: #ffffff;
+  --surface-muted: #f1efec;
+  --border: #d6d3d1;
+  --border-subtle: #e7e5e4;
 
-  --text-primary: #14110e;
-  --text-secondary: #4a423a;
-  --text-tertiary: #6b6157;
+  --text-primary: #1a1917;
+  --text-secondary: #52504b;
+  --text-muted: #68655f;
 
-  --accent-geopolitics: #a8321e;
-  --accent-business: #1f6f4a;
-  --accent-technology: #4a3aa8;
-  --accent-science: #0f6e78;
-  --accent-climate: #8a5a00;
-  --accent-health: #a32b57;
-  --accent-sports: #1f5fa9;
-  --accent-culture: #7a3b8c;
+  --accent-geopolitics: #b03a2e;
+  --accent-business: #15703c;
+  --accent-technology: #4f46e5;
+  --accent-science: #0e7490;
+  --accent-climate: #9a5b06;
+  --accent-health: #be185d;
+  --accent-sports: #1d4ed8;
+  --accent-culture: #7e22ce;
+
+  --accent-geopolitics-light: #fdeeeb;
+  --accent-business-light: #e9f6ee;
+  --accent-technology-light: #eef0fe;
+  --accent-science-light: #edf8fc;
+  --accent-climate-light: #fdf4e8;
+  --accent-health-light: #fdedf4;
+  --accent-sports-light: #eaf0fe;
+  --accent-culture-light: #f6ecfd;
+
+  --shadow-card: 0 1px 3px rgb(0 0 0 / 0.08), 0 1px 2px rgb(0 0 0 / 0.04);
 }
 
 /* --------------------------------------------------------------------------
    Tailwind theme bridge
    `inline` keeps the var() reference in the generated utility, so utilities
-   such as `bg-surface` or `text-accent-climate` re-resolve when the theme
-   flips. Utilities available: bg-/text-/border- for every token below.
+   such as `bg-surface-card` or `text-accent-climate` re-resolve when the
+   theme flips.
    -------------------------------------------------------------------------- */
 @theme inline {
   /* Typography families */
-  --font-display: "Source Serif 4", "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --font-display: "Newsreader", Georgia, "Times New Roman", serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
 
-  /* Type scale — provisional - reconcile with docs/news-ux-research.md */
-  --text-caption: 0.75rem;
-  --text-caption--line-height: 1.1rem;
-  --text-meta: 0.8125rem;
-  --text-meta--line-height: 1.25rem;
-  --text-body: 1.0625rem;
-  --text-body--line-height: 1.65rem;
-  --text-lede: 1.1875rem;
-  --text-lede--line-height: 1.75rem;
-  --text-headline: 1.375rem;
-  --text-headline--line-height: 1.75rem;
-  --text-lead-headline: 1.875rem;
-  --text-lead-headline--line-height: 2.25rem;
-  --text-masthead: 2.5rem;
-  --text-masthead--line-height: 2.75rem;
+  /* Type scale — measured from the reference app, spec § "Type scale".
+     Names map 1:1 to the roles in that table. Desktop steps use the `-lg`
+     variants behind a responsive prefix, e.g. `text-lead lg:text-lead-lg`. */
+  --text-caption: 0.6875rem; /* 11px — section header, chip */
+  --text-caption--line-height: 0.875rem;
+  --text-meta: 0.75rem; /* 12px — meta, timestamps */
+  --text-meta--line-height: 1rem;
+  --text-dek: 0.8125rem; /* 13px / 1.5 — dek, clamp 2 */
+  --text-dek--line-height: 1.21875rem;
+  --text-dek-lg: 0.875rem; /* 14px desktop */
+  --text-dek-lg--line-height: 1.3125rem;
+  --text-sowhat: 0.8125rem; /* 13px / 1.45 — so_what */
+  --text-sowhat--line-height: 1.1875rem;
+  --text-sowhat-lg: 0.875rem;
+  --text-sowhat-lg--line-height: 1.28125rem;
+  --text-row: 0.9375rem; /* 15px / 1.3 — row headline */
+  --text-row--line-height: 1.21875rem;
+  --text-row-lg: 1rem; /* 16px desktop */
+  --text-row-lg--line-height: 1.35rem;
+  --text-lead: 1.25rem; /* 20px / 1.15 — lead headline */
+  --text-lead--line-height: 1.4375rem;
+  --text-lead-lg: 1.625rem; /* 26px desktop */
+  --text-lead-lg--line-height: 1.95rem;
+  --text-body: 1rem; /* 16px — long-form reader body */
+  --text-body--line-height: 1.55rem;
+  --text-lede: 1.0625rem;
+  --text-lede--line-height: 1.6rem;
+  --text-headline: 1.125rem; /* reader headline step */
+  --text-headline--line-height: 1.4rem;
+  --text-masthead: 1.375rem; /* 22px — compact wordmark */
+  --text-masthead--line-height: 1.75rem;
+  /* v1 alias, retuned to the spec's lead headline */
+  --text-lead-headline: 1.25rem;
+  --text-lead-headline--line-height: 1.4375rem;
 
   /* Surfaces */
   --color-surface: var(--surface);
-  --color-surface-raised: var(--surface-raised);
-  --color-surface-sunken: var(--surface-sunken);
+  --color-surface-card: var(--surface-card);
+  --color-surface-muted: var(--surface-muted);
   --color-border: var(--border);
+  --color-border-subtle: var(--border-subtle);
 
   /* Text */
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
-  --color-text-tertiary: var(--text-tertiary);
+  --color-text-muted: var(--text-muted);
 
   /* Category accents */
   --color-accent-geopolitics: var(--accent-geopolitics);
@@ -163,6 +279,21 @@
   --color-accent-health: var(--accent-health);
   --color-accent-sports: var(--accent-sports);
   --color-accent-culture: var(--accent-culture);
+
+  /* Category accent tints */
+  --color-accent-geopolitics-light: var(--accent-geopolitics-light);
+  --color-accent-business-light: var(--accent-business-light);
+  --color-accent-technology-light: var(--accent-technology-light);
+  --color-accent-science-light: var(--accent-science-light);
+  --color-accent-climate-light: var(--accent-climate-light);
+  --color-accent-health-light: var(--accent-health-light);
+  --color-accent-sports-light: var(--accent-sports-light);
+  --color-accent-culture-light: var(--accent-culture-light);
+
+  /* Compatibility aliases (v1 utility names) */
+  --color-surface-raised: var(--surface-card);
+  --color-surface-sunken: var(--surface-muted);
+  --color-text-tertiary: var(--text-muted);
 }
 
 /* --------------------------------------------------------------------------
@@ -195,5 +326,30 @@
   :focus-visible {
     outline: 2px solid var(--text-primary);
     outline-offset: 2px;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+/* Horizontal rails (category nav) scroll without a visible scrollbar. */
+@utility scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

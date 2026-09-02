@@ -1,98 +1,106 @@
-import { readTime } from '../lib/format.js'
+import { clamp, readTime } from '../lib/format.js'
+import SaveButton from './SaveButton.jsx'
 
-function countryText(countries = []) {
-  return countries
-    .map((country) => country?.name)
-    .filter(Boolean)
-    .join(', ')
+function clampLines(lines) {
+  return {
+    display: '-webkit-box',
+    WebkitLineClamp: lines,
+    WebkitBoxOrient: 'vertical',
+    overflow: 'hidden',
+  }
 }
 
-function headlineClass(tier) {
-  if (tier === 'front') return 'text-[24px] leading-[29px] sm:text-[26px] sm:leading-[31px]'
-  return 'text-[21px] leading-[26px] sm:text-[22px] sm:leading-[27px]'
+function tintBackground(accent) {
+  return `color-mix(in oklab, var(${accent}) 14%, var(--surface-raised))`
 }
 
-export default function StoryCard({ story, category, isRead, onToggleRead, onOpenStory }) {
+function FlagRow({ countries = [] }) {
+  const shortList = countries.slice(0, 3)
+  if (!shortList.length) return null
+
+  return (
+    <ul className="m-0 flex list-none items-center gap-1 p-0" aria-label="Countries covered">
+      {shortList.map((country, index) => (
+        <li key={`${country.name || 'country'}-${index}`}>
+          <span role="img" aria-label={country?.name || 'Country'} className="text-[14px] leading-4">
+            {country?.flag || '🌐'}
+          </span>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+export default function StoryCard({ story, category, isSaved = false, onToggleSave, onOpenStory }) {
   if (!story) return null
 
   const accent = category?.accent || '--text-primary'
   const countries = Array.isArray(story.countries) ? story.countries : []
-  const countryNames = countryText(countries)
   const sourceCount = story.source_count || (Array.isArray(story.sources) ? story.sources.length : 0)
   const timing = readTime(story.read_time_min)
-  const hasWhatNow = Boolean(story.what_now?.trim())
+  const metaParts = [timing, `${sourceCount} ${sourceCount === 1 ? 'source' : 'sources'}`].filter(Boolean)
 
   return (
-    <article
-      className="border-b border-border py-6"
-      style={story.tier === 'front' ? { borderTop: `2px solid var(${accent})` } : undefined}
-      aria-labelledby={`headline-${story.id}`}
-    >
-      <p
-        className="m-0 text-[12px] leading-4 font-bold tracking-[0.08em] uppercase"
-        style={{ color: `var(${accent})` }}
-      >
-        {category?.label || story.category || 'Story'}
-      </p>
-      <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[13px] leading-[18px] text-text-tertiary">
-        {story.region ? <span>Region: {story.region}</span> : null}
-        {timing ? <span>{timing}</span> : null}
-        <span>{sourceCount} sources</span>
-      </div>
-      {countries.length ? (
-        <p className="mt-2 mb-0 text-[13px] leading-[18px] text-text-secondary">
-          <span className="sr-only">Countries: {countryNames}.</span>
-          <span aria-hidden="true">
-            {countries.map((country) => `${country.flag || ''} ${country.name || ''}`.trim()).join(' · ')}
-          </span>
-        </p>
-      ) : null}
-
-      <h3 className={`mt-3 font-display font-bold tracking-[-0.015em] ${headlineClass(story.tier)}`}>
-        <button
-          id={`headline-${story.id}`}
-          type="button"
-          onClick={(event) => onOpenStory?.(story.id, event.currentTarget)}
-          className="cursor-pointer text-left no-underline hover:underline focus-visible:underline decoration-border underline-offset-4"
-        >
-          {story.headline || 'Untitled story'}
-        </button>
-      </h3>
-
-      {story.dek ? <p className="mt-3 mb-0 max-w-[66ch] text-[19px] leading-7 text-text-secondary">{story.dek}</p> : null}
-
-      {story.so_what ? (
-        <div className="mt-5 border-l-4 pl-4" style={{ borderColor: `var(${accent})` }}>
-          <p
-            className="m-0 text-[12px] leading-4 font-bold tracking-[0.08em] uppercase"
-            style={{ color: `var(${accent})` }}
+    <article className="border-b py-3" style={{ borderColor: 'var(--border)' }} aria-labelledby={`headline-${story.id}`}>
+      <div className="flex items-start gap-3">
+        <div className="min-w-0 flex-1">
+          <div className="mb-0.5 flex items-center gap-2">
+          <span
+            className="rounded px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.08em]"
+            style={{ color: `var(${accent})`, backgroundColor: tintBackground(accent) }}
           >
-            So what
+            {category?.label || story.category || 'Story'}
+          </span>
+          {story.region ? (
+            <span className="truncate text-[11px]" style={{ color: 'var(--text-tertiary)' }}>
+              {story.region}
+            </span>
+          ) : null}
+          </div>
+
+          <h3
+          id={`headline-${story.id}`}
+          className="m-0 text-[15px] font-semibold"
+          style={{ color: 'var(--text-primary)', fontFamily: "'Newsreader', Georgia, serif" }}
+          >
+            <button
+              type="button"
+              onClick={(event) => onOpenStory?.(story.id, event.currentTarget)}
+              className="block w-full cursor-pointer border-0 bg-transparent p-0 text-left text-[15px] leading-[1.3]"
+              style={clampLines(3)}
+            >
+              {story.headline || 'Untitled story'}
+            </button>
+          </h3>
+
+          {story.dek ? (
+          <p className="mt-0.5 mb-0 text-[13px] leading-[1.2]" style={{ ...clampLines(2), color: 'var(--text-secondary)' }}>
+            {clamp(story.dek, 180)}
           </p>
-          <p className="mt-2 mb-0 text-[17px] leading-[25px] font-semibold text-text-primary">
+          ) : null}
+
+          {story.so_what ? (
+          <p className="mt-0.5 mb-0 text-[13px] leading-[1.15]" style={{ ...clampLines(1), color: 'var(--text-secondary)' }}>
+            <span className="mr-1 text-[10px] font-semibold uppercase tracking-[0.08em]" style={{ color: `var(${accent})` }}>
+              SO WHAT
+            </span>
             {story.so_what}
           </p>
-        </div>
-      ) : null}
+          ) : null}
 
-      {hasWhatNow ? (
-        <div className="mt-4 border-t border-dashed border-border pt-4">
-          <p className="m-0 text-[12px] leading-4 font-bold tracking-[0.08em] text-text-tertiary uppercase">
-            What now →
-          </p>
-          <p className="mt-2 mb-0 text-[17px] leading-[25px] font-medium text-text-primary">
-            {story.what_now}
-          </p>
+          <div className="mt-0.5 flex items-center gap-2 text-[11px] leading-[1]" style={{ color: 'var(--text-tertiary)' }}>
+          {metaParts.join(' · ')}
+          <FlagRow countries={countries} />
+          </div>
         </div>
-      ) : null}
 
-      <button
-        type="button"
-        onClick={() => onToggleRead?.(story.id)}
-        className="mt-5 min-h-11 cursor-pointer rounded-lg border border-border bg-surface px-4 py-2 text-[15px] leading-5 font-semibold text-text-primary transition-colors hover:bg-surface-sunken motion-reduce:transition-none"
-      >
-        {isRead ? 'Marked read · Undo' : 'Mark read'}
-      </button>
+        <SaveButton
+          saved={isSaved}
+          onToggle={() => onToggleSave?.(story.id)}
+          size="sm"
+          className="mt-0.5"
+        />
+      </div>
     </article>
   )
 }

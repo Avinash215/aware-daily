@@ -1,16 +1,19 @@
 import { useMemo, useRef } from 'react'
 
 function buildItems(categories) {
-  const allCount = categories.reduce((sum, category) => sum + (category.stories?.length || 0), 0)
+  const allCount = categories.reduce((sum, category) => sum + (category?.stories?.length ?? category?.count ?? 0), 0)
   return [
     { key: 'all', label: 'All', count: allCount, accent: '--text-primary', disabled: allCount === 0 },
-    ...categories.map((category) => ({
-      key: category.key,
-      label: category.label,
-      count: category.stories?.length ?? category.count ?? 0,
-      accent: category.accent || '--text-primary',
-      disabled: !((category.stories?.length ?? category.count ?? 0) > 0),
-    })),
+    ...categories.map((category) => {
+      const count = category?.stories?.length ?? category?.count ?? 0
+      return {
+        key: category.key,
+        label: category.label,
+        count,
+        accent: category.accent || '--text-primary',
+        disabled: count === 0,
+      }
+    }),
   ]
 }
 
@@ -34,25 +37,43 @@ export default function CategoryNav({ categories = [], activeCategory = 'all', o
     if (event.key === 'ArrowRight') {
       event.preventDefault()
       moveFocus(index, 1)
-    } else if (event.key === 'ArrowLeft') {
+      return
+    }
+    if (event.key === 'ArrowLeft') {
       event.preventDefault()
       moveFocus(index, -1)
-    } else if (event.key === 'Home') {
+      return
+    }
+    if (event.key === 'Home') {
       event.preventDefault()
-      const first = items.findIndex((item) => !item.disabled)
-      if (first >= 0) tabRefs.current[first]?.focus()
-    } else if (event.key === 'End') {
+      const firstEnabled = items.findIndex((item) => !item.disabled)
+      if (firstEnabled >= 0) tabRefs.current[firstEnabled]?.focus()
+      return
+    }
+    if (event.key === 'End') {
       event.preventDefault()
-      const last = [...items].reverse().findIndex((item) => !item.disabled)
-      if (last >= 0) tabRefs.current[items.length - 1 - last]?.focus()
+      const lastEnabled = [...items].reverse().findIndex((item) => !item.disabled)
+      if (lastEnabled >= 0) tabRefs.current[items.length - 1 - lastEnabled]?.focus()
     }
   }
 
   return (
     <div className="overflow-x-auto pb-1 [scrollbar-width:thin]">
-      <div role="tablist" aria-label="Briefing categories" className="flex min-w-max gap-2">
+      <div role="tablist" aria-label="Briefing categories" className="flex min-w-max gap-2.5">
         {items.map((item, index) => {
           const isActive = item.key === activeCategory
+          const chipStyle = isActive
+            ? {
+                color: `var(${item.accent})`,
+                borderColor: `var(${item.accent})`,
+                backgroundColor: `color-mix(in oklab, var(${item.accent}) 14%, var(--surface-raised))`,
+              }
+            : {
+                color: 'var(--text-secondary)',
+                borderColor: 'var(--border)',
+                backgroundColor: 'var(--surface-raised)',
+              }
+
           return (
             <button
               key={item.key}
@@ -68,21 +89,14 @@ export default function CategoryNav({ categories = [], activeCategory = 'all', o
               tabIndex={isActive ? 0 : -1}
               onKeyDown={(event) => onKeyDown(event, index)}
               onClick={() => onSelect?.(item.key)}
-              style={
-                isActive
-                  ? {
-                      color: `var(${item.accent})`,
-                      borderColor: `var(${item.accent})`,
-                    }
-                  : undefined
-              }
-              className={`min-h-11 shrink-0 rounded-full border px-4 py-2 text-[15px] leading-5 font-semibold transition-colors motion-reduce:transition-none ${
-                isActive
-                  ? 'bg-surface-raised'
-                  : 'border-border bg-surface-raised text-text-secondary hover:text-text-primary'
-              } ${item.disabled ? 'cursor-not-allowed opacity-60' : 'cursor-pointer'}`}
+              style={chipStyle}
+              className={`min-h-11 shrink-0 rounded-full border px-3.5 py-2 text-[13px] leading-4 font-semibold transition-colors motion-reduce:transition-none focus-visible:outline-offset-1 ${
+                item.disabled
+                  ? 'cursor-not-allowed opacity-55'
+                  : 'cursor-pointer hover:text-text-primary hover:[background-color:var(--surface)]'
+              }`}
             >
-              {item.label} <span className="text-text-tertiary">({item.count})</span>
+              {item.label} <span style={{ color: 'var(--text-tertiary)' }}>({item.count})</span>
             </button>
           )
         })}
