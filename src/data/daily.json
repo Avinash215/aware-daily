@@ -1,10 +1,10 @@
 {
   "version": 1,
   "date": "2026-09-02",
-  "generated_at": "2026-09-02T22:17:39.407906Z",
+  "generated_at": "2026-09-02T23:24:38.035161Z",
   "persona": "Avinash",
   "totals": {
-    "published": 56,
+    "published": 55,
     "categories": 9
   },
   "categories": [
@@ -13,14 +13,14 @@
       "label": "Geopolitics",
       "emoji": "🌍",
       "blurb": "Power, conflict, diplomacy, and statecraft that shift international relations.",
-      "count": 18
+      "count": 17
     },
     {
       "key": "business",
       "label": "Business & Markets",
       "emoji": "💼",
       "blurb": "Markets, companies, policy, and macro forces shaping the global economy.",
-      "count": 7
+      "count": 8
     },
     {
       "key": "technology",
@@ -55,7 +55,7 @@
       "label": "Crime & Justice",
       "emoji": "⚖️",
       "blurb": "Crime, courts, policing, and major accidents where accountability and public safety are central.",
-      "count": 8
+      "count": 7
     },
     {
       "key": "sports",
@@ -157,7 +157,7 @@
       "headline": "Trump suggests renaming Strait of Hormuz the 'Trump Strait'",
       "dek": "President Donald Trump said Wednesday that the Strait of Hormuz could be renamed the \"Trump Strait.\"",
       "body": "President Donald Trump said Wednesday that the Strait of Hormuz could be renamed the “Trump Strait.” In a Truth Social post, Trump wrote: “Now that we have it under U.S.A. control, should we change the name Hormuz Strait to TRUMP STRAIT??? Like America itself, it would be ‘hotter’ than ever before!”\n\nThe post followed other Trump-backed name changes. CNBC, The Hindu and SCMP said it came about a week after Trump ordered Lake Ontario renamed “Lake America.” CNBC said Trump earlier declared the Gulf of Mexico the “Gulf of America.” CNBC said it was not immediately clear how Trump would try to make a name change in a strait that is not near the United States.\n\nTrump’s comment landed as fighting around the strait continued. Axios reported the U.S. military struck Iranian targets on Larak Island to stop what CENTCOM called an “imminent threat” of sea mines in the waterway. Axios also reported Trump and senior aides were considering limited strikes to stop Iran from rebuilding radar and missile capabilities in the strait. A White House official told Axios that “The President retains all options at his disposal.”\n\nThe sources differed on who controls the waterway and how open it is. CNBC said Trump and his administration have repeatedly insisted Iran has lost control over the strait, while transits remain below prewar levels. The Hindu said Iran has “effectively shut down” the chokepoint, while The Hill said the waterway does not have a single owner. CNBC said Energy Secretary Chris Wright told the outlet that more than 17 million barrels of oil transited the strait on Monday, versus around 20 million barrels per day before the war started on Feb. 28. The New York Times reported two more oil tankers were attacked near Oman on Monday and oil prices rose more than 2 percent.",
-      "image": "https://th-i.thgim.com/public/incoming/jl7lp7/article71420999.ece/alternates/LANDSCAPE_1200/Trump_Dodging_Responsibility__6321.jpg",
+      "image": "https://image.cnbcfm.com/api/v1/image/108356662-1788206738401-gettyimages-2292883112-_d3_6291_9jwsi58l.jpeg?v=1788206799&w=1920&h=1080",
       "so_what": "Any new disruption in the strait can raise fuel and shipping costs because the route carries a large share of global oil trade.",
       "what_now": "Axios reported Trump had not approved the proposed limited strikes as of last week, but officials said Iran's ballistic missile attacks on U.S. bases in Jordan on Sunday could change his decision.",
       "region": "Americas",
@@ -249,11 +249,11 @@
       "rank": 3,
       "tier": "front",
       "score": 7.747,
-      "headline": "Burnham faces PMQs attacks over borrowing costs and spending plans",
-      "dek": "Andy Burnham came under pressure at his first Prime Minister's Questions on Wednesday over rising UK borrowing costs and government spending plans, according to the BBC and the…",
-      "body": "Andy Burnham came under pressure at his first Prime Minister’s Questions on Wednesday over rising UK borrowing costs and government spending plans, according to the BBC and the Guardian.\n\nThe Guardian reported that Kemi Badenoch and other MPs questioned Burnham amid speculation over the budget. It quoted Burnham as saying: \"Our budget for day-to-day spending next year will be lower in real terms than this year. Our capital budget will fall in real terms every year until the end of the decade.\"\n\nAccording to the BBC, Burnham said he had already cut taxes. The BBC said he cited cuts including VAT on energy bills and hospitality business rates.\n\nThe Guardian’s live coverage also said Burnham faced questions from Badenoch and other MPs on borrowing costs and spending at the Commons session. The two outlets did not provide further detail in the supplied excerpts on any policy changes announced at PMQs.",
-      "image": "",
-      "so_what": "The exchange points to tighter public spending even as the government says it is cutting some taxes, affecting expectations for services, investment and household costs.",
+      "headline": "Burnham faces Badenoch on borrowing and spending in first PMQs",
+      "dek": "Andy Burnham came under pressure over borrowing costs and public spending at his first Prime Minister's Questions on Wednesday, according to the Guardian and the BBC.",
+      "body": "Andy Burnham came under pressure over borrowing costs and public spending at his first Prime Minister’s Questions on Wednesday, according to the Guardian and the BBC. The exchanges came amid speculation over the budget, the Guardian said.\n\nThe Guardian said Kemi Badenoch and other MPs pressed Burnham on the economy. The BBC reported that Burnham said he had already cut taxes, including VAT on energy bills and hospitality business rates.\n\nIn the clash with Badenoch, the Guardian said Burnham spoke about the need to get welfare down. It also said he expressed willingness to work with the Tories on this.\n\nThe Guardian’s live coverage also reported Burnham saying: \"Our budget for day-to-day spending next year will be lower in real terms than this year. Our capital budget will fall in real terms every year until the end of the decade.\" The BBC separately described the session as Burnham’s first PMQs in the role.",
+      "image": "https://i.guim.co.uk/img/media/f89dcc944b11e120270f68907c76b430c496ed95/0_0_3000_2400/master/3000.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctbGl2ZS5wbmc&enable=upscale&s=41bc77a252f052e8fb14fc3b4ab71a97",
+      "so_what": "The session offered an early test of how Burnham will defend his economic plans in parliament as voters watch for changes to taxes, spending and welfare.",
       "what_now": "",
       "region": "Global",
       "pattern": "negotiation",
@@ -280,9 +280,19 @@
           "source": "BBC Politics",
           "title": "Burnham pressed on economy at first PMQs as UK borrowing costs rise",
           "url": "https://www.bbc.co.uk/news/articles/cn9wv7pene2o?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "source": "Guardian Business",
+          "title": "Andy Burnham clashes with Kemi Badenoch at his first PMQs - video",
+          "url": "https://www.theguardian.com/politics/video/2026/sep/02/andy-burnham-clashes-with-kemi-badenoch-at-his-first-pmqs-video"
+        },
+        {
+          "source": "BBC Politics",
+          "title": "'Friendly fire' at Andy Burnham's first PMQs",
+          "url": "https://www.bbc.co.uk/news/videos/cly56059ql8o?at_medium=RSS&at_campaign=rss"
         }
       ],
-      "source_count": 2,
+      "source_count": 4,
       "why_ranked": "Published at front with composite 7.747; key drivers were Marginal Information Gain 9.3, Enduring Significance 6.5.",
       "scores": {
         "enduring_significance": 6.5,
@@ -303,74 +313,15 @@
       }
     },
     {
-      "id": "andy-burnham-clashes-with-kemi-badenoch-at-his-first-pmqs-vi-59df55",
-      "category": "geopolitics",
-      "rank": 4,
-      "tier": "front",
-      "score": 7.693,
-      "headline": "Burnham faces Badenoch at his first Prime Minister’s Questions",
-      "dek": "Andy Burnham faced Kemi Badenoch at his first Prime Minister's Questions since taking office on Wednesday, according to the Guardian and the BBC.",
-      "body": "Andy Burnham faced Kemi Badenoch at his first Prime Minister’s Questions since taking office on Wednesday, according to the Guardian and the BBC.\n\nThe Guardian said Badenoch pressed the prime minister on borrowing costs and spending during the Commons exchange. It also said Burnham spoke about the need to get welfare down.\n\nAccording to the Guardian, Burnham also expressed willingness to work with the Conservatives on welfare. The BBC, in a video headlined \"Friendly fire,\" said Burnham’s first session in the role included pressure from his own side as well as the confrontation with the opposition.\n\nThe two outlets did not provide further detail in the material supplied beyond describing the themes of the clashes and the fact that it was Burnham’s first PMQs as prime minister.",
-      "image": "",
-      "so_what": "Prime Minister’s Questions is a key test for a new prime minister because it shows how they handle pressure from both the opposition and their own benches in public.",
-      "what_now": "",
-      "region": "Global",
-      "pattern": "standoff",
-      "topics": [
-        "andy",
-        "burnham",
-        "pmqs",
-        "badenoch",
-        "clashes",
-        "fire",
-        "friendly",
-        "kemi"
-      ],
-      "countries": [],
-      "read_time_min": 1,
-      "date": "2026-09-02",
-      "sources": [
-        {
-          "source": "Guardian Business",
-          "title": "Andy Burnham clashes with Kemi Badenoch at his first PMQs - video",
-          "url": "https://www.theguardian.com/politics/video/2026/sep/02/andy-burnham-clashes-with-kemi-badenoch-at-his-first-pmqs-video"
-        },
-        {
-          "source": "BBC Politics",
-          "title": "'Friendly fire' at Andy Burnham's first PMQs",
-          "url": "https://www.bbc.co.uk/news/videos/cly56059ql8o?at_medium=RSS&at_campaign=rss"
-        }
-      ],
-      "source_count": 2,
-      "why_ranked": "Published at front with composite 7.693; key drivers were Marginal Information Gain 9.7, Breaking Urgency 10.0.",
-      "scores": {
-        "enduring_significance": 3.0,
-        "breaking_urgency": 10.0,
-        "evidence_strength": 7.2,
-        "attention_deficit": 1.5,
-        "manufactured_attention": 1.0,
-        "reader_consequence": 2.788,
-        "marginal_information_gain": 9.667
-      },
-      "consequence": {
-        "wallet": 4.4,
-        "job": 1.8,
-        "safety": 1.8,
-        "rights": 1.8,
-        "travel": 1.8,
-        "civic": 4.4
-      }
-    },
-    {
       "id": "trump-to-nominate-hung-cao-as-navy-secretary-74e5cf",
       "category": "geopolitics",
-      "rank": 5,
+      "rank": 4,
       "tier": "front",
       "score": 7.598,
       "headline": "Trump says he will nominate Hung Cao as Navy secretary",
       "dek": "President Donald Trump said he will nominate acting Navy Secretary Hung Cao to serve permanently in the job.",
       "body": "President Donald Trump said he will nominate acting Navy Secretary Hung Cao to serve permanently in the job.\n\nAccording to The Hindu, Cao spent 25 years in the Navy as a special operations officer and later served with SEAL teams and special forces in Iraq and Afghanistan.\n\nThe New York Times said Trump made the announcement amid a purge of leadership at the Pentagon and a stalling war effort against Iran.\n\nThe sources provided did not include further details from Trump or Cao about the nomination.",
-      "image": "",
+      "image": "https://th-i.thgim.com/public/incoming/ubdvbl/article71417969.ece/alternates/LANDSCAPE_1200/Navy_Secretary_4_65.jpg",
       "so_what": "The move would put a military veteran who is already serving in the role on track to lead the Navy during a period of upheaval at the Pentagon.",
       "what_now": "",
       "region": "Middle East",
@@ -444,13 +395,13 @@
     {
       "id": "iran-accuses-us-of-war-crime-after-missile-blast-kills-four-e2ca74",
       "category": "geopolitics",
-      "rank": 6,
+      "rank": 5,
       "tier": "front",
       "score": 7.596,
       "headline": "Iran accuses US of ‘war crime’ after missile blast kills four people at wedding",
       "dek": "Blast also injures 68 guests at the wedding in southern Iran, prompting fears of escalation in hostilities Middle East crisis live - latest updates Iran has accused the US of a…",
       "body": "Blast also injures 68 guests at the wedding in southern Iran, prompting fears of escalation in hostilities Middle East crisis live - latest updates Iran has accused the US of a war crime after a missile blast killed at least four people and injured 68 who were attending a wedding at a private home in a coastal city of southern Iran, as the fresh exchange of strikes prompted fears of a wider renewal of hostilities.",
-      "image": "",
+      "image": "https://i.guim.co.uk/img/media/2ed2b60fc856666f88350344bbdf1f9da0ebc1f9/0_1031_3000_2400/master/3000.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=812a93eee315540f989e8df3196f7910",
       "so_what": "Iranian media said that the wedding ceremony was being held in a home in the city of Kuhestak, Hormozgan province, late on Tuesday when a US missile struck, with shrapnel and debris from the strike killing and injuring people.",
       "what_now": "",
       "region": "Middle East",
@@ -509,13 +460,13 @@
     {
       "id": "zelensky-says-airlines-should-avoid-russian-airspace-as-ukra-33fdf3",
       "category": "geopolitics",
-      "rank": 7,
+      "rank": 6,
       "tier": "page_two",
       "score": 7.547,
       "headline": "Zelenskyy urges airlines to avoid Russian airspace over drone threat",
       "dek": "Ukrainian President Volodymyr Zelenskyy said airlines should avoid Russian airspace because expanded Ukrainian drone operations are making the skies more dangerous, according to…",
       "body": "Ukrainian President Volodymyr Zelenskyy said airlines should avoid Russian airspace because expanded Ukrainian drone operations are making the skies more dangerous, according to the BBC and CNBC. The warning came as Ukraine escalates strikes deeper into Russia and Russia says it will intensify its own attacks on Ukraine.\n\nThe BBC said Chinese and Gulf state airlines are among those still flying through Russian airspace. CNBC reported Zelenskyy said carriers should stay out because the risk is rising as Ukraine broadens its drone campaign.\n\nAl Jazeera reported the spread of Ukrainian drone activity is raising questions about whether Russian airspace could become effectively off limits for more airlines. Its report said that would matter for carriers because Russian routes can shorten flight times between Europe and Asia, while avoiding them can mean longer trips and higher costs.\n\nThe sources did not report a formal aviation closure order in Russia tied to Zelenskyy's remarks. They described a warning from Kyiv as fighting expands in the air and both sides signal more attacks.",
-      "image": "",
+      "image": "https://image.cnbcfm.com/api/v1/image/108357548-1788338757814-gettyimages-2290976287-df1_3870_qrdvjofz.jpeg?v=1788338798&w=1920&h=1080",
       "so_what": "For ordinary travelers, wider avoidance of Russian airspace could mean longer flights, higher airline costs and more disruption on routes between Europe and Asia.",
       "what_now": "",
       "region": "Europe",
@@ -589,13 +540,13 @@
     {
       "id": "uss-abraham-lincoln-arrives-at-thai-port-after-gruelling-270-3572c8",
       "category": "geopolitics",
-      "rank": 8,
+      "rank": 7,
       "tier": "page_two",
       "score": 7.516,
       "headline": "USS Abraham Lincoln reaches Thailand for first port call in nine months",
       "dek": "The USS Abraham Lincoln arrived at Thailand's Laem Chabang port on Wednesday for its first port call in nine months, according to Euronews and The Hindu.",
       "body": "The USS Abraham Lincoln arrived at Thailand's Laem Chabang port on Wednesday for its first port call in nine months, according to Euronews and The Hindu. Euronews said the carrier had been at sea for 286 days, while the Guardian described the deployment as more than 270 days and used 270 days in its headline. Tugs guided the carrier into port, Euronews reported, and the sailors and Marines are headed for Pattaya before the ship departs on Sunday.\n\nThe Lincoln has been at the centre of controversy in the United States over conditions on board. Euronews reported Democratic lawmakers have called for an investigation after reports of food shortages, broken plumbing and mental health crises. Euronews and the Guardian both said reports included attempted suicides. Acting Navy Secretary Hung Cao said in mid-August that \"a small number of mental health cases were treated with no loss of life,\" and blamed the media for \"trying to paint our warriors as victims,\" according to Euronews.\n\nThe ship left California in November 2025, Euronews said, and was rerouted from duty in the South China Sea to the Middle East before US-Israeli attacks on Iran that began six months ago. The Hindu said the carrier was involved in the U.S. naval blockade and combat operations in the war with Iran. Rear Admiral Robert Loughran said the stop in Laem Chabang gives sailors and Marines a \"well-deserved opportunity\" to rest and recharge. Captain Dan Keeler called it the first port visit of a \"historic deployment.\"\n\nThai authorities said they had prepared for the arrival in Pattaya. The Guardian reported that about 600 officials would provide security and other assistance, citing provincial governor Narit Niramaiwong. Euronews said Pattaya mayor Poramase Ngampiches said buses had been arranged to take sailors between the ship and the resort, with officials focused on safety and fair pricing. He also said sailors were banned from water sports such as jet skis and from using Thailand's cannabis laws, according to Euronews.",
-      "image": "https://images.euronews.com/articles/stories/09/89/79/72/1200x675_cmsv2_95741e5a-ec2c-59f9-9a61-02087864e796-9897972.jpg",
+      "image": "https://i.guim.co.uk/img/media/06be449de27677c13ef5e68fca889f4c4a1f3d06/434_76_6089_4874/master/6089.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=150302fd0ed112252c14993728a1be38",
       "so_what": "For ordinary readers in Pattaya, the arrival means thousands of visiting U.S. personnel, tighter security and a short burst of business for local transport, shops and nightlife venues.",
       "what_now": "Pattaya mayor Poramase Ngampiches said buses will carry sailors to and from the ship until the carrier departs on Sunday.",
       "region": "Middle East",
@@ -669,13 +620,13 @@
     {
       "id": "hong-kong-pro-democracy-activist-joshua-wong-pleads-guilty-i-b56ae2",
       "category": "geopolitics",
-      "rank": 9,
+      "rank": 8,
       "tier": "page_two",
       "score": 7.509,
       "headline": "Joshua Wong pleads guilty in second Hong Kong security law case",
       "dek": "Hong Kong pro-democracy activist Joshua Wong pleaded guilty on Wednesday to conspiracy to collude with foreign forces to endanger national security, in his second prosecution…",
       "body": "Hong Kong pro-democracy activist Joshua Wong pleaded guilty on Wednesday to conspiracy to collude with foreign forces to endanger national security, in his second prosecution under Beijing's 2020 national security law. Euronews and the Guardian reported Wong, 29, entered the plea at Hong Kong's high court. Sky News said the charge could see him sentenced to life in prison.\n\nProsecutors said Wong worked with exiled activist Nathan Law to urge foreign powers to impose sanctions, blockades or other hostile measures against Hong Kong and China. Euronews reported prosecutors said Wong supported those efforts from Hong Kong through foreign and social media, including sharing Law's posts and an online petition urging digital forensic companies to stop cooperating with police. The New York Times said Wong was accused of urging Western politicians including Nancy Pelosi and Marco Rubio to pressure Hong Kong by imposing sanctions on the city.\n\nWong is already serving four years and eight months after pleading guilty in a separate national security case linked to an unofficial primary election, according to Euronews. The Guardian said he has been continuously imprisoned since November 2020, had spent nearly six years in detention and had been due to be released in January 2027. Both outlets said this is his second prosecution under the law, and the Guardian said he is the only activist in Hong Kong prosecuted twice under it.\n\nWong wore a blue shirt in court, according to Euronews and the Guardian. The Guardian said he waved at supporters and stood with his arms behind his back as he pleaded guilty. Outside court, people queued overnight for seats, the Guardian reported. A supporter who asked not to be named told the Guardian, \"Under a compromised judicial system with zero space for a fair trial, Wong's plea is a forced reality.\" Before the hearing, Euronews reported, a supporter shouted, \"Hang in there\" to Wong.",
-      "image": "https://i.guim.co.uk/img/media/f34ca5b0d803cd60ef04b64221e0009eb366619f/162_0_4265_3413/master/4265.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=e7e067f0ce37f1cfbbfd4e118d9bf068",
+      "image": "https://images.euronews.com/articles/stories/09/89/78/05/1200x675_cmsv2_00578d5b-2f7a-5600-9a87-217432ff1ce2-9897805.jpg",
       "so_what": "The plea is likely to keep one of Hong Kong's best-known democracy activists in prison beyond his expected January 2027 release.",
       "what_now": "Wong is expected to be sentenced later.",
       "region": "Asia Pacific",
@@ -749,13 +700,13 @@
     {
       "id": "germany-blames-russia-for-last-month-s-attempted-drone-attac-295caa",
       "category": "geopolitics",
-      "rank": 10,
+      "rank": 9,
       "tier": "page_two",
       "score": 7.333,
       "headline": "Germany blames Russia for attempted drone attack at Leipzig airport",
       "dek": "Germany said on Tuesday that Russia was responsible for an attempted drone attack at Leipzig/Halle Airport last month.",
       "body": "Germany said on Tuesday that Russia was responsible for an attempted drone attack at Leipzig/Halle Airport last month. Authorities found a drone loaded with explosives near a Ukrainian plane on Aug. 4 and defused it, according to NPR. DW reported authorities found the device in the airport security area between Ukrainian cargo aircraft and said investigators believe a second drone may have collided with a DHL aircraft nearby. DW also said German media reported a third explosive-laden drone was later discovered at the airport.\n\nInterior Minister Alexander Dobrindt said the drone's configuration, components, explosives and detonator were \"known to us from other Russian hybrid operations and its war against Ukraine,\" according to NPR. He said police investigations, crime patterns and intelligence findings showed that people acted on behalf of Russian state entities. Dobrindt also said Germany should expect further hybrid attacks by Russia.\n\nForeign Minister Johann Wadephul said the case was part of a \"long series of destabilization operations\" against Europe, DW reported. He announced tighter entry controls for Russian nationals, plans to seek more European Union sanctions listings tied to hybrid attacks, and more pressure on Russia's \"shadow fleet,\" NPR reported. He also said Germany would coordinate its response with EU and NATO partners.\n\nRussia rejected the accusation. NPR reported Russian Foreign Ministry spokesperson Maria Zakharova called it a \"far-fetched and contrived pretext\" and said Berlin had presented no convincing evidence. Putin said Germany was using the incident to distract from domestic failings and told reporters in Kyrgyzstan, \"But where is the proof? Well, the proof has been planted,\" according to NPR and DW.\n\nNATO Secretary-General Mark Rutte said after speaking with Chancellor Friedrich Merz that \"NATO stands in full solidarity with Germany,\" NPR and DW reported. DW said European Commission President Ursula von der Leyen called Germany's steps \"strong measures\" and said \"hybrid attacks will not go without a clear response.\"",
-      "image": "https://static.dw.com/image/78654542_6.jpg",
+      "image": "https://th-i.thgim.com/public/incoming/ukj9ml/article71416671.ece/alternates/LANDSCAPE_1200/Germany_Russia_Explosive_Drone_48662.jpg",
       "so_what": "The case points to a security threat at a major German freight hub that supports Ukraine and NATO transport operations.",
       "what_now": "Germany said the Russian consulate in Bonn will close effective Sept. 18.",
       "region": "Europe",
@@ -839,7 +790,7 @@
     {
       "id": "putin-signals-support-for-iran-in-ongoing-war-with-the-u-s-51bfc1",
       "category": "geopolitics",
-      "rank": 11,
+      "rank": 10,
       "tier": "page_two",
       "score": 7.227,
       "headline": "Putin says Russia stands with Iran as U.S.-Iran war escalates",
@@ -919,13 +870,13 @@
     {
       "id": "china-egypt-joint-drills-a-show-of-beijing-s-military-reach-e2a7ff",
       "category": "geopolitics",
-      "rank": 12,
+      "rank": 11,
       "tier": "front",
       "score": 7.196,
       "headline": "China and Egypt hold first Eagles of Civilisation air drills in Africa",
       "dek": "China and Egypt are holding joint air force drills in Egypt under the name \"Eagles of Civilisation,\" in a move the sources describe as a sign of Beijing's expanding reach.",
       "body": "China and Egypt are holding joint air force drills in Egypt under the name \"Eagles of Civilisation,\" in a move the sources describe as a sign of Beijing’s expanding reach. According to the South China Morning Post, Chinese J-16 fighters flew to Egypt recently and were supported by YU-20 tankers that refuelled them in the air.\n\nThe SCMP said the exercise includes Chinese jets operating alongside Egyptian Rafales and MiG-29s. It called the deployment the first time China has sent J-16 fighters to Africa, and said it gives China experience in moving a combat force across continents and operating farther from home.\n\nEuronews said the drills come as Egypt and China deepen ties beyond infrastructure and trade into technology, defence and a broader strategic partnership. It reported that Chinese President Xi Jinping returned to Cairo as the two countries pushed their relationship in those areas.\n\nTaken together, the sources portray the exercise as both a military operation and a political signal. The SCMP framed it as evidence that China is beginning to match its economic presence abroad with greater military reach, while Euronews said the wider Egypt-China partnership carries regional implications.",
-      "image": "",
+      "image": "https://images.euronews.com/articles/stories/09/89/72/65/1200x675_cmsv2_5dac4ebe-9f65-5dad-bcab-7a48c0fe9d95-9897265.jpg",
       "so_what": "For ordinary readers, the drills point to closer China-Egypt defence ties and a bigger Chinese military presence beyond Asia.",
       "what_now": "Euronews reported that Xi Jinping is in Cairo as Egypt and China expand cooperation in defence, technology and other areas.",
       "region": "Asia Pacific",
@@ -989,13 +940,13 @@
     {
       "id": "china-s-xi-urges-new-middle-east-security-framework-during-r-c2d991",
       "category": "geopolitics",
-      "rank": 13,
+      "rank": 12,
       "tier": "page_two",
       "score": 7.043,
       "headline": "Xi calls for new Middle East security order on Egypt visit",
       "dek": "Chinese President Xi Jinping called on Middle East countries to oppose external interference and strengthen regional dialogue on peace and security during talks in Cairo with…",
       "body": "Chinese President Xi Jinping called on Middle East countries to oppose external interference and strengthen regional dialogue on peace and security during talks in Cairo with Egyptian President Abdel Fattah el-Sisi on Wednesday. According to China's Xinhua news agency, Xi said “the people of the Middle East are the masters of their own affairs” and said regional countries should consider reshaping the security order. It was Xi’s first visit to Cairo in a decade, Al Jazeera reported.\n\nXi was greeted by el-Sisi with a 21-gun salute at the Ittihadiya presidential palace. According to a statement from el-Sisi’s spokesperson cited by Al Jazeera, the two leaders discussed the six-month US-Israel war on Iran and urged “diplomatic solutions” to reach a “comprehensive agreement to end the war.”\n\nEl-Sisi’s office said the two countries signed an agreement to launch the third phase of the Egyptian-Chinese industrial zone at the Suez Canal. Al Jazeera reported officials say the zone already hosts 200 companies and investments worth about $4bn, though Egypt did not announce a figure for the new investments. A series of additional agreements was also signed, but Egyptian officials did not give details.\n\nXi said China “stands ready to work with countries in the region to safeguard the security of international shipping lanes, advance development cooperation … and eliminate the breeding grounds for conflict,” according to Xinhua as quoted by Al Jazeera. The Japan Times said Xi was returning to a Middle East “convulsed by war” and facing renewed U.S. economic pressure on Tehran.",
-      "image": "https://www.aljazeera.com/wp-content/uploads/2026/09/AFP__20260902__C76B4ZT__v1__HighRes__EgyptChinaPoliticsDiplomacy-1788358904.jpg?resize=1920%2C1440",
+      "image": "https://www.japantimes.co.jp/japantimes/uploads/images/2026/09/02/560747.JPG?v=3.1",
       "so_what": "The visit points to deeper Chinese economic and diplomatic involvement in Egypt and the wider Middle East at a time when regional security ties are shifting.",
       "what_now": "Al Jazeera reported Xi is expected to visit the Grand Egyptian Museum overlooking the Giza Pyramids later on Wednesday.",
       "region": "Middle East",
@@ -1074,13 +1025,13 @@
     {
       "id": "iran-would-immediately-reciprocate-if-u-s-returns-to-june-de-885049",
       "category": "geopolitics",
-      "rank": 14,
+      "rank": 13,
       "tier": "front",
       "score": 7.01,
       "headline": "Pezeshkian says Iran will rejoin June ceasefire if U.S. does the same",
       "dek": "Iranian President Pezeshkian said Iran would \"immediately\" reciprocate if the United States returned to the June ceasefire deal, according to The Hindu and Euronews.",
       "body": "Iranian President Pezeshkian said Iran would \"immediately\" reciprocate if the United States returned to the June ceasefire deal, according to The Hindu and Euronews. His comments came after Iran and the U.S. exchanged fire again over the weekend.\n\nEuronews said Pezeshkian made the offer at the SCO summit in Bishkek. The Hindu said the United States and Iran resumed exchanging fire on August 31 after more than a month of relative calm.\n\nBoth reports said the Strait of Hormuz remained a central point of dispute. Euronews reported that demands by Iran's Revolutionary Guard for control of Hormuz and for war compensation remained conditions that Washington was unlikely to accept.\n\nThe offer signals that both sides are still publicly tying any return to the June arrangement to matching action by the other side, even as fighting has restarted.",
-      "image": "",
+      "image": "https://th-i.thgim.com/public/incoming/z6oazu/article71414826.ece/alternates/LANDSCAPE_1200/2026-09-01T075128Z_1435261178_RC27ANAFJECQ_RTRMADP_3_IRAN-CRISIS-PEZESHKIAN-MOU.JPG",
       "so_what": "For ordinary readers, the renewed fighting and dispute over the Strait of Hormuz matter because they threaten a key shipping route at the same time both sides are still talking about a ceasefire.",
       "what_now": "",
       "region": "Americas",
@@ -1144,7 +1095,7 @@
     {
       "id": "why-army-secretary-dan-driscoll-resigned-0d8687",
       "category": "geopolitics",
-      "rank": 15,
+      "rank": 14,
       "tier": "front",
       "score": 6.857,
       "headline": "Army Secretary Dan Driscoll resigns after dispute and Army turmoil",
@@ -1224,7 +1175,7 @@
     {
       "id": "vance-reaches-out-to-jewish-republicans-in-vegas-speech-455121",
       "category": "geopolitics",
-      "rank": 16,
+      "rank": 15,
       "tier": "page_two",
       "score": 6.546,
       "headline": "Vance tells Jewish Republicans Israel is key to U.S. security",
@@ -1294,13 +1245,13 @@
     {
       "id": "norway-s-new-king-haakon-viii-takes-oath-in-parliament-552405",
       "category": "geopolitics",
-      "rank": 17,
+      "rank": 16,
       "tier": "page_two",
       "score": 6.158,
       "headline": "Norway's King Haakon VIII takes oath in parliament",
       "dek": "Norway's new King Haakon VIII took the oath in parliament in Oslo, swearing to uphold the constitution, DW World reported.",
       "body": "Norway's new King Haakon VIII took the oath in parliament in Oslo, swearing to uphold the constitution, DW World reported. DW described it as the first major institutional step of his reign.\n\nThe BBC also said the oath marked the first major step of the new king's reign. It reported that the ceremony took place while mourners paid respects to his late father, King Harald V.\n\nAccording to the BBC, the late king was lying in state at the Royal Palace. DW reported that Queen Mette-Marit, the new king's wife, did not attend the event in the aftermath of her lung transplant.",
-      "image": "",
+      "image": "https://static.dw.com/image/78608530_6.jpg",
       "so_what": "The oath is a formal constitutional step in the transfer of Norway's monarchy after the death of King Harald V.",
       "what_now": "",
       "region": "Europe",
@@ -1359,13 +1310,13 @@
     {
       "id": "keir-starmer-announces-he-is-standing-down-as-mp-6dbdc9",
       "category": "geopolitics",
-      "rank": 18,
+      "rank": 17,
       "tier": "brief",
       "score": 5.193,
       "headline": "Keir Starmer says he will stand down as MP",
       "dek": "Keir Starmer has announced he is standing down as an MP, according to the BBC and Sky News.",
       "body": "Keir Starmer has announced he is standing down as an MP, according to the BBC and Sky News. Sky News reported he said: \"It's been an honour and privilege.\"\n\nThe BBC said the move will trigger a by-election to replace the former prime minister in his London constituency. Sky News also reported that his decision would trigger a London by-election.\n\nNeither source, in the material provided, gave a date for when he will leave Parliament or named the constituency in the text supplied.\n\nStarmer was shown in the House of Commons in Sky News' report. The BBC described the seat as his London constituency.",
-      "image": "",
+      "image": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/93a0/live/f854a560-a5fa-11f1-8348-fb0cb1cd9761.png",
       "so_what": "Voters in Starmer's constituency will have to elect a new MP once the seat is formally vacated.",
       "what_now": "",
       "region": "Europe",
@@ -1429,7 +1380,7 @@
       "headline": "Fake 10 Downing Street listing on Booking.com draws security criticism",
       "dek": "A fake listing for 10 Downing Street was set up on Booking.com in a test by consumer group Which?, prompting criticism of the travel website's checks.",
       "body": "A fake listing for 10 Downing Street was set up on Booking.com in a test by consumer group Which?, prompting criticism of the travel website's checks. Sky News said the bogus property was approved despite being one of the most recognisable addresses in the UK, and the BBC reported Which? called Booking.com \"unfit\" to prevent fraud on its platform.\n\nAccording to the reports, Which? created a host profile under the name \"Rishi Sunak\" and listed the prime minister's address as a one-bedroom flat. Sky News said the listing was live for several days before it was taken down. Which? said the exercise exposed \"serious security failures\" and showed how easily scammers could exploit the site.\n\nThe BBC said Booking.com rejected Which?'s wider conclusions and described the exercise as a \"limited test\" that was \"not a true reflection of the experience of millions of listings or reviews\". The company said it used a range of checks and security measures to detect fraud and protect customers.\n\nWhich? said stronger identity and property ownership checks were needed before listings go live. The dispute adds to scrutiny of online travel platforms over how they verify accommodation listings and reviews.",
-      "image": "",
+      "image": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/6f10/live/ff12f590-a5f1-11f1-8348-fb0cb1cd9761.jpg",
       "so_what": "For travellers, the case raises the risk of paying for accommodation that may not exist if platform checks fail to catch fake listings quickly.",
       "what_now": "",
       "region": "Global",
@@ -1480,90 +1431,15 @@
       }
     },
     {
-      "id": "the-range-rover-electric-specs-price-availability-c1c9f8",
-      "category": "business",
-      "rank": 2,
-      "tier": "front",
-      "score": 7.235,
-      "headline": "Range Rover unveils first fully electric SUV with $138,000 US starting price",
-      "dek": "Jaguar Land Rover has unveiled the first fully electric Range Rover, adding a battery-powered version alongside the existing internal combustion and plug-in hybrid models.",
-      "body": "Jaguar Land Rover has unveiled the first fully electric Range Rover, adding a battery-powered version alongside the existing internal combustion and plug-in hybrid models. Ars Technica said the 2027 Range Rover Electric starts at $138,000 in the United States, while WIRED said the UK entry-level Autobiography model starts at £154,070 and US buyers can get an SE-spec version from $138,000 plus $2,550 for delivery and destination.\n\nThe new SUV has dual 260-kilowatt motors with a combined 542 horsepower and 850 newton-meters of torque, according to Ars Technica and WIRED. Both outlets said it can go from 0 to 60 mph in 4.3 seconds. Ars Technica said the vehicle has a 118.5-kWh battery, 800-volt architecture, DC fast charging up to 350 kW, and a 10% to 80% charging time of 22 minutes.\n\nThe reported range figures vary by test standard. Ars Technica said the vehicle should deliver at least 333 miles under the EPA test cycle. WIRED reported a maximum range of 372 miles under WLTP standards and a claimed real-world distance of up to 333 miles.\n\nThe launch comes after delays. WIRED said the electric Range Rover was first announced in December 2023 and was meant to hit the road in 2024, but extended development testing pushed it back. The Guardian said it was unveiled after a year-long delay. The vehicle will be built at JLR's plant in Solihull, according to the Guardian and BBC.",
-      "image": "https://media.wired.com/photos/6a972c251a29cad3901a2042/191:100/w_1280,c_limit/RANGE-ROVER-ELECTRIC-FRONT-02_09_26.jpg",
-      "so_what": "For buyers, the launch finally gives Range Rover customers a factory-built electric option instead of having to choose a petrol, diesel or plug-in hybrid model.",
-      "what_now": "WIRED said the Range Rover Electric is available for order now.",
-      "region": "Europe",
-      "pattern": "economic",
-      "topics": [
-        "electric",
-        "range",
-        "rover",
-        "launches",
-        "price",
-        "availability",
-        "drive",
-        "fully"
-      ],
-      "countries": [
-        {
-          "name": "United Kingdom",
-          "flag": "🇬🇧",
-          "role": "actor"
-        }
-      ],
-      "read_time_min": 1,
-      "date": "2026-09-02",
-      "sources": [
-        {
-          "source": "Wired",
-          "title": "The Range Rover Electric: Specs, Price, Availability",
-          "url": "https://www.wired.com/story/the-range-rover-electric-has-finally-arrived/"
-        },
-        {
-          "source": "Ars Technica",
-          "title": "Here's our first look—and drive—of the 2027 Range Rover Electric",
-          "url": "https://arstechnica.com/cars/2026/09/range-rover-ev-electric-propulsion-pairs-perfectly-with-this-luxury-suv/"
-        },
-        {
-          "source": "Guardian Business",
-          "title": "Range Rover launches its first electric vehicle, with starting price of £154,070",
-          "url": "https://www.theguardian.com/business/2026/sep/02/range-rover-launches-first-electric-vehicle"
-        },
-        {
-          "source": "BBC Business",
-          "title": "Range Rover launches first fully electric model",
-          "url": "https://www.bbc.co.uk/news/articles/clyk5016mpyo?at_medium=RSS&at_campaign=rss"
-        }
-      ],
-      "source_count": 4,
-      "why_ranked": "Published at front with composite 7.235; key drivers were Evidence Strength 8.8, Breaking Urgency 9.2. Total penalties applied: 0.120.",
-      "scores": {
-        "enduring_significance": 4.2,
-        "breaking_urgency": 9.25,
-        "evidence_strength": 8.8,
-        "attention_deficit": 0.0,
-        "manufactured_attention": 5.2,
-        "reader_consequence": 2.684,
-        "marginal_information_gain": 6.667
-      },
-      "consequence": {
-        "wallet": 4.4,
-        "job": 1.8,
-        "safety": 1.8,
-        "rights": 1.8,
-        "travel": 4.4,
-        "civic": 1.8
-      }
-    },
-    {
       "id": "chevron-to-expand-in-venezuela-days-after-the-u-s-and-venezu-4f5eb4",
       "category": "business",
-      "rank": 3,
+      "rank": 2,
       "tier": "front",
       "score": 7.105,
       "headline": "Chevron plans $7 billion Venezuela expansion to lift output to 600,000 bpd",
       "dek": "Chevron said Wednesday it will expand its operations in Venezuela, investing more than $7 billion over the next five years to raise production to about 600,000 barrels a day.",
       "body": "Chevron said Wednesday it will expand its operations in Venezuela, investing more than $7 billion over the next five years to raise production to about 600,000 barrels a day. NPR, CBS and SCMP reported the plan would more than double output. CNBC said Chevron currently produces about 280,000 barrels a day in Venezuela and plans to reach 600,000 barrels a day by 2031.\n\nChevron said it has been assigned additional acreage in the Orinoco Belt. CBS said the company received rights to develop the adjacent Carabobo 1 and Carabobo-2-South-A areas, while CNBC reported Chevron had been assigned two additional oilfields in the belt. Chevron CEO Mike Wirth said in a statement the company sees “deep resource potential” in Venezuela and, with “improved terms and additional acreage,” believes the portfolio can deliver “attractive low-cost oil growth.” CNBC separately quoted Wirth saying a new hydrocarbon law changed taxes, royalties and other conditions and made Venezuela “very competitive versus our options around the world.”\n\nThe move follows President Donald Trump’s announcement on Aug. 28, cited by CBS, of a deal with Venezuela to create a private joint venture to operate oil fields containing 65 billion barrels of petroleum. NPR said Friday's announcement was that Venezuela would give the U.S. access to 65 billion barrels of oil, while CNBC said Trump said the U.S. secured majority control over 65 billion barrels of crude reserves. CBS and CNBC said the White House partnership involves North American Blue Energy Partners and 17 oil fields. CNBC added that NABEP granted the U.S. Defense Department a 35% equity stake and that Venezuela gave the company 100-year concessions.\n\nChevron is the only U.S. oil major active in Venezuela through joint ventures with state oil company PDVSA, according to CNBC, and CBS described it as the only U.S. oil company operating there. CBS said Chevron estimates its production cost in Venezuela at about $20 per barrel. But several sources said higher output will take time because infrastructure is badly degraded. NPR cited Rystad Energy saying restoring Venezuela's oil production to around 3 million barrels a day would take more than a decade and $183 billion.",
-      "image": "https://image.cnbcfm.com/api/v1/image/105159177-RTX5Y38K.jpg?v=1529517867&w=1920&h=1080",
+      "image": "https://assets1.cbsnewsstatic.com/hub/i/r/2026/01/05/98a4f094-427b-4f3c-8f34-342d0134f08a/thumbnail/1200x630/08c505f2a16ff9badc32073998d9bc33/gettyimages-1245218728.jpg",
       "so_what": "For readers, the plan could affect future fuel supply and prices, but the sources say any meaningful increase in Venezuelan output is still years away.",
       "what_now": "CBS and SCMP said Chevron officials and U.S. Energy Secretary Chris Wright were expected to visit Venezuela on Wednesday, when the investment would be formally unveiled.",
       "region": "Americas",
@@ -1642,13 +1518,13 @@
     {
       "id": "shein-shares-slide-on-fast-fashion-retailer-s-stock-market-d-83618f",
       "category": "business",
-      "rank": 4,
+      "rank": 3,
       "tier": "front",
       "score": 7.05,
       "headline": "Shein shares fall in Hong Kong debut after $26bn listing",
       "dek": "Shein shares fell on Tuesday as the fast-fashion retailer began trading on the Hong Kong stock exchange.",
       "body": "Shein shares fell on Tuesday as the fast-fashion retailer began trading on the Hong Kong stock exchange. The Guardian said the stock slumped by as much as 10% in its long-awaited market debut.\n\nThe Singapore-headquartered company priced shares at HK$48.56, valuing the business at just over $26bn, according to the Guardian. The BBC also reported a $26bn valuation. The Guardian said Shein had once been valued at almost $100bn.\n\nThe listing followed what the BBC described as a years-long quest to sell shares in New York and London. The Guardian said the Hong Kong flotation came after failures to list in the US and UK.\n\nThe New York Times said the weak debut showed investors had moved on, citing new trade rules, shrinking market share and labor concerns as pressure on Shein's business model.",
-      "image": "",
+      "image": "https://i.guim.co.uk/img/media/7fcf7e5dd65065994b8f99f70707aa0cca9b9c4c/1149_0_3695_2958/master/3695.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=44884b715fab74739408a98a8b4d9a3c",
       "so_what": "The debut suggests public investors are putting a far lower value on Shein than in the past, as the company faces pressure on trade, competition and labor issues.",
       "what_now": "",
       "region": "Asia Pacific",
@@ -1720,6 +1596,81 @@
       }
     },
     {
+      "id": "range-rover-launches-its-first-electric-vehicle-with-startin-17e7d8",
+      "category": "business",
+      "rank": 4,
+      "tier": "front",
+      "score": 6.735,
+      "headline": "Range Rover unveils first fully electric SUV with UK price from £154,070",
+      "dek": "Range Rover has launched its first fully electric vehicle, adding a battery-powered version to the luxury SUV line.",
+      "body": "Range Rover has launched its first fully electric vehicle, adding a battery-powered version to the luxury SUV line. The UK entry-level Autobiography model starts at £154,070, Wired reported, while Guardian Business said the vehicle starts at £154,070. It is being built at Jaguar Land Rover's plant in Solihull, in the West Midlands, according to the BBC and the Guardian.\n\nThe launch comes after delays. Wired said the vehicle was first announced in December 2023 and was meant to hit the road in 2024, but extended development testing pushed back its arrival. Guardian Business described it as launching a year later than planned.\n\nOn performance, Ars Technica and Wired said the vehicle uses dual 260-kilowatt motors for a combined 542 horsepower and 850 newton-meters of torque. Both outlets said it can go from 0 to 60 mph in 4.3 seconds. Range estimates differed by test standard: Ars Technica said it should deliver at least 333 miles under the EPA cycle, while Wired reported 372 miles under WLTP standards and a claimed real-world distance of up to 333 miles.\n\nThe vehicle has a 118.5-kWh battery and 800-volt architecture, Ars Technica and Wired reported. Both said it can charge from 10% to 80% in 22 minutes. Ars Technica said 350-kW DC fast charging adds 125 miles in 10 minutes, while Wired said it can add 137 miles in 10 minutes. Ars Technica also said JLR already has 80,000 \"hand-raisers\" for the vehicle, about half from North America.",
+      "image": "https://media.wired.com/photos/6a972c251a29cad3901a2042/191:100/w_1280,c_limit/RANGE-ROVER-ELECTRIC-FRONT-02_09_26.jpg",
+      "so_what": "For buyers, the launch gives Range Rover customers their first factory-built electric option instead of having to choose the brand's petrol, plug-in hybrid or aftermarket converted models.",
+      "what_now": "Wired reported the Range Rover Electric is available for order now.",
+      "region": "Europe",
+      "pattern": "economic",
+      "topics": [
+        "electric",
+        "range",
+        "rover",
+        "launches",
+        "price",
+        "availability",
+        "drive",
+        "fully"
+      ],
+      "countries": [
+        {
+          "name": "United Kingdom",
+          "flag": "🇬🇧",
+          "role": "actor"
+        }
+      ],
+      "read_time_min": 1,
+      "date": "2026-09-02",
+      "sources": [
+        {
+          "source": "Wired",
+          "title": "The Range Rover Electric: Specs, Price, Availability",
+          "url": "https://www.wired.com/story/the-range-rover-electric-has-finally-arrived/"
+        },
+        {
+          "source": "Ars Technica",
+          "title": "Here's our first look—and drive—of the 2027 Range Rover Electric",
+          "url": "https://arstechnica.com/cars/2026/09/range-rover-ev-electric-propulsion-pairs-perfectly-with-this-luxury-suv/"
+        },
+        {
+          "source": "Guardian Business",
+          "title": "Range Rover launches its first electric vehicle, with starting price of £154,070",
+          "url": "https://www.theguardian.com/business/2026/sep/02/range-rover-launches-first-electric-vehicle"
+        },
+        {
+          "source": "BBC Business",
+          "title": "Range Rover launches first fully electric model",
+          "url": "https://www.bbc.co.uk/news/articles/clyk5016mpyo?at_medium=RSS&at_campaign=rss"
+        }
+      ],
+      "source_count": 4,
+      "why_ranked": "Published at front with composite 6.735; key drivers were Evidence Strength 8.8, Breaking Urgency 9.2. Total penalties applied: 0.620.",
+      "scores": {
+        "enduring_significance": 4.2,
+        "breaking_urgency": 9.25,
+        "evidence_strength": 8.8,
+        "attention_deficit": 0.0,
+        "manufactured_attention": 5.2,
+        "reader_consequence": 2.684,
+        "marginal_information_gain": 6.667
+      },
+      "consequence": {
+        "wallet": 4.4,
+        "job": 1.8,
+        "safety": 1.8,
+        "rights": 1.8,
+        "travel": 4.4,
+        "civic": 1.8
+      }
+    },
+    {
       "id": "ai-could-cause-global-economic-downturn-andrew-bailey-warns-bf0900",
       "category": "business",
       "rank": 5,
@@ -1728,7 +1679,7 @@
       "headline": "Andrew Bailey warns G20 AI could trigger global economic downturn",
       "dek": "Bank of England Governor Andrew Bailey warned G20 finance ministers that artificial intelligence could help cause a global economic downturn, according to Sky News and the BBC.",
       "body": "Bank of England Governor Andrew Bailey warned G20 finance ministers that artificial intelligence could help cause a global economic downturn, according to Sky News and the BBC.\n\nSky News reported that Bailey said AI could trigger a worldwide downturn. The BBC said he warned about AI's \"volatility\" and linked the risk to energy shocks caused by the US-Iran war.\n\nThe two reports agree that Bailey delivered the warning at the G20. The BBC was more specific about the mechanism, saying Bailey pointed to pressure on energy demand and supply at a time of war-linked disruption.\n\nNeither report in the material provided gave further detail on any policy response, economic forecast or immediate action from the G20 or the Bank of England.",
-      "image": "",
+      "image": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/0b34/live/537541c0-a556-11f1-aed2-8d6da8d75094.jpg",
       "so_what": "The warning matters to ordinary readers because another global downturn could raise pressure on jobs, borrowing costs and household finances.",
       "what_now": "",
       "region": "Global",
@@ -1798,7 +1749,7 @@
       "headline": "John Ternus takes over Apple as CEO ahead of Sept. 9 product event",
       "dek": "John Ternus became Apple chief executive on Tuesday, succeeding Tim Cook after Cook's 15-year run in the job.",
       "body": "John Ternus became Apple chief executive on Tuesday, succeeding Tim Cook after Cook’s 15-year run in the job. CNBC said Ternus, 51, is taking charge of a company valued at $4.7 trillion, while the Guardian put Apple’s value at about $4.5tn. The New York Times said Ternus is stepping in as Apple faces big technology and management changes.\n\nTernus had been Apple’s senior vice president of hardware engineering and has worked at the company for 25 years, CNBC and TechCrunch reported. TechCrunch said he joined Apple’s product design team in 2001 and later oversaw hardware work tied to products including AirPods, Apple Watch and Vision Pro, as well as Apple’s shift to its own chips. In a memo to staff reported by Bloomberg and cited by TechCrunch, Ternus wrote: “We have a huge launch next week that’s going to be phenomenal.”\n\nHis first days as CEO come as Apple deals with pressure in artificial intelligence and rising memory costs. CNBC reported Apple raised prices on MacBooks and iPads in June because of the memory crunch and has also increased prices on Apple TV and Apple One. The outlet said Apple has not yet raised iPhone prices, though many analysts expect that could happen early in Ternus’ tenure.\n\nApple is due to hold its annual launch event on Sept. 9. CNBC said that event is expected to unveil new iPhones and Apple Watches. TechCrunch reported Apple is also expected to roll out its new-and-improved Siri AI more broadly, powered by Google’s Gemini, and said the event is rumored to include Apple’s first foldable iPhone. On his last day as CEO, Cook wrote to staff, according to TechCrunch: “I take enormous comfort in handing the helm to someone as brilliant and wonderful and capable as John.”",
-      "image": "https://image.cnbcfm.com/api/v1/image/108356970-1788280105858-108356970-1788265511055-gettyimages-2292462825-AFP_C6YW89E.jpeg?v=1788280128&w=1920&h=1080",
+      "image": "https://th-i.thgim.com/public/incoming/b5ncvu/article70886198.ece/alternates/LANDSCAPE_1200/2026-04-20T210512Z_2053664726_RC28TKASQPA6_RTRMADP_3_APPLE-CEO.JPG",
       "so_what": "For customers, Apple’s leadership change comes as the company faces higher component costs and possible further price increases on devices and services.",
       "what_now": "Apple’s next concrete step is its Sept. 9 launch event, where the company is expected to show new iPhones and Apple Watches and may detail broader Siri AI rollout plans.",
       "region": "Asia Pacific",
@@ -1878,7 +1829,7 @@
       "headline": "FTC and 22 states sue Amazon over advertising practices",
       "dek": "The Federal Trade Commission and attorneys general from 22 states sued Amazon on Aug. 31, accusing the company of misleading advertisers on its platform.",
       "body": "The Federal Trade Commission and attorneys general from 22 states sued Amazon on Aug. 31, accusing the company of misleading advertisers on its platform. The case is the latest U.S. action against the e-commerce giant.\n\nAccording to NPR, federal regulators and the states allege Amazon made billions by manipulating how much brands and sellers paid for ads on its platform. CNBC reported that the FTC said Amazon used a deceptive auctioning system that misled advertisers.\n\nThe suit centers on how ads were sold and priced on Amazon's platform, where brands and third-party sellers buy placements to reach shoppers. Regulators say those practices caused advertisers to pay more than they should have.\n\nCNBC also highlighted the lawsuit in its Sept. 1 morning markets roundup, underscoring that the case is one of the key developments investors were watching at the start of the trading day.",
-      "image": "",
+      "image": "https://media.npr.org/assets/img/2023/10/06/prodev-10_sq-ebd9a8f99a9332df81b6d23f69740a36d26ce9b4.jpg?s=100&c=85&f=jpeg",
       "so_what": "The case could affect the cost and rules for advertising on one of the biggest online marketplaces used by brands, sellers and shoppers.",
       "what_now": "",
       "region": "Global",
@@ -1928,6 +1879,65 @@
       "consequence": {
         "wallet": 1.8,
         "job": 1.8,
+        "safety": 1.8,
+        "rights": 1.8,
+        "travel": 1.8,
+        "civic": 1.8
+      }
+    },
+    {
+      "id": "kalshi-bans-former-congressman-george-santos-for-life-after-1ed8cd",
+      "category": "business",
+      "rank": 8,
+      "tier": "brief",
+      "score": 5.063,
+      "headline": "Kalshi bans George Santos for life over State of the Union trades",
+      "dek": "Kalshi said it has banned former U.S. Rep. George Santos for life after investigating trades tied to his own attendance at the State of the Union, according to NPR and CBS…",
+      "body": "Kalshi said it has banned former U.S. Rep. George Santos for life after investigating trades tied to his own attendance at the State of the Union, according to NPR and CBS MoneyWatch. CBS MoneyWatch said the company described the trades as alleged unlawful activity.\n\nNPR reported that Kalshi said Santos did not cooperate with the investigation. CBS MoneyWatch also reported that the lifetime ban followed his failure to cooperate with the company's inquiry into the suspicious trades.\n\nAccording to NPR, Kalshi fined Santos more than $71,000. The reports say the trades involved bets on whether he would attend the State of the Union.\n\nThe sources describe Santos as a former or ex-congressman from New York. NPR called him a disgraced congressman, while CBS MoneyWatch said he faces a lifetime ban after the investigation into the trades.",
+      "image": "https://assets2.cbsnewsstatic.com/hub/i/r/2026/08/31/a0b1351b-aa19-40b1-b23b-3290a9123ddd/thumbnail/1200x630/1e7769055b43d792fcbf795b36d249e2/gettyimages-2211275831.jpg",
+      "so_what": "The case shows that people using prediction markets can face permanent removal and large financial penalties over trades tied to events they may influence themselves.",
+      "what_now": "",
+      "region": "Global",
+      "pattern": "economic",
+      "topics": [
+        "bans",
+        "congressman",
+        "george",
+        "kalshi",
+        "life",
+        "santos",
+        "trades",
+        "former"
+      ],
+      "countries": [],
+      "read_time_min": 1,
+      "date": "2026-08-31",
+      "sources": [
+        {
+          "source": "CBS MoneyWatch",
+          "title": "Kalshi bans ex-congressman George Santos for life after suspicious trades",
+          "url": "https://www.cbsnews.com/news/george-santos-kalshi-lifetime-ban/"
+        },
+        {
+          "source": "NPR Business",
+          "title": "Kalshi bans former congressman George Santos for life after State of the Union trades",
+          "url": "https://www.npr.org/2026/08/31/nx-s1-5950432/george-santos-kalshi-ban-prediction-markets"
+        }
+      ],
+      "source_count": 2,
+      "why_ranked": "Published at brief with composite 5.063; key drivers were Evidence Strength 7.2, Reader Consequence 3.4.",
+      "scores": {
+        "enduring_significance": 4.3,
+        "breaking_urgency": 5.5,
+        "evidence_strength": 7.2,
+        "attention_deficit": 2.8,
+        "manufactured_attention": 1.0,
+        "reader_consequence": 3.358,
+        "marginal_information_gain": 0.0
+      },
+      "consequence": {
+        "wallet": 5.477,
+        "job": 4.4,
         "safety": 1.8,
         "rights": 1.8,
         "travel": 1.8,
@@ -2066,7 +2076,7 @@
       "headline": "LUX-ZEPLIN scientists report lone signal in search for dark matter",
       "dek": "Scientists working on the LUX-ZEPLIN, or LZ, experiment said they saw a single particle interaction that could be a sign of dark matter, but they said they are not claiming a…",
       "body": "Scientists working on the LUX-ZEPLIN, or LZ, experiment said they saw a single particle interaction that could be a sign of dark matter, but they said they are not claiming a detection. The BBC reported the finding was presented at a conference in Japan on Tuesday. The Japan Times said researchers in South Dakota observed hints of dark matter during a deep-underground experiment. The New York Times said the lone signal does not fit the profile of any other known particles, according to physicists.\n\nThe BBC said the study involved 250 scientists and engineers from 39 institutions in six countries, including researchers from the University of Bristol, over two years. It said the detector is housed at the US Department of Energy's Sanford Underground Research Facility in South Dakota, nearly a mile underground.\n\nAccording to the BBC, the event could potentially have been caused by a Weakly Interacting Massive Particle, or WIMP, a leading dark matter candidate. But the result was rated at 2.6 sigma, below the usual five-sigma threshold for a discovery. \"With only one event, we don't want to get ahead of ourselves,\" Professor Rick Gaitskell of Brown University said, according to the BBC. \"We are not claiming to have seen dark matter. But we have seen something interesting that we want to share with the scientific community for their input.\"\n\nDr Sam Eriksen of the University of Bristol told the BBC the signal could be \"the first step in understanding dark matter as a particle,\" though further research could show it is unrelated to dark matter. Professor Henning Flaecher of Bristol said researchers had spent \"countless hours\" checking for known explanations and that \"to date none provide a convincing explanation,\" the BBC reported.",
-      "image": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/37fa/live/0d899630-a6b8-11f1-ae1e-219da1d6451a.jpg",
+      "image": "https://www.japantimes.co.jp/japantimes/uploads/images/2026/09/02/560762.JPG?v=3.1",
       "so_what": "If the signal holds up, it could help explain the invisible substance scientists say makes up more than 85% of the universe.",
       "what_now": "Researchers said they want input from the scientific community and plan to analyse more data to see whether additional candidate events appear.",
       "region": "Global",
@@ -2130,7 +2140,7 @@
       "headline": "NASA launches Nancy Grace Roman Space Telescope on Falcon Heavy",
       "dek": "NASA launched the Nancy Grace Roman Space Telescope on Aug. 30, 2026 from the agency's Kennedy Space Center in Florida, according to NASA and the BBC.",
       "body": "NASA launched the Nancy Grace Roman Space Telescope on Aug. 30, 2026 from the agency's Kennedy Space Center in Florida, according to NASA and the BBC. NASA said the telescope flew aboard a SpaceX Falcon Heavy rocket.\n\nThe mission is designed to create a new map of the universe over several years, the BBC reported. The outlet said the telescope will help scientists learn more about dark energy and dark matter.\n\nNASA said Roman is named after the agency's first chief astronomer. The agency said the telescope will survey billions of stars and galaxies.\n\nNASA also said Roman has a field of view far larger than Hubble's. The BBC described the launch as \"a giant leap forward\" for the US space agency's new observatory mission.",
-      "image": "",
+      "image": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/206f/live/de2a7590-a48b-11f1-b109-879e35c24276.jpg",
       "so_what": "The mission could produce a much broader view of stars and galaxies than Hubble, giving the public and scientists new data about how the universe is structured.",
       "what_now": "",
       "region": "Americas",
@@ -2189,7 +2199,7 @@
       "headline": "Nepal flood death toll reaches 1,204 as 4,216 remain missing",
       "dek": "Nepal's disaster authority said on September 2 that flash floods on the China-Nepal border had killed at least 1,204 people in Nepal, with 4,216 still missing a week after the…",
       "body": "Nepal's disaster authority said on September 2 that flash floods on the China-Nepal border had killed at least 1,204 people in Nepal, with 4,216 still missing a week after the disaster. The floods devastated towns and villages in northern and central Nepal after what Nepal's Prime Minister Balendra Shah said was an ice-rock avalanche in the Himalayas that sent floodwaters down the Bhotekoshi River into Rasuwa on August 26. Chinese officials, cited by The Hindu, said 21 people were killed in Tibet and 541 were missing there.\n\nAccording to Nepal's National Disaster Risk Reduction and Management Authority, 348 bodies were recovered in Chitawan district, 217 in Nawalparasi East, 202 in Nawalparasi West, 155 in Nuwakot, 115 in Rasuwa, 69 in Gorkha, 60 in Dhading and 38 in Tanahu. The authority said 583 of the missing are foreigners. The Hindu reported that 11,993 people have been rescued and about 21,314 security personnel have been mobilised.\n\nRescue teams from the Nepali Army, Armed Police Force, foreign technical experts and project employees were still searching tunnels and underground powerhouses along the Bhotekoshi river, but The Hindu said they had not located the missing workers there. Euronews reported rescuers had recovered only bodies from tunnels blocked by sludge, though teams were still digging, drilling and blasting through debris. CBS News reported that heavy monsoon rain had swollen the Trishuli River again on Monday, adding danger to the search.\n\nFamilies of missing people have begun symbolic funerals after searching shelters, mortuaries and hospital walls displaying photographs of unidentified bodies. At Pashupati Aryaghat, dozens of effigies were cremated in a mass funeral on September 2, The Hindu reported. Nepal Police said postmortem and legal identification procedures had been completed for 1,113 bodies, 95 had been handed over to relatives, and details of 911 unidentified bodies had been uploaded to the Nepal Police website.\n\nShah told Nepal's House of Representatives that the disaster showed the growing risks faced by Himalayan communities because of climate change and that Nepal must present that link \"in a strong manner to the international community.\" Nepal's Foreign Minister Shisir Khanal told Euronews he still hoped some missing people could be found alive, saying, \"Miracles do happen.\"",
-      "image": "https://th-i.thgim.com/public/incoming/1nezuz/article71418089.ece/alternates/LANDSCAPE_1200/APTOPIX_Nepal_Flash_Floods_76492.jpg",
+      "image": "https://assets3.cbsnewsstatic.com/hub/i/r/2026/08/31/b44ccb8b-d303-45e0-b0de-027877b47c8a/thumbnail/1200x630g8/ea02678e6f3ec571a5b68cf9f6229498/nepal-floods-search-rescue.jpg",
       "so_what": "The scale of deaths, missing people and unidentified bodies means many families still do not know whether relatives are alive, dead or where to find them.",
       "what_now": "Reuters, cited by The Hindu, reported Nepal plans to rebuild an early-warning system at Timure in Rasuwa district with seismic sensors, cameras and a satellite link.",
       "region": "Asia Pacific",
@@ -2279,7 +2289,7 @@
       "headline": "Federal judge blocks New York climate superfund law",
       "dek": "A federal judge struck down New York's Climate Change Superfund Act on Monday, ruling that the state cannot enforce the law because it conflicts with federal authority.",
       "body": "A federal judge struck down New York’s Climate Change Superfund Act on Monday, ruling that the state cannot enforce the law because it conflicts with federal authority. Chief Judge Brenda Sannes of the U.S. District Court for the Northern District of New York said the law operated in an area “in which the federal interest is so dominant that it cannot be enforced,” according to Inside Climate News.\n\nThe law, signed by Gov. Kathy Hochul in December 2024, sought to make fossil fuel companies help cover costs tied to climate change. Inside Climate News said New York aimed to collect $75 billion over 25 years, a fraction of the more than $500 billion the state projects it will need for risks including hurricanes, storms and extreme heat. The Guardian said the money was for projects to help New York pay for climate mitigation and adaptation.\n\nThe ruling came in a lawsuit filed in February 2025 by attorneys general from 22 Republican-led states, according to Inside Climate News. Fossil fuel companies and trade groups including the American Petroleum Institute and the U.S. Chamber of Commerce backed the suit, that report said. The New York Times said the court found the measure conflicted with federal law.\n\nKen Lovett, a senior communications adviser on energy and environment for Hochul, said in an email to Inside Climate News that “taxpayers shouldn’t have to foot the bill for damages caused by polluters” and that officials are reviewing the decision. State Assemblyman Jeffrey Dinowitz, who co-sponsored the legislation, told Inside Climate News, “They didn’t do anything about it, and so when we passed the law, the purpose was to ensure that these corporations pay for some of the costs of the damage that they caused.” Ryan Meyers of the American Petroleum Institute said, “We have consistently argued that climate policy is a federal, not state, issue, and we are pleased that the court agreed.”",
-      "image": "https://insideclimatenews.org/wp-content/uploads/2026/09/GettyImages-1337893292-1024x682.jpg",
+      "image": "https://i.guim.co.uk/img/media/b947bba3ffaf607c486bb6c104d0c2bface9f0bd/463_0_5001_4000/master/5001.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=1b15b1cb108c32ea8db1f42e350310b1",
       "so_what": "If the ruling stands, New York taxpayers may remain on the hook for climate-related infrastructure costs the state says could exceed $500 billion.",
       "what_now": "New York officials said they are reviewing the decision, and Inside Climate News reported that if the state appeals, the case would go to the 2nd Circuit.",
       "region": "Americas",
@@ -2398,7 +2408,7 @@
       "headline": "Met Office releases 2026-2027 UK storm names",
       "dek": "The Met Office has released a new list of storm names for 2026-2027.",
       "body": "The Met Office has released a new list of storm names for 2026-2027. BBC Science said the list was issued as Tuesday 1 September marked the start of the UK storm season.\n\nThe names include Austen, Chloe and Evelyn, according to the BBC. Sky Technology reported that storm names for the year ahead are released by the Met Office every September.\n\nSky said the names are chosen after input from the public. The outlet said the Met Office reveals the list each September for the coming year.\n\nThe reports did not include the full list of names or any further details from the Met Office in the material provided.",
-      "image": "",
+      "image": "https://ichef.bbci.co.uk/ace/branded_weather/1200/cpsprodpb/e063/live/3123c520-a2ee-11f1-aed2-8d6da8d75094.jpg",
       "so_what": "People in the UK use these names in weather warnings and news reports, so the new list is part of how major storms will be identified over the coming season.",
       "what_now": "",
       "region": "Global",
@@ -2455,7 +2465,7 @@
       "headline": "Congo Ebola outbreak passes 3,000 deaths and 6,000 confirmed cases",
       "dek": "More than 3,000 people have died in the fastest-growing Ebola outbreak in Congo's history, according to government data released Wednesday.",
       "body": "More than 3,000 people have died in the fastest-growing Ebola outbreak in Congo's history, according to government data released Wednesday.\n\nCongo's Ministry of Health recorded 6,186 confirmed cases, including 3,007 deaths, The Hill reported. The same data showed that just over 1,400 people have recovered.\n\nDW said the outbreak in the Democratic Republic of Congo has also passed 6,000 confirmed cases, with nearly 3,000 deaths. It said authorities are racing to contain what it described as one of the deadliest outbreaks in history as concerns grow over the virus's spread.\n\nThe figures mark another rise in the outbreak after the World Health Organization declared it a global health emergency in May, according to The Hill.",
-      "image": "",
+      "image": "https://static.dw.com/image/78362696_6.jpg",
       "so_what": "For ordinary people in Congo, the rising case and death counts mean a wider public health emergency that authorities are still trying to contain.",
       "what_now": "",
       "region": "Africa",
@@ -2511,11 +2521,11 @@
       "rank": 1,
       "tier": "front",
       "score": 7.852,
-      "headline": "Tiger Woods pleads no contest to reckless driving in Florida crash",
-      "dek": "Tiger Woods entered a plea agreement on a reckless driving charge on Wednesday after a March rollover crash near his home in Florida.",
-      "body": "Tiger Woods entered a plea agreement on a reckless driving charge on Wednesday after a March rollover crash near his home in Florida. Al Jazeera reported Woods appeared in a Martin County courtroom and agreed to a reduced charge after he was initially charged with driving under the influence. The Hill reported Woods pleaded no contest to the reckless driving charge.\n\nA judge ordered Woods's driving licence suspended for five years, according to both outlets. Al Jazeera reported Woods, 50, said little during the hearing and arrived at the courthouse with his girlfriend Vanessa Trump, President Donald Trump's former daughter-in-law, who sat behind him in court.\n\nAccording to Al Jazeera, a sheriff's report said deputies found two pain pills in Woods's pocket and that he showed signs of impairment. The report said his breathalyser test was negative, but he refused to take a urine test. Neither Woods nor the person in the other vehicle was injured, officials said.\n\nWoods told officers he was looking at his phone and changing the radio when he hit the truck, The Hill reported. Al Jazeera said his Land Rover caused $5,000 in damage to the truck. Court records cited by Al Jazeera said Woods later left the United States for treatment at an inpatient treatment facility.",
+      "headline": "Tiger Woods gets five-year driving ban in Florida crash plea deal",
+      "dek": "Tiger Woods was fined and banned from driving for five years on Wednesday after entering a plea agreement in Martin County, Florida, over a March rollover crash.",
+      "body": "Tiger Woods was fined and banned from driving for five years on Wednesday after entering a plea agreement in Martin County, Florida, over a March rollover crash. The Guardian, BBC Sport and The Hill said Woods pleaded no contest to reckless driving. Sky Sports, CBS Sports and Al Jazeera said he pleaded guilty. All of the outlets said the deal reduced an original driving under the influence charge.\n\nAccording to The Guardian, Woods was adjudicated guilty of willful and wanton reckless driving, a second offense, fined $1,000 and given a five-year license suspension. The Guardian said he also pleaded no contest to refusing to submit to a lawful test, was fined $500 on that count, and received a concurrent five-year suspension on a careless-driving citation. Court records cited by The Guardian show he paid $2,131.44 in fines and costs. Sky Sports reported Judge Darren Steele told Woods: \"There are no exceptions. If you were to drive for any reason at all, you would go immediately back to jail.\"\n\nThe charges came from a 27 March crash in Hobe Sound. The Guardian said Martin County sheriff John Budensiek said Woods was driving a Land Rover that overturned after he tried to overtake a truck on a narrow two-lane road shortly before 2pm. Woods told officers he was looking down at his phone and changing the radio station when the collision happened, according to The Guardian, BBC Sport, Al Jazeera and The Hill. The outlets said no alcohol was found on a breath test, but Woods refused a urine test. The Guardian said prosecutors' filings said Woods told investigators he had taken several medications earlier that day, including ibuprofen and Vicodin.\n\nWoods said little in court. The Guardian, Sky Sports and Al Jazeera said he arrived with his girlfriend Vanessa Trump. After the hearing, BBC Sport quoted Florida State Attorney Thomas Bakkedahl saying: \"I'm completely confident and comfortable with the resolution of this case,\" and, \"Today I resolved case involving a man who drives a golf ball for a living. Tomorrow, I'll resolve a case in the same matter for a man who drives a nail for a living.\"",
       "image": "https://www.aljazeera.com/wp-content/uploads/2026/09/AP26245463571248-1788354976.jpg?resize=1920%2C1440",
-      "so_what": "The case keeps Woods off the road for years and adds to the interruptions to his public and golf career after the March crash.",
+      "so_what": "The plea ends the criminal case from the March crash and keeps Woods off the road for five years, with the judge warning he could be jailed if he drives.",
       "what_now": "",
       "region": "Global",
       "pattern": "negotiation",
@@ -2530,7 +2540,7 @@
         "forfeits"
       ],
       "countries": [],
-      "read_time_min": 1,
+      "read_time_min": 2,
       "date": "2026-09-02",
       "sources": [
         {
@@ -2542,9 +2552,34 @@
           "source": "The Hill",
           "title": "Tiger Woods pleads no contest to reckless driving charge, gets license suspended for 5 years",
           "url": "https://thehill.com/homenews/6065755-tiger-woods-pleads-no-contest-to-reckless-driving-charge-gets-license-suspended-for-5-years/"
+        },
+        {
+          "source": "Sky News Home",
+          "title": "Tiger Woods gets five-year driving ban and fine after entering car crash plea deal",
+          "url": "https://news.sky.com/story/tiger-woods-gets-five-year-driving-ban-and-fine-after-entering-plea-deal-over-charges-related-to-car-crash-13580365"
+        },
+        {
+          "source": "Guardian Sport",
+          "title": "Tiger Woods handed five-year driving ban after no-contest plea over crash",
+          "url": "https://www.theguardian.com/sport/2026/sep/02/tiger-woods-change-plea-dui-florida-crash"
+        },
+        {
+          "source": "Sky Sports",
+          "title": "Tiger Woods handed five-year driving ban after Florida crash",
+          "url": "https://www.skysports.com/golf/news/12040/13580307/tiger-woods-enters-plea-agreement-to-reckless-driving-charge-and-issued-five-year-driving-suspension-in-florida-court"
+        },
+        {
+          "source": "CBS Sports Headlines",
+          "title": "Tiger Woods takes plea deal for reckless driving in DUI case, loses driver's license for five years",
+          "url": "https://www.cbssports.com/golf/news/tiger-woods-plea-deal-reckless-driving-dui-florida/"
+        },
+        {
+          "source": "BBC Sport",
+          "title": "Woods banned from driving for five years after March's crash arrest",
+          "url": "https://www.bbc.co.uk/news/articles/c5y7xvpn5kno?at_medium=RSS&at_campaign=rss"
         }
       ],
-      "source_count": 2,
+      "source_count": 7,
       "why_ranked": "Published at front with composite 7.852; key drivers were Marginal Information Gain 10.0, Breaking Urgency 10.0.",
       "scores": {
         "enduring_significance": 3.0,
@@ -2706,7 +2741,7 @@
       "headline": "Bus crash in Egypt's South Sinai kills at least 22",
       "dek": "At least 22 people were killed in a bus crash in Egypt's South Sinai area, according to the sources.",
       "body": "At least 22 people were killed in a bus crash in Egypt's South Sinai area, according to the sources. The New York Times said the vehicle overturned in the Sinai Peninsula, while the BBC said the crash happened on Egypt's Red Sea coast in South Sinai governorate.\n\nThe New York Times and Sky News both said authorities reported 28 injuries. The New York Times said the crash was in an area popular with tourists.\n\nThe BBC said reports indicated Jordanian nationals were among those killed in the accident. The sources did not give a full breakdown of the victims or say what caused the crash.\n\nSky News reported the death toll as at least 22, matching the New York Times and BBC accounts. All three sources said the crash was in Egypt's South Sinai region.",
-      "image": "",
+      "image": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/72b3/live/2866cd30-a6c5-11f1-bebe-e75dba5c0b21.jpg",
       "so_what": "The crash hit a busy tourist area, raising immediate concern for travelers and families with plans in Egypt's Sinai region.",
       "what_now": "",
       "region": "Middle East",
@@ -2837,89 +2872,15 @@
       }
     },
     {
-      "id": "woods-banned-from-driving-for-five-years-after-march-s-crash-4fc600",
-      "category": "justice",
-      "rank": 6,
-      "tier": "front",
-      "score": 7.541,
-      "headline": "Tiger Woods gets five-year driving ban after Florida crash plea deal",
-      "dek": "Tiger Woods was banned from driving for five years on Wednesday after changing his plea in Martin County, Florida, over a March rollover crash in Hobe Sound.",
-      "body": "Tiger Woods was banned from driving for five years on Wednesday after changing his plea in Martin County, Florida, over a March rollover crash in Hobe Sound. The 50-year-old pleaded no contest to reckless driving and to refusing to submit to a lawful test, according to the Guardian, BBC Sport and Sky Sports. CBS Sports said Woods changed his plea to guilty. BBC Sport said it had corrected an earlier version that wrongly said he had pleaded guilty.\n\nUnder the agreement, Woods was adjudicated guilty of willful and wanton reckless driving, a second offense, fined $1,000 and had his driver's licence suspended for five years, the Guardian reported. He was also fined $500 on the test-refusal count, and court records showed he paid $2,131.44 in fines and costs, the Guardian said. Sky Sports reported Judge Darren Steele told Woods: \"There are no exceptions. If you were to drive for any reason at all, you would go immediately back to jail.\"\n\nThe original charge was driving under the influence with property damage, according to the Guardian. Authorities said Woods was driving a Land Rover that overturned after trying to pass a truck towing a trailer on a narrow two-lane road shortly before 2pm on 27 March, Martin County sheriff John Budensiek said, as reported by the Guardian. Woods was alone, got out through the passenger side and was not injured. He told officers he had looked down at his phone to change the radio station when the collision happened, the Guardian, BBC Sport and Sky Sports reported.\n\nA breath test showed no alcohol in his system, but he refused a urine test for drugs, the Guardian and BBC Sport said. The Guardian said Woods told investigators he had taken several medications earlier that day, including drugs for high blood pressure and cholesterol, ibuprofen and Vicodin. BBC Sport reported that authorities later said two white pills found in his pocket were identified as hydrocodone. After the arrest, Woods said he would step away from golf \"to seek treatment and focus on my health,\" according to the Guardian and BBC Sport.",
-      "image": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/a0c8/live/b24f0110-a6cb-11f1-b0c9-07afcdd8053c.jpg",
-      "so_what": "The plea ends the criminal case from the March crash, but Woods cannot legally drive for five years and would risk jail if he does, Sky Sports reported.",
-      "what_now": "",
-      "region": "Americas",
-      "pattern": "negotiation",
-      "topics": [
-        "driving",
-        "five",
-        "woods",
-        "crash",
-        "tiger",
-        "plea",
-        "deal",
-        "handed"
-      ],
-      "countries": [],
-      "read_time_min": 2,
-      "date": "2026-09-02",
-      "sources": [
-        {
-          "source": "Sky News Home",
-          "title": "Tiger Woods gets five-year driving ban and fine after entering car crash plea deal",
-          "url": "https://news.sky.com/story/tiger-woods-gets-five-year-driving-ban-and-fine-after-entering-plea-deal-over-charges-related-to-car-crash-13580365"
-        },
-        {
-          "source": "Guardian Sport",
-          "title": "Tiger Woods handed five-year driving ban after no-contest plea over crash",
-          "url": "https://www.theguardian.com/sport/2026/sep/02/tiger-woods-change-plea-dui-florida-crash"
-        },
-        {
-          "source": "Sky Sports",
-          "title": "Tiger Woods handed five-year driving ban after Florida crash",
-          "url": "https://www.skysports.com/golf/news/12040/13580307/tiger-woods-enters-plea-agreement-to-reckless-driving-charge-and-issued-five-year-driving-suspension-in-florida-court"
-        },
-        {
-          "source": "CBS Sports Headlines",
-          "title": "Tiger Woods takes plea deal for reckless driving in DUI case, loses driver's license for five years",
-          "url": "https://www.cbssports.com/golf/news/tiger-woods-plea-deal-reckless-driving-dui-florida/"
-        },
-        {
-          "source": "BBC Sport",
-          "title": "Woods banned from driving for five years after March's crash arrest",
-          "url": "https://www.bbc.co.uk/news/articles/c5y7xvpn5kno?at_medium=RSS&at_campaign=rss"
-        }
-      ],
-      "source_count": 5,
-      "why_ranked": "Published at front with composite 7.541; key drivers were Evidence Strength 8.8, Marginal Information Gain 8.8.",
-      "scores": {
-        "enduring_significance": 3.0,
-        "breaking_urgency": 10.0,
-        "evidence_strength": 8.8,
-        "attention_deficit": 0.0,
-        "manufactured_attention": 1.0,
-        "reader_consequence": 2.584,
-        "marginal_information_gain": 8.846
-      },
-      "consequence": {
-        "wallet": 1.8,
-        "job": 1.8,
-        "safety": 4.4,
-        "rights": 5.477,
-        "travel": 1.8,
-        "civic": 1.8
-      }
-    },
-    {
       "id": "baby-stabbed-to-death-in-sheffield-was-found-on-top-of-washi-444570",
       "category": "justice",
-      "rank": 7,
+      "rank": 6,
       "tier": "front",
       "score": 7.525,
       "headline": "Baby stabbed to death in Sheffield was found on top of washing machine, court told",
       "dek": "Two men and two women charged with murder after body of newborn girl found with 33 stab wounds A newborn baby girl died from multiple stab wounds before she was found on top of a…",
       "body": "Two men and two women charged with murder after body of newborn girl found with 33 stab wounds A newborn baby girl died from multiple stab wounds before she was found on top of a washing machine in an outhouse in Sheffield, a court has heard. Two men and two women appeared in court on Wednesday charged with the murder of the newborn, named only as Baby S. She was found with 33 wounds from 15 separate stabbings when police were called to a property in the Wincobank area of the city on Sunday. Continue reading...",
-      "image": "",
+      "image": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/97d1/live/296da420-a6ec-11f1-a291-b542ee92de7c.png",
       "so_what": "Two men and two women charged with murder after body of newborn girl found with 33 stab wounds A newborn baby girl died from multiple stab wounds before she was found on top of a washing machine in an outhouse in Sheffield, a court has heard.",
       "what_now": "",
       "region": "Global",
@@ -2977,13 +2938,13 @@
     {
       "id": "jury-convicts-keffe-d-for-1996-killing-of-rap-icon-tupac-sha-10cc67",
       "category": "justice",
-      "rank": 8,
+      "rank": 7,
       "tier": "brief",
       "score": 5.35,
       "headline": "Las Vegas jury convicts Keffe D in Tupac Shakur killing",
       "dek": "A Las Vegas jury on Monday convicted Duane \"Keffe D\" Davis of orchestrating the 1996 killing of Tupac Shakur.",
       "body": "A Las Vegas jury on Monday convicted Duane \"Keffe D\" Davis of orchestrating the 1996 killing of Tupac Shakur. Davis, 63, was found guilty of a single count of murder with a deadly weapon and could be sentenced to life in prison, according to both The Hindu and Euronews.\n\nThe outlets said jurors deliberated for less than three hours after a trial that lasted nine days. The 16-member panel, including four alternates, heard from 24 prosecution witnesses and three defence witnesses. After the verdict, Shakur's sister, Sekyiwa \"Set\" Shakur, cried and hugged prosecutors, while Davis' son covered his face with one hand.\n\nChief Deputy District Attorney Binu Palal told jurors Davis got a gun and \"went hunting\" for Shakur and Marion \"Suge\" Knight after Davis' nephew was beaten earlier that night. \"He is responsible of the murder of Tupac Shakur,\" Palal said. Prosecutors said Davis placed himself in the white Cadillac from which the shots were fired and, though he did not pull the trigger, called for the gunfire. Defence lawyer Michael Sanft said there was no physical evidence tying Davis to the shooting and argued Davis' memoir and public statements were \"dramatised bravado\" made for money.\n\nShakur was shot in Las Vegas on September 7, 1996, when a white Cadillac pulled up beside the car he was riding in at a red light, the sources said. He died six days later. Knight was wounded but survived. Prosecutors said the state would dismiss a gang enhancement charge due to witness logistics. Euronews reported Davis is expected to appeal, and said Shakur's family was waiting until sentencing, which is scheduled for October, before commenting.",
-      "image": "https://th-i.thgim.com/public/incoming/fr5zx7/article71413500.ece/alternates/LANDSCAPE_1200/2026-08-31T100017Z_1565821469_RC277NALBYZK_RTRMADP_3_PEOPLE-TUPAC-MURDER-COURT.JPG",
+      "image": "https://images.euronews.com/articles/stories/09/89/63/42/1200x675_cmsv2_bd6f9f49-3375-5518-b149-79ad9204f4f9-9896342.jpg",
       "so_what": "The verdict closes one of the highest-profile unsolved killings in music and could send Davis to prison for life.",
       "what_now": "Sentencing is scheduled for October, according to Euronews.",
       "region": "Global",
@@ -3042,7 +3003,7 @@
       "headline": "ICC moves Women's Champions Trophy from Sri Lanka to India",
       "dek": "The International Cricket Council has moved the inaugural ICC Women's Champions Trophy from Sri Lanka to India, according to Sky Sports and BBC Sport.",
       "body": "The International Cricket Council has moved the inaugural ICC Women's Champions Trophy from Sri Lanka to India, according to Sky Sports and BBC Sport.\n\nSky Sports reported that the ICC confirmed India as the venue for the tournament next year after Sri Lanka were removed from hosting rights. BBC Sport likewise reported that the ICC moved the inaugural edition of next year's Women's Champions Trophy from Sri Lanka to India.\n\nNeither report, as supplied, gave a reason for Sri Lanka losing the event. Both described it as the inaugural edition of the Women's Champions Trophy and said it will be staged next year.",
-      "image": "",
+      "image": "https://ichef.bbci.co.uk/ace/branded_sport/1200/cpsprodpb/5099/live/1d099240-17a3-11f0-8e92-794cc8da8125.jpg",
       "so_what": "The switch decides where fans and teams will travel for a major new women's cricket event next year.",
       "what_now": "The inaugural Women's Champions Trophy is due to be held in India next year.",
       "region": "Asia Pacific",
@@ -3192,7 +3153,7 @@
       "headline": "Stan Kroenke reaches deal to buy controlling interest in Los Angeles Angels",
       "dek": "Kroenke Sports + Entertainment said Tuesday it will buy a controlling interest in the Los Angeles Angels from Arte Moreno.",
       "body": "Kroenke Sports + Entertainment said Tuesday it will buy a controlling interest in the Los Angeles Angels from Arte Moreno. The Guardian reported the deal at about $4 billion.\n\nMoreno has owned the team since 2003, according to the Guardian. The sale still needs approval from Major League Baseball and its owners, and the Guardian said it is expected to close in the first quarter of 2027.\n\nThe Japan Times said Kroenke already owns the NFL's Los Angeles Rams, the NBA's Denver Nuggets, the NHL's Colorado Avalanche, MLS club Colorado Rapids, and Arsenal of the Premier League. The Guardian said the deal would give KSE teams in the NFL, MLB, NBA, NHL and MLS.",
-      "image": "",
+      "image": "https://i.guim.co.uk/img/media/b865d9982f4f7ad6769fe581d93d131fdd93d441/1065_0_5338_4273/master/5338.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=715fe2faf36cbee784f2b75bb00380d0",
       "so_what": "For sports fans in Los Angeles and beyond, the deal would put another major team under an owner who already controls clubs across several top leagues.",
       "what_now": "The transaction will next go to Major League Baseball and its owners for approval, and the Guardian said it is expected to close in the first quarter of 2027.",
       "region": "Global",
@@ -3251,7 +3212,7 @@
       "headline": "Ukraine minister says FIA was wrong to lift ban on Russian competitors",
       "dek": "Ukraine's Minister for Youth and Sport, Matvii Bidnyi, said motorsport's governing body the FIA was wrong to lift its ban on Russian and Belarusian competitors.",
       "body": "Ukraine's Minister for Youth and Sport, Matvii Bidnyi, said motorsport's governing body the FIA was wrong to lift its ban on Russian and Belarusian competitors. Speaking to BBC Sport, he said: \"The reasons why Russia was banned from international sports competition have not disappeared. Nothing changes and it became even worse.\"\n\nBidnyi said Kyiv's central rail station had been bombed by a Russian drone on Wednesday about an hour before he spoke. \"The air alert was just turning off,\" he said. \"Our kids, we all came from the bomb shelter. These attacks continue almost every day.\" He said Russia \"continues full-scale aggression against Ukraine\" and that Belarus can still provide military support to Russia.\n\nThe FIA ban was imposed in February 2022 after Vladimir Putin ordered the invasion of Ukraine. BBC Sport reported that the FIA's world motorsport council lifted it on 3 August, following what the FIA said was an IOC announcement on 7 July and similar updates by other sports federations. The FIA said it has updated requirements for Russian and Belarusian drivers, national teams, competitors and officials, but still bans events and competitions in Russia and Belarus and \"continues to monitor the situation closely in Ukraine\".\n\nBidnyi said other sports bodies, including World Athletics, had not taken the same step. He called the FIA decision \"a massive disappointment for everyone in Ukraine\" and said it undermined pressure on \"the aggressor\". He added: \"In Russia, elite sport is deeply connected with the military and state propaganda system. It's one of the biggest whitewashing mechanisms. This is why we call it sportswashing.\"\n\nAccording to the Ukrainian government figures cited by BBC Sport, 775 Ukrainian athletes and coaches have been killed since Russia's full-scale invasion, including three competitors in the Ukrainian Automobile Federation, and more than 925 sports facilities have been destroyed. BBC Sport said the FIA was contacted for comment and referred to its statement on the policy change.",
-      "image": "https://ichef.bbci.co.uk/ace/branded_sport/1200/cpsprodpb/2ed0/live/3b741230-a6b5-11f1-bf9b-4185c128a665.jpg",
+      "image": "https://www.thehindu.com/theme/images/og-image.png",
       "so_what": "The decision affects who can compete in international motorsport while Ukraine argues that readmitting Russians weakens wider efforts to isolate Russia over the war.",
       "what_now": "The FIA said it will continue to monitor the situation in Ukraine and reserves the right to update its position in the future.",
       "region": "Europe",
@@ -3320,7 +3281,7 @@
       "headline": "Everton's Balogun move collapses, leaving Moyes with one senior striker",
       "dek": "Everton's £40m move for the USA international Folarin Balogun collapsed late on deadline day, leaving manager David Moyes with only one recognised senior centre-forward for the…",
       "body": "Everton's £40m move for the USA international Folarin Balogun collapsed late on deadline day, leaving manager David Moyes with only one recognised senior centre-forward for the first half of the season, according to the Guardian. Yahoo Sports also reported Moyes was left with just one recognised senior centre-forward, naming Thierno Barry.\n\nThe Guardian said Everton had agreed a £40m deal for Balogun, but issues with the striker's medical put the transfer in doubt and the move then collapsed. The Guardian also reported that Balogun changed his mind over the £40m deal.\n\nBefore that, Everton had sold Beto to Fiorentina and Iliman Ndiaye to Manchester City to raise funds, the Guardian reported. It added that Everton made enquiries to Manchester United for Joshua Zirkzee and to Aston Villa for Tammy Abraham, but proposed loan moves for both forwards were rejected.\n\nAfter the window closed, Yahoo Sports reported that former Manchester United striker Anthony Martial had emerged as an option for Everton. It said Everton had thought they had solved their striker problem on deadline day, but had not.",
-      "image": "",
+      "image": "https://i.guim.co.uk/img/media/af38f5ab0e4bcb35a6f13af3ea290d44e582d963/749_0_3745_2996/master/3745.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=34f0b70049a5acbc893154202d28ddfe",
       "so_what": "Everton now begin the season's first half short of attacking cover after selling two forwards and failing to bring in a replacement.",
       "what_now": "",
       "region": "Global",
@@ -3379,7 +3340,7 @@
       "headline": "Hadjar to miss Italian Grand Prix with wrist injury",
       "dek": "Isack Hadjar will miss this weekend's Italian Grand Prix because of an ongoing wrist injury, Sky Sports and BBC Sport reported.",
       "body": "Isack Hadjar will miss this weekend's Italian Grand Prix because of an ongoing wrist injury, Sky Sports and BBC Sport reported.\n\nBBC Sport said Red Bull will be without Hadjar at Monza as he continues to recover from the injury. Sky Sports said the wrist problem is ongoing and will keep him out of the race weekend.\n\nSky Sports reported that Liam Lawson will replace Hadjar for a second consecutive event at Red Bull. The reports name the race as this weekend's Italian Grand Prix at Monza.",
-      "image": "",
+      "image": "https://e0.365dm.com/26/08/1600x900/skysports-f1-isack-hadjar-red-bull_7326639.jpg?20260820160003",
       "so_what": "Red Bull will head into one of Formula One's race weekends with a stand-in driver instead of its regular entrant.",
       "what_now": "",
       "region": "Europe",
@@ -3443,7 +3404,7 @@
       "headline": "Airlink defends low stadium flyover before South Africa-New Zealand Test",
       "dek": "Airlink defended a pre-game flyby by two passenger jets over Cape Town Stadium before Saturday's second rugby union Test between South Africa and New Zealand.",
       "body": "Airlink defended a pre-game flyby by two passenger jets over Cape Town Stadium before Saturday’s second rugby union Test between South Africa and New Zealand. The stunt drew huge cheers from the estimated crowd of 56,000 people and also prompted debate over safety risks.\n\nThe Guardian reported that two Embraer jets operated by the South African airline flew dramatically low over the stadium in Cape Town. Flight tracking service Flightradar24 estimated that the lead jet passed just 41-46 feet, or 12-14 metres, above the roof.\n\nAccording to the Guardian, the second jet was very close behind and flew through a cloud of pink dust that shot up from the stadium roof as part of the show. Airlink said the flyby was conducted according to regulations, the Guardian reported.\n\nEuronews said footage of the flyover quickly circulated on social media and drew mixed reactions. It said some people raised concerns about safety.",
-      "image": "",
+      "image": "https://i.guim.co.uk/img/media/0e3f920ea6bd189039a76dcfdadd0520195d6b3a/0_998_1214_970/master/1214.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=13a018a036eaaa61ff5da51ba66521b7",
       "so_what": "The incident has put a high-profile airline display over a packed stadium under scrutiny after video of it spread widely online.",
       "what_now": "",
       "region": "Asia Pacific",
@@ -3513,7 +3474,7 @@
       "headline": "Saka goal gives Arsenal hard-fought win at Aston Villa",
       "dek": "Bukayo Saka scored the only goal as Arsenal beat Aston Villa and maintained their winning start, with the BBC describing it as a hard-fought Premier League victory for the…",
       "body": "Bukayo Saka scored the only goal as Arsenal beat Aston Villa and maintained their winning start, with the BBC describing it as a hard-fought Premier League victory for the champions.\n\nThe Guardian said Arsenal were authoritative and kept Villa at arm’s length, with David Raya untroubled throughout. It said Unai Emery’s work-in-progress side struggled to test Arsenal despite avoiding the kind of capitulation that can follow successive defeats.\n\nThe Guardian highlighted a late defensive moment from Declan Rice, saying his reaction after stopping Ian Maatsen’s run into the box with six minutes of normal time left summed up Arsenal’s satisfaction with the performance.\n\nAccording to the Guardian, Villa have now lost their first two league matches of a season without scoring for the first time since 2002.",
-      "image": "",
+      "image": "https://i.guim.co.uk/img/media/65ce92ead56a6427d6af3cb88e550cea4dd579d0/932_237_2223_1779/master/2223.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=931070586da636fc3589da7f017c04da",
       "so_what": "For readers following the table, Arsenal’s win keeps their early momentum going while Villa are still looking for their first league goal.",
       "what_now": "",
       "region": "Global",
@@ -3572,7 +3533,7 @@
       "headline": "Euronews bulletins list September 2 headlines from Europe and beyond",
       "dek": "The supplied sources do not provide reported details for a single event.",
       "body": "The supplied sources do not provide reported details for a single event. They are Euronews bulletin listings dated August 31, September 1 and September 2, 2026.\n\nEach source says viewers can “catch up with the most important stories from around Europe and beyond” and labels the item as a morning, midday or evening bulletin. The descriptions also list broad topics including World, Business, Entertainment, Politics, Culture and Travel.\n\nNo source text names a specific event, person, place, quote or number beyond the bulletin dates. The user’s working headline about “36 Fun Things to Do in N.Y.C. in September” is not supported by the supplied source text.\n\nBecause the source material contains only generic bulletin descriptions, there is not enough information to write a fact-based wire story about one news event without adding details not in the record.",
-      "image": "",
+      "image": "https://assets.science.nasa.gov/content/dam/science/esd/eo/images/satellite-puzzler/2026_septemberpuzzler.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg",
       "so_what": "A reader cannot rely on these sources alone to learn what happened, because they do not identify any specific development to verify or summarize.",
       "what_now": "",
       "region": "Global",
@@ -3641,7 +3602,7 @@
       "headline": "Jason Isbell and other musicians sue Suno over AI-generated music",
       "dek": "Jason Isbell and three others filed a lawsuit against Suno, accusing the company of training its model on their songs, The New York Times reported.",
       "body": "Jason Isbell and three others filed a lawsuit against Suno, accusing the company of training its model on their songs, The New York Times reported. CBS said Isbell, Guy Forsyth and other musicians filed a class action lawsuit against the AI music platform.\n\nThe artists say Suno used their music to train its model without permission, according to CBS. The New York Times said the plaintiffs accuse the company of unlawful imitation, saying Suno’s A.I. imitates their voices.\n\nThe lawsuit could test a new legal approach to challenges over A.I.-generated music. The New York Times reported that the case is not based on copyright claims, but on unlawful imitation.\n\nThe sources did not provide further details from the complaint or any response from Suno.",
-      "image": "",
+      "image": "https://assets1.cbsnewsstatic.com/hub/i/r/2026/09/02/2175f029-b9a2-4d30-aa70-436a8be4faa5/thumbnail/1200x630/75e9217bc24c53a0b456bc3a0115b023/cbsn-fusion-jason-isbell-other-artists-sue-suno-over-ai-generated-music-thumbnail.jpg",
       "so_what": "The case could affect how musicians try to stop A.I. systems from copying recognizable styles or voices even when copyright law may not directly apply.",
       "what_now": "",
       "region": "Global",
@@ -3700,7 +3661,7 @@
       "headline": "King Charles, Macron and Burnham to preview Bayeux Tapestry display",
       "dek": "King Charles III is due to view the Bayeux Tapestry at the British Museum with French President Emmanuel Macron and Prime Minister Andy Burnham, according to the BBC and DW World.",
       "body": "King Charles III is due to view the Bayeux Tapestry at the British Museum with French President Emmanuel Macron and Prime Minister Andy Burnham, according to the BBC and DW World. The BBC said the British and French leaders will see the exhibition of the historic Bayeux Tapestry at the museum.\n\nDW World reported Macron is on a shorter visit to the UK than the 11th century tapestry's loan period and said he will view the artwork with King Charles and Prime Minister Andy Burnham on his arrival. The New York Times said the monarch was invited to see the embroidery before the museum's major exhibition.\n\nThe New York Times said the visit comes almost 40 years after Charles saw the tapestry in France with Diana. DW World described the work as an ancient artwork from the 11th century, while the BBC called it the historic Bayeux Tapestry.\n\nThe sources differ on emphasis but all report the same preview visit involving Charles and the tapestry at the British Museum. DW World and the BBC also said Macron and Burnham will attend.",
-      "image": "",
+      "image": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/7baf/live/46099ef0-a6f5-11f1-97e2-55b9ef1865bd.jpg",
       "so_what": "The preview puts a rare loan of a famous medieval work at the center of a high-profile UK visit involving both British and French leaders.",
       "what_now": "The leaders are expected to attend the British Museum preview of the Bayeux Tapestry display.",
       "region": "Europe",
@@ -3775,7 +3736,7 @@
       "headline": "Wendell Berry, writer and farmer from Kentucky, dies at 92",
       "dek": "Wendell Berry, the Kentucky-born author, poet, novelist, essayist and farmer, has died at 92, according to the Guardian and NPR.",
       "body": "Wendell Berry, the Kentucky-born author, poet, novelist, essayist and farmer, has died at 92, according to the Guardian and NPR.\n\nThe Guardian reported that Mary Berry, his daughter, confirmed on Monday that he died at his home in Port Royal, Kentucky. NPR said Berry was a beloved American poet, novelist, essayist and farmer.\n\nAccording to the Guardian, Berry celebrated the farming communities of his native Kentucky in poems, stories, novels and essays. The Guardian said he also warned of the excesses and misjudgments of an industrial, commercialized society.\n\nNPR described Berry as a beloved writer and environmentalist. The Guardian called him an author and agrarian.",
-      "image": "",
+      "image": "https://i.guim.co.uk/img/media/792ad606bddfd3f781537ca78adcad642b635e85/212_0_3781_3024/master/3781.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=effb14e3333fb0da8de267f06b298254",
       "so_what": "Berry’s death closes the career of a writer whose work linked literature, farming and environmental criticism for readers in the United States.",
       "what_now": "",
       "region": "Global",
@@ -3840,7 +3801,7 @@
       "headline": "Met cancels John Galliano exhibit and Met Gala theme after backlash",
       "dek": "The Metropolitan Museum of Art is canceling a planned exhibit honoring British designer John Galliano, according to NPR and CBS News.",
       "body": "The Metropolitan Museum of Art is canceling a planned exhibit honoring British designer John Galliano, according to NPR and CBS News. NPR reported the museum will no longer give Galliano a career retrospective, and CBS said the decision followed widespread controversy over plans to highlight his work.\n\nNPR reported that Galliano also will not be celebrated at this year's Met Gala. One NPR report said the museum was canceling an exhibit honoring him, while another said it had canceled both the exhibit and the Met Gala theme tied to him.\n\nThe backlash centered on Galliano's past antisemitic and racist statements, according to NPR and CBS. CBS described the reaction as widespread controversy, and NPR said the planned exhibit had led to backlash because of those past comments.\n\nThe sources describe Galliano as a British designer and a famed fashion designer. The museum's move reverses plans to honor him at one of fashion's highest-profile institutions and events.",
-      "image": "",
+      "image": "https://assets1.cbsnewsstatic.com/hub/i/r/2026/08/31/9804acc1-1474-45e4-8d9d-4f420b2c4a45/thumbnail/1200x630/7e7fc90c00d857425e2e2fa978be396c/gettyimages-886264168.jpg",
       "so_what": "People who follow the Met Gala and the museum's fashion programming will now see a major planned tribute scrapped after objections to the designer's record.",
       "what_now": "",
       "region": "Europe",
@@ -3905,7 +3866,7 @@
       "headline": "Notting Hill Carnival marks 60th anniversary in west London",
       "dek": "Notting Hill Carnival returned to west London for its 60th anniversary, according to Euronews and the BBC.",
       "body": "Notting Hill Carnival returned to west London for its 60th anniversary, according to Euronews and the BBC.\n\nEuronews said the carnival celebrated British Afro-Caribbean culture with music, dancing and colourful costumes in west London.\n\nThe BBC said the three-day event saw dancers in extravagant outfits parading the streets of west London to celebrate Caribbean arts and culture.\n\nBoth reports showed the annual carnival as a public celebration centred on parade performances, music and dance for the 60th anniversary event.",
-      "image": "",
+      "image": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/6f94/live/52bfe330-a550-11f1-b109-879e35c24276.jpg",
       "so_what": "For people in London and beyond, the anniversary marks a major public celebration of Caribbean culture in the city.",
       "what_now": "",
       "region": "Europe",
