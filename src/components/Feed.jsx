@@ -1,5 +1,6 @@
 import { useMemo } from 'react'
 import { categories as dataCategories, stories as dataStories, storiesByCategory } from '../lib/data.js'
+import { DEFAULT_DEPTH } from '../hooks/useReadingDepth.js'
 import LeadStory from './LeadStory.jsx'
 import StoryCard from './StoryCard.jsx'
 
@@ -37,6 +38,7 @@ export default function Feed(props) {
     stories = dataStories,
     allStories = dataStories,
     activeCategory = 'all',
+    depth = DEFAULT_DEPTH,
     readStoryIds = [],
     readLookup,
     onOpenStory,
@@ -87,6 +89,7 @@ export default function Feed(props) {
           <LeadStory
             story={leadStory}
             category={category}
+            depth={depth}
             isSaved={isStorySaved(leadStory.id)}
             onToggleSave={toggleStorySaved}
             onOpenStory={onOpenStory}
@@ -98,6 +101,7 @@ export default function Feed(props) {
               key={story.id}
               story={story}
               category={category}
+              depth={depth}
               isSaved={isStorySaved(story.id)}
               onToggleSave={toggleStorySaved}
               onOpenStory={onOpenStory}
@@ -137,6 +141,7 @@ export default function Feed(props) {
                   <LeadStory
                     story={leadStory}
                     category={category}
+                    depth={depth}
                     isSaved={isStorySaved(leadStory.id)}
                     onToggleSave={toggleStorySaved}
                     onOpenStory={onOpenStory}
@@ -148,6 +153,7 @@ export default function Feed(props) {
                       key={story.id}
                       story={story}
                       category={category}
+                      depth={depth}
                       isSaved={isStorySaved(story.id)}
                       onToggleSave={toggleStorySaved}
                       onOpenStory={onOpenStory}

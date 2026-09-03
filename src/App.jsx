@@ -1,11 +1,13 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import BottomNav, { TopNav } from './components/BottomNav.jsx'
 import CategoryNav from './components/CategoryNav.jsx'
+import DepthControl from './components/DepthControl.jsx'
 import ErrorBoundary from './components/ErrorBoundary.jsx'
 import Feed from './components/Feed.jsx'
 import SavedPage from './components/SavedPage.jsx'
 import StoryReader from './components/StoryReader.jsx'
 import YouPage from './components/YouPage.jsx'
+import { estimateDepthMinutes, useReadingDepth } from './hooks/useReadingDepth.js'
 import { useSavedStories } from './hooks/useSavedStories.js'
 import { categories, getCategory, getStory, meta, stories, storiesByCategory } from './lib/data.js'
 import { formatDate, formatUpdated } from './lib/format.js'
@@ -14,6 +16,13 @@ const READ_STORAGE_KEY = 'aware-daily:read'
 const THEME_STORAGE_KEY = 'aware-daily:theme'
 const DAY_MS = 24 * 60 * 60 * 1000
 const APP_BOOT_TIME = Date.now()
+
+/**
+ * What each depth costs to read, measured from the edition on disk rather than
+ * hardcoded. The briefing never changes shape at runtime, so this is computed
+ * once at module load.
+ */
+const DEPTH_MINUTES = estimateDepthMinutes(stories)
 
 /** One container width for the masthead, the rail and every page. */
 const SHELL = 'mx-auto w-full max-w-[720px] px-4 sm:px-5 lg:max-w-[960px] lg:px-8'
@@ -87,6 +96,7 @@ export default function App() {
   const originRef = useRef(null)
 
   const { savedIds, isSaved, toggleSave, clearAll } = useSavedStories()
+  const { depth, setDepth } = useReadingDepth()
 
   const editionKey = meta.date || 'unknown-edition'
 
@@ -233,15 +243,30 @@ export default function App() {
           <TopNav activeTab={activeTab} onTabChange={handleTabChange} savedCount={savedCount} />
         </div>
         <div className={`${SHELL} pb-2.5`}>
-          {dateLabel ? (
-            <p className="m-0 text-meta text-text-secondary">
-              <time dateTime={meta.date}>{dateLabel}</time>
-            </p>
-          ) : null}
-          {freshness ? <p className="mt-0.5 mb-0 text-caption text-text-muted">{freshness}</p> : null}
+          <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-0.5">
+            <div className="min-w-0">
+              {dateLabel ? (
+                <p className="m-0 text-meta text-text-secondary">
+                  <time dateTime={meta.date}>{dateLabel}</time>
+                </p>
+              ) : null}
+              {freshness ? (
+                <p className="mt-0.5 mb-0 text-caption text-text-muted">{freshness}</p>
+              ) : null}
+            </div>
+            {activeTab === 'today' ? (
+              <ErrorBoundary label="The reading-depth control" fallback={null}>
+                <DepthControl
+                  depth={depth}
+                  onChange={setDepth}
+                  minutes={DEPTH_MINUTES}
+                  className="-my-0.5 shrink-0"
+                />
+              </ErrorBoundary>
+            ) : null}
+          </div>
           <p className="mt-1 mb-0 text-caption text-text-muted">
-            Automated daily briefing that summarizes reporting from named news organizations
-            and links to original coverage; it does no original reporting.
+            Automated summaries · no original reporting
           </p>
         </div>
       </header>
@@ -286,6 +311,7 @@ export default function App() {
                 stories={visibleStories}
                 allStories={stories}
                 activeCategory={activeCategory}
+                depth={depth}
                 readStoryIds={readStoryIds}
                 readLookup={readLookup}
                 onToggleRead={toggleRead}

@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { clamp, readTime } from '../lib/format.js'
+import { DEFAULT_DEPTH, fullTextFor } from '../hooks/useReadingDepth.js'
 import SaveButton from './SaveButton.jsx'
 
 function clampLines(lines) {
@@ -18,16 +19,33 @@ function tintBackground(accent) {
   return 'var(--surface-raised)'
 }
 
-export default function LeadStory({ story, category, isSaved = false, onToggleSave, onOpenStory }) {
+export default function LeadStory({
+  story,
+  category,
+  isSaved = false,
+  onToggleSave,
+  onOpenStory,
+  depth = DEFAULT_DEPTH,
+}) {
   const [imageHidden, setImageHidden] = useState(false)
 
   const accent = category?.accent || '--text-primary'
   const hasImage = useMemo(() => Boolean(String(story?.image || '').trim()) && !imageHidden, [imageHidden, story?.image])
+  // Full swaps the dek — a teaser the exporter cuts mid-clause — for the whole
+  // paragraph it was cut from, then picks the reporting up at paragraph two.
+  const fullText = useMemo(
+    () => (depth === 'full' ? fullTextFor(story?.body, story?.dek) : { opening: '', rest: [] }),
+    [depth, story?.body, story?.dek],
+  )
 
   if (!story) return null
 
   const sourceCount = story.source_count || (Array.isArray(story.sources) ? story.sources.length : 0)
   const readLabel = readTime(story.read_time_min)
+  const showContext = depth !== 'skim'
+  const isFull = depth === 'full'
+  const bodyParagraphs = fullText.rest
+  const leadText = isFull ? fullText.opening : clamp(story.dek, 220)
 
   return (
     <article
@@ -82,14 +100,20 @@ export default function LeadStory({ story, category, isSaved = false, onToggleSa
           </button>
         </h3>
 
-        {story.dek ? (
-          <p className="mt-1 mb-0 text-[13px] leading-[1.3] md:text-[14px]" style={{ ...clampLines(2), color: 'var(--text-secondary)' }}>
-            {clamp(story.dek, 220)}
+        {showContext && leadText ? (
+          <p
+            className={`mt-1 mb-0 text-[13px] md:text-[14px] ${isFull ? 'leading-[1.5]' : 'leading-[1.3]'}`}
+            style={isFull ? { color: 'var(--text-secondary)' } : { ...clampLines(2), color: 'var(--text-secondary)' }}
+          >
+            {leadText}
           </p>
         ) : null}
 
-        {story.so_what ? (
-          <p className="mt-1 mb-0 text-[13px] leading-[1.2] md:text-[14px]" style={{ ...clampLines(1), color: 'var(--text-secondary)' }}>
+        {showContext && story.so_what ? (
+          <p
+            className={`mt-1 mb-0 text-[13px] md:text-[14px] ${isFull ? 'leading-[1.5]' : 'leading-[1.2]'}`}
+            style={isFull ? { color: 'var(--text-secondary)' } : { ...clampLines(1), color: 'var(--text-secondary)' }}
+          >
             <span className="mr-1 text-[10px] font-semibold uppercase tracking-[0.08em]" style={{ color: `var(${accent})` }}>
               SO WHAT
             </span>
@@ -97,7 +121,23 @@ export default function LeadStory({ story, category, isSaved = false, onToggleSa
           </p>
         ) : null}
 
-        <div className="mt-1 flex items-center gap-x-3 text-[11px] leading-[1]" style={{ color: 'var(--text-tertiary)' }}>
+        {bodyParagraphs.length ? (
+          <div
+            className="mt-2 mb-0 space-y-2 text-[13px] leading-[1.5] md:text-[14px]"
+            style={{ color: 'var(--text-secondary)' }}
+          >
+            {bodyParagraphs.map((paragraph, index) => (
+              <p key={index} className="m-0">
+                {paragraph}
+              </p>
+            ))}
+          </div>
+        ) : null}
+
+        <div
+          className={`${bodyParagraphs.length ? 'mt-2.5' : 'mt-1'} flex items-center gap-x-3 text-[11px] leading-[1]`}
+          style={{ color: 'var(--text-tertiary)' }}
+        >
           {readLabel ? <span>{readLabel}</span> : null}
           {sourceCount > 0 ? <span>{sourceCount} {sourceCount === 1 ? 'source' : 'sources'}</span> : null}
         </div>
