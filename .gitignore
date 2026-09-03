@@ -12,6 +12,11 @@ dist
 dist-ssr
 *.local
 
+# Staged at run time by the pipeline's entrypoint.py (the novelty ledger it
+# publishes as a static asset). Vite copies it into dist/ during the build; it
+# is never committed, because a checked-in copy would be stale the next day.
+public/state/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
