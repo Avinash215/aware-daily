@@ -83,7 +83,51 @@ function trimmedString(value) {
   return typeof value === 'string' ? value.trim() : ''
 }
 
-export default function StoryReader({ story, category, onClose, isSaved, onToggleSave }) {
+const DATE_ONLY = /^(\d{4})-(\d{2})-(\d{2})$/
+
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
+/** `'2026-09-03'` to `'3 Sep 2026'`. Anything else comes back untouched. */
+function compactDate(value) {
+  const text = trimmedString(value)
+  const parts = DATE_ONLY.exec(text)
+  if (!parts) return text
+
+  const month = MONTHS[Number(parts[2]) - 1]
+  const day = Number(parts[3])
+  if (!month || !day) return text
+
+  return `${day} ${month} ${parts[1]}`
+}
+
+/**
+ * One honest line about how much history the catch-up actually holds, so the
+ * call to action never over-promises a depth the evidence does not have.
+ */
+function recapWindowNote(recap) {
+  const days = Number.isFinite(recap.days_covered) ? Math.max(0, Math.floor(recap.days_covered)) : 0
+  const asOf = compactDate(recap.as_of)
+
+  if (days > 0 && asOf) {
+    return `${days} ${days === 1 ? 'day' : 'days'} of Aware coverage, to ${asOf}.`
+  }
+  if (days > 0) {
+    return `${days} ${days === 1 ? 'day' : 'days'} of Aware coverage.`
+  }
+  if (asOf) return `Aware coverage to ${asOf}.`
+  return 'How this story got here, from Aware’s own earlier coverage.'
+}
+
+export default function StoryReader({
+  story,
+  category,
+  onClose,
+  isSaved,
+  onToggleSave,
+  recap,
+  onOpenRecap,
+  suspended = false,
+}) {
   if (!story || typeof story !== 'object' || Array.isArray(story)) return null
   return (
     <Reader
@@ -92,12 +136,17 @@ export default function StoryReader({ story, category, onClose, isSaved, onToggl
       onClose={onClose}
       isSaved={isSaved}
       onToggleSave={onToggleSave}
+      recap={recap}
+      onOpenRecap={onOpenRecap}
+      suspended={suspended}
     />
   )
 }
 
-function Reader({ story, category, onClose, isSaved, onToggleSave }) {
+function Reader({ story, category, onClose, isSaved, onToggleSave, recap, onOpenRecap, suspended }) {
   const dialogRef = useRef(null)
+  const recapCtaRef = useRef(null)
+  const wasSuspended = useRef(false)
   const [visible, setVisible] = useState(false)
   const [imageFailed, setImageFailed] = useState(false)
 
@@ -115,8 +164,12 @@ function Reader({ story, category, onClose, isSaved, onToggleSave }) {
     }
   }, [])
 
-  // Escape closes; Tab is trapped inside the dialog.
+  // Escape closes; Tab is trapped inside the dialog. While a catch-up is open
+  // on top, this reader owns neither: it is inert and the catch-up handles the
+  // keyboard, so the two dialogs can never both act on one Escape.
   useEffect(() => {
+    if (suspended) return undefined
+
     function onKeyDown(event) {
       const node = dialogRef.current
       if (!node) return
@@ -190,13 +243,29 @@ function Reader({ story, category, onClose, isSaved, onToggleSave }) {
 
     document.addEventListener('keydown', onKeyDown, true)
     return () => document.removeEventListener('keydown', onKeyDown, true)
-  }, [handleClose])
+  }, [handleClose, suspended])
 
   // Reader entry is an opacity fade only, and none at all under reduced motion.
   useEffect(() => {
     const frame = requestAnimationFrame(() => setVisible(true))
     return () => cancelAnimationFrame(frame)
   }, [])
+
+  // Handing control back after a catch-up closes. The catch-up cannot restore
+  // focus itself, because this reader is still inert at the moment it unmounts,
+  // so the reader takes the caret back to the control the reader left from.
+  useEffect(() => {
+    if (suspended) {
+      wasSuspended.current = true
+      return
+    }
+    if (!wasSuspended.current) return
+    wasSuspended.current = false
+
+    const node = recapCtaRef.current
+    if (node && document.contains(node)) node.focus()
+    else dialogRef.current?.focus()
+  }, [suspended])
 
   const accentName = accentNameFor(category, story)
   const accent = accentName ? `var(${accentName})` : 'var(--text-primary)'
@@ -243,6 +312,17 @@ function Reader({ story, category, onClose, isSaved, onToggleSave }) {
   const imageUrl = trimmedString(story.image)
   const showImage = Boolean(imageUrl) && !imageFailed
 
+  // Most stories have no catch-up. Absent means nothing renders at all: no
+  // disabled button, no empty state, no placeholder.
+  const linkedRecap =
+    recap && typeof recap === 'object' && !Array.isArray(recap) && trimmedString(recap.id)
+      ? recap
+      : null
+
+  const handleOpenRecap = useCallback(() => {
+    if (linkedRecap) onOpenRecap?.(linkedRecap)
+  }, [linkedRecap, onOpenRecap])
+
   const dateline = [dateLabel, minutes, sourceLabel].filter(Boolean)
   const hasMasthead = dateline.length > 0 || countries.length > 0
 
@@ -253,6 +333,7 @@ function Reader({ story, category, onClose, isSaved, onToggleSave }) {
       aria-modal="true"
       aria-labelledby="story-reader-headline"
       tabIndex={-1}
+      inert={Boolean(suspended)}
       style={{ '--story-accent': accent, '--story-accent-light': accentLight }}
       className={`fixed inset-0 z-50 overflow-y-auto overscroll-contain bg-surface transition-opacity duration-150 ease-out motion-reduce:transition-none ${
         visible ? 'opacity-100' : 'opacity-0'
@@ -380,6 +461,27 @@ function Reader({ story, category, onClose, isSaved, onToggleSave }) {
         </div>
 
         <div className="px-4 sm:px-6 lg:px-8">
+          {linkedRecap ? (
+            <button
+              type="button"
+              ref={recapCtaRef}
+              onClick={handleOpenRecap}
+              className="mt-5 flex min-h-[44px] w-full max-w-[66ch] cursor-pointer items-center justify-between gap-3 rounded-xl border border-border bg-surface-raised px-4 py-3 text-left transition-colors duration-150 hover:bg-surface-muted motion-reduce:transition-none"
+            >
+              <span className="min-w-0">
+                <span className="block text-[0.9375rem] leading-[1.25rem] font-semibold text-text-primary">
+                  Catch up on this story
+                </span>
+                <span className="mt-0.5 block text-[0.8125rem] leading-[1.125rem] text-text-secondary">
+                  {recapWindowNote(linkedRecap)}
+                </span>
+              </span>
+              <span aria-hidden="true" className="shrink-0 text-text-tertiary">
+                →
+              </span>
+            </button>
+          ) : null}
+
           <div
             id="story-reader-body"
             tabIndex={-1}

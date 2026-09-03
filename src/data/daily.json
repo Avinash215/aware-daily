@@ -151,7 +151,8 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 4.4
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "in-iranian-town-a-wedding-shattered-by-deadly-strike-during-7438da",
@@ -221,7 +222,8 @@
         "rights": 4.4,
         "travel": 1.8,
         "civic": 1.8
-      }
+      },
+      "recap_id": "recap-iran-2026-09-03"
     },
     {
       "id": "carney-tells-trump-officials-to-stop-throwing-shade-over-can-65079e",
@@ -291,7 +293,8 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 5.477
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "why-army-secretary-dan-driscoll-resigned-0d8687",
@@ -366,7 +369,8 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 5.477
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "trump-ally-defends-venezuela-oil-deal-amid-gunpoint-diplomac-7a212e",
@@ -441,7 +445,8 @@
         "rights": 4.4,
         "travel": 1.8,
         "civic": 1.8
-      }
+      },
+      "recap_id": "recap-venezuela-2026-09-03"
     },
     {
       "id": "xi-visits-egypt-as-china-seeks-deeper-influence-across-the-m-bb9b83",
@@ -521,7 +526,8 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 4.4
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "green-party-members-back-zack-polanski-to-stand-in-london-by-61be74",
@@ -586,7 +592,8 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 5.477
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "iran-red-crescent-urges-icc-probe-into-deadly-us-strike-on-w-d5a038",
@@ -656,7 +663,8 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 5.477
-      }
+      },
+      "recap_id": "recap-iran-2026-09-03"
     },
     {
       "id": "for-russia-and-ukraine-an-escalating-spiral-with-no-end-in-s-399197",
@@ -725,7 +733,8 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 1.8
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "andy-burnham-clashes-with-kemi-badenoch-at-his-first-pmqs-vi-59df55",
@@ -784,7 +793,8 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 4.4
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "south-korea-hastens-relocations-of-government-bodies-outside-e30f0e",
@@ -849,7 +859,8 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 4.4
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "germany-says-russia-behind-attempted-drone-attack-at-leipzig-34f690",
@@ -924,7 +935,8 @@
         "rights": 1.8,
         "travel": 4.4,
         "civic": 5.477
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "vance-reaches-out-to-jewish-republicans-in-vegas-speech-455121",
@@ -994,7 +1006,8 @@
         "rights": 4.4,
         "travel": 1.8,
         "civic": 5.477
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "us-s-chevron-italy-s-eni-to-expand-oil-projects-in-venezuela-a0692b",
@@ -1074,7 +1087,8 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 4.4
-      }
+      },
+      "recap_id": "recap-venezuela-2026-09-03"
     },
     {
       "id": "uber-is-laying-off-10-of-staff-or-3-300-people-419913",
@@ -1131,7 +1145,8 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 1.8
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "southwest-to-open-premium-airport-lounges-across-the-country-79f65c",
@@ -1190,7 +1205,8 @@
         "rights": 1.8,
         "travel": 5.477,
         "civic": 1.8
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "dutch-central-bank-moves-gold-bars-out-of-u-s-and-canada-cit-f0bff5",
@@ -1270,7 +1286,8 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 1.8
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "dutch-central-bank-moves-86-tonnes-of-gold-to-uk-from-us-and-58d0ce",
@@ -1345,7 +1362,8 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 1.8
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "fake-10-downing-street-listing-exposes-unfit-booking-com-say-9e293e",
@@ -1415,7 +1433,8 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 4.4
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "south-african-airline-behind-low-level-flyby-stunt-cancels-r-673c29",
@@ -1485,7 +1504,8 @@
         "rights": 1.8,
         "travel": 5.477,
         "civic": 1.8
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "who-is-john-ternus-apple-s-new-ceo-aaf213",
@@ -1560,7 +1580,8 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 1.8
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "chevron-plans-7-billion-venezuela-investment-to-double-oil-p-d66e0a",
@@ -1629,7 +1650,8 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 1.8
-      }
+      },
+      "recap_id": "recap-venezuela-2026-09-03"
     },
     {
       "id": "kalshi-bans-former-congressman-george-santos-for-life-after-1ed8cd",
@@ -1688,7 +1710,8 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 1.8
-      }
+      },
+      "recap_id": "recap-george-santos-2026-09-03"
     },
     {
       "id": "trump-administration-sides-with-openai-in-lawsuit-against-ne-e6ad65",
@@ -1763,7 +1786,8 @@
         "rights": 4.4,
         "travel": 1.8,
         "civic": 4.4
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "new-york-mayor-zohran-mamdani-announces-ban-on-ai-use-for-st-8bc2e7",
@@ -1822,7 +1846,8 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 4.4
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "london-s-first-self-driving-taxis-for-hire-hit-the-streets-f9eb0a",
@@ -1887,7 +1912,8 @@
         "rights": 1.8,
         "travel": 4.4,
         "civic": 1.8
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "mapquest-is-now-the-no-1-us-app-after-bucking-trump-s-lake-a-e590dc",
@@ -1952,7 +1978,8 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 4.4
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "why-nepal-floods-should-worry-india-1e1654",
@@ -2021,7 +2048,8 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 1.8
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "judge-strikes-down-new-york-law-that-forced-climate-polluter-b08459",
@@ -2085,7 +2113,8 @@
         "rights": 7.0,
         "travel": 1.8,
         "civic": 5.477
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "nepal-flash-floods-aftermath-updates-death-toll-near-1-250-a-4e070b",
@@ -2170,7 +2199,8 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 4.4
-      }
+      },
+      "recap_id": "recap-nepal-2026-09-03"
     },
     {
       "id": "patagonia-sues-trump-over-slashing-of-protected-areas-in-uta-aab648",
@@ -2235,7 +2265,8 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 4.4
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "rescue-efforts-continue-as-nepal-china-flood-death-toll-surp-c5fc4a",
@@ -2305,7 +2336,8 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 1.8
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "summer-of-2026-was-uk-s-hottest-on-record-met-office-says-2c905f",
@@ -2371,7 +2403,8 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 1.8
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "us-medical-groups-issue-vaccine-guidance-urge-jabs-for-flu-c-ef60d7",
@@ -2441,7 +2474,8 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 1.8
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "children-as-young-as-six-going-to-a-e-in-mental-health-crisi-7d4bc7",
@@ -2506,7 +2540,8 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 1.8
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "us-health-officials-exclude-measles-related-deaths-in-pennsy-6a0d90",
@@ -2576,7 +2611,8 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 4.4
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "nuclear-bomb-test-veterans-were-victims-of-one-of-greatest-s-f2cc7d",
@@ -2641,7 +2677,8 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 5.477
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "two-dead-multiple-injured-in-minneapolis-shooting-5f2868",
@@ -2710,7 +2747,8 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 4.4
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "ex-venezuelan-president-nicol-s-maduro-and-wife-seek-to-end-040c2d",
@@ -2785,7 +2823,8 @@
         "rights": 7.0,
         "travel": 1.8,
         "civic": 4.4
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "woods-banned-from-driving-for-five-years-after-march-s-crash-4fc600",
@@ -2859,7 +2898,8 @@
         "rights": 5.477,
         "travel": 1.8,
         "civic": 1.8
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "judge-blocks-trump-s-second-try-to-restrict-birthright-citiz-1bd004",
@@ -2934,7 +2974,8 @@
         "rights": 7.614,
         "travel": 4.4,
         "civic": 4.4
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "venezuela-s-maduro-seeks-dismissal-of-us-charges-citing-immu-e4cd28",
@@ -3004,7 +3045,8 @@
         "rights": 5.477,
         "travel": 1.8,
         "civic": 4.4
-      }
+      },
+      "recap_id": "recap-venezuela-2026-09-03"
     },
     {
       "id": "maltese-tycoon-found-not-guilty-of-involvement-in-daphne-car-8d6dc1",
@@ -3063,7 +3105,8 @@
         "rights": 4.4,
         "travel": 1.8,
         "civic": 1.8
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "hong-kong-pro-democracy-activist-joshua-wong-pleads-guilty-i-b56ae2",
@@ -3138,7 +3181,8 @@
         "rights": 5.477,
         "travel": 1.8,
         "civic": 4.4
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "judge-sends-charlie-kirk-murder-case-to-trial-with-robinson-5516e4",
@@ -3197,7 +3241,8 @@
         "rights": 6.303,
         "travel": 1.8,
         "civic": 1.8
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "despite-duane-davis-s-conviction-in-tupac-murder-trial-some-8b24d4",
@@ -3261,7 +3306,8 @@
         "rights": 4.4,
         "travel": 1.8,
         "civic": 1.8
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "four-in-court-over-murder-of-baby-stabbed-to-death-bf618d",
@@ -3320,7 +3366,8 @@
         "rights": 4.4,
         "travel": 1.8,
         "civic": 1.8
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "gary-glitter-pleads-not-guilty-to-historical-sex-offence-cha-ac76eb",
@@ -3384,7 +3431,8 @@
         "rights": 5.477,
         "travel": 1.8,
         "civic": 1.8
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "tumbler-ridge-mass-shooting-victims-file-30-new-lawsuits-aga-6a7c4e",
@@ -3449,7 +3497,8 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 1.8
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "bus-crash-in-egypt-kills-at-least-22-5999d3",
@@ -3512,7 +3561,8 @@
         "rights": 1.8,
         "travel": 4.4,
         "civic": 1.8
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "what-kind-of-question-is-that-sabalenka-spiky-after-ruthless-41a6c6",
@@ -3571,7 +3621,8 @@
         "rights": 1.8,
         "travel": 4.4,
         "civic": 1.8
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "alcaraz-sabalenka-ease-into-us-open-third-round-american-pla-929043",
@@ -3651,7 +3702,8 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 1.8
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "nba-fines-clippers-30m-suspends-several-executives-in-kawhi-5fbac8",
@@ -3725,7 +3777,8 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 1.8
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "walsh-caps-champions-league-progress-for-chelsea-despite-rea-07c066",
@@ -3790,7 +3843,8 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 1.8
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "in-my-heart-until-i-die-argentina-says-a-tearful-thank-you-t-ce4e9a",
@@ -3865,7 +3919,8 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 1.8
-      }
+      },
+      "recap_id": "recap-argentina-2026-09-03"
     },
     {
       "id": "carla-jeffery-actress-in-disney-s-zombies-films-dies-at-33-5db949",
@@ -3924,7 +3979,8 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 1.8
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "george-michael-s-faith-guitar-up-for-auction-5012e0",
@@ -3982,7 +4038,8 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 1.8
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "cassandra-wilson-grammy-winning-jazz-singer-dead-at-70-59b14b",
@@ -4052,7 +4109,8 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 1.8
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "mayday-review-ryan-reynolds-and-kenneth-branagh-set-cold-war-1f5059",
@@ -4122,7 +4180,8 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 1.8
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "bayeux-tapestry-loan-symbolises-entente-amicale-between-fran-7821e2",
@@ -4197,7 +4256,8 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 5.477
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "jason-isbell-and-others-say-suno-s-a-i-imitates-their-voices-0cf864",
@@ -4256,7 +4316,8 @@
         "rights": 4.4,
         "travel": 1.8,
         "civic": 1.8
-      }
+      },
+      "recap_id": null
     },
     {
       "id": "amid-backlash-museum-cancels-planned-met-gala-exhibit-on-fas-968367",
@@ -4326,7 +4387,825 @@
         "rights": 1.8,
         "travel": 1.8,
         "civic": 1.8
-      }
+      },
+      "recap_id": "recap-john-galliano-2026-09-03"
+    }
+  ],
+  "recaps": [
+    {
+      "id": "recap-venezuela-2026-09-03",
+      "slug": "venezuela",
+      "title": "Venezuela oil opening draws U.S. and foreign energy deals",
+      "as_of": "2026-09-03",
+      "days_covered": 4,
+      "story_ids": [
+        "chevron-plans-7-billion-venezuela-investment-to-double-oil-p-d66e0a",
+        "trump-ally-defends-venezuela-oil-deal-amid-gunpoint-diplomac-7a212e",
+        "us-s-chevron-italy-s-eni-to-expand-oil-projects-in-venezuela-a0692b",
+        "venezuela-s-maduro-seeks-dismissal-of-us-charges-citing-immu-e4cd28"
+      ],
+      "orient": "Venezuela has moved to reopen parts of its oil sector to foreign-backed development through a new U.S.-linked arrangement, prompting investment pledges, political criticism and related legal scrutiny around the country’s leadership.",
+      "ground": [
+        "Venezuela holds more than 303 billion barrels of proven crude reserves, according to cited coverage.",
+        "Chevron is the only U.S. oil company operating in Venezuela and has worked there through joint ventures including Petropiar, Petroindependencia and Petroboscan.",
+        "Recent agreements center on oilfields in Venezuela’s Orinoco Belt and were publicly formalized in Caracas.",
+        "Sources across the coverage say substantially raising Venezuelan output will require major investment and repairs, so meaningful supply gains are likely to take years."
+      ],
+      "cast": [
+        {
+          "name": "Delcy Rodríguez",
+          "flag": "Venezuela",
+          "role": "interim president",
+          "position": "Backs the oil agreements as a route to economic revival and future public revenue."
+        },
+        {
+          "name": "Donald Trump",
+          "flag": "United States",
+          "role": "U.S. president",
+          "position": "Promotes the U.S.-Venezuela oil arrangement as a major strategic and energy deal."
+        },
+        {
+          "name": "Chris Wright",
+          "flag": "United States",
+          "role": "U.S. energy secretary",
+          "position": "Defends the deal and denies the U.S. is trying to seize Venezuelan oil."
+        },
+        {
+          "name": "Chevron",
+          "flag": "United States",
+          "role": "energy company",
+          "position": "Plans to expand in Venezuela with a multiyear investment and higher output target."
+        },
+        {
+          "name": "Eni",
+          "flag": "Italy",
+          "role": "energy company",
+          "position": "Signed for exclusive exploration rights in the Junin 5 oilfield."
+        },
+        {
+          "name": "Nicolás Maduro",
+          "flag": "Venezuela",
+          "role": "former president facing U.S. prosecution",
+          "position": "Seeks dismissal of U.S. drug-trafficking charges on head-of-state immunity grounds."
+        }
+      ],
+      "path": [
+        {
+          "date": "2026-08-31",
+          "headline": "White House and allies describe scope of U.S.-Venezuela oil deal",
+          "what": "Coverage in the period said Trump announced a deal tied to development of 17 strategic oil fields with 65 billion barrels of potential, and the White House later said the U.S. would create a private joint venture with North American Blue Energy Partners and secure the right to buy 20% of output at cost.",
+          "why_it_mattered": "This set the framework for broader foreign participation in Venezuela’s oil sector and clarified that the arrangement involved concrete operating and offtake terms, not only political messaging."
+        },
+        {
+          "date": "2026-09-02",
+          "headline": "Chevron outlines $7 billion expansion plan in Venezuela",
+          "what": "Chevron said it would invest more than $7 billion over five years, after receiving rights tied to additional acreage in the Orinoco Belt, with a goal of lifting production to about 600,000 barrels a day.",
+          "why_it_mattered": "It was the first major company-level commitment in the coverage window, showing how the new policy terms could translate into specific projects and future supply growth."
+        },
+        {
+          "date": "2026-09-02",
+          "headline": "U.S. officials push back on criticism of the deal",
+          "what": "As criticism mounted, including references to 'gunpoint diplomacy,' U.S. Energy Secretary Chris Wright said Washington was 'absolutely not' trying to commandeer Venezuelan oil and arrived in Caracas for the formal rollout.",
+          "why_it_mattered": "The backlash showed the deal was politically contested, making official defenses important to how the arrangement would be viewed domestically and internationally."
+        },
+        {
+          "date": "2026-09-03",
+          "headline": "Chevron and Eni sign expansion deals in Caracas",
+          "what": "In Caracas, Chevron finalized its expansion agreement and Italy’s Eni gained exclusive rights to explore the Junin 5 oilfield; GE Vernova also joined work tied to Venezuela’s power grid, with Rodríguez and Wright present.",
+          "why_it_mattered": "The ceremony turned earlier announcements into signed deals and broadened the opening beyond one U.S. company, suggesting a wider commercial push tied to oil and infrastructure."
+        },
+        {
+          "date": "2026-09-03",
+          "headline": "Maduro seeks dismissal of U.S. criminal case",
+          "what": "Separately, Nicolás Maduro asked a U.S. judge in Manhattan to dismiss drug-trafficking charges, arguing he is immune from prosecution as the head of a sovereign country; he remains scheduled for trial on June 1, 2027 if the motion fails.",
+          "why_it_mattered": "The filing underscored that Venezuela’s new energy opening is unfolding alongside unresolved U.S.-Venezuela legal and political conflict around the country’s leadership."
+        }
+      ],
+      "now": "By 03 Sep 2026, the story had moved from a broad U.S.-Venezuela oil framework to signed multibillion-dollar projects in Caracas, led by Chevron’s expansion and joined by Eni, while U.S. officials defended the arrangement against criticism and Maduro pursued a separate immunity-based challenge to his U.S. criminal case.",
+      "stakes": "If the agreements hold, Venezuela could attract investment, raise production and gradually influence oil supply and prices. But the coverage also indicates output gains will take time, the politics of the deal remain contested, and legal disputes around Venezuelan leadership continue to complicate the backdrop.",
+      "next": [
+        "Whether Chevron begins work on the added Orinoco Belt acreage on the announced timetable.",
+        "How Eni develops its newly announced Junin 5 exploration rights.",
+        "Whether further foreign companies sign similar Venezuela energy agreements.",
+        "Whether U.S. courts accept or reject Maduro’s immunity argument before the 2027 trial date."
+      ],
+      "sources": [
+        {
+          "source": "CBS MoneyWatch",
+          "title": "Chevron plans $7 billion Venezuela investment to double oil production",
+          "url": "https://www.cbsnews.com/news/chevron-venezuela-7-billion-oil-investment/"
+        },
+        {
+          "source": "The Guardian",
+          "title": "Trump ally defends Venezuela oil deal amid ‘gunpoint diplomacy’ criticism",
+          "url": "https://www.theguardian.com/world/2026/sep/02/venezuela-oil-deal-trump-chris-wright"
+        },
+        {
+          "source": "Al Jazeera",
+          "title": "US’s Chevron, Italy’s Eni to expand oil projects in Venezuela",
+          "url": "https://www.aljazeera.com/news/2026/9/3/uss-chevron-italys-eni-to-expand-oil-projects-in-venezuela?traffic_source=rss"
+        },
+        {
+          "source": "SCMP",
+          "title": "Venezuela’s Maduro seeks dismissal of US charges, citing immunity",
+          "url": "https://www.scmp.com/news/world/united-states-canada/article/3366178/venezuelas-maduro-seeks-dismissal-us-charges-citing-immunity?utm_source=rss_feed"
+        },
+        {
+          "source": "Euronews",
+          "title": "US strikes deal to control 65 billion barrels of Venezuela's oil reserves, Trump says",
+          "url": "http://www.euronews.com/2026/08/29/us-strikes-deal-to-control-more-than-65-billion-barrels-of-venezuelas-oil-reserves"
+        },
+        {
+          "source": "CBS MoneyWatch",
+          "title": "Trump says U.S. now has control of over 60 billion barrels of Venezuelan oil reserves",
+          "url": "https://www.cbsnews.com/news/trump-venezuela-oil-u-s-majority-control-65-billion-barrels/"
+        },
+        {
+          "source": "BBC Business",
+          "title": "Trump hails 'historic' deal to control 65 billion barrels of Venezuelan oil",
+          "url": "https://www.bbc.co.uk/news/articles/cx2zlwe7qj1o?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "source": "NYT Business",
+          "title": "Trump Says U.S. Struck Deal for Control of More Than 65 Billion Barrels of Venezuela’s Oil",
+          "url": "https://www.nytimes.com/2026/08/28/business/trump-venezuela-oil-deal.html"
+        },
+        {
+          "source": "Euronews",
+          "title": "What we know about Trump’s deal giving the US access to Venezuela’s oil",
+          "url": "http://www.euronews.com/business/2026/08/31/what-we-know-about-trumps-deal-giving-the-us-access-to-venezuelas-oil"
+        },
+        {
+          "source": "CBS MoneyWatch",
+          "title": "Will Trump's Venezuela oil deal ease U.S. gas prices?",
+          "url": "https://www.cbsnews.com/news/trump-venezuela-oil-deal-gas-prices/"
+        },
+        {
+          "source": "Al Jazeera",
+          "title": "White House unveils more details of Trump’s Venezuela oil deal",
+          "url": "https://www.aljazeera.com/news/2026/9/1/white-house-unveils-more-details-of-trumps-venezuela-oil-deal?traffic_source=rss"
+        },
+        {
+          "source": "NPR World",
+          "title": "Days after Trump announces Venezuela oil deal, White House fills in some of the details",
+          "url": "https://www.npr.org/2026/09/01/g-s1-141351/us-venezuelan-oil-deal"
+        }
+      ],
+      "confidence": "reported",
+      "coverage_note": "Built from 4 days of Aware coverage, 31 Aug 2026 to 03 Sep 2026.",
+      "generated_by": "gpt-5.4"
+    },
+    {
+      "id": "recap-iran-2026-09-03",
+      "slug": "iran",
+      "title": "U.S.-Iran escalation around Hormuz and civilian strike allegations",
+      "as_of": "2026-09-03",
+      "days_covered": 4,
+      "story_ids": [
+        "in-iranian-town-a-wedding-shattered-by-deadly-strike-during-7438da",
+        "iran-red-crescent-urges-icc-probe-into-deadly-us-strike-on-w-d5a038"
+      ],
+      "orient": "This is a wartime escalation story in which U.S. and Iranian attacks resumed around the Strait of Hormuz after a relative lull, then widened into regional retaliation and allegations that a U.S. strike hit civilians at a wedding gathering in southern Iran.",
+      "ground": [
+        "The fighting is part of a U.S.-Iran war that sources in this coverage say began about six months earlier.",
+        "The Strait of Hormuz is a central flashpoint because it is a major shipping route for global energy supplies.",
+        "On 31 Aug, U.S. forces said they struck Iranian rocket launchers on Larak Island in the Strait of Hormuz.",
+        "Kuhestak, a coastal town in southern Iran on the Strait of Hormuz, is where Iranian media, a rights group, and the Iranian Red Crescent said a wedding gathering was hit on 2 Sep."
+      ],
+      "cast": [
+        {
+          "name": "U.S. Central Command",
+          "flag": "US",
+          "role": "military command",
+          "position": "Says it carried out limited strikes against Iranian military targets tied to threats in and around the Strait of Hormuz and says it does not target civilians."
+        },
+        {
+          "name": "Donald Trump",
+          "flag": "US",
+          "role": "U.S. president",
+          "position": "Threatened further action and said the U.S. would respond forcefully to Iranian attacks."
+        },
+        {
+          "name": "Islamic Revolutionary Guard Corps",
+          "flag": "IR",
+          "role": "Iranian military force",
+          "position": "Said earlier U.S. strikes killed and injured Iranian personnel and vowed retaliation."
+        },
+        {
+          "name": "Iranian Red Crescent Society",
+          "flag": "IR",
+          "role": "humanitarian organization",
+          "position": "Says a U.S. strike hit a civilian wedding party in Kuhestak and has asked the ICC to investigate."
+        }
+      ],
+      "path": [
+        {
+          "date": "2026-08-31",
+          "headline": "Iran retaliates against U.S. positions and allies",
+          "what": "After the Larak strike, Iran launched attacks on U.S. military sites in Jordan and, in later reporting, drones or missiles toward Bahrain and other regional targets; local militaries reported interceptions.",
+          "why_it_mattered": "The confrontation spread beyond a single island strike and raised the risk of a broader regional conflict involving U.S. partners."
+        },
+        {
+          "date": "2026-08-31",
+          "headline": "U.S. strikes on Larak restart direct fire",
+          "what": "U.S. forces said they struck Iranian rocket launchers on Larak Island after observing preparations to launch rockets and deploy sea mines in the Strait of Hormuz. Iran's IRGC said the attack killed two people and injured two others, according to BBC reporting in the evidence set.",
+          "why_it_mattered": "It ended a month without military action and showed the Hormuz shipping corridor was again an active battlefield."
+        },
+        {
+          "date": "2026-09-01",
+          "headline": "Washington signals a harder phase",
+          "what": "Trump said the U.S. would 'hit them hard,' while reports said his team had considered limited further strikes to keep Iran from rebuilding radar and missile capabilities used to threaten shipping in Hormuz.",
+          "why_it_mattered": "The statements and planning suggested the renewed exchange was not a one-off event but part of an ongoing coercive campaign tied to control of the strait."
+        },
+        {
+          "date": "2026-09-02",
+          "headline": "New U.S. strikes and fresh Iranian salvos",
+          "what": "U.S. Central Command said it struck Iranian air-defense, radar and maritime-related targets. Iran responded with missiles and drones toward Jordan and Bahrain, according to regional and U.S. media reports in the evidence.",
+          "why_it_mattered": "Both sides moved from the initial flare-up into repeated rounds of attack, increasing pressure on regional defenses and energy markets."
+        },
+        {
+          "date": "2026-09-03",
+          "headline": "Civilian harm allegations focus on Kuhestak wedding strike",
+          "what": "Iranian media, a rights group, and the Iranian Red Crescent said a U.S. missile hit a home in Kuhestak where people had gathered for a wedding, with reported deaths and dozens injured. U.S. Central Command said it was aware of the reports and was looking into them, while saying it does not target civilians.",
+          "why_it_mattered": "The war's focus shifted from military exchanges to possible civilian casualties and legal accountability claims."
+        },
+        {
+          "date": "2026-09-03",
+          "headline": "Iranian Red Crescent seeks ICC investigation",
+          "what": "The Iranian Red Crescent said it asked the International Criminal Court to investigate the Kuhestak strike, calling for an independent inquiry and saying the location was civilian in character.",
+          "why_it_mattered": "The request added an international legal and diplomatic dimension to the military escalation, though jurisdiction remains limited as noted in the coverage."
+        }
+      ],
+      "now": "As of 03 Sep 2026, the immediate story is a disputed civilian-casualty episode in Kuhestak layered onto a broader U.S.-Iran escalation around Hormuz. Iranian organizations and officials are pressing for international scrutiny, while U.S. Central Command says it is reviewing the reports and maintains that it does not target civilians.",
+      "stakes": "The stakes are regional escalation around a vital energy chokepoint, civilian safety in southern Iran, and whether allegations from Kuhestak translate into sustained legal and diplomatic pressure on Washington.",
+      "next": [
+        "Whether U.S. Central Command releases findings from its review of the reported Kuhestak strike.",
+        "Whether independent verification clarifies the casualty toll and target in Kuhestak.",
+        "Whether the ICC, UN Security Council, or other international bodies take up Iran's calls for investigation or condemnation.",
+        "Whether U.S. and Iranian forces continue exchanging strikes around Hormuz or move back toward a lull."
+      ],
+      "sources": [
+        {
+          "source": "NYT World",
+          "title": "In Small Iranian Town, a U.S. Attack Turns a Wedding Into a Tragedy",
+          "url": "https://www.nytimes.com/2026/09/02/video/iran-us-attack-wedding.html"
+        },
+        {
+          "source": "SCMP",
+          "title": "In Iranian town, a wedding shattered by deadly strike during US air attack",
+          "url": "https://www.scmp.com/news/world/middle-east/article/3366168/iranian-town-wedding-party-was-shattered-deadly-strike-during-us-air-attack?utm_source=rss_feed"
+        },
+        {
+          "source": "Al Jazeera",
+          "title": "Iran Red Crescent urges ICC probe into deadly US strike on wedding party",
+          "url": "https://www.aljazeera.com/news/2026/9/3/iran-red-crescent-urges-icc-probe-into-deadly-us-strike-on-wedding-party?traffic_source=rss"
+        },
+        {
+          "source": "BBC World",
+          "title": "US and Iran trade strikes for first time in weeks",
+          "url": "https://www.bbc.co.uk/news/articles/cx2z72x5z1po?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "source": "NPR World",
+          "title": "U.S. military strikes Iran, while Trump vows more for Tehran's retaliation",
+          "url": "https://www.npr.org/2026/09/02/g-s1-141500/us-iran-war"
+        },
+        {
+          "source": "Euronews",
+          "title": "Iran launches strikes on Jordan after US attacks an island in Hormuz",
+          "url": "http://www.euronews.com/2026/08/31/iran-fires-retaliatory-strikes-following-us-attacks-on-larak-island-in-the-strait-of-hormu"
+        },
+        {
+          "source": "Axios",
+          "title": "Trump weighing limited strikes against Iran to curb Hormuz attacks",
+          "url": "https://www.axios.com/2026/08/31/trump-iran-war-hormuz-hegseth-centcom"
+        },
+        {
+          "source": "NYT World",
+          "title": "U.S. and Iran Exchange Strikes Overnight After Monthlong Calm",
+          "url": "https://www.nytimes.com/2026/08/31/world/middleeast/us-iran-uae-jordan-attacks.html"
+        },
+        {
+          "source": "Euronews",
+          "title": "US forces strike Iranian rocket launchers in Strait of Hormuz as IRGC warns of 'retaliatory response'",
+          "url": "http://www.euronews.com/2026/08/30/us-forces-strike-iranian-rocket-launchers-in-strait-of-hormuz-as-irgc-warns-of-retaliatory"
+        },
+        {
+          "source": "The Hindu International",
+          "title": "U.S. forces strike Iranian rocket launchers on the Strait of Hormuz in first military action in weeks",
+          "url": "https://www.thehindu.com/news/international/us-forces-strike-iran-rocket-launcher-donald-trump-updates/article71408837.ece"
+        },
+        {
+          "source": "CBS World",
+          "title": "Trump says more coming as U.S., Iran trade strikes for first time in weeks",
+          "url": "https://www.cbsnews.com/live-updates/iran-war-us-strikes-strait-of-hormuz-larak-island/"
+        },
+        {
+          "source": "Guardian World",
+          "title": "Trump says US will ‘hit Iran hard’ as hostilities resume – as it happened",
+          "url": "https://www.theguardian.com/world/live/2026/aug/31/us-iran-israel-hormuz-oil-donald-trump-larak-kharg-island-uae-jordan-latest-news-updates"
+        }
+      ],
+      "confidence": "reported",
+      "coverage_note": "Built from 4 days of Aware coverage, 31 Aug 2026 to 03 Sep 2026.",
+      "generated_by": "gpt-5.4"
+    },
+    {
+      "id": "recap-argentina-2026-09-03",
+      "slug": "argentina",
+      "title": "Lionel Messi's retirement from Argentina's national team",
+      "as_of": "2026-09-03",
+      "days_covered": 4,
+      "story_ids": [
+        "in-my-heart-until-i-die-argentina-says-a-tearful-thank-you-t-ce4e9a"
+      ],
+      "orient": "A national-team retirement by a defining star can become both a sporting turning point and a broader public moment, especially when it follows a major tournament run.",
+      "ground": [
+        "Lionel Messi said he is retiring from international football with Argentina after the 2026 World Cup.",
+        "Argentina lost the World Cup final to Spain on 19 July 2026 in New Jersey, the match described as Messi's final appearance for the national team.",
+        "Messi captained Argentina to the 2022 World Cup title in Qatar and won two Copa América titles with the team.",
+        "Coverage described strong public reaction across Argentina, where tributes and expressions of gratitude followed the announcement."
+      ],
+      "cast": [
+        {
+          "name": "Lionel Messi",
+          "flag": "Argentina",
+          "role": "player",
+          "position": "Retiring from international football"
+        },
+        {
+          "name": "Argentina national team",
+          "flag": "Argentina",
+          "role": "national team",
+          "position": "Losing its long-time captain and central figure"
+        },
+        {
+          "name": "Lionel Scaloni",
+          "flag": "Argentina",
+          "role": "coach",
+          "position": "According to the Guardian, he was in tears after the World Cup final loss to Spain"
+        },
+        {
+          "name": "Spain",
+          "flag": "Spain",
+          "role": "opponent",
+          "position": "Beat Argentina in the 2026 World Cup final"
+        }
+      ],
+      "path": [
+        {
+          "date": "2026-08-31",
+          "headline": "Messi announces international retirement",
+          "what": "Reports said Messi announced on Instagram that he was ending his Argentina career seven weeks after Argentina's defeat by Spain in the World Cup final in the United States.",
+          "why_it_mattered": "This established that Argentina was losing the player who had defined its recent international era, including the 2022 World Cup triumph."
+        },
+        {
+          "date": "2026-09-01",
+          "headline": "Commentary places the retirement in World Cup context",
+          "what": "Additional coverage tied the decision to Messi's final World Cup campaign, from early-tournament highlights to the emotional loss to Spain in the final.",
+          "why_it_mattered": "This framed the retirement as the close of a long international arc rather than an isolated announcement."
+        },
+        {
+          "date": "2026-09-01",
+          "headline": "Tributes spread across Argentina",
+          "what": "Follow-up coverage said the announcement quickly dominated attention in Argentina and prompted homages, gratitude and emotional reactions across the country.",
+          "why_it_mattered": "The response showed the retirement was being treated not only as a team decision but as a national moment marking the end of an era."
+        },
+        {
+          "date": "2026-09-02",
+          "headline": "Heartbreak and concern over Argentina's next phase",
+          "what": "Coverage said the retirement, while widely expected, stirred heartbreak and concern about a diminished Argentina squad without Messi.",
+          "why_it_mattered": "It shifted attention from farewell tributes to the practical question of how Argentina will adjust after his exit."
+        }
+      ],
+      "now": "As of 2026-09-03, the story remains Argentina's reaction to Messi's confirmed retirement from international football and the implications for the national team after the 2026 World Cup.",
+      "stakes": "For Argentina, the retirement ends a chapter led by its most influential player and raises immediate questions about leadership, team identity and competitiveness after a period that included a World Cup title and multiple Copa América wins.",
+      "next": [
+        "How Argentina's coaching staff describes the post-Messi transition",
+        "Who emerges as the national team's new on-field leader",
+        "Whether federation or team tributes formalize Messi's international sendoff"
+      ],
+      "sources": [
+        {
+          "source": "Guardian Sport",
+          "title": "Argentina’s Lionel Messi retires from international football: ‘This hurts me a lot’",
+          "url": "https://www.theguardian.com/football/2026/aug/31/lionel-messi-retires-from-international-football-argentina"
+        },
+        {
+          "source": "CBS News",
+          "title": "Lionel Messi says he is retiring from the Argentina national soccer team",
+          "url": "https://www.cbsnews.com/news/lionel-messi-retiring-argentina-national-soccer-team/"
+        },
+        {
+          "source": "Guardian Football",
+          "title": "‘In my heart until I die’: Argentina says a tearful thank you to Lionel Messi",
+          "url": "https://www.theguardian.com/football/2026/sep/01/argentina-tearful-thank-you-to-lionel-messi-retirement"
+        },
+        {
+          "source": "New York Times",
+          "title": "Lionel Messi’s Retirement From Soccer Sparks Heartbreak Across Argentina",
+          "url": "https://www.nytimes.com/2026/08/31/world/americas/lionel-messi-retirement-soccer-argentina.html"
+        },
+        {
+          "source": "BBC World",
+          "title": "Messi retires from international football with 'nothing left to give'",
+          "url": "https://www.bbc.co.uk/sport/football/articles/ceq89y38elro?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "source": "NPR World",
+          "title": "Lionel Messi says he's retiring from playing internationally for Argentina",
+          "url": "https://www.npr.org/2026/08/31/nx-s1-5950427/lionel-messi-retires-international-soccer"
+        },
+        {
+          "source": "CBS Sports Headlines",
+          "title": "Footy Fix: Lionel Messi says goodbye to Argentina and retires from international soccer",
+          "url": "https://www.cbssports.com/soccer/news/lionel-messi-says-goodbye-to-argentina-and-retires-from-international-soccer/"
+        },
+        {
+          "source": "Yahoo Sports",
+          "title": "🥹 Impossible not to cry: reactions to Lionel Messi’s retirement",
+          "url": "https://sports.yahoo.com/articles/impossible-not-cry-reactions-lionel-201700352.html"
+        },
+        {
+          "source": "DW World",
+          "title": "Lionel Messi announces retirement from international football",
+          "url": "https://www.dw.com/en/lionel-messi-announces-retirement-from-international-football/a-78579502?maca=en-rss-en-world-4025-rdf"
+        },
+        {
+          "source": "Guardian Sport",
+          "title": "Lionel Messi’s international retirement serves as a reminder: watch him while you still can",
+          "url": "https://www.theguardian.com/football/2026/aug/31/lionel-messis-international-retirement-serves-as-a-reminder-watch-him-while-you-still-can"
+        },
+        {
+          "source": "Al Jazeera",
+          "title": "Messi retires from international football: ‘Eternal’ star praised by peers",
+          "url": "https://www.aljazeera.com/sports/2026/9/1/lionel-messi-retirement-football-argentina-tribute?traffic_source=rss"
+        }
+      ],
+      "confidence": "confirmed",
+      "coverage_note": "Built from 4 days of Aware coverage, 31 Aug 2026 to 03 Sep 2026.",
+      "generated_by": "gpt-5.4"
+    },
+    {
+      "id": "recap-george-santos-2026-09-03",
+      "slug": "george-santos",
+      "title": "George Santos banned by Kalshi over State of the Union trades",
+      "as_of": "2026-09-03",
+      "days_covered": 4,
+      "story_ids": [
+        "kalshi-bans-former-congressman-george-santos-for-life-after-1ed8cd"
+      ],
+      "orient": "A former U.S. congressman has been permanently removed from a prediction-market platform after the company said he traded on an event tied to his own actions.",
+      "ground": [
+        "George Santos is a former U.S. representative from New York in the United States.",
+        "Kalshi is a prediction-market platform that said it investigated trades on whether Santos would attend President Donald Trump's State of the Union address.",
+        "Kalshi said it imposed a lifetime ban on Santos and fined him $71,356.",
+        "The matter concerns trading tied to a public official's own conduct, which Kalshi said warranted its strongest penalty."
+      ],
+      "cast": [
+        {
+          "name": "George Santos",
+          "flag": "central",
+          "role": "former U.S. congressman",
+          "position": "Kalshi said he placed bets on his own attendance at the State of the Union and did not cooperate with its investigation."
+        },
+        {
+          "name": "Kalshi",
+          "flag": "central",
+          "role": "prediction-market platform",
+          "position": "It said it permanently banned Santos and fined him after investigating the trades."
+        },
+        {
+          "name": "Laurie Buckhout",
+          "flag": "context",
+          "role": "Republican congressional candidate in North Carolina",
+          "position": "Coverage cited her separate Kalshi penalty as another example of enforcement over self-linked political trading."
+        }
+      ],
+      "path": [
+        {
+          "date": "2026-08-31",
+          "headline": "Kalshi bans ex-congressman George Santos from prediction platform for life",
+          "what": "Multiple outlets reported that Kalshi permanently suspended Santos and assessed a $71,356 fine after federal regulators accused him of profiting from bets tied to his own attendance at the State of the Union.",
+          "why_it_mattered": "This established the core allegation, the platform's penalty, and the unusual nature of the case."
+        },
+        {
+          "date": "2026-08-31",
+          "headline": "Kalshi bans ex-congressman George Santos from prediction platform for life",
+          "what": "George Santos, the former Republican congressman whose political career collapsed under a mountain of lies, has become the first person ever handed a lifetime ban by the prediction-market platform Kalshi.",
+          "why_it_mattered": "Laurie Buckhout, a Trump-endorsed Republican congressional candidate in North Carolina, was banned for three years and fined $2,590 after wagering under $1,000 on her own campaign, calling it a mistake she moved to fix as soon as she noticed it."
+        },
+        {
+          "date": "2026-08-31",
+          "headline": "Kalshi gives George Santos lifetime ban over State of the Union trades",
+          "what": "Follow-up coverage from NPR and CBS MoneyWatch said Kalshi's investigation centered on trades about whether Santos would attend the State of the Union and that the company said he did not cooperate.",
+          "why_it_mattered": "It added the company's account of non-cooperation and reinforced that Kalshi viewed the conduct as serious enough for a lifetime ban."
+        }
+      ],
+      "now": "As of 2026-09-03, the covered reporting still centers on Kalshi's announced lifetime ban and fine against Santos over State of the Union-related trades; no later development is provided in the evidence.",
+      "stakes": "The case is a high-profile test of how prediction-market platforms police trading on events that public figures may influence directly, and it signals that violations can lead to permanent expulsion and sizable fines.",
+      "next": [
+        "Whether Santos responds publicly or contests Kalshi's findings.",
+        "Whether regulators or Kalshi disclose more detail about the trades and the basis for the penalty.",
+        "Whether the case leads to broader scrutiny of self-referential political trading on prediction markets."
+      ],
+      "sources": [
+        {
+          "source": "NPR Business",
+          "title": "Kalshi bans former congressman George Santos for life after State of the Union trades",
+          "url": "https://www.npr.org/2026/08/31/nx-s1-5950432/george-santos-kalshi-ban-prediction-markets"
+        },
+        {
+          "source": "CBS MoneyWatch",
+          "title": "Kalshi bans ex-congressman George Santos for life after suspicious trades",
+          "url": "https://www.cbsnews.com/news/george-santos-kalshi-lifetime-ban/"
+        },
+        {
+          "source": "Wired",
+          "title": "George Santos Just Got Hit With Kalshi’s First-Ever Lifetime Ban",
+          "url": "https://www.wired.com/story/george-santos-gets-a-lifetime-ban-from-kalshi/"
+        },
+        {
+          "source": "BBC World",
+          "title": "Ex-congressman George Santos banned from betting platform for life",
+          "url": "https://www.bbc.co.uk/news/articles/cpwlxy49225o?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "source": "CNBC Top News",
+          "title": "Kalshi permanently bans former GOP Rep. George Santos over illegal trading",
+          "url": "https://www.cnbc.com/2026/08/31/kalshi-perman.html"
+        },
+        {
+          "source": "Guardian World",
+          "title": "Kalshi bans ex-congressman George Santos from prediction platform for life",
+          "url": "https://www.theguardian.com/us-news/2026/aug/31/george-santos-kalshi-lifetime-ban"
+        },
+        {
+          "source": "TechCrunch",
+          "title": "Kalshi bans George Santos for life over State of the Union bets",
+          "url": "https://techcrunch.com/2026/08/31/kalshi-bans-george-santos-for-life-over-state-of-the-union-bets/"
+        },
+        {
+          "source": "NYT Business",
+          "title": "Kalshi Permanently Bars George Santos From the Platform",
+          "url": "https://www.nytimes.com/2026/08/31/business/kalshi-bans-george-santos.html"
+        },
+        {
+          "source": "The Hill",
+          "title": "Kalshi bans George Santos for life",
+          "url": "https://thehill.com/newsletters/technology/6061870-kalshi-bans-george-santos-for-life/"
+        },
+        {
+          "source": "NPR Technology",
+          "title": "Kalshi bans former congressman George Santos for life after State of the Union trades",
+          "url": "https://www.npr.org/2026/08/31/nx-s1-5950432/kalshi-bans-former-congressman-george-santos-for-life-after-state-of-the-union-trades"
+        }
+      ],
+      "confidence": "reported",
+      "coverage_note": "Built from 4 days of Aware coverage, 31 Aug 2026 to 03 Sep 2026.",
+      "generated_by": "gpt-5.4"
+    },
+    {
+      "id": "recap-john-galliano-2026-09-03",
+      "slug": "john-galliano",
+      "title": "John Galliano's canceled 2027 Met exhibition and gala tie-in",
+      "as_of": "2026-09-03",
+      "days_covered": 4,
+      "story_ids": [
+        "amid-backlash-museum-cancels-planned-met-gala-exhibit-on-fas-968367"
+      ],
+      "orient": "A planned Metropolitan Museum of Art Costume Institute exhibition honoring designer John Galliano became a culture-sector backlash story because of his past antisemitic and racist remarks, ending with the project being canceled before its 2027 launch.",
+      "ground": [
+        "The Metropolitan Museum of Art in New York had announced a spring 2027 Costume Institute exhibition titled \"John Galliano: Horizons.\"",
+        "The exhibition was tied to the 2027 Met Gala and was intended to celebrate British designer John Galliano's career.",
+        "The plan drew backlash over Galliano's 2010-2011 antisemitic and racist remarks; reports cited his firing from Christian Dior and a conviction in France related to antisemitic remarks.",
+        "The Met said the Galliano show would be replaced by another exhibition, with details to be announced later.",
+        "The central place in this thread is United Kingdom."
+      ],
+      "cast": [
+        {
+          "name": "John Galliano",
+          "flag": "person",
+          "role": "fashion designer",
+          "position": "Said after reflection and discussions that the exhibition should not go ahead now and that he remains accountable for harm caused by his past words."
+        },
+        {
+          "name": "Metropolitan Museum of Art",
+          "flag": "organization",
+          "role": "museum and organizer",
+          "position": "Canceled the planned 2027 Costume Institute exhibition and said it would announce a replacement later."
+        },
+        {
+          "name": "Max Hollein",
+          "flag": "person",
+          "role": "Met director and CEO",
+          "position": "Said the decision not to proceed followed discussions with Galliano."
+        }
+      ],
+      "path": [
+        {
+          "date": "2026-08-31",
+          "headline": "Backlash builds around planned Met show",
+          "what": "Reports said Galliano and the Met dropped the upcoming major New York exhibition after criticism tied to his previous conviction for antisemitic remarks. The show had been announced for May 2027 as \"John Galliano: Horizons.\"",
+          "why_it_mattered": "This established that a high-profile institutional honor in New York had become untenable because of Galliano's past conduct, not because of a scheduling change."
+        },
+        {
+          "date": "2026-08-31",
+          "headline": "John Galliano exhibition at New York Met cancelled after backlash",
+          "what": "John Galliano has cancelled an upcoming major exhibition celebrating his work as a fashion designer after it prompted criticism due to his previous conviction for making antisemitic remarks.",
+          "why_it_mattered": "Galliano is regarded by some as one of the greatest fashion designers and returned to the fashion industry following his conviction, serving as creative director of Margiela for a decade until 2024."
+        },
+        {
+          "date": "2026-09-01",
+          "headline": "Met confirms cancellation of Galliano exhibit tied to 2027 gala",
+          "what": "The Met said it was canceling the spring 2027 Costume Institute exhibition and replacing it with another show. NPR and Sky reported Galliano would no longer be honored at the 2027 Met Gala. Hollein said the museum and Galliano made the decision together; Galliano said he accepted responsibility for pain caused to Jewish and Asian communities.",
+          "why_it_mattered": "The museum's statement turned earlier backlash reporting into a confirmed institutional reversal and removed one of fashion's biggest annual platforms from Galliano."
+        }
+      ],
+      "now": "As of 2026-09-03, the Galliano exhibition and related 2027 Met Gala honor have been canceled, and the Met has said it will announce a new spring Costume Institute exhibition later.",
+      "stakes": "The episode shows how past antisemitic and racist conduct can reshape who major cultural institutions choose to honor, especially when a museum exhibition and the Met Gala confer prestige beyond fashion itself.",
+      "next": [
+        "The Met's announcement of a replacement spring 2027 Costume Institute exhibition.",
+        "Further details on the theme and honorees, if any, for the 2027 Met Gala.",
+        "Whether Galliano or the museum make additional public statements about the cancellation and its implications."
+      ],
+      "sources": [
+        {
+          "source": "BBC World",
+          "title": "John Galliano exhibition at New York Met cancelled after backlash",
+          "url": "https://www.bbc.co.uk/news/articles/c4gkp6pgy03o?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "source": "NPR Arts",
+          "title": "Amid backlash, museum cancels planned Met Gala exhibit on fashion designer John Galliano",
+          "url": "https://www.npr.org/2026/09/01/g-s1-141347/met-gala-john-galliano-exhibit-canceled"
+        },
+        {
+          "source": "Sky Entertainment",
+          "title": "Met Gala exhibition honouring John Galliano cancelled after backlash over past antisemitic comments",
+          "url": "https://news.sky.com/story/met-gala-exhibition-honouring-john-galliano-cancelled-after-backlash-over-past-antisemitic-comments-13579552"
+        },
+        {
+          "source": "CBS Entertainment",
+          "title": "John Galliano's Met Gala exhibit canceled amid backlash",
+          "url": "https://www.cbsnews.com/news/john-galliano-met-gala-exhibit-dropped-backlash/"
+        },
+        {
+          "source": "Times of Israel",
+          "title": "Met Museum cancels planned John Galliano exhibit after backlash over antisemitism",
+          "url": "https://www.timesofisrael.com/met-museum-cancels-planned-john-galliano-exhibit-after-backlash-over-antisemitism/"
+        },
+        {
+          "source": "SCMP",
+          "title": "John Galliano pulls out of Met Gala exhibit after antisemitism backlash",
+          "url": "https://www.scmp.com/news/world/united-states-canada/article/3365897/john-galliano-pulls-out-met-gala-exhibit-after-antisemitism-backlash?utm_source=rss_feed"
+        }
+      ],
+      "confidence": "confirmed",
+      "coverage_note": "Built from 4 days of Aware coverage, 31 Aug 2026 to 03 Sep 2026.",
+      "generated_by": "gpt-5.4"
+    },
+    {
+      "id": "recap-nepal-2026-09-03",
+      "slug": "nepal",
+      "title": "Nepal flash-flood disaster after border avalanche",
+      "as_of": "2026-09-03",
+      "days_covered": 3,
+      "story_ids": [
+        "nepal-flash-floods-aftermath-updates-death-toll-near-1-250-a-4e070b"
+      ],
+      "orient": "A cross-border mountain flood disaster in Nepal has become a prolonged search-and-recovery crisis, with casualty counts rising for days after waters tore through river valleys, towns and infrastructure.",
+      "ground": [
+        "The disaster began on 26 Aug 2026 after an ice-rock avalanche near the Nepal-Tibet border sent floodwaters down the Bhotekoshi River into northern and central Nepal, according to Nepal's prime minister as cited in coverage.",
+        "In Nepal, districts repeatedly cited among the hardest hit include Chitwan, Nuwakot and Rasuwa, with additional recoveries reported in Nawalparasi East and West, Gorkha, Dhading and Tanahu.",
+        "Rescue operations have involved the Nepal Army, Armed Police Force and other security personnel, with nearly 12,000 people reported rescued in earlier updates.",
+        "The flooding also affected Tibet on the Chinese side of the border, where Chinese officials cited in coverage reported deaths and hundreds missing."
+      ],
+      "cast": [
+        {
+          "name": "Nepal Police",
+          "flag": "Nepal",
+          "role": "police authority",
+          "position": "Reported the latest death and missing figures cited by The Hindu on Sept. 3."
+        },
+        {
+          "name": "National Disaster Risk Reduction and Management Authority",
+          "flag": "Nepal",
+          "role": "disaster authority",
+          "position": "Issued earlier official Nepal casualty and missing-person figures during the rescue phase."
+        },
+        {
+          "name": "Balendra Shah",
+          "flag": "Nepal",
+          "role": "prime minister",
+          "position": "Said the floods were triggered by an ice-rock avalanche in the Himalayas."
+        },
+        {
+          "name": "Nepal Army",
+          "flag": "Nepal",
+          "role": "military rescue force",
+          "position": "Led ongoing search-and-rescue operations in affected areas."
+        }
+      ],
+      "path": [
+        {
+          "date": "2026-08-31",
+          "headline": "Nepal's official toll climbed past 900 as the search widened",
+          "what": "Nepal's disaster authority said at least 939 people were dead and 3,925 missing in Nepal as rescue efforts entered a sixth day; Chinese state media earlier reported 16 dead and 546 missing in Tibet.",
+          "why_it_mattered": "The scale of deaths, missing people and cross-border impact made clear this was not a localized incident but a major regional humanitarian emergency."
+        },
+        {
+          "date": "2026-08-31",
+          "headline": "School evacuation underscored the sudden impact of the flood",
+          "what": "Coverage described a headteacher in Nuwakot evacuating about 900 children to higher ground after receiving warnings from upstream, shortly before floodwaters hit.",
+          "why_it_mattered": "It showed how little time communities had to react and how local warnings helped save lives amid a fast-moving disaster."
+        },
+        {
+          "date": "2026-09-02",
+          "headline": "A week on, deaths passed 1,200 and thousands were still unaccounted for",
+          "what": "Nepal's disaster authority said 1,204 people had died in Nepal and 4,216 remained missing; coverage also said 11,993 people had been rescued and 21,314 security personnel mobilised.",
+          "why_it_mattered": "After a week, the crisis had shifted from immediate survival to mass recovery, identification of bodies and support for families still waiting for news."
+        },
+        {
+          "date": "2026-09-03",
+          "headline": "Police cited by The Hindu reported another rise in deaths and missing",
+          "what": "The Hindu, citing Nepal Police, reported 1,252 deaths and 4,875 missing in Nepal on the ninth day of operations, while rescue teams continued searches and Nepal planned to rebuild an early-warning system at Timure.",
+          "why_it_mattered": "The new figures showed that the human toll was still being revised upward as access, body recovery and communications remained disrupted."
+        }
+      ],
+      "now": "As of 3 Sep 2026, The Hindu cited Nepal Police as saying 1,252 people were dead and 4,875 were missing in Nepal, with joint rescue teams still operating and damaged roads and bridges slowing movement.",
+      "stakes": "Thousands of families in Nepal and abroad still lack confirmation about missing relatives, and prolonged disruption to transport, settlements and hydropower facilities complicates rescue, identification and recovery.",
+      "next": [
+        "Whether the missing count begins to fall as more people are located or identified.",
+        "How quickly search teams can reach damaged tunnels, river corridors and cut-off communities.",
+        "Whether Nepal follows through on plans, cited by Reuters via The Hindu, to rebuild an early-warning system at Timure.",
+        "Any further verified updates on casualties in Tibet and the cross-border recovery effort."
+      ],
+      "sources": [
+        {
+          "source": "The Guardian",
+          "title": "Headteacher saves 900 children from deadly flash flood in Nepal",
+          "url": "https://www.theguardian.com/world/2026/aug/30/headteacher-saves-children-flash-flood-nepal"
+        },
+        {
+          "source": "The Hindu",
+          "title": "Nepal flash floods LIVE: Death toll rises to 939, missing people drops to 3,925: disaster authority",
+          "url": "https://www.thehindu.com/news/international/nepal-flash-floods-aftermath-live-udpates-rescue-work-august-31-2026/article71409646.ece"
+        },
+        {
+          "source": "The Hindu",
+          "title": "Nepal flash floods: Death toll crosses 1,200; over 4,000 remain missing a week after disaster",
+          "url": "https://www.thehindu.com/news/international/nepal-flash-flood-death-toll-rescue-operations-relief-and-missing-persons-updates-on-september-2-2026/article71418066.ece"
+        },
+        {
+          "source": "The Hindu",
+          "title": "Nepal flash floods aftermath updates: Death toll near 1,250 as more than 4,000 still missing",
+          "url": "https://www.thehindu.com/news/international/nepal-flash-floods-live-updates-rescue-operations-relief-death-toll-missing-persons-news-september-2-2026/article71417912.ece"
+        },
+        {
+          "source": "NPR",
+          "title": "Families of the missing in Nepal's flash floods perform symbolic cremations",
+          "url": "https://www.npr.org/2026/09/03/nx-s1-5954190/families-of-the-missing-in-nepals-flash-floods-perform-symbolic-cremations"
+        },
+        {
+          "source": "Axios",
+          "title": "Why Nepal's rare, deadly flood struck without warning",
+          "url": "https://www.axios.com/2026/08/29/nepal-flood-cause-warning-alert-system"
+        },
+        {
+          "source": "Grist",
+          "title": "How rising temperatures likely contributed to Nepal’s deadly flood",
+          "url": "https://grist.org/extreme-weather/how-rising-temperatures-likely-contributed-to-nepals-deadly-flood/"
+        },
+        {
+          "source": "NPR World",
+          "title": "Rescuers search for the missing after deadly flood along Nepal-Tibet border",
+          "url": "https://www.npr.org/2026/08/31/nx-s1-5949292/rescuers-search-for-the-missing-after-deadly-flood-along-nepal-tibet-border"
+        },
+        {
+          "source": "NYT Climate",
+          "title": "Photos: A Deadly Flood Tears Through Nepal and Tibet",
+          "url": "https://www.nytimes.com/2026/08/26/world/asia/flood-nepal-tibet.html"
+        },
+        {
+          "source": "DW World",
+          "title": "Nepal issues fresh flood warning as 3,000 still missing",
+          "url": "https://www.dw.com/en/nepal-issues-fresh-flood-warning-as-3-000-still-missing/a-78561068?maca=en-rss-en-world-4025-rdf"
+        },
+        {
+          "source": "CBS World",
+          "title": "Nepal flash flood death toll reaches 800, with around 3,000 still missing",
+          "url": "https://www.cbsnews.com/news/nepal-flash-flood-death-missing-americans-rescue/"
+        },
+        {
+          "source": "Euronews",
+          "title": "Nepal flood death toll passes 900 as search for survivors continues",
+          "url": "http://www.euronews.com/video/2026/08/31/nepal-flood-death-toll-passes-900-as-search-for-survivors-continues"
+        }
+      ],
+      "confidence": "reported",
+      "coverage_note": "Built from 3 days of Aware coverage, 31 Aug 2026 to 03 Sep 2026.",
+      "generated_by": "gpt-5.4"
     }
   ]
 }

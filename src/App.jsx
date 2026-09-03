@@ -4,12 +4,22 @@ import CategoryNav from './components/CategoryNav.jsx'
 import DepthControl from './components/DepthControl.jsx'
 import ErrorBoundary from './components/ErrorBoundary.jsx'
 import Feed from './components/Feed.jsx'
+import RecapView from './components/RecapView.jsx'
 import SavedPage from './components/SavedPage.jsx'
 import StoryReader from './components/StoryReader.jsx'
 import YouPage from './components/YouPage.jsx'
 import { estimateDepthMinutes, useReadingDepth } from './hooks/useReadingDepth.js'
+import { useSavedRecaps } from './hooks/useSavedRecaps.js'
 import { useSavedStories } from './hooks/useSavedStories.js'
-import { categories, getCategory, getStory, meta, stories, storiesByCategory } from './lib/data.js'
+import {
+  categories,
+  getCategory,
+  getRecap,
+  getStory,
+  meta,
+  stories,
+  storiesByCategory,
+} from './lib/data.js'
 import { formatDate, formatUpdated } from './lib/format.js'
 
 const READ_STORAGE_KEY = 'aware-daily:read'
@@ -91,11 +101,21 @@ export default function App() {
   const [activeTab, setActiveTab] = useState('today')
   const [activeCategory, setActiveCategory] = useState('all')
   const [openStoryId, setOpenStoryId] = useState(null)
+  // The second overlay slot. It holds the whole recap object rather than an id,
+  // because a saved catch-up must still open after `daily.json` has rotated and
+  // `getRecap` no longer knows about it.
+  const [openRecap, setOpenRecap] = useState(null)
   const [readStore, setReadStore] = useState(loadReadStore)
   const [theme, setTheme] = useState(loadTheme)
   const originRef = useRef(null)
 
   const { savedIds, isSaved, toggleSave, clearAll } = useSavedStories()
+  const {
+    savedRecaps,
+    isSaved: isRecapSaved,
+    toggleSave: toggleSaveRecap,
+    clearAll: clearAllRecaps,
+  } = useSavedRecaps()
   const { depth, setDepth } = useReadingDepth()
 
   const editionKey = meta.date || 'unknown-edition'
@@ -117,14 +137,34 @@ export default function App() {
     [savedIds],
   )
 
-  // Count what can actually be shown: an id kept from an older edition is not
-  // in today's briefing, so it must not inflate the badge.
-  const savedCount = savedStories.length
+  // Count what can actually be shown: a story id kept from an older edition is
+  // not in today's briefing, so it must not inflate the badge. Saved catch-ups
+  // carry their own copy, so every one of them is always shown and counted.
+  const savedCount = savedStories.length + savedRecaps.length
 
   const dateLabel = formatDate(meta.date)
   const updatedLabel = formatUpdated(meta.generatedAt)
   const openStory = openStoryId ? getStory(openStoryId) : null
   const openCategory = openStory ? getCategory(openStory.category) : null
+
+  // A story links to at most one catch-up, and only when that id resolves in
+  // today's edition. Anything else and the reader shows no affordance at all.
+  const storyRecap = openStory?.recap_id ? getRecap(openStory.recap_id) : null
+
+  // A recap has no category of its own, so it borrows the accent of the first
+  // story it serves that is still in this edition. A saved catch-up read after
+  // the briefing rotated resolves nothing and stays on the neutral token.
+  const openRecapCategory = useMemo(() => {
+    const ids = Array.isArray(openRecap?.story_ids) ? openRecap.story_ids : []
+    for (const id of ids) {
+      const story = getStory(id)
+      const category = story ? getCategory(story.category) : null
+      if (category) return category
+    }
+    return null
+  }, [openRecap])
+
+  const recapBackLabel = openStoryId ? 'Back to the story' : 'Back to saved'
   const editionDate = parseLocalDate(meta.date)
   const staleAgeMs = editionDate ? APP_BOOT_TIME - editionDate.getTime() : 0
   const staleInfo =
@@ -218,11 +258,29 @@ export default function App() {
 
   const handleCloseReader = useCallback(() => {
     setOpenStoryId(null)
+    setOpenRecap(null)
   }, [])
+
+  const handleOpenRecap = useCallback((recap) => {
+    if (!recap || typeof recap !== 'object' || Array.isArray(recap) || !recap.id) return
+    setOpenRecap(recap)
+  }, [])
+
+  // Closing the catch-up only drops the catch-up. The story reader underneath
+  // was never unmounted, so it comes back exactly as it was left.
+  const handleCloseRecap = useCallback(() => {
+    setOpenRecap(null)
+  }, [])
+
+  const handleClearAllSaved = useCallback(() => {
+    clearAll()
+    clearAllRecaps()
+  }, [clearAll, clearAllRecaps])
 
   const handleTabChange = useCallback((nextTab) => {
     setActiveTab(nextTab)
     setOpenStoryId(null)
+    setOpenRecap(null)
     if (typeof window !== 'undefined') window.scrollTo(0, 0)
   }, [])
 
@@ -330,10 +388,13 @@ export default function App() {
           <ErrorBoundary label="Your saved stories">
             <SavedPage
               stories={savedStories}
+              recaps={savedRecaps}
               categories={categories}
               onOpenStory={handleOpenStory}
+              onOpenRecap={handleOpenRecap}
               onToggleSave={toggleSave}
-              onClearAll={clearAll}
+              onToggleSaveRecap={toggleSaveRecap}
+              onClearAll={handleClearAllSaved}
               onBrowse={handleTabChange}
             />
           </ErrorBoundary>
@@ -367,6 +428,25 @@ export default function App() {
 
       <BottomNav activeTab={activeTab} onTabChange={handleTabChange} savedCount={savedCount} />
 
+      {/*
+        The catch-up is declared before the reader so its own section ids win in
+        document order while it is the dialog on top; `z-[60]` keeps it above
+        the reader regardless. The reader stays mounted underneath and inert, so
+        closing the catch-up hands it back with its scroll position intact.
+      */}
+      <ErrorBoundary label="The catch-up">
+        {openRecap ? (
+          <RecapView
+            recap={openRecap}
+            category={openRecapCategory}
+            backLabel={recapBackLabel}
+            onClose={handleCloseRecap}
+            isSaved={isRecapSaved}
+            onToggleSave={toggleSaveRecap}
+          />
+        ) : null}
+      </ErrorBoundary>
+
       <ErrorBoundary label="The story reader">
         {openStory ? (
           <StoryReader
@@ -375,6 +455,9 @@ export default function App() {
             onClose={handleCloseReader}
             isSaved={isSaved}
             onToggleSave={toggleSave}
+            recap={storyRecap}
+            onOpenRecap={handleOpenRecap}
+            suspended={Boolean(openRecap)}
           />
         ) : null}
       </ErrorBoundary>

@@ -74,6 +74,71 @@ const normaliseSource = (raw) => {
   }
 }
 
+const normaliseActor = (raw) => {
+  const actor = asObject(raw)
+  return {
+    name: asString(actor.name).trim(),
+    flag: asString(actor.flag).trim(),
+    role: asString(actor.role).trim(),
+    position: asString(actor.position).trim(),
+  }
+}
+
+const normaliseBeat = (raw) => {
+  const beat = asObject(raw)
+  return {
+    date: asString(beat.date).trim(),
+    headline: asString(beat.headline).trim(),
+    what: asString(beat.what).trim(),
+    why_it_mattered: asString(beat.why_it_mattered).trim(),
+  }
+}
+
+/** The app-wide confidence vocabulary. Anything else degrades to `reported`. */
+const CONFIDENCE_LEVELS = ['confirmed', 'reported', 'disputed']
+
+/**
+ * One recap, coerced to the shape the recap contract fixes. Exported because
+ * `useSavedRecaps` stores whole recap objects in localStorage and must run
+ * anything it reads back through exactly the same coercion, so a recap saved
+ * by an older build can never reach the view in a shape it does not expect.
+ *
+ * Returns `null` for anything without an id: nothing could link to it.
+ */
+export const normaliseRecap = (raw) => {
+  if (!isObject(raw)) return null
+
+  const id = asString(raw.id).trim()
+  if (!id) return null
+
+  const confidence = asString(raw.confidence).trim().toLowerCase()
+
+  return {
+    ...raw,
+    id,
+    slug: asString(raw.slug).trim(),
+    title: asString(raw.title).trim(),
+    as_of: asString(raw.as_of).trim(),
+    days_covered: asNumber(raw.days_covered, 0) ?? 0,
+    story_ids: asStringList(raw.story_ids),
+    orient: asString(raw.orient).trim(),
+    ground: asStringList(raw.ground),
+    cast: asArray(raw.cast)
+      .map(normaliseActor)
+      .filter((actor) => actor.name || actor.role || actor.position),
+    path: asArray(raw.path)
+      .map(normaliseBeat)
+      .filter((beat) => beat.date || beat.headline || beat.what),
+    now: asString(raw.now).trim(),
+    stakes: asString(raw.stakes).trim(),
+    next: asStringList(raw.next),
+    sources: asArray(raw.sources).map(normaliseSource).filter((s) => s.url || s.source),
+    confidence: CONFIDENCE_LEVELS.includes(confidence) ? confidence : 'reported',
+    coverage_note: asString(raw.coverage_note).trim(),
+    generated_by: asString(raw.generated_by).trim(),
+  }
+}
+
 /**
  * The accent CSS custom property *name* for a category, e.g.
  * `'--accent-geopolitics'`. Unknown keys fall back to a token that is always
@@ -108,6 +173,7 @@ const normaliseStory = (raw, index) => {
     why_ranked: asString(raw.why_ranked),
     scores: asNumberMap(raw.scores),
     consequence: asNumberMap(raw.consequence),
+    recap_id: asString(raw.recap_id).trim(),
   }
 }
 
@@ -154,8 +220,18 @@ export const categories = asArray(daily.categories)
   .filter(Boolean)
   .map((category) => ({ ...category, stories: storiesFor(category.key) }))
 
+/**
+ * Every recap in this edition, in payload order. The key is optional: an
+ * edition built before the recap unit shipped simply has none, and every
+ * consumer must treat an empty array as the normal case.
+ */
+export const recaps = asArray(daily.recaps)
+  .map(normaliseRecap)
+  .filter(Boolean)
+
 const storyIndex = new Map(stories.map((story) => [story.id, story]))
 const categoryIndex = new Map(categories.map((category) => [category.key, category]))
+const recapIndex = new Map(recaps.map((recap) => [recap.id, recap]))
 
 /**
  * The single highest-priority story: the lowest-ranked `lead`, falling back to
@@ -174,6 +250,17 @@ export function getStory(id) {
 export function getCategory(key) {
   if (typeof key !== 'string' || !key) return null
   return categoryIndex.get(key) ?? null
+}
+
+/**
+ * Look up one recap by id. Returns `null` when it does not exist, which is the
+ * ordinary answer for every story until the pipeline emits recaps.
+ */
+export function getRecap(id) {
+  if (typeof id !== 'string') return null
+  const key = id.trim()
+  if (!key) return null
+  return recapIndex.get(key) ?? null
 }
 
 /** Stories in a category, rank ascending. Always an array. */
