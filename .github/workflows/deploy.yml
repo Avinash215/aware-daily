@@ -32,6 +32,12 @@ jobs:
         run: npm ci
 
       - name: Build
+        # GitHub Pages serves this repo from /aware-daily/, not the domain root.
+        # The Vite default is now '/' because Azure Static Web Apps serves from
+        # the root; without this override every asset 404s and the page renders
+        # blank while still returning HTTP 200.
+        env:
+          VITE_BASE: /aware-daily/
         run: npm run build
 
       - name: Ensure .nojekyll exists
