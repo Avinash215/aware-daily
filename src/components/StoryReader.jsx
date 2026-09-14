@@ -1,9 +1,12 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import ConsequenceMeter from './ConsequenceMeter.jsx'
+import GlossaryText from './GlossaryText.jsx'
 import SaveButton from './SaveButton'
 import SourceList from './SourceList.jsx'
 import StakesCallout from './StakesCallout.jsx'
+import VocabularyPanel from './VocabularyPanel.jsx'
 import { formatDate, readTime } from '../lib/format.js'
+import { annotateParagraphs, isExplainable } from '../lib/glossary.js'
 
 /**
  * The focused story reader.
@@ -149,10 +152,39 @@ function Reader({ story, category, onClose, isSaved, onToggleSave, recap, onOpen
   const wasSuspended = useRef(false)
   const [visible, setVisible] = useState(false)
   const [imageFailed, setImageFailed] = useState(false)
+  const [activeTerm, setActiveTerm] = useState(null)
+  const termTriggerRef = useRef(null)
 
   const handleClose = useCallback(() => {
     if (typeof onClose === 'function') onClose()
   }, [onClose])
+
+  const handleSelectTerm = useCallback((entry, event) => {
+    // The reader is only made inert for an explanation that can truly render,
+    // so an incomplete entry can never leave the story frozen behind nothing.
+    if (!isExplainable(entry)) return
+    termTriggerRef.current = event?.currentTarget
+    setActiveTerm(entry)
+  }, [])
+
+  const handleCloseTerm = useCallback(() => {
+    setActiveTerm(null)
+  }, [])
+
+  useEffect(() => {
+    if (activeTerm || suspended) return
+    const node = termTriggerRef.current
+    termTriggerRef.current = null
+    if (node && document.contains(node)) node.focus({ preventScroll: true })
+  }, [activeTerm, suspended])
+
+  useEffect(() => {
+    if (!suspended) return undefined
+    // The recap owns focus; do not restore a term trigger inside the inert reader.
+    termTriggerRef.current = null
+    const frame = requestAnimationFrame(handleCloseTerm)
+    return () => cancelAnimationFrame(frame)
+  }, [handleCloseTerm, suspended])
 
   // Focus moves to the close control on open and returns to the opener on close.
   useEffect(() => {
@@ -168,7 +200,7 @@ function Reader({ story, category, onClose, isSaved, onToggleSave, recap, onOpen
   // on top, this reader owns neither: it is inert and the catch-up handles the
   // keyboard, so the two dialogs can never both act on one Escape.
   useEffect(() => {
-    if (suspended) return undefined
+    if (suspended || activeTerm) return undefined
 
     function onKeyDown(event) {
       const node = dialogRef.current
@@ -243,7 +275,7 @@ function Reader({ story, category, onClose, isSaved, onToggleSave, recap, onOpen
 
     document.addEventListener('keydown', onKeyDown, true)
     return () => document.removeEventListener('keydown', onKeyDown, true)
-  }, [handleClose, suspended])
+  }, [activeTerm, handleClose, suspended])
 
   // Reader entry is an opacity fade only, and none at all under reduced motion.
   useEffect(() => {
@@ -294,7 +326,7 @@ function Reader({ story, category, onClose, isSaved, onToggleSave, recap, onOpen
     ? `${sources.length} ${sources.length === 1 ? 'source' : 'sources'}`
     : ''
 
-  const paragraphs = paragraphsOf(story.body)
+  const annotatedParagraphs = useMemo(() => annotateParagraphs(paragraphsOf(story.body)), [story.body])
   const region = trimmedString(story.region)
   const countries = (Array.isArray(story.countries) ? story.countries : []).filter(
     (country) => country && typeof country === 'object' && (country.name || country.flag),
@@ -333,7 +365,7 @@ function Reader({ story, category, onClose, isSaved, onToggleSave, recap, onOpen
       aria-modal="true"
       aria-labelledby="story-reader-headline"
       tabIndex={-1}
-      inert={Boolean(suspended)}
+      inert={Boolean(suspended || activeTerm)}
       style={{ '--story-accent': accent, '--story-accent-light': accentLight }}
       className={`fixed inset-0 z-50 overflow-y-auto overscroll-contain bg-surface transition-opacity duration-150 ease-out motion-reduce:transition-none ${
         visible ? 'opacity-100' : 'opacity-0'
@@ -487,10 +519,10 @@ function Reader({ story, category, onClose, isSaved, onToggleSave, recap, onOpen
             tabIndex={-1}
             className="mt-5 max-w-[66ch] text-[1.0625rem] leading-[1.6875rem] text-text-primary sm:text-[1.125rem] sm:leading-[1.8125rem]"
           >
-            {paragraphs.length > 0 ? (
-              paragraphs.map((paragraph, index) => (
+            {annotatedParagraphs.length > 0 ? (
+              annotatedParagraphs.map((segments, index) => (
                 <p key={index} className={index === 0 ? 'm-0' : 'mt-4 mb-0'}>
-                  {paragraph}
+                  <GlossaryText segments={segments} onSelect={handleSelectTerm} />
                 </p>
               ))
             ) : (
@@ -539,6 +571,7 @@ function Reader({ story, category, onClose, isSaved, onToggleSave, recap, onOpen
           ) : null}
         </div>
       </article>
+      {activeTerm && !suspended ? <VocabularyPanel entry={activeTerm} onClose={handleCloseTerm} /> : null}
     </div>
   )
 }
