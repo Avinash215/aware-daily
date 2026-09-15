@@ -1,94 +1,40 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState, useSyncExternalStore } from 'react'
+import { getCategory, getRecap, getStory, meta } from '../lib/data.js'
+import { createSavedStoryStore, createStorySnapshot, LEGACY_SAVED_KEY, SAVED_STORIES_KEY, storyKey } from '../lib/savedStories.js'
 
-/**
- * Saved-story ids, persisted to localStorage under `aware-daily:saved`.
- *
- * Every storage touch is wrapped: private browsing, a full quota or a
- * corrupted value must degrade to "nothing saved", never throw. A stored
- * value that is not an array of non-empty strings is discarded.
- *
- * Returns `{ savedIds, isSaved, toggleSave, clearAll }` where `savedIds` is
- * newest-first.
- */
-
-const SAVED_KEY = 'aware-daily:saved'
-
-function sanitise(value) {
-  if (!Array.isArray(value)) return []
-
-  const seen = new Set()
-  const ids = []
-  for (const entry of value) {
-    const id = typeof entry === 'string' ? entry.trim() : ''
-    if (!id || seen.has(id)) continue
-    seen.add(id)
-    ids.push(id)
-  }
-  return ids
-}
-
-function readSaved() {
-  try {
-    if (typeof window === 'undefined' || !window.localStorage) return []
-    const raw = window.localStorage.getItem(SAVED_KEY)
-    if (!raw) return []
-    return sanitise(JSON.parse(raw))
-  } catch {
-    return []
-  }
-}
-
-function writeSaved(ids) {
-  try {
-    if (typeof window === 'undefined' || !window.localStorage) return
-    window.localStorage.setItem(SAVED_KEY, JSON.stringify(ids))
-  } catch {
-    // Storage is unavailable or full — saving stays in-memory for this session.
-  }
+export function snapshotForCurrentStory(id) {
+  const story = getStory(id)
+  return story ? createStorySnapshot(story, meta, getCategory(story.category), getRecap(story.recap_id)) : null
 }
 
 export function useSavedStories() {
-  const [savedIds, setSavedIds] = useState(readSaved)
+  const [store] = useState(() => createSavedStoryStore(() => window.localStorage, snapshotForCurrentStory))
+  const state = useSyncExternalStore(store.subscribe, store.getSnapshot, store.getSnapshot)
 
   useEffect(() => {
-    writeSaved(savedIds)
-  }, [savedIds])
-
-  // Keep two open tabs of the briefing in step.
-  useEffect(() => {
-    if (typeof window === 'undefined') return undefined
-
+    store.start()
     const onStorage = (event) => {
-      if (event.key !== SAVED_KEY) return
-      setSavedIds(readSaved())
+      if (event.key === SAVED_STORIES_KEY || event.key === LEGACY_SAVED_KEY || event.key === null) store.refresh()
     }
-
     window.addEventListener('storage', onStorage)
     return () => window.removeEventListener('storage', onStorage)
-  }, [])
+  }, [store])
 
-  const savedLookup = useMemo(() => new Set(savedIds), [savedIds])
-
-  const isSaved = useCallback((id) => savedLookup.has(id), [savedLookup])
-
+  const lookup = useMemo(() => new Set(state.entries.map((entry) => entry.key)), [state.entries])
+  const isSaved = useCallback((id) => lookup.has(storyKey(id, meta)), [lookup])
+  const isSnapshotSaved = useCallback((entry) => lookup.has(entry?.key), [lookup])
   const toggleSave = useCallback((id) => {
-    const key = typeof id === 'string' ? id.trim() : ''
-    if (!key) return
+    const entry = snapshotForCurrentStory(id)
+    if (entry) store.toggle(entry)
+  }, [store])
+  const savedIds = useMemo(() => state.entries.filter((entry) => entry.key === storyKey(entry.id, meta))
+    .map((entry) => entry.id), [state.entries])
 
-    setSavedIds((current) => {
-      const list = Array.isArray(current) ? current : []
-      return list.includes(key) ? list.filter((entry) => entry !== key) : [key, ...list]
-    })
-  }, [])
-
-  const clearAll = useCallback(() => {
-    setSavedIds([])
-  }, [])
-
-  return useMemo(
-    () => ({ savedIds, isSaved, toggleSave, clearAll }),
-    [savedIds, isSaved, toggleSave, clearAll],
-  )
+  return {
+    savedIds, savedStories: state.entries, isSaved, isSnapshotSaved, toggleSave,
+    toggleSnapshot: store.toggle, removeSnapshot: store.remove, clearAll: store.clear,
+    storageMessage: state.message,
+  }
 }
 
 export default useSavedStories

@@ -6,11 +6,12 @@ import ErrorBoundary from './components/ErrorBoundary.jsx'
 import Feed from './components/Feed.jsx'
 import RecapView from './components/RecapView.jsx'
 import SavedPage from './components/SavedPage.jsx'
+import SavedStoryStatus from './components/SavedStoryStatus.jsx'
 import StoryReader from './components/StoryReader.jsx'
 import YouPage from './components/YouPage.jsx'
 import { estimateDepthMinutes, useReadingDepth } from './hooks/useReadingDepth.js'
 import { useSavedRecaps } from './hooks/useSavedRecaps.js'
-import { useSavedStories } from './hooks/useSavedStories.js'
+import { snapshotForCurrentStory, useSavedStories } from './hooks/useSavedStories.js'
 import {
   categories,
   getCategory,
@@ -100,7 +101,7 @@ function parseLocalDate(value) {
 export default function App() {
   const [activeTab, setActiveTab] = useState('today')
   const [activeCategory, setActiveCategory] = useState('all')
-  const [openStoryId, setOpenStoryId] = useState(null)
+  const [openSelection, setOpenSelection] = useState(null)
   // The second overlay slot. It holds the whole recap object rather than an id,
   // because a saved catch-up must still open after `daily.json` has rotated and
   // `getRecap` no longer knows about it.
@@ -109,7 +110,8 @@ export default function App() {
   const [theme, setTheme] = useState(loadTheme)
   const originRef = useRef(null)
 
-  const { savedIds, isSaved, toggleSave, clearAll } = useSavedStories()
+  const { savedIds, savedStories, isSaved, isSnapshotSaved, toggleSave, toggleSnapshot,
+    removeSnapshot, clearAll, storageMessage } = useSavedStories()
   const {
     savedRecaps,
     isSaved: isRecapSaved,
@@ -132,29 +134,21 @@ export default function App() {
 
   const readLookup = useMemo(() => new Set(readStoryIds), [readStoryIds])
 
-  const savedStories = useMemo(
-    () => savedIds.map((id) => getStory(id)).filter(Boolean),
-    [savedIds],
-  )
-
-  // Count what can actually be shown: a story id kept from an older edition is
-  // not in today's briefing, so it must not inflate the badge. Saved catch-ups
-  // carry their own copy, so every one of them is always shown and counted.
+  // Unavailable legacy entries are visible and removable, so they also count.
   const savedCount = savedStories.length + savedRecaps.length
 
   const dateLabel = formatDate(meta.date)
   const updatedLabel = formatUpdated(meta.generatedAt)
-  const openStory = openStoryId ? getStory(openStoryId) : null
-  const openCategory = openStory ? getCategory(openStory.category) : null
+  const openStory = openSelection?.story
+  const openCategory = openSelection?.category
 
-  // A story links to at most one catch-up, and only when that id resolves in
-  // today's edition. Anything else and the reader shows no affordance at all.
-  const storyRecap = openStory?.recap_id ? getRecap(openStory.recap_id) : null
+  const storyRecap = openSelection?.recap
 
   // A recap has no category of its own, so it borrows the accent of the first
   // story it serves that is still in this edition. A saved catch-up read after
   // the briefing rotated resolves nothing and stays on the neutral token.
   const openRecapCategory = useMemo(() => {
+    if (openSelection?.archived) return openSelection.category
     const ids = Array.isArray(openRecap?.story_ids) ? openRecap.story_ids : []
     for (const id of ids) {
       const story = getStory(id)
@@ -162,9 +156,9 @@ export default function App() {
       if (category) return category
     }
     return null
-  }, [openRecap])
+  }, [openRecap, openSelection])
 
-  const recapBackLabel = openStoryId ? 'Back to the story' : 'Back to saved'
+  const recapBackLabel = openSelection ? 'Back to the story' : 'Back to saved'
   const editionDate = parseLocalDate(meta.date)
   const staleAgeMs = editionDate ? APP_BOOT_TIME - editionDate.getTime() : 0
   const staleInfo =
@@ -205,19 +199,19 @@ export default function App() {
   }, [theme])
 
   useEffect(() => {
-    if (!openStoryId) return undefined
+    if (!openSelection) return undefined
     const previous = document.body.style.overflow
     document.body.style.overflow = 'hidden'
     return () => {
       document.body.style.overflow = previous
     }
-  }, [openStoryId])
+  }, [openSelection])
 
   useEffect(() => {
-    if (openStoryId || !originRef.current) return
-    originRef.current.focus()
+    if (openSelection || !originRef.current) return
+    originRef.current.focus({ preventScroll: true })
     originRef.current = null
-  }, [openStoryId])
+  }, [openSelection])
 
   const updateEditionRead = useCallback(
     (updater) => {
@@ -252,12 +246,28 @@ export default function App() {
   }, [updateEditionRead])
 
   const handleOpenStory = useCallback((storyId, originElement) => {
+    const story = getStory(storyId)
+    if (!story) return
     originRef.current = originElement ?? null
-    setOpenStoryId(storyId)
+    setOpenSelection({ story, category: getCategory(story.category), recap: getRecap(story.recap_id),
+      snapshot: snapshotForCurrentStory(storyId), archived: false })
   }, [])
 
+  const handleOpenSavedStory = useCallback((entry, originElement) => {
+    if (entry.status !== 'readable') return
+    originRef.current = originElement ?? null
+    setOpenSelection({ story: entry.story, category: entry.category, recap: entry.recap,
+      snapshot: entry, archived: true })
+  }, [])
+
+  const handleToggleReaderSave = useCallback(() => {
+    if (openSelection?.snapshot) toggleSnapshot(openSelection.snapshot)
+  }, [openSelection, toggleSnapshot])
+  const isReaderSaved = useCallback(() => isSnapshotSaved(openSelection?.snapshot),
+    [isSnapshotSaved, openSelection])
+
   const handleCloseReader = useCallback(() => {
-    setOpenStoryId(null)
+    setOpenSelection(null)
     setOpenRecap(null)
   }, [])
 
@@ -279,7 +289,7 @@ export default function App() {
 
   const handleTabChange = useCallback((nextTab) => {
     setActiveTab(nextTab)
-    setOpenStoryId(null)
+    setOpenSelection(null)
     setOpenRecap(null)
     if (typeof window !== 'undefined') window.scrollTo(0, 0)
   }, [])
@@ -356,6 +366,7 @@ export default function App() {
         id="main-content"
         className={`${SHELL} pb-[calc(5rem+env(safe-area-inset-bottom))] lg:pb-16`}
       >
+        {!openSelection && !openRecap ? <SavedStoryStatus message={storageMessage} /> : null}
         {activeTab === 'today' ? (
           <ErrorBoundary label="The feed">
             <div
@@ -389,10 +400,9 @@ export default function App() {
             <SavedPage
               stories={savedStories}
               recaps={savedRecaps}
-              categories={categories}
-              onOpenStory={handleOpenStory}
+              onOpenStory={handleOpenSavedStory}
               onOpenRecap={handleOpenRecap}
-              onToggleSave={toggleSave}
+              onToggleSave={removeSnapshot}
               onToggleSaveRecap={toggleSaveRecap}
               onClearAll={handleClearAllSaved}
               onBrowse={handleTabChange}
@@ -443,6 +453,7 @@ export default function App() {
             onClose={handleCloseRecap}
             isSaved={isRecapSaved}
             onToggleSave={toggleSaveRecap}
+            storageMessage={storageMessage}
           />
         ) : null}
       </ErrorBoundary>
@@ -453,11 +464,13 @@ export default function App() {
             story={openStory}
             category={openCategory}
             onClose={handleCloseReader}
-            isSaved={isSaved}
-            onToggleSave={toggleSave}
+            isSaved={isReaderSaved}
+            onToggleSave={handleToggleReaderSave}
             recap={storyRecap}
             onOpenRecap={handleOpenRecap}
             suspended={Boolean(openRecap)}
+            archiveEdition={openSelection.archived ? openSelection.snapshot.edition : null}
+            storageMessage={storageMessage}
           />
         ) : null}
       </ErrorBoundary>

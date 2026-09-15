@@ -128,14 +128,16 @@ function SavedRecapRow({ recap, onOpenRecap, onToggleSaveRecap }) {
   )
 }
 
-function SavedRow({ story, categoryLabel, onOpenStory, onToggleSave }) {
+function SavedRow({ entry, onOpenStory, onToggleSave }) {
+  const story = entry.story
   if (!story || typeof story !== 'object' || !story.id) return null
 
   const headline = story.headline || 'Untitled story'
-  const label = categoryLabel || story.category || 'Briefing'
+  const label = entry.category?.label || story.category || 'Briefing'
   const minutes = readTime(story.read_time_min)
   const sourceCount = Number.isFinite(story.source_count) ? story.source_count : 0
   const meta = [
+    entry.edition?.date ? `Edition ${compactDate(entry.edition.date)}` : 'Original edition date unavailable',
     minutes,
     sourceCount ? `${sourceCount} ${sourceCount === 1 ? 'source' : 'sources'}` : '',
   ].filter(Boolean)
@@ -159,8 +161,8 @@ function SavedRow({ story, categoryLabel, onOpenStory, onToggleSave }) {
           <h3 className="mt-1.5 font-display text-row font-semibold lg:text-row-lg">
             <button
               type="button"
-              onClick={(event) => onOpenStory?.(story.id, event.currentTarget)}
-              className="cursor-pointer text-left text-text-primary hover:underline"
+              onClick={(event) => onOpenStory?.(entry, event.currentTarget)}
+              className="cursor-pointer text-left text-text-primary hover:underline [overflow-wrap:anywhere]"
             >
               {headline}
             </button>
@@ -186,7 +188,7 @@ function SavedRow({ story, categoryLabel, onOpenStory, onToggleSave }) {
           ) : null}
         </div>
 
-        <SaveButton saved onToggle={() => onToggleSave?.(story.id)} size="md" />
+        <SaveButton saved onToggle={() => onToggleSave?.(entry.key)} size="md" />
       </div>
     </li>
   )
@@ -195,7 +197,6 @@ function SavedRow({ story, categoryLabel, onOpenStory, onToggleSave }) {
 export default function SavedPage({
   stories = [],
   recaps = [],
-  categories = [],
   onOpenStory,
   onOpenRecap,
   onToggleSave,
@@ -207,9 +208,8 @@ export default function SavedPage({
   const list = Array.isArray(stories) ? stories.filter((story) => story && story.id) : []
   const recapList = Array.isArray(recaps) ? recaps.filter((recap) => recap && recap.id) : []
   const total = list.length + recapList.length
-  const labels = new Map(
-    (Array.isArray(categories) ? categories : []).map((category) => [category.key, category.label]),
-  )
+  const unavailableCount = list.filter((entry) => entry.status === 'unavailable').length
+  const readableCount = list.length - unavailableCount
 
   useEffect(() => {
     if (!confirmingClear) return undefined
@@ -229,17 +229,28 @@ export default function SavedPage({
   }
 
   const counts = [
-    list.length ? `${list.length} ${list.length === 1 ? 'story' : 'stories'}` : '',
+    readableCount ? `${readableCount} readable ${readableCount === 1 ? 'story' : 'stories'}` : '',
+    unavailableCount ? `${unavailableCount} unavailable` : '',
     recapList.length ? `${recapList.length} ${recapList.length === 1 ? 'catch-up' : 'catch-ups'}` : '',
   ].filter(Boolean)
 
   const storyRows = (
     <ul className="mt-2 mb-0 list-none p-0">
-      {list.map((story) => (
+      {list.map((entry) => entry.status === 'unavailable' ? (
+        <li key={entry.key} className="flex items-start gap-2 border-b border-border-subtle py-3">
+          <div className="min-w-0 flex-1 [overflow-wrap:anywhere]">
+            <h3 className="font-display text-row font-semibold text-text-primary">Story unavailable</h3>
+            <p className="mt-1 text-meta text-text-secondary">
+              This older bookmark stored only an ID, not the story text. It cannot be recovered from this edition.
+            </p>
+            <p className="mt-1 text-caption text-text-muted">Saved ID: {entry.id}</p>
+          </div>
+          <SaveButton saved onToggle={() => onToggleSave?.(entry.key)} size="md" />
+        </li>
+      ) : (
         <SavedRow
-          key={story.id}
-          story={story}
-          categoryLabel={labels.get(story.category)}
+          key={entry.key}
+          entry={entry}
           onOpenStory={onOpenStory}
           onToggleSave={onToggleSave}
         />
@@ -254,7 +265,7 @@ export default function SavedPage({
           Saved
         </h2>
         {total ? (
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
             <p className="text-meta text-text-muted">{counts.join(' · ')}</p>
             <button
               type="button"
@@ -275,7 +286,7 @@ export default function SavedPage({
           </p>
           <p className="mx-auto mt-2 max-w-[46ch] text-dek text-text-secondary lg:text-dek-lg">
             Tap the bookmark on any story in Today to keep it here. Saved stories stay on this
-            device — nothing is sent anywhere.
+            device. Nothing is sent anywhere.
           </p>
           <button
             type="button"
@@ -318,13 +329,18 @@ export default function SavedPage({
               storyRows
             ) : (
               <p className="mt-2 mb-0 max-w-[46ch] text-dek text-text-secondary lg:text-dek-lg">
-                No stories saved. Tap the bookmark on any story in Today to keep it here. A saved
-                story is a pointer into that day&rsquo;s briefing, so it drops off this list once
-                the edition rotates.
+                No stories saved. Tap the bookmark on any story in Today to keep a readable copy
+                here after the edition rotates.
               </p>
             )}
           </section>
         </>
+      ) : null}
+      {total > 0 ? (
+        <p className="mt-4 text-caption text-text-muted">
+          Story copies keep their original edition and linked catch-up on this browser only, without images.
+          Linked catch-ups do not add a separate save. Clearing browser data removes these copies.
+        </p>
       ) : null}
     </section>
   )

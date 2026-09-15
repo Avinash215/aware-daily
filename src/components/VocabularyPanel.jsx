@@ -1,6 +1,7 @@
 import { useEffect, useId, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { isExplainable } from '../lib/glossary.js'
+import SavedStoryStatus from './SavedStoryStatus.jsx'
 
 /**
  * A small, local explanation rather than a dictionary or a second report.
@@ -9,13 +10,13 @@ import { isExplainable } from '../lib/glossary.js'
  * Invalid entries render nothing, and the footer makes the curated limit clear.
  * A portal keeps the explanation interactive while its reader is inert.
  */
-export default function VocabularyPanel({ entry, onClose }) {
+export default function VocabularyPanel({ entry, onClose, storageMessage = '' }) {
   if (!isExplainable(entry)) return null
 
-  return createPortal(<ExplanationDialog entry={entry} onClose={onClose} />, document.body)
+  return createPortal(<ExplanationDialog entry={entry} onClose={onClose} storageMessage={storageMessage} />, document.body)
 }
 
-function ExplanationDialog({ entry, onClose }) {
+function ExplanationDialog({ entry, onClose, storageMessage }) {
   const dialogRef = useRef(null)
   const panelRef = useRef(null)
   const closeRef = useRef(null)
@@ -96,6 +97,7 @@ function ExplanationDialog({ entry, onClose }) {
         ref={panelRef}
         className="max-h-[85dvh] w-full max-w-[32rem] overflow-y-auto overscroll-contain rounded-t-xl border border-border bg-surface-raised p-6 sm:rounded-xl"
       >
+        <SavedStoryStatus message={storageMessage} />
         <p className="m-0 text-[0.75rem] leading-[1rem] font-bold tracking-[0.08em] text-text-tertiary uppercase">
           Word
         </p>

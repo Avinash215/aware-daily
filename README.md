@@ -54,6 +54,44 @@ Every field is coerced to a safe shape on the way through. A missing, partial or
 wrongly-typed payload degrades to empty arrays — it never throws and never
 white-screens the app.
 
+## Browser-local saved stories
+
+`src/lib/savedStories.js` owns the version 1 archive at
+`aware-daily:saved-stories`: `{ version: 1, entries: [...] }`.
+Readable entries contain an allowlisted story, original edition metadata,
+original category metadata and the linked published recap, if present.
+Images and arbitrary payload extras are not archived. Source URLs remain
+ordinary user-initiated links. No archive recovery or content fetch is performed.
+Embedded recaps do not increase the independent saved-recap count.
+
+Snapshots require a nonblank string ID and string headline/body fields.
+Empty or whitespace-only headline/body strings are preserved, matching the
+normalized feed shape; existing reader fallbacks explain missing reporting.
+Missing or non-string headline/body fields in raw snapshots are rejected.
+
+Identity is the pair of edition date and story ID, with generation time used
+when the edition date is absent. Adding the same identity never replaces its
+stored content. Different editions can retain the same published ID separately.
+The saved reader holds the selected snapshot even after it is unsaved.
+
+Valid legacy `aware-daily:saved` IDs are migrated once. IDs that cannot resolve
+to a valid story snapshot in the loaded edition remain explicitly unavailable, removable
+entries. The legacy key is never modified; an existing versioned store takes
+precedence, including an intentionally empty archive.
+
+The serialized store is limited to 2,000,000 UTF-16 code units (about 4 MB).
+Oversized writes are rejected without trimming records. Blocked storage,
+corrupt data, unsupported versions and write failures preserve prior stored
+bytes and report that changes are session-only. Corrupt entries are isolated
+for display, but a damaged archive is never automatically rewritten.
+Only explicit mutations and valid migration write to storage.
+
+Each write rereads the latest archive, reapplies pending local operations, and
+checks the original bytes again before writing. Storage events synchronize tabs
+without discarding unpersisted local operations. LocalStorage has no atomic
+compare-and-swap, so truly simultaneous writes can still race between the final
+check and the write. Browser-data deletion removes the archive.
+
 ## Styling
 
 Tailwind CSS v4 via `@tailwindcss/vite`. All colour and type live in

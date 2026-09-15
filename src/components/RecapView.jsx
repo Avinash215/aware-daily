@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import SaveButton from './SaveButton.jsx'
+import SavedStoryStatus from './SavedStoryStatus.jsx'
 import SourceList from './SourceList.jsx'
 import StakesCallout from './StakesCallout.jsx'
 
@@ -150,7 +151,7 @@ function Prose({ text }) {
   )
 }
 
-export default function RecapView({ recap, category, backLabel, onClose, isSaved, onToggleSave }) {
+export default function RecapView({ recap, category, backLabel, onClose, isSaved, onToggleSave, storageMessage = '' }) {
   if (!recap || typeof recap !== 'object' || Array.isArray(recap)) return null
   return (
     <Catchup
@@ -160,11 +161,12 @@ export default function RecapView({ recap, category, backLabel, onClose, isSaved
       onClose={onClose}
       isSaved={isSaved}
       onToggleSave={onToggleSave}
+      storageMessage={storageMessage}
     />
   )
 }
 
-function Catchup({ recap, category, backLabel, onClose, isSaved, onToggleSave }) {
+function Catchup({ recap, category, backLabel, onClose, isSaved, onToggleSave, storageMessage }) {
   const dialogRef = useRef(null)
   const [visible, setVisible] = useState(false)
 
@@ -178,7 +180,7 @@ function Catchup({ recap, category, backLabel, onClose, isSaved, onToggleSave })
     dialogRef.current?.focus()
 
     return () => {
-      if (previous instanceof HTMLElement && document.contains(previous)) previous.focus()
+      if (previous instanceof HTMLElement && document.contains(previous)) previous.focus({ preventScroll: true })
     }
   }, [])
 
@@ -359,6 +361,7 @@ function Catchup({ recap, category, backLabel, onClose, isSaved, onToggleSave })
             className="-mr-2 inline-flex min-h-[44px] min-w-[44px] shrink-0 items-center justify-center"
           />
         </div>
+        <SavedStoryStatus message={storageMessage} />
       </header>
 
       <article className="mx-auto w-full max-w-[760px] pb-20">

@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import ConsequenceMeter from './ConsequenceMeter.jsx'
 import GlossaryText from './GlossaryText.jsx'
 import SaveButton from './SaveButton'
+import SavedStoryStatus from './SavedStoryStatus.jsx'
 import SourceList from './SourceList.jsx'
 import StakesCallout from './StakesCallout.jsx'
 import VocabularyPanel from './VocabularyPanel.jsx'
@@ -130,6 +131,8 @@ export default function StoryReader({
   recap,
   onOpenRecap,
   suspended = false,
+  archiveEdition = null,
+  storageMessage = '',
 }) {
   if (!story || typeof story !== 'object' || Array.isArray(story)) return null
   return (
@@ -142,11 +145,13 @@ export default function StoryReader({
       recap={recap}
       onOpenRecap={onOpenRecap}
       suspended={suspended}
+      archiveEdition={archiveEdition}
+      storageMessage={storageMessage}
     />
   )
 }
 
-function Reader({ story, category, onClose, isSaved, onToggleSave, recap, onOpenRecap, suspended }) {
+function Reader({ story, category, onClose, isSaved, onToggleSave, recap, onOpenRecap, suspended, archiveEdition, storageMessage }) {
   const dialogRef = useRef(null)
   const recapCtaRef = useRef(null)
   const wasSuspended = useRef(false)
@@ -192,7 +197,7 @@ function Reader({ story, category, onClose, isSaved, onToggleSave, recap, onOpen
     dialogRef.current?.focus()
 
     return () => {
-      if (previous instanceof HTMLElement && document.contains(previous)) previous.focus()
+      if (previous instanceof HTMLElement && document.contains(previous)) previous.focus({ preventScroll: true })
     }
   }, [])
 
@@ -295,8 +300,8 @@ function Reader({ story, category, onClose, isSaved, onToggleSave, recap, onOpen
     wasSuspended.current = false
 
     const node = recapCtaRef.current
-    if (node && document.contains(node)) node.focus()
-    else dialogRef.current?.focus()
+    if (node && document.contains(node)) node.focus({ preventScroll: true })
+    else dialogRef.current?.focus({ preventScroll: true })
   }, [suspended])
 
   const accentName = accentNameFor(category, story)
@@ -341,7 +346,7 @@ function Reader({ story, category, onClose, isSaved, onToggleSave, recap, onOpen
   const hasRankingDetail = Boolean(whyRanked) || hasConsequence
 
   // `image` is optional and empty on most stories: never a broken icon.
-  const imageUrl = trimmedString(story.image)
+  const imageUrl = archiveEdition ? '' : trimmedString(story.image)
   const showImage = Boolean(imageUrl) && !imageFailed
 
   // Most stories have no catch-up. Absent means nothing renders at all: no
@@ -389,7 +394,7 @@ function Reader({ story, category, onClose, isSaved, onToggleSave, recap, onOpen
             className="-ml-2 inline-flex min-h-[44px] cursor-pointer items-center gap-2 rounded-lg border-0 bg-transparent px-2 text-[0.875rem] leading-[1.125rem] font-semibold text-text-primary"
           >
             <span aria-hidden="true">←</span>
-            Back to today’s briefing
+            {archiveEdition ? 'Back to saved' : 'Back to today’s briefing'}
           </button>
 
           <SaveButton
@@ -399,6 +404,7 @@ function Reader({ story, category, onClose, isSaved, onToggleSave, recap, onOpen
             className="-mr-2 inline-flex min-h-[44px] min-w-[44px] shrink-0 items-center justify-center"
           />
         </div>
+        {!suspended && !activeTerm ? <SavedStoryStatus message={storageMessage} /> : null}
       </header>
 
       <article className="mx-auto w-full max-w-[760px] pb-20">
@@ -427,6 +433,11 @@ function Reader({ story, category, onClose, isSaved, onToggleSave, recap, onOpen
             borderBottom: `2px solid ${accent}`,
           }}
         >
+          {archiveEdition ? (
+            <p className="mb-2 text-meta font-semibold text-text-secondary [overflow-wrap:anywhere]">
+              Saved copy · Original edition: {formatDate(archiveEdition.date) || archiveEdition.date || 'date unavailable'}
+            </p>
+          ) : null}
           <p className="m-0 flex flex-wrap items-center gap-x-2 gap-y-1 text-[0.6875rem] leading-[1rem] font-semibold tracking-[0.08em] text-text-tertiary uppercase">
             <span
               className="inline-flex items-center gap-1 rounded px-1.5 py-0.5"
@@ -457,7 +468,7 @@ function Reader({ story, category, onClose, isSaved, onToggleSave, recap, onOpen
 
           <h1
             id="story-reader-headline"
-            className="mt-1.5 mb-0 max-w-[24ch] text-[1.875rem] leading-[2.0625rem] font-semibold tracking-[-0.02em] text-text-primary sm:text-[2.25rem] sm:leading-[2.5rem]"
+            className="mt-1.5 mb-0 max-w-[24ch] text-[1.875rem] leading-[2.0625rem] font-semibold tracking-[-0.02em] text-text-primary sm:text-[2.25rem] sm:leading-[2.5rem] [overflow-wrap:anywhere]"
             style={{ fontFamily: SERIF }}
           >
             {story.headline || 'Untitled story'}
@@ -517,7 +528,7 @@ function Reader({ story, category, onClose, isSaved, onToggleSave, recap, onOpen
           <div
             id="story-reader-body"
             tabIndex={-1}
-            className="mt-5 max-w-[66ch] text-[1.0625rem] leading-[1.6875rem] text-text-primary sm:text-[1.125rem] sm:leading-[1.8125rem]"
+            className="mt-5 max-w-[66ch] text-[1.0625rem] leading-[1.6875rem] text-text-primary sm:text-[1.125rem] sm:leading-[1.8125rem] [overflow-wrap:anywhere]"
           >
             {annotatedParagraphs.length > 0 ? (
               annotatedParagraphs.map((segments, index) => (
@@ -571,7 +582,7 @@ function Reader({ story, category, onClose, isSaved, onToggleSave, recap, onOpen
           ) : null}
         </div>
       </article>
-      {activeTerm && !suspended ? <VocabularyPanel entry={activeTerm} onClose={handleCloseTerm} /> : null}
+      {activeTerm && !suspended ? <VocabularyPanel entry={activeTerm} onClose={handleCloseTerm} storageMessage={storageMessage} /> : null}
     </div>
   )
 }

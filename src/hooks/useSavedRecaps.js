@@ -4,10 +4,8 @@ import { normaliseRecap } from '../lib/data.js'
 /**
  * Saved recaps, persisted to localStorage under `aware-daily:saved-recaps`.
  *
- * The API mirrors `useSavedStories` on purpose, but the stored value does not:
- * that hook keeps ids, and `daily.json` is overwritten every day, so an id
- * saved today resolves to nothing tomorrow. A recap is self-contained by
- * contract, so this hook stores the **whole recap object**. A saved catch-up
+ * Recaps are saved independently of story snapshots. A recap is self-contained
+ * by contract, so this hook stores the **whole recap object**. A saved catch-up
  * therefore stays readable for as long as the browser keeps it, no matter how
  * many editions have rotated past.
  *
@@ -61,11 +59,19 @@ function readSaved() {
  * the save the reader just made.
  */
 function writeSaved(list) {
-  if (typeof window === 'undefined' || !window.localStorage) return
+  let storage
+  try {
+    if (typeof window === 'undefined') return
+    storage = window.localStorage
+    if (!storage) return
+  } catch {
+    // A blocked getter must not crash the app when opening the story archive.
+    return
+  }
 
   for (let size = list.length; size > 0; size -= 1) {
     try {
-      window.localStorage.setItem(SAVED_RECAPS_KEY, JSON.stringify(list.slice(0, size)))
+      storage.setItem(SAVED_RECAPS_KEY, JSON.stringify(list.slice(0, size)))
       return
     } catch {
       // Quota, or storage blocked entirely. Retry smaller, then give up
@@ -74,7 +80,7 @@ function writeSaved(list) {
   }
 
   try {
-    window.localStorage.removeItem(SAVED_RECAPS_KEY)
+    storage.removeItem(SAVED_RECAPS_KEY)
   } catch {
     // Nothing further to do; the in-memory list is still correct.
   }
