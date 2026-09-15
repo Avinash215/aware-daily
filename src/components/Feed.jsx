@@ -41,11 +41,14 @@ export default function Feed(props) {
     depth = DEFAULT_DEPTH,
     readStoryIds = [],
     readLookup,
+    onToggleRead,
     onOpenStory,
+    savedIds = [],
     isSaved,
     onToggleSave,
   } = props
-  const fallbackSavedLookup = useMemo(() => readLookup ?? new Set(readStoryIds), [readLookup, readStoryIds])
+  const fallbackSavedLookup = useMemo(() => new Set(savedIds), [savedIds])
+  const storyReadLookup = useMemo(() => readLookup ?? new Set(readStoryIds), [readLookup, readStoryIds])
   const isStorySaved = (id) => isSaved?.(id) ?? fallbackSavedLookup.has(id)
   const toggleStorySaved = (id) => {
     if (onToggleSave) onToggleSave(id)
@@ -91,6 +94,8 @@ export default function Feed(props) {
             category={category}
             depth={depth}
             isSaved={isStorySaved(leadStory.id)}
+            isRead={storyReadLookup.has(leadStory.id)}
+            onToggleRead={onToggleRead}
             onToggleSave={toggleStorySaved}
             onOpenStory={onOpenStory}
           />
@@ -103,6 +108,8 @@ export default function Feed(props) {
               category={category}
               depth={depth}
               isSaved={isStorySaved(story.id)}
+              isRead={storyReadLookup.has(story.id)}
+              onToggleRead={onToggleRead}
               onToggleSave={toggleStorySaved}
               onOpenStory={onOpenStory}
             />
@@ -143,6 +150,8 @@ export default function Feed(props) {
                     category={category}
                     depth={depth}
                     isSaved={isStorySaved(leadStory.id)}
+                    isRead={storyReadLookup.has(leadStory.id)}
+                    onToggleRead={onToggleRead}
                     onToggleSave={toggleStorySaved}
                     onOpenStory={onOpenStory}
                   />
@@ -155,6 +164,8 @@ export default function Feed(props) {
                       category={category}
                       depth={depth}
                       isSaved={isStorySaved(story.id)}
+                      isRead={storyReadLookup.has(story.id)}
+                      onToggleRead={onToggleRead}
                       onToggleSave={toggleStorySaved}
                       onOpenStory={onOpenStory}
                     />

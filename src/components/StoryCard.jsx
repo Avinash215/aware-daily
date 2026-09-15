@@ -1,6 +1,7 @@
 import { clamp, readTime } from '../lib/format.js'
 import { DEFAULT_DEPTH, fullTextFor } from '../hooks/useReadingDepth.js'
 import SaveButton from './SaveButton.jsx'
+import ReadButton from './ReadButton.jsx'
 
 function clampLines(lines) {
   return {
@@ -40,6 +41,8 @@ export default function StoryCard({
   category,
   isSaved = false,
   onToggleSave,
+  isRead = false,
+  onToggleRead,
   onOpenStory,
   depth = DEFAULT_DEPTH,
 }) {
@@ -141,6 +144,11 @@ export default function StoryCard({
           className="mt-0.5 [scroll-margin-top:5.5rem]"
         />
       </div>
+      {onToggleRead ? (
+        <div className="mt-2 flex flex-wrap">
+          <ReadButton read={isRead} headline={story.headline} onToggle={() => onToggleRead(story.id)} />
+        </div>
+      ) : null}
     </article>
   )
 }

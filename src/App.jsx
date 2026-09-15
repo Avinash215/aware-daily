@@ -10,6 +10,7 @@ import SavedStoryStatus from './components/SavedStoryStatus.jsx'
 import StoryReader from './components/StoryReader.jsx'
 import YouPage from './components/YouPage.jsx'
 import { estimateDepthMinutes, useReadingDepth } from './hooks/useReadingDepth.js'
+import { useReadProgress } from './hooks/useReadProgress.js'
 import { useSavedRecaps } from './hooks/useSavedRecaps.js'
 import { snapshotForCurrentStory, useSavedStories } from './hooks/useSavedStories.js'
 import {
@@ -23,7 +24,6 @@ import {
 } from './lib/data.js'
 import { formatDate, formatUpdated } from './lib/format.js'
 
-const READ_STORAGE_KEY = 'aware-daily:read'
 const THEME_STORAGE_KEY = 'aware-daily:theme'
 const DAY_MS = 24 * 60 * 60 * 1000
 const APP_BOOT_TIME = Date.now()
@@ -37,17 +37,6 @@ const DEPTH_MINUTES = estimateDepthMinutes(stories)
 
 /** One container width for the masthead, the rail and every page. */
 const SHELL = 'mx-auto w-full max-w-[720px] px-4 sm:px-5 lg:max-w-[960px] lg:px-8'
-
-function loadReadStore() {
-  try {
-    const raw = localStorage.getItem(READ_STORAGE_KEY)
-    if (!raw) return {}
-    const parsed = JSON.parse(raw)
-    return parsed && typeof parsed === 'object' && !Array.isArray(parsed) ? parsed : {}
-  } catch {
-    return {}
-  }
-}
 
 function loadTheme() {
   try {
@@ -106,7 +95,6 @@ export default function App() {
   // because a saved catch-up must still open after `daily.json` has rotated and
   // `getRecap` no longer knows about it.
   const [openRecap, setOpenRecap] = useState(null)
-  const [readStore, setReadStore] = useState(loadReadStore)
   const [theme, setTheme] = useState(loadTheme)
   const originRef = useRef(null)
 
@@ -121,18 +109,14 @@ export default function App() {
   const { depth, setDepth } = useReadingDepth()
 
   const editionKey = meta.date || 'unknown-edition'
+  const { readStoryIds, readLookup, toggleRead, markAllRead, resetRead,
+    storageMessage: readStorageMessage } = useReadProgress(editionKey, stories)
+  const progressAndSavedMessage = [storageMessage, readStorageMessage].filter(Boolean).join(' ')
 
   const visibleStories = useMemo(
     () => (activeCategory === 'all' ? stories : storiesByCategory(activeCategory)),
     [activeCategory],
   )
-
-  const readStoryIds = useMemo(() => {
-    const ids = readStore[editionKey]
-    return Array.isArray(ids) ? ids : []
-  }, [editionKey, readStore])
-
-  const readLookup = useMemo(() => new Set(readStoryIds), [readStoryIds])
 
   // Unavailable legacy entries are visible and removable, so they also count.
   const savedCount = savedStories.length + savedRecaps.length
@@ -178,14 +162,6 @@ export default function App() {
     .join(' · ')
 
   useEffect(() => {
-    try {
-      localStorage.setItem(READ_STORAGE_KEY, JSON.stringify(readStore))
-    } catch {
-      // localStorage may be unavailable in private mode; ignore safely
-    }
-  }, [readStore])
-
-  useEffect(() => {
     const root = document.documentElement
     if (theme === 'light' || theme === 'dark') root.setAttribute('data-theme', theme)
     else root.removeAttribute('data-theme')
@@ -212,38 +188,6 @@ export default function App() {
     originRef.current.focus({ preventScroll: true })
     originRef.current = null
   }, [openSelection])
-
-  const updateEditionRead = useCallback(
-    (updater) => {
-      setReadStore((current) => {
-        const nextIds = updater(Array.isArray(current[editionKey]) ? current[editionKey] : [])
-        return { ...current, [editionKey]: nextIds }
-      })
-    },
-    [editionKey],
-  )
-
-  const toggleRead = useCallback(
-    (storyId) => {
-      if (!storyId) return
-      updateEditionRead((currentIds) => {
-        const set = new Set(currentIds)
-        if (set.has(storyId)) set.delete(storyId)
-        else set.add(storyId)
-        return Array.from(set)
-      })
-    },
-    [updateEditionRead],
-  )
-
-  const markAllRead = useCallback(() => {
-    const allIds = stories.map((story) => story.id).filter(Boolean)
-    updateEditionRead(() => allIds)
-  }, [updateEditionRead])
-
-  const resetRead = useCallback(() => {
-    updateEditionRead(() => [])
-  }, [updateEditionRead])
 
   const handleOpenStory = useCallback((storyId, originElement) => {
     const story = getStory(storyId)
@@ -366,7 +310,7 @@ export default function App() {
         id="main-content"
         className={`${SHELL} pb-[calc(5rem+env(safe-area-inset-bottom))] lg:pb-16`}
       >
-        {!openSelection && !openRecap ? <SavedStoryStatus message={storageMessage} /> : null}
+        {!openSelection && !openRecap ? <SavedStoryStatus message={progressAndSavedMessage} /> : null}
         {activeTab === 'today' ? (
           <ErrorBoundary label="The feed">
             <div
@@ -414,7 +358,7 @@ export default function App() {
           <ErrorBoundary label="Your reading progress">
             <YouPage
               categories={categories}
-              totalStories={meta.publishedCount}
+              stories={stories}
               readStoryIds={readStoryIds}
               savedCount={savedCount}
               onMarkAllRead={markAllRead}
@@ -423,7 +367,6 @@ export default function App() {
               onThemeChange={setTheme}
               dateLabel={dateLabel}
               updatedLabel={updatedLabel}
-              categoryCount={meta.categoryCount}
             />
           </ErrorBoundary>
         ) : null}
@@ -453,7 +396,7 @@ export default function App() {
             onClose={handleCloseRecap}
             isSaved={isRecapSaved}
             onToggleSave={toggleSaveRecap}
-            storageMessage={storageMessage}
+            storageMessage={progressAndSavedMessage}
           />
         ) : null}
       </ErrorBoundary>
@@ -466,11 +409,13 @@ export default function App() {
             onClose={handleCloseReader}
             isSaved={isReaderSaved}
             onToggleSave={handleToggleReaderSave}
+            isRead={readLookup.has(openStory.id)}
+            onToggleRead={openSelection.archived ? undefined : toggleRead}
             recap={storyRecap}
             onOpenRecap={handleOpenRecap}
             suspended={Boolean(openRecap)}
             archiveEdition={openSelection.archived ? openSelection.snapshot.edition : null}
-            storageMessage={storageMessage}
+            storageMessage={progressAndSavedMessage}
           />
         ) : null}
       </ErrorBoundary>

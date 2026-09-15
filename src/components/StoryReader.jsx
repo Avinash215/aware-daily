@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import ConsequenceMeter from './ConsequenceMeter.jsx'
 import GlossaryText from './GlossaryText.jsx'
 import SaveButton from './SaveButton'
+import ReadButton from './ReadButton.jsx'
 import SavedStoryStatus from './SavedStoryStatus.jsx'
 import SourceList from './SourceList.jsx'
 import StakesCallout from './StakesCallout.jsx'
@@ -128,6 +129,8 @@ export default function StoryReader({
   onClose,
   isSaved,
   onToggleSave,
+  isRead = false,
+  onToggleRead,
   recap,
   onOpenRecap,
   suspended = false,
@@ -142,6 +145,8 @@ export default function StoryReader({
       onClose={onClose}
       isSaved={isSaved}
       onToggleSave={onToggleSave}
+      isRead={isRead}
+      onToggleRead={onToggleRead}
       recap={recap}
       onOpenRecap={onOpenRecap}
       suspended={suspended}
@@ -151,7 +156,7 @@ export default function StoryReader({
   )
 }
 
-function Reader({ story, category, onClose, isSaved, onToggleSave, recap, onOpenRecap, suspended, archiveEdition, storageMessage }) {
+function Reader({ story, category, onClose, isSaved, onToggleSave, isRead, onToggleRead, recap, onOpenRecap, suspended, archiveEdition, storageMessage }) {
   const dialogRef = useRef(null)
   const recapCtaRef = useRef(null)
   const wasSuspended = useRef(false)
@@ -404,6 +409,11 @@ function Reader({ story, category, onClose, isSaved, onToggleSave, recap, onOpen
             className="-mr-2 inline-flex min-h-[44px] min-w-[44px] shrink-0 items-center justify-center"
           />
         </div>
+        {!archiveEdition && onToggleRead ? (
+          <div className="mx-auto flex w-full max-w-[760px] flex-wrap px-4 pb-2 sm:px-6 lg:px-8">
+            <ReadButton read={isRead} headline={story.headline} onToggle={() => onToggleRead(story.id)} />
+          </div>
+        ) : null}
         {!suspended && !activeTerm ? <SavedStoryStatus message={storageMessage} /> : null}
       </header>
 

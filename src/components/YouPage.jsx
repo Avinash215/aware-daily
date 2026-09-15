@@ -1,4 +1,5 @@
 import { useMemo } from 'react'
+import { sanitizeReadIds } from '../lib/readProgress.js'
 
 /**
  * The You tab: reading progress (moved off the top of the feed), the theme
@@ -34,7 +35,7 @@ function percent(read, total) {
 
 export default function YouPage({
   categories = [],
-  totalStories = 0,
+  stories,
   readStoryIds = [],
   savedCount = 0,
   onMarkAllRead,
@@ -43,17 +44,21 @@ export default function YouPage({
   onThemeChange,
   dateLabel = '',
   updatedLabel = '',
-  categoryCount = 0,
 }) {
-  const readIds = Array.isArray(readStoryIds) ? readStoryIds : []
-
   const { readCount, sections, sectionsComplete, storyTotal } = useMemo(() => {
-    const ids = Array.isArray(readStoryIds) ? readStoryIds : []
     const safeCategories = Array.isArray(categories) ? categories : []
-    const readSet = new Set(ids)
-    const rows = safeCategories.map((category) => {
-      const list = Array.isArray(category?.stories) ? category.stories : []
-      const done = list.reduce((sum, story) => (readSet.has(story?.id) ? sum + 1 : sum), 0)
+    const currentStories = Array.isArray(stories) ? stories : safeCategories.flatMap((category) =>
+      Array.isArray(category?.stories) ? category.stories : [])
+    const uniqueStories = new Map(currentStories
+      .filter((story) => typeof story?.id === 'string' && story.id.length > 0)
+      .map((story) => [story.id, story]))
+    const readSet = new Set(sanitizeReadIds(readStoryIds, uniqueStories.keys()))
+    const uniqueCategories = new Map(safeCategories
+      .filter((category) => typeof category?.key === 'string' && category.key.length > 0)
+      .map((category) => [category.key, category]))
+    const rows = [...uniqueCategories.values()].map((category) => {
+      const list = [...uniqueStories.values()].filter((story) => story.category === category.key)
+      const done = list.reduce((sum, story) => (readSet.has(story.id) ? sum + 1 : sum), 0)
       return {
         key: category?.key || '',
         label: category?.label || category?.key || 'Section',
@@ -63,15 +68,14 @@ export default function YouPage({
     })
 
     return {
-      readCount: rows.reduce((sum, row) => sum + row.read, 0),
+      readCount: readSet.size,
       sections: rows,
       sectionsComplete: rows.filter((row) => row.total > 0 && row.read === row.total).length,
-      storyTotal: rows.reduce((sum, row) => sum + row.total, 0),
+      storyTotal: uniqueStories.size,
     }
-  }, [readStoryIds, categories])
+  }, [readStoryIds, categories, stories])
 
-  const total =
-    Number.isFinite(totalStories) && totalStories > 0 ? totalStories : storyTotal || readIds.length
+  const total = storyTotal
   const overall = percent(readCount, total)
   const allRead = total > 0 && readCount >= total
 
@@ -94,7 +98,11 @@ export default function YouPage({
           </p>
           <p className="mt-0.5 text-meta text-text-muted">
             {sectionsComplete} of {sections.length} {sections.length === 1 ? 'section' : 'sections'}{' '}
-            complete · kept on this device
+            complete · browser-local progress
+          </p>
+          <p className="mt-2 text-meta text-text-secondary">
+            Counts reflect stories you explicitly mark as read, not measured attention.
+            Opening, scrolling and saving do not mark stories read.
           </p>
 
           <div
@@ -114,6 +122,7 @@ export default function YouPage({
           <div className="mt-4 flex flex-wrap gap-2">
             <button
               type="button"
+              disabled={total === 0}
               onClick={allRead ? onResetRead : onMarkAllRead}
               className="min-h-11 cursor-pointer rounded-full border border-border bg-surface px-4 py-2 text-meta font-semibold text-text-primary transition-colors duration-150 hover:bg-surface-muted motion-reduce:transition-none"
             >
@@ -215,7 +224,7 @@ export default function YouPage({
 
         <div className="mt-2 rounded-xl border border-border-subtle bg-surface-card p-4">
           <p className="text-meta text-text-secondary">
-            {[dateLabel, `${total} stories`, `${categoryCount} sections`, updatedLabel]
+            {[dateLabel, `${total} stories`, `${sections.length} sections`, updatedLabel]
               .filter(Boolean)
               .join(' · ')}
           </p>

@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { clamp, readTime } from '../lib/format.js'
 import { DEFAULT_DEPTH, fullTextFor } from '../hooks/useReadingDepth.js'
 import SaveButton from './SaveButton.jsx'
+import ReadButton from './ReadButton.jsx'
 
 function clampLines(lines) {
   return {
@@ -24,6 +25,8 @@ export default function LeadStory({
   category,
   isSaved = false,
   onToggleSave,
+  isRead = false,
+  onToggleRead,
   onOpenStory,
   depth = DEFAULT_DEPTH,
 }) {
@@ -141,6 +144,11 @@ export default function LeadStory({
           {readLabel ? <span>{readLabel}</span> : null}
           {sourceCount > 0 ? <span>{sourceCount} {sourceCount === 1 ? 'source' : 'sources'}</span> : null}
         </div>
+        {onToggleRead ? (
+          <div className="mt-2 flex flex-wrap">
+            <ReadButton read={isRead} headline={story.headline} onToggle={() => onToggleRead(story.id)} />
+          </div>
+        ) : null}
       </div>
     </article>
   )
