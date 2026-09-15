@@ -3,6 +3,8 @@
  * No React, no side effects, and nothing here may throw on bad input.
  */
 
+import { parseSourceUrl } from './sources.js'
+
 const DATE_ONLY = /^(\d{4})-(\d{2})-(\d{2})$/
 
 /**
@@ -92,31 +94,11 @@ export function readTime(minutes) {
 
 /**
  * `hostFromUrl('https://www.reuters.com/world/')` -> `'reuters.com'`.
- * Returns '' for anything that is not a parseable http(s) URL.
+ * Returns '' unless the supplied URL passes the source-link policy.
  */
 export function hostFromUrl(url) {
-  if (typeof url !== 'string') return ''
-
-  const trimmed = url.trim()
-  if (!trimmed) return ''
-
-  let host
-  try {
-    host = new URL(trimmed).hostname
-  } catch {
-    try {
-      host = new URL(`https://${trimmed}`).hostname
-    } catch {
-      return ''
-    }
-  }
-
-  if (!host) return ''
-
-  const clean = host.replace(/\.$/, '').replace(/^www\./i, '').toLowerCase()
-
-  // Must look registrable: at least one dot and only label-safe characters.
-  return /^[a-z0-9-]+(\.[a-z0-9-]+)+$/.test(clean) ? clean : ''
+  const parsed = parseSourceUrl(url)
+  return parsed ? parsed.hostname.replace(/\.$/, '').replace(/^www\./i, '').toLowerCase() : ''
 }
 
 /**

@@ -9,6 +9,7 @@ import StakesCallout from './StakesCallout.jsx'
 import VocabularyPanel from './VocabularyPanel.jsx'
 import { formatDate, readTime } from '../lib/format.js'
 import { annotateParagraphs, isExplainable } from '../lib/glossary.js'
+import { normaliseSources } from '../lib/sources.js'
 
 /**
  * The focused story reader.
@@ -331,7 +332,7 @@ function Reader({ story, category, onClose, isSaved, onToggleSave, isRead, onTog
   const dateLabel = formatDate(story.date)
   const minutes = readTime(story.read_time_min)
 
-  const sources = Array.isArray(story.sources) ? story.sources : []
+  const sources = normaliseSources(story.sources)
   const sourceLabel = sources.length
     ? `${sources.length} ${sources.length === 1 ? 'source' : 'sources'}`
     : ''
@@ -558,11 +559,9 @@ function Reader({ story, category, onClose, isSaved, onToggleSave, isRead, onTog
             <StakesCallout variant="what-now">{story.what_now}</StakesCallout>
           </div>
 
-          {sources.length > 0 ? (
-            <div className="mt-8">
-              <SourceList sources={sources} />
-            </div>
-          ) : null}
+          <div className="mt-8">
+            <SourceList sources={sources} />
+          </div>
 
           {topics.length > 0 ? (
             <p className="mt-6 mb-0 max-w-[66ch] text-[0.75rem] leading-[1.25rem] tracking-[0.01em] text-text-secondary">

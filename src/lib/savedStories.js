@@ -1,3 +1,5 @@
+import { normaliseSources } from './sources.js'
+
 export const SAVED_STORIES_KEY = 'aware-daily:saved-stories'
 export const LEGACY_SAVED_KEY = 'aware-daily:saved'
 export const STORE_VERSION = 1
@@ -15,7 +17,6 @@ const numbers = (value, names) => Object.fromEntries(names.map((name) => [
 const numberMap = (value) => Object.fromEntries(
   Object.entries(object(value) ? value : {}).filter(([, item]) => Number.isFinite(item)),
 )
-const sources = (value) => array(value).filter(object).map((item) => fields(item, ['source', 'title', 'url']))
 
 export function storyKey(id, edition) {
   return JSON.stringify([text(edition?.date) || text(edition?.generatedAt) || 'unknown-edition', text(id)])
@@ -30,7 +31,7 @@ function copyStory(raw) {
     ...numbers(raw, ['rank', 'score', 'read_time_min', 'source_count']),
     topics: strings(raw.topics),
     countries: array(raw.countries).filter(object).map((item) => fields(item, ['name', 'flag', 'role'])),
-    sources: sources(raw.sources),
+    sources: normaliseSources(raw.sources),
     scores: numberMap(raw.scores),
     consequence: numberMap(raw.consequence),
   }
@@ -47,7 +48,7 @@ function copyRecap(raw) {
     next: strings(raw.next),
     cast: array(raw.cast).filter(object).map((item) => fields(item, ['name', 'flag', 'role', 'position'])),
     path: array(raw.path).filter(object).map((item) => fields(item, ['date', 'headline', 'what', 'why_it_mattered'])),
-    sources: sources(raw.sources),
+    sources: normaliseSources(raw.sources),
   }
 }
 

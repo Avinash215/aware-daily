@@ -7,6 +7,7 @@
  */
 
 import payload from '../data/daily.json'
+import { normaliseSources } from './sources.js'
 
 /** Category keys we ship accent tokens for, in slate order. */
 const KNOWN_CATEGORY_KEYS = [
@@ -62,15 +63,6 @@ const normaliseCountry = (raw) => {
     name: asString(country.name),
     flag: asString(country.flag),
     role: asString(country.role),
-  }
-}
-
-const normaliseSource = (raw) => {
-  const source = asObject(raw)
-  return {
-    source: asString(source.source),
-    title: asString(source.title),
-    url: asString(source.url),
   }
 }
 
@@ -132,7 +124,7 @@ export const normaliseRecap = (raw) => {
     now: asString(raw.now).trim(),
     stakes: asString(raw.stakes).trim(),
     next: asStringList(raw.next),
-    sources: asArray(raw.sources).map(normaliseSource).filter((s) => s.url || s.source),
+    sources: normaliseSources(raw.sources),
     confidence: CONFIDENCE_LEVELS.includes(confidence) ? confidence : 'reported',
     coverage_note: asString(raw.coverage_note).trim(),
     generated_by: asString(raw.generated_by).trim(),
@@ -168,7 +160,7 @@ const normaliseStory = (raw, index) => {
     countries: asArray(raw.countries).map(normaliseCountry).filter((c) => c.name || c.flag),
     read_time_min: asNumber(raw.read_time_min),
     date: asString(raw.date),
-    sources: asArray(raw.sources).map(normaliseSource).filter((s) => s.url || s.source),
+    sources: normaliseSources(raw.sources),
     source_count: asNumber(raw.source_count, 0),
     why_ranked: asString(raw.why_ranked),
     scores: asNumberMap(raw.scores),

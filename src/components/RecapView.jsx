@@ -3,6 +3,7 @@ import SaveButton from './SaveButton.jsx'
 import SavedStoryStatus from './SavedStoryStatus.jsx'
 import SourceList from './SourceList.jsx'
 import StakesCallout from './StakesCallout.jsx'
+import { normaliseSources } from '../lib/sources.js'
 
 /**
  * The catch-up reader: one recap, full screen.
@@ -306,9 +307,7 @@ function Catchup({ recap, category, backLabel, onClose, isSaved, onToggleSave, s
   )
   const beats = useMemo(() => orderedBeats(recap.path), [recap.path])
   const next = (Array.isArray(recap.next) ? recap.next : []).map(trimmedString).filter(Boolean)
-  const sources = (Array.isArray(recap.sources) ? recap.sources : []).filter(
-    (source) => source && typeof source === 'object' && (source.url || source.source),
-  )
+  const sources = normaliseSources(recap.sources)
 
   const orient = trimmedString(recap.orient)
   const now = trimmedString(recap.now)
@@ -564,11 +563,9 @@ function Catchup({ recap, category, backLabel, onClose, isSaved, onToggleSave, s
             </p>
           )}
 
-          {sources.length > 0 ? (
-            <div className="mt-8">
-              <SourceList sources={sources} />
-            </div>
-          ) : null}
+          <div className="mt-8">
+            <SourceList sources={sources} />
+          </div>
 
           <p className="mt-8 mb-0 max-w-[66ch] border-t border-border-subtle pt-4 text-[0.8125rem] leading-[1.25rem] text-text-secondary">
             {coverageLine(recap)}
