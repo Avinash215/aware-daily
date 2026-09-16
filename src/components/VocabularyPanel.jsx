@@ -10,13 +10,13 @@ import SavedStoryStatus from './SavedStoryStatus.jsx'
  * Invalid entries render nothing, and the footer makes the curated limit clear.
  * A portal keeps the explanation interactive while its reader is inert.
  */
-export default function VocabularyPanel({ entry, onClose, storageMessage = '' }) {
+export default function VocabularyPanel({ entry, onClose, storageMessage = '', onRetryStorage, canRetryStorage }) {
   if (!isExplainable(entry)) return null
 
-  return createPortal(<ExplanationDialog entry={entry} onClose={onClose} storageMessage={storageMessage} />, document.body)
+  return createPortal(<ExplanationDialog entry={entry} onClose={onClose} storageMessage={storageMessage} onRetryStorage={onRetryStorage} canRetryStorage={canRetryStorage} />, document.body)
 }
 
-function ExplanationDialog({ entry, onClose, storageMessage }) {
+function ExplanationDialog({ entry, onClose, storageMessage, onRetryStorage, canRetryStorage }) {
   const dialogRef = useRef(null)
   const panelRef = useRef(null)
   const closeRef = useRef(null)
@@ -38,10 +38,17 @@ function ExplanationDialog({ entry, onClose, storageMessage }) {
       }
 
       if (event.key === 'Tab') {
-        event.preventDefault()
-        event.stopPropagation()
-        // Close is the only interactive control, in either tab direction.
-        closeRef.current?.focus({ preventScroll: true })
+        const controls = [...dialog.querySelectorAll('button, a[href], [tabindex="0"]')]
+          .filter((node) => node.getClientRects().length > 0)
+        const first = controls[0]
+        const last = controls.at(-1)
+        if (event.shiftKey && (document.activeElement === first || !controls.includes(document.activeElement))) {
+          event.preventDefault()
+          last?.focus({ preventScroll: true })
+        } else if (!event.shiftKey && (document.activeElement === last || !controls.includes(document.activeElement))) {
+          event.preventDefault()
+          first?.focus({ preventScroll: true })
+        }
         return
       }
 
@@ -56,7 +63,7 @@ function ExplanationDialog({ entry, onClose, storageMessage }) {
         Home: -panel.scrollHeight,
         End: panel.scrollHeight,
       }
-      const distance = event.key === ' ' && event.target !== closeRef.current
+      const distance = event.key === ' ' && !event.target.closest('button')
         ? (event.shiftKey ? -page : page)
         : distances[event.key]
 
@@ -97,7 +104,6 @@ function ExplanationDialog({ entry, onClose, storageMessage }) {
         ref={panelRef}
         className="max-h-[85dvh] w-full max-w-[32rem] overflow-y-auto overscroll-contain rounded-t-xl border border-border bg-surface-raised p-6 sm:rounded-xl"
       >
-        <SavedStoryStatus message={storageMessage} />
         <p className="m-0 text-[0.75rem] leading-[1rem] font-bold tracking-[0.08em] text-text-tertiary uppercase">
           Word
         </p>
@@ -126,6 +132,7 @@ function ExplanationDialog({ entry, onClose, storageMessage }) {
           Close
         </button>
       </div>
+      <SavedStoryStatus message={storageMessage} onRetry={onRetryStorage} canRetry={canRetryStorage} floating="top" />
     </div>
   )
 }

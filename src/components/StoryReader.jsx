@@ -137,6 +137,8 @@ export default function StoryReader({
   suspended = false,
   archiveEdition = null,
   storageMessage = '',
+  onRetryStorage,
+  canRetryStorage,
 }) {
   if (!story || typeof story !== 'object' || Array.isArray(story)) return null
   return (
@@ -153,11 +155,13 @@ export default function StoryReader({
       suspended={suspended}
       archiveEdition={archiveEdition}
       storageMessage={storageMessage}
+      onRetryStorage={onRetryStorage}
+      canRetryStorage={canRetryStorage}
     />
   )
 }
 
-function Reader({ story, category, onClose, isSaved, onToggleSave, isRead, onToggleRead, recap, onOpenRecap, suspended, archiveEdition, storageMessage }) {
+function Reader({ story, category, onClose, isSaved, onToggleSave, isRead, onToggleRead, recap, onOpenRecap, suspended, archiveEdition, storageMessage, onRetryStorage, canRetryStorage }) {
   const dialogRef = useRef(null)
   const recapCtaRef = useRef(null)
   const wasSuspended = useRef(false)
@@ -415,7 +419,7 @@ function Reader({ story, category, onClose, isSaved, onToggleSave, isRead, onTog
             <ReadButton read={isRead} headline={story.headline} onToggle={() => onToggleRead(story.id)} />
           </div>
         ) : null}
-        {!suspended && !activeTerm ? <SavedStoryStatus message={storageMessage} /> : null}
+        {!suspended && !activeTerm ? <SavedStoryStatus message={storageMessage} onRetry={onRetryStorage} canRetry={canRetryStorage} floating /> : null}
       </header>
 
       <article className="mx-auto w-full max-w-[760px] pb-20">
@@ -591,7 +595,7 @@ function Reader({ story, category, onClose, isSaved, onToggleSave, isRead, onTog
           ) : null}
         </div>
       </article>
-      {activeTerm && !suspended ? <VocabularyPanel entry={activeTerm} onClose={handleCloseTerm} storageMessage={storageMessage} /> : null}
+      {activeTerm && !suspended ? <VocabularyPanel entry={activeTerm} onClose={handleCloseTerm} storageMessage={storageMessage} onRetryStorage={onRetryStorage} canRetryStorage={canRetryStorage} /> : null}
     </div>
   )
 }

@@ -37,7 +37,7 @@ function copyStory(raw) {
   }
 }
 
-function copyRecap(raw) {
+export function copyRecap(raw) {
   if (!object(raw) || !text(raw.id).trim()) return null
   return {
     ...fields(raw, ['id', 'slug', 'title', 'as_of', 'orient', 'now', 'stakes', 'confidence',
@@ -170,8 +170,10 @@ export function createSavedStoryStore(getStorage, snapshotForId) {
     }
     if (succeeded) pending = []
     state = { ...fresh, entries, raw: succeeded ? nextRaw : fresh.raw,
-      migrate: succeeded ? false : fresh.migrate, message: succeeded ? '' : message }
+      migrate: succeeded ? false : fresh.migrate, message: succeeded ? '' : message,
+      pending: pending.length > 0 }
     emit()
+    return succeeded
   }
 
   return {
@@ -189,6 +191,7 @@ export function createSavedStoryStore(getStorage, snapshotForId) {
         // Recovered entries must honor pending intent, including an empty session after remove/clear.
         entries: applyPending(fresh.writable ? fresh.entries : state.entries.length ? state.entries : fresh.entries),
         message: fresh.message || (pending.length ? STORAGE_ERROR : ''),
+        pending: pending.length > 0,
       }
       emit()
     },
@@ -199,5 +202,6 @@ export function createSavedStoryStore(getStorage, snapshotForId) {
     },
     remove: (key) => persist({ type: 'remove', key }),
     clear: () => persist({ type: 'clear' }),
+    retry: () => pending.length ? persist() : false,
   }
 }

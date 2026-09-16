@@ -34,6 +34,7 @@ export function useSavedStories() {
     savedIds, savedStories: state.entries, isSaved, isSnapshotSaved, toggleSave,
     toggleSnapshot: store.toggle, removeSnapshot: store.remove, clearAll: store.clear,
     storageMessage: state.message,
+    retry: store.retry, hasPendingChanges: Boolean(state.pending),
   }
 }
 

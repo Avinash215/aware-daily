@@ -152,7 +152,7 @@ function Prose({ text }) {
   )
 }
 
-export default function RecapView({ recap, category, backLabel, onClose, isSaved, onToggleSave, storageMessage = '' }) {
+export default function RecapView({ recap, category, backLabel, onClose, isSaved, onToggleSave, storageMessage = '', onRetryStorage, canRetryStorage }) {
   if (!recap || typeof recap !== 'object' || Array.isArray(recap)) return null
   return (
     <Catchup
@@ -163,11 +163,13 @@ export default function RecapView({ recap, category, backLabel, onClose, isSaved
       isSaved={isSaved}
       onToggleSave={onToggleSave}
       storageMessage={storageMessage}
+      onRetryStorage={onRetryStorage}
+      canRetryStorage={canRetryStorage}
     />
   )
 }
 
-function Catchup({ recap, category, backLabel, onClose, isSaved, onToggleSave, storageMessage }) {
+function Catchup({ recap, category, backLabel, onClose, isSaved, onToggleSave, storageMessage, onRetryStorage, canRetryStorage }) {
   const dialogRef = useRef(null)
   const [visible, setVisible] = useState(false)
 
@@ -360,7 +362,7 @@ function Catchup({ recap, category, backLabel, onClose, isSaved, onToggleSave, s
             className="-mr-2 inline-flex min-h-[44px] min-w-[44px] shrink-0 items-center justify-center"
           />
         </div>
-        <SavedStoryStatus message={storageMessage} />
+        <SavedStoryStatus message={storageMessage} onRetry={onRetryStorage} canRetry={canRetryStorage} floating />
       </header>
 
       <article className="mx-auto w-full max-w-[760px] pb-20">

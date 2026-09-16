@@ -96,22 +96,33 @@ export default function App() {
   // `getRecap` no longer knows about it.
   const [openRecap, setOpenRecap] = useState(null)
   const [theme, setTheme] = useState(loadTheme)
+  const [clearMessage, setClearMessage] = useState('')
   const originRef = useRef(null)
 
   const { savedIds, savedStories, isSaved, isSnapshotSaved, toggleSave, toggleSnapshot,
-    removeSnapshot, clearAll, storageMessage } = useSavedStories()
+    removeSnapshot, clearAll, storageMessage,
+    retry: retryStories, hasPendingChanges: pendingStories } = useSavedStories()
   const {
     savedRecaps,
     isSaved: isRecapSaved,
     toggleSave: toggleSaveRecap,
     clearAll: clearAllRecaps,
+    storageMessage: recapStorageMessage,
+    retry: retryRecaps,
+    hasPendingChanges: pendingRecaps,
   } = useSavedRecaps()
   const { depth, setDepth } = useReadingDepth()
 
   const editionKey = meta.date || 'unknown-edition'
   const { readStoryIds, readLookup, toggleRead, markAllRead, resetRead,
     storageMessage: readStorageMessage } = useReadProgress(editionKey, stories)
-  const progressAndSavedMessage = [storageMessage, readStorageMessage].filter(Boolean).join(' ')
+  const progressAndSavedMessage = [clearMessage, storageMessage, recapStorageMessage, readStorageMessage].filter(Boolean).join(' ')
+  const canRetryStorage = pendingStories || pendingRecaps
+  const retryStorage = useCallback(() => {
+    setClearMessage('')
+    if (pendingStories) retryStories()
+    if (pendingRecaps) retryRecaps()
+  }, [pendingStories, pendingRecaps, retryStories, retryRecaps])
 
   const visibleStories = useMemo(
     () => (activeCategory === 'all' ? stories : storiesByCategory(activeCategory)),
@@ -227,8 +238,12 @@ export default function App() {
   }, [])
 
   const handleClearAllSaved = useCallback(() => {
-    clearAll()
-    clearAllRecaps()
+    const storiesCleared = clearAll()
+    const recapsCleared = clearAllRecaps()
+    setClearMessage('Last Clear all: ' + [
+      storiesCleared ? 'Saved stories cleared in this browser.' : 'Saved-story clear is not persisted.',
+      recapsCleared ? 'Saved catch-ups cleared in this browser.' : 'Catch-up clear is not persisted.',
+    ].join(' '))
   }, [clearAll, clearAllRecaps])
 
   const handleTabChange = useCallback((nextTab) => {
@@ -310,7 +325,7 @@ export default function App() {
         id="main-content"
         className={`${SHELL} pb-[calc(5rem+env(safe-area-inset-bottom))] lg:pb-16`}
       >
-        {!openSelection && !openRecap ? <SavedStoryStatus message={progressAndSavedMessage} /> : null}
+        {!openSelection && !openRecap ? <SavedStoryStatus message={progressAndSavedMessage} onRetry={retryStorage} canRetry={canRetryStorage} floating="page" /> : null}
         {activeTab === 'today' ? (
           <ErrorBoundary label="The feed">
             <div
@@ -397,6 +412,8 @@ export default function App() {
             isSaved={isRecapSaved}
             onToggleSave={toggleSaveRecap}
             storageMessage={progressAndSavedMessage}
+            onRetryStorage={retryStorage}
+            canRetryStorage={canRetryStorage}
           />
         ) : null}
       </ErrorBoundary>
@@ -416,6 +433,8 @@ export default function App() {
             suspended={Boolean(openRecap)}
             archiveEdition={openSelection.archived ? openSelection.snapshot.edition : null}
             storageMessage={progressAndSavedMessage}
+            onRetryStorage={retryStorage}
+            canRetryStorage={canRetryStorage}
           />
         ) : null}
       </ErrorBoundary>
