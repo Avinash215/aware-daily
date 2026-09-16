@@ -20,6 +20,27 @@ function tintBackground(accent) {
   return 'var(--surface-raised)'
 }
 
+function LeadImage({ imageUrl, accent, label, loading }) {
+  const [failed, setFailed] = useState(false)
+
+  return imageUrl && !failed ? (
+    <img
+      src={imageUrl}
+      alt=""
+      loading={loading}
+      className="h-40 w-full object-cover md:h-56"
+      style={{ backgroundColor: tintBackground(accent) }}
+      onError={() => setFailed(true)}
+    />
+  ) : (
+    <div className="flex h-40 w-full items-end p-4 md:h-56" style={{ backgroundColor: tintBackground(accent) }} aria-hidden="true">
+      <span className="text-[11px] font-semibold uppercase tracking-[0.16em]" style={{ color: `var(${accent})` }}>
+        {label}
+      </span>
+    </div>
+  )
+}
+
 export default function LeadStory({
   story,
   category,
@@ -29,11 +50,10 @@ export default function LeadStory({
   onToggleRead,
   onOpenStory,
   depth = DEFAULT_DEPTH,
+  imageLoading = 'eager',
 }) {
-  const [imageHidden, setImageHidden] = useState(false)
-
   const accent = category?.accent || '--text-primary'
-  const hasImage = useMemo(() => Boolean(String(story?.image || '').trim()) && !imageHidden, [imageHidden, story?.image])
+  const imageUrl = typeof story?.image === 'string' ? story.image.trim() : ''
   // Full swaps the dek — a teaser the exporter cuts mid-clause — for the whole
   // paragraph it was cut from, then picks the reporting up at paragraph two.
   const fullText = useMemo(
@@ -61,20 +81,13 @@ export default function LeadStory({
       aria-labelledby={`lead-headline-${story.id}`}
     >
       <div className="relative">
-        {hasImage ? (
-          <img
-            src={story.image}
-            alt=""
-            className="h-40 w-full object-cover md:h-56"
-            onError={() => setImageHidden(true)}
-          />
-        ) : (
-          <div className="flex h-40 w-full items-end p-4 md:h-56" style={{ backgroundColor: tintBackground(accent) }} aria-hidden="true">
-            <span className="text-[11px] font-semibold uppercase tracking-[0.16em]" style={{ color: `var(${accent})` }}>
-              {category?.label || story.category || 'Top story'}
-            </span>
-          </div>
-        )}
+        <LeadImage
+          key={JSON.stringify([story.id, imageUrl])}
+          imageUrl={imageUrl}
+          accent={accent}
+          label={category?.label || story.category || 'Top story'}
+          loading={imageLoading}
+        />
 
         <SaveButton
           saved={isSaved}

@@ -92,6 +92,7 @@ export default function Feed(props) {
           <LeadStory
             story={leadStory}
             category={category}
+            imageLoading="eager"
             depth={depth}
             isSaved={isStorySaved(leadStory.id)}
             isRead={storyReadLookup.has(leadStory.id)}
@@ -118,6 +119,11 @@ export default function Feed(props) {
       </section>
     )
   }
+
+  const eagerCategory = categories.find((category) => {
+    const lead = storiesForCategory(category, sourceStories)[0]
+    return typeof lead?.image === 'string' && Boolean(lead.image.trim())
+  })
 
   return (
     <div className="space-y-4">
@@ -148,6 +154,7 @@ export default function Feed(props) {
                   <LeadStory
                     story={leadStory}
                     category={category}
+                    imageLoading={category === eagerCategory ? 'eager' : 'lazy'}
                     depth={depth}
                     isSaved={isStorySaved(leadStory.id)}
                     isRead={storyReadLookup.has(leadStory.id)}

@@ -124,6 +124,27 @@ function recapWindowNote(recap) {
   return 'How this story got here, from Aware’s own earlier coverage.'
 }
 
+function ReaderImage({ imageUrl, accentLight }) {
+  const [failed, setFailed] = useState(false)
+
+  return (
+    <div
+      className="h-48 w-full sm:h-72"
+      style={{ backgroundColor: accentLight }}
+      aria-hidden="true"
+    >
+      {!failed ? (
+        <img
+          src={imageUrl}
+          alt=""
+          onError={() => setFailed(true)}
+          className="block h-full w-full object-cover"
+        />
+      ) : null}
+    </div>
+  )
+}
+
 export default function StoryReader({
   story,
   category,
@@ -166,7 +187,6 @@ function Reader({ story, category, onClose, isSaved, onToggleSave, isRead, onTog
   const recapCtaRef = useRef(null)
   const wasSuspended = useRef(false)
   const [visible, setVisible] = useState(false)
-  const [imageFailed, setImageFailed] = useState(false)
   const [activeTerm, setActiveTerm] = useState(null)
   const termTriggerRef = useRef(null)
 
@@ -357,7 +377,7 @@ function Reader({ story, category, onClose, isSaved, onToggleSave, isRead, onTog
 
   // `image` is optional and empty on most stories: never a broken icon.
   const imageUrl = archiveEdition ? '' : trimmedString(story.image)
-  const showImage = Boolean(imageUrl) && !imageFailed
+  const showImage = Boolean(imageUrl)
 
   // Most stories have no catch-up. Absent means nothing renders at all: no
   // disabled button, no empty state, no placeholder.
@@ -424,12 +444,10 @@ function Reader({ story, category, onClose, isSaved, onToggleSave, isRead, onTog
 
       <article className="mx-auto w-full max-w-[760px] pb-20">
         {showImage ? (
-          <img
-            src={imageUrl}
-            alt=""
-            onError={() => setImageFailed(true)}
-            className="block h-48 w-full object-cover sm:h-72"
-            style={{ backgroundColor: accentLight }}
+          <ReaderImage
+            key={JSON.stringify([storyId, imageUrl])}
+            imageUrl={imageUrl}
+            accentLight={accentLight}
           />
         ) : null}
 
