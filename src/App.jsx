@@ -3,6 +3,7 @@ import BottomNav, { TopNav } from './components/BottomNav.jsx'
 import CategoryNav from './components/CategoryNav.jsx'
 import DepthControl from './components/DepthControl.jsx'
 import ErrorBoundary from './components/ErrorBoundary.jsx'
+import EditionFreshness from './components/EditionFreshness.jsx'
 import Feed from './components/Feed.jsx'
 import RecapView from './components/RecapView.jsx'
 import SavedPage from './components/SavedPage.jsx'
@@ -24,11 +25,9 @@ import {
   partialEdition,
   stories,
 } from './lib/data.js'
-import { formatDate, formatUpdated } from './lib/format.js'
+import { formatDate, formatUpdated, parseDateOnly } from './lib/format.js'
 
 const THEME_STORAGE_KEY = 'aware-daily:theme'
-const DAY_MS = 24 * 60 * 60 * 1000
-const APP_BOOT_TIME = Date.now()
 
 /**
  * What each depth costs to read, measured from the edition on disk rather than
@@ -66,20 +65,6 @@ function Wordmark() {
       </span>
     </span>
   )
-}
-
-function parseLocalDate(value) {
-  if (typeof value !== 'string') return null
-  const trimmed = value.trim()
-  if (!trimmed) return null
-  const dateOnly = /^(\d{4})-(\d{2})-(\d{2})$/.exec(trimmed)
-  if (dateOnly) {
-    const [, y, m, d] = dateOnly
-    const parsed = new Date(Number(y), Number(m) - 1, Number(d))
-    return Number.isNaN(parsed.getTime()) ? null : parsed
-  }
-  const parsed = new Date(trimmed)
-  return Number.isNaN(parsed.getTime()) ? null : parsed
 }
 
 /**
@@ -129,7 +114,7 @@ export default function App() {
   // Unavailable legacy entries are visible and removable, so they also count.
   const savedCount = savedStories.length + savedRecaps.length
 
-  const dateLabel = formatDate(meta.date)
+  const dateLabel = parseDateOnly(meta.date) ? formatDate(meta.date) : ''
   const updatedLabel = formatUpdated(meta.generatedAt)
   const openStory = openSelection?.story
   const openCategory = openSelection?.category
@@ -151,15 +136,6 @@ export default function App() {
   }, [openRecap, openSelection])
 
   const recapBackLabel = openSelection ? 'Back to the story' : 'Back to saved'
-  const editionDate = parseLocalDate(meta.date)
-  const staleAgeMs = editionDate ? APP_BOOT_TIME - editionDate.getTime() : 0
-  const staleInfo =
-    editionDate && staleAgeMs > DAY_MS
-      ? {
-          ageDays: Math.max(1, Math.floor(staleAgeMs / DAY_MS)),
-          editionDateLabel: formatDate(meta.date) || meta.date,
-        }
-      : null
 
   const freshness = [
     `${meta.publishedCount} ${meta.publishedCount === 1 ? 'story' : 'stories'}`,
@@ -295,14 +271,7 @@ export default function App() {
         </div>
       </header>
 
-      {staleInfo ? (
-        <div role="status" className="border-b border-border-subtle bg-surface-card">
-          <p className={`${SHELL} py-2 text-meta font-semibold text-text-primary`}>
-            This briefing is {staleInfo.ageDays} {staleInfo.ageDays === 1 ? 'day' : 'days'} old
-            ({staleInfo.editionDateLabel}).
-          </p>
-        </div>
-      ) : null}
+      <EditionFreshness editionDate={meta.date} className={SHELL} />
 
       {activeTab === 'today' ? (
         <ErrorBoundary label="The category navigation">

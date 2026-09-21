@@ -7,6 +7,22 @@ import { parseSourceUrl } from './sources.js'
 
 const DATE_ONLY = /^(\d{4})-(\d{2})-(\d{2})$/
 
+/** Validate components before Date can normalise an impossible calendar day. */
+export function parseDateOnly(value) {
+  if (typeof value !== 'string' || value.length !== 10) return null
+  const match = DATE_ONLY.exec(value)
+  if (!match) return null
+  const [, y, m, d] = match
+  const year = Number(y)
+  const month = Number(m)
+  const day = Number(d)
+  const leap = year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0)
+  const days = [31, leap ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+  return month >= 1 && month <= 12 && day >= 1 && day <= days[month - 1]
+    ? { year, month, day }
+    : null
+}
+
 /**
  * Parse an ISO string into a Date, or null if it is unusable.
  * A bare `YYYY-MM-DD` is treated as a *local* calendar day rather than UTC
@@ -51,17 +67,29 @@ function partsOf(date, options, locale) {
  * Returns '' for anything unparseable.
  */
 export function formatDate(iso) {
-  const date = toDate(iso)
+  const dateOnly = typeof iso === 'string' && !iso.includes('T')
+  let date
+  if (dateOnly) {
+    const components = parseDateOnly(iso)
+    if (!components) return ''
+    // UTC is only a calendar-label container, never the reader's current day.
+    date = new Date(0)
+    date.setUTCFullYear(components.year, components.month - 1, components.day)
+  } else {
+    date = toDate(iso)
+  }
   if (!date) return ''
 
   const parts = partsOf(
     date,
-    { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' },
+    { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric',
+      ...(dateOnly ? { timeZone: 'UTC' } : {}) },
     'en-GB',
   )
   if (!parts || !parts.weekday) return ''
 
-  return `${parts.weekday}, ${parts.day} ${parts.month} ${parts.year}`
+  const year = dateOnly ? String(Number(iso.slice(0, 4))) : parts.year
+  return `${parts.weekday}, ${parts.day} ${parts.month} ${year}`
 }
 
 /**

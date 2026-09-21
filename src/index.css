@@ -1,5 +1,35 @@
 @import "tailwindcss";
 
+/* Let enlarged controls wrap within the masthead without shrinking touch targets. */
+.reading-depth-control,
+.reading-depth-control > [role="radiogroup"] {
+  min-width: 0;
+  max-width: 100%;
+  flex-wrap: wrap;
+}
+
+/* All notice states share a naturally wrapping footprint; clock changes cannot
+   move the feed. Sizing copies are inert, while the actual status is unclipped. */
+.edition-freshness,
+.edition-freshness-sizing {
+  display: grid;
+  min-width: 0;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+.edition-freshness > *,
+.edition-freshness-sizing > * {
+  grid-area: 1 / 1;
+  margin: 0;
+}
+
+.edition-freshness-sizing {
+  visibility: hidden;
+  pointer-events: none;
+  user-select: none;
+}
+
 /* ==========================================================================
    Aware Daily — design tokens (v2)
 

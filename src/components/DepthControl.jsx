@@ -64,7 +64,7 @@ export default function DepthControl({ depth, onChange, minutes, className = '' 
   }
 
   return (
-    <div className={`flex items-center gap-2 ${className}`.trim()}>
+    <div className={`reading-depth-control flex items-center gap-2 ${className}`.trim()}>
       <div
         role="radiogroup"
         aria-label="Reading depth"
