@@ -57,7 +57,7 @@ export default function YouPage({
       .filter((category) => typeof category?.key === 'string' && category.key.length > 0)
       .map((category) => [category.key, category]))
     const rows = [...uniqueCategories.values()].map((category) => {
-      const list = [...uniqueStories.values()].filter((story) => story.category === category.key)
+      const list = (category.stories ?? []).filter((story) => uniqueStories.has(story.id))
       const done = list.reduce((sum, story) => (readSet.has(story.id) ? sum + 1 : sum), 0)
       return {
         key: category?.key || '',

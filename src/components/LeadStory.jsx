@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useId, useMemo, useState } from 'react'
 import { clamp, readTime } from '../lib/format.js'
 import { DEFAULT_DEPTH, fullTextFor } from '../hooks/useReadingDepth.js'
 import SaveButton from './SaveButton.jsx'
@@ -52,6 +52,7 @@ export default function LeadStory({
   depth = DEFAULT_DEPTH,
   imageLoading = 'eager',
 }) {
+  const headlineId = useId()
   const accent = category?.accent || '--text-primary'
   const imageUrl = typeof story?.image === 'string' ? story.image.trim() : ''
   // Full swaps the dek — a teaser the exporter cuts mid-clause — for the whole
@@ -78,7 +79,7 @@ export default function LeadStory({
         backgroundColor: 'var(--surface-raised)',
         boxShadow: '0 1px 2px color-mix(in srgb, var(--text-primary) 12%, transparent)',
       }}
-      aria-labelledby={`lead-headline-${story.id}`}
+      aria-labelledby={headlineId}
     >
       <div className="relative">
         <LeadImage
@@ -99,7 +100,7 @@ export default function LeadStory({
 
       <div className="p-3.5">
         <h3
-          id={`lead-headline-${story.id}`}
+          id={headlineId}
           className="m-0 text-[20px] font-semibold leading-[1.15] md:text-[26px]"
           style={{
             color: 'var(--text-primary)',
@@ -112,7 +113,7 @@ export default function LeadStory({
             className="block w-full cursor-pointer border-0 bg-transparent p-0 text-left leading-[1.15] [scroll-margin-top:5.5rem]"
             style={clampLines(3)}
           >
-            {story.headline || 'Untitled story'}
+            {story.headline?.trim() ? story.headline : 'Untitled story'}
           </button>
         </h3>
 

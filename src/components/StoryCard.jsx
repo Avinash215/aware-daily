@@ -1,3 +1,4 @@
+import { useId } from 'react'
 import { clamp, readTime } from '../lib/format.js'
 import { DEFAULT_DEPTH, fullTextFor } from '../hooks/useReadingDepth.js'
 import SaveButton from './SaveButton.jsx'
@@ -46,6 +47,7 @@ export default function StoryCard({
   onOpenStory,
   depth = DEFAULT_DEPTH,
 }) {
+  const headlineId = useId()
   if (!story) return null
 
   const accent = category?.accent || '--text-primary'
@@ -68,7 +70,7 @@ export default function StoryCard({
   const leadText = isFull ? opening : clamp(story.dek, 180)
 
   return (
-    <article className="border-b py-3" style={{ borderColor: 'var(--border)' }} aria-labelledby={`headline-${story.id}`}>
+    <article className="border-b py-3" style={{ borderColor: 'var(--border)' }} aria-labelledby={headlineId}>
       <div className="flex items-start gap-3">
         <div className="min-w-0 flex-1">
           <div className="mb-0.5 flex items-center gap-2">
@@ -86,7 +88,7 @@ export default function StoryCard({
           </div>
 
           <h3
-          id={`headline-${story.id}`}
+          id={headlineId}
           className="m-0 text-[15px] font-semibold"
           style={{ color: 'var(--text-primary)', fontFamily: "'Newsreader', Georgia, serif" }}
           >
@@ -96,7 +98,7 @@ export default function StoryCard({
               className="block w-full cursor-pointer border-0 bg-transparent p-0 text-left text-[15px] leading-[1.3] [scroll-margin-top:5.5rem]"
               style={clampLines(3)}
             >
-              {story.headline || 'Untitled story'}
+              {story.headline?.trim() ? story.headline : 'Untitled story'}
             </button>
           </h3>
 

@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useMemo, useState, useSyncExternalStore } from 'react'
-import { getCategory, getRecap, getStory, meta } from '../lib/data.js'
+import { getStoryCategory, getRecap, getStory, meta } from '../lib/data.js'
 import { createSavedStoryStore, createStorySnapshot, LEGACY_SAVED_KEY, SAVED_STORIES_KEY, storyKey } from '../lib/savedStories.js'
 
 export function snapshotForCurrentStory(id) {
   const story = getStory(id)
-  return story ? createStorySnapshot(story, meta, getCategory(story.category), getRecap(story.recap_id)) : null
+  return story ? createStorySnapshot(story, meta, getStoryCategory(story.id), getRecap(story.recap_id)) : null
 }
 
 export function useSavedStories() {

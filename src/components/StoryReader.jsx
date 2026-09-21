@@ -61,7 +61,7 @@ function accentNameFor(category, story) {
   const declared = typeof category?.accent === 'string' ? category.accent.trim() : ''
   if (/^--[a-z0-9-]+$/i.test(declared)) return declared
 
-  const key = typeof story?.category === 'string' ? story.category.trim().toLowerCase() : ''
+  const key = typeof category?.key === 'string' ? category.key : story?.category
   return ACCENT_KEYS.includes(key) ? `--accent-${key}` : ''
 }
 
@@ -342,7 +342,7 @@ function Reader({ story, category, onClose, isSaved, onToggleSave, isRead, onTog
     ? `var(${accentName}-light, var(--surface-sunken))`
     : 'var(--surface-sunken)'
 
-  const storyId = trimmedString(story.id)
+  const storyId = typeof story.id === 'string' ? story.id : ''
   const isStorySaved = Boolean(storyId) && Boolean(isSaved?.(storyId))
   const handleToggleSave = useCallback(() => {
     if (storyId) onToggleSave?.(storyId)
@@ -504,7 +504,7 @@ function Reader({ story, category, onClose, isSaved, onToggleSave, isRead, onTog
             className="mt-1.5 mb-0 max-w-[24ch] text-[1.875rem] leading-[2.0625rem] font-semibold tracking-[-0.02em] text-text-primary sm:text-[2.25rem] sm:leading-[2.5rem] [overflow-wrap:anywhere]"
             style={{ fontFamily: SERIF }}
           >
-            {story.headline || 'Untitled story'}
+            {story.headline?.trim() ? story.headline : 'Untitled story'}
           </h1>
 
           {hasMasthead ? (

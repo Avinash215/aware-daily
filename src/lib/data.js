@@ -141,11 +141,13 @@ const accentFor = (key) =>
 
 const normaliseStory = (raw, index) => {
   if (!isObject(raw)) return null
+  if (typeof raw.id !== 'string' || !raw.id.trim()) return null
+  if (![raw.headline, raw.dek, raw.body].some((text) => typeof text === 'string' && text.trim())) return null
 
   return {
     ...raw,
-    id: asString(raw.id).trim() || `story-${index}`,
-    category: asString(raw.category).trim(),
+    id: raw.id,
+    category: asString(raw.category),
     rank: asNumber(raw.rank, index + 1),
     tier: asString(raw.tier).trim() || 'standard',
     score: asNumber(raw.score),
@@ -172,8 +174,8 @@ const normaliseStory = (raw, index) => {
 const normaliseCategory = (raw, index) => {
   if (!isObject(raw)) return null
 
-  const key = asString(raw.key).trim()
-  if (!key) return null
+  const key = raw.key
+  if (typeof key !== 'string' || !key.trim()) return null
 
   return {
     ...raw,
@@ -190,10 +192,35 @@ const normaliseCategory = (raw, index) => {
 /** The raw payload, exactly as it sits on disk. */
 export const daily = isObject(payload) ? payload : {}
 
-/** Every story, in payload order, with each field coerced to a safe shape. */
-export const stories = asArray(daily.stories)
-  .map(normaliseStory)
-  .filter(Boolean)
+const diagnostics = {
+  invalidStoryCollection: Number(!Array.isArray(daily.stories)),
+  invalidCategoryCollection: Number(!Array.isArray(daily.categories)),
+  discardedStories: 0,
+  duplicateStoryIds: 0,
+  discardedCategories: 0,
+  duplicateCategories: 0,
+  recoveredStories: 0,
+  mismatchedTotals: 0,
+}
+
+/** Only the first usable record for each original ID enters the edition. */
+export const stories = []
+const usableIds = new Set()
+const seenIds = new Set()
+asArray(daily.stories).forEach((raw, index) => {
+  const id = isObject(raw) && typeof raw.id === 'string' && raw.id.trim() ? raw.id : null
+  if (id !== null) {
+    if (seenIds.has(id)) diagnostics.duplicateStoryIds += 1
+    seenIds.add(id)
+  }
+  const story = normaliseStory(raw, index)
+  if (!story) {
+    diagnostics.discardedStories += 1
+  } else if (!usableIds.has(story.id)) {
+    usableIds.add(story.id)
+    stories.push(story)
+  }
+})
 
 const byRank = (a, b) => {
   const left = a.rank === null ? Number.MAX_SAFE_INTEGER : a.rank
@@ -201,16 +228,51 @@ const byRank = (a, b) => {
   return left - right
 }
 
-const storiesFor = (key) => stories.filter((story) => story.category === key).sort(byRank)
+/** Membership is display metadata, never a replacement editorial subject. */
+export const categories = []
+const categoryIndex = new Map()
+asArray(daily.categories).forEach((raw, index) => {
+  const category = normaliseCategory(raw, index)
+  if (!category) {
+    diagnostics.discardedCategories += 1
+  } else if (categoryIndex.has(category.key)) {
+    diagnostics.duplicateCategories += 1
+  } else {
+    const group = { ...category, stories: [], count: 0 }
+    categoryIndex.set(group.key, group)
+    categories.push(group)
+  }
+})
 
-/**
- * Every category from the payload, each augmented with its own `stories`
- * (rank ascending) and the `accent` custom property name for its colour.
- */
-export const categories = asArray(daily.categories)
-  .map(normaliseCategory)
-  .filter(Boolean)
-  .map((category) => ({ ...category, stories: storiesFor(category.key) }))
+const storyCategoryIndex = new Map()
+let recovery = null
+for (const story of stories) {
+  let group = categoryIndex.get(story.category)
+  if (!group || group === recovery) {
+    diagnostics.recoveredStories += 1
+    if (!recovery) {
+      let key = '__aware_other_stories'
+      while (categoryIndex.has(key)) key += '_'
+      recovery = { key, label: 'Other stories', emoji: '', blurb: '', count: 0,
+        order: categories.length, accent: '--text-primary', stories: [] }
+      categories.push(recovery)
+      categoryIndex.set(key, recovery)
+    }
+    group = recovery
+  }
+  group.stories.push(story)
+  storyCategoryIndex.set(story.id, group)
+}
+for (const group of categories) {
+  group.stories.sort(byRank)
+  group.count = group.stories.length
+}
+
+// A null selection is All; supplied keys (including "all") are always groups.
+export const ALL_CATEGORIES = null
+export const categoryDomId = (key) =>
+  `category-${Array.from(key, (character) => character.codePointAt(0).toString(16)).join('-')}`
+export const categoryTabId = (key) => key === ALL_CATEGORIES ? 'tab-all' : `tab-${categoryDomId(key)}`
 
 /**
  * Every recap in this edition, in payload order. The key is optional: an
@@ -222,7 +284,6 @@ export const recaps = asArray(daily.recaps)
   .filter(Boolean)
 
 const storyIndex = new Map(stories.map((story) => [story.id, story]))
-const categoryIndex = new Map(categories.map((category) => [category.key, category]))
 const recapIndex = new Map(recaps.map((recap) => [recap.id, recap]))
 
 /**
@@ -244,6 +305,10 @@ export function getCategory(key) {
   return categoryIndex.get(key) ?? null
 }
 
+export function getStoryCategory(id) {
+  return storyCategoryIndex.get(id) ?? null
+}
+
 /**
  * Look up one recap by id. Returns `null` when it does not exist, which is the
  * ordinary answer for every story until the pipeline emits recaps.
@@ -257,19 +322,24 @@ export function getRecap(id) {
 
 /** Stories in a category, rank ascending. Always an array. */
 export function storiesByCategory(key) {
-  const category = getCategory(key)
-  if (category) return category.stories
-  if (typeof key !== 'string' || !key) return []
-  return storiesFor(key)
+  return getCategory(key)?.stories ?? []
 }
 
 const totals = asObject(daily.totals)
+for (const [field, actual] of [['published', stories.length], ['categories', categories.length]]) {
+  if (totals[field] !== undefined && asNumber(totals[field]) !== actual) diagnostics.mismatchedTotals += 1
+}
+
+/** Fixed-size, counts-only local diagnostics: never content, IDs or storage. */
+export const editionDiagnostics = Object.freeze(diagnostics)
+export const partialEdition = Object.values(editionDiagnostics).some((count) => count > 0)
+if (partialEdition) console.warn('Aware Daily: partial edition', editionDiagnostics)
 
 /** Masthead-level facts about this briefing. */
 export const meta = {
   date: asString(daily.date),
   generatedAt: asString(daily.generated_at),
   persona: asString(daily.persona),
-  publishedCount: asNumber(totals.published, stories.length) ?? stories.length,
-  categoryCount: asNumber(totals.categories, categories.length) ?? categories.length,
+  publishedCount: stories.length,
+  categoryCount: categories.length,
 }

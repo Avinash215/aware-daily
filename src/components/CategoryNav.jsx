@@ -1,4 +1,5 @@
 import { useMemo, useRef } from 'react'
+import { ALL_CATEGORIES, categoryTabId } from '../lib/data.js'
 
 function chipBackground(accent) {
   if (typeof accent !== 'string' || !accent.startsWith('--accent-')) return 'var(--surface-raised)'
@@ -6,23 +7,23 @@ function chipBackground(accent) {
 }
 
 function buildItems(categories) {
-  const allCount = categories.reduce((sum, category) => sum + (category?.stories?.length ?? category?.count ?? 0), 0)
+  const allCount = categories.reduce((sum, category) => sum + (category?.stories?.length ?? 0), 0)
   return [
-    { key: 'all', label: 'All', count: allCount, accent: '--text-primary', disabled: allCount === 0 },
+    { key: ALL_CATEGORIES, label: 'All', count: allCount, accent: '--text-primary', disabled: false },
     ...categories.map((category) => {
-      const count = category?.stories?.length ?? category?.count ?? 0
+      const count = category?.stories?.length ?? 0
       return {
         key: category.key,
         label: category.label,
         count,
         accent: category.accent || '--text-primary',
-        disabled: count === 0,
+        disabled: false,
       }
     }),
   ]
 }
 
-export default function CategoryNav({ categories = [], activeCategory = 'all', onSelect }) {
+export default function CategoryNav({ categories = [], activeCategory = ALL_CATEGORIES, onSelect }) {
   const tabRefs = useRef([])
   const items = useMemo(() => buildItems(categories), [categories])
 
@@ -81,11 +82,11 @@ export default function CategoryNav({ categories = [], activeCategory = 'all', o
 
           return (
             <button
-              key={item.key}
+              key={categoryTabId(item.key)}
               ref={(node) => {
                 tabRefs.current[index] = node
               }}
-              id={`tab-${item.key}`}
+              id={categoryTabId(item.key)}
               type="button"
               role="tab"
               aria-selected={isActive}

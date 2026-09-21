@@ -132,7 +132,7 @@ function SavedRow({ entry, onOpenStory, onToggleSave }) {
   const story = entry.story
   if (!story || typeof story !== 'object' || !story.id) return null
 
-  const headline = story.headline || 'Untitled story'
+  const headline = story.headline?.trim() ? story.headline : 'Untitled story'
   const label = entry.category?.label || story.category || 'Briefing'
   const minutes = readTime(story.read_time_min)
   const sourceCount = Number.isFinite(story.source_count) ? story.source_count : 0
@@ -149,7 +149,7 @@ function SavedRow({ entry, onOpenStory, onToggleSave }) {
           <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
             <span
               className="rounded-full px-2 py-0.5 text-caption font-semibold tracking-wide uppercase"
-              style={chipStyle(story.category)}
+              style={chipStyle(entry.category?.key || story.category)}
             >
               {label}
             </span>

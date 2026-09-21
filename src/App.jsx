@@ -15,12 +15,14 @@ import { useSavedRecaps } from './hooks/useSavedRecaps.js'
 import { snapshotForCurrentStory, useSavedStories } from './hooks/useSavedStories.js'
 import {
   categories,
-  getCategory,
+  ALL_CATEGORIES,
+  categoryTabId,
+  getStoryCategory,
   getRecap,
   getStory,
   meta,
+  partialEdition,
   stories,
-  storiesByCategory,
 } from './lib/data.js'
 import { formatDate, formatUpdated } from './lib/format.js'
 
@@ -33,7 +35,7 @@ const APP_BOOT_TIME = Date.now()
  * hardcoded. The briefing never changes shape at runtime, so this is computed
  * once at module load.
  */
-const DEPTH_MINUTES = estimateDepthMinutes(stories)
+const DEPTH_MINUTES = stories.length ? estimateDepthMinutes(stories) : null
 
 /** One container width for the masthead, the rail and every page. */
 const SHELL = 'mx-auto w-full max-w-[720px] px-4 sm:px-5 lg:max-w-[960px] lg:px-8'
@@ -89,7 +91,7 @@ function parseLocalDate(value) {
  */
 export default function App() {
   const [activeTab, setActiveTab] = useState('today')
-  const [activeCategory, setActiveCategory] = useState('all')
+  const [activeCategory, setActiveCategory] = useState(ALL_CATEGORIES)
   const [openSelection, setOpenSelection] = useState(null)
   // The second overlay slot. It holds the whole recap object rather than an id,
   // because a saved catch-up must still open after `daily.json` has rotated and
@@ -124,11 +126,6 @@ export default function App() {
     if (pendingRecaps) retryRecaps()
   }, [pendingStories, pendingRecaps, retryStories, retryRecaps])
 
-  const visibleStories = useMemo(
-    () => (activeCategory === 'all' ? stories : storiesByCategory(activeCategory)),
-    [activeCategory],
-  )
-
   // Unavailable legacy entries are visible and removable, so they also count.
   const savedCount = savedStories.length + savedRecaps.length
 
@@ -147,7 +144,7 @@ export default function App() {
     const ids = Array.isArray(openRecap?.story_ids) ? openRecap.story_ids : []
     for (const id of ids) {
       const story = getStory(id)
-      const category = story ? getCategory(story.category) : null
+      const category = story ? getStoryCategory(story.id) : null
       if (category) return category
     }
     return null
@@ -204,7 +201,7 @@ export default function App() {
     const story = getStory(storyId)
     if (!story) return
     originRef.current = originElement ?? null
-    setOpenSelection({ story, category: getCategory(story.category), recap: getRecap(story.recap_id),
+    setOpenSelection({ story, category: getStoryCategory(story.id), recap: getRecap(story.recap_id),
       snapshot: snapshotForCurrentStory(storyId), archived: false })
   }, [])
 
@@ -331,12 +328,16 @@ export default function App() {
             <div
               id="feed-panel"
               role="tabpanel"
-              aria-labelledby={`tab-${activeCategory}`}
+              aria-labelledby={categoryTabId(activeCategory)}
               tabIndex={0}
             >
+              {partialEdition ? (
+                <p role="status" className="my-3 rounded-xl border border-border-subtle bg-surface-card px-4 py-3 text-meta text-text-secondary">
+                  This edition is incomplete. Available stories are shown; some records or section details could not be used.
+                </p>
+              ) : null}
               <Feed
                 categories={categories}
-                stories={visibleStories}
                 allStories={stories}
                 activeCategory={activeCategory}
                 depth={depth}
@@ -349,6 +350,7 @@ export default function App() {
                 savedIds={savedIds}
                 isSaved={isSaved}
                 onToggleSave={toggleSave}
+                onBrowseSaved={() => handleTabChange('saved')}
               />
             </div>
           </ErrorBoundary>

@@ -1,21 +1,10 @@
 import { useMemo } from 'react'
-import { categories as dataCategories, stories as dataStories, storiesByCategory } from '../lib/data.js'
+import { ALL_CATEGORIES, categoryDomId, categories as dataCategories, stories as dataStories } from '../lib/data.js'
 import { DEFAULT_DEPTH } from '../hooks/useReadingDepth.js'
 import LeadStory from './LeadStory.jsx'
 import StoryCard from './StoryCard.jsx'
 
-function byRank(left, right) {
-  const leftRank = left?.rank ?? Number.MAX_SAFE_INTEGER
-  const rightRank = right?.rank ?? Number.MAX_SAFE_INTEGER
-  return leftRank - rightRank
-}
-
-function storiesForCategory(category, fallbackStories = []) {
-  if (!category) return []
-  if (Array.isArray(category.stories) && category.stories.length) return [...category.stories].sort(byRank)
-  if (fallbackStories.length) return fallbackStories.filter((story) => story?.category === category.key).sort(byRank)
-  return storiesByCategory(category.key)
-}
+const storiesForCategory = (category) => category?.stories ?? []
 
 function EmptyState({ label }) {
   return (
@@ -35,9 +24,8 @@ function EmptyState({ label }) {
 export default function Feed(props) {
   const {
     categories = dataCategories,
-    stories = dataStories,
     allStories = dataStories,
-    activeCategory = 'all',
+    activeCategory = ALL_CATEGORIES,
     depth = DEFAULT_DEPTH,
     readStoryIds = [],
     readLookup,
@@ -46,6 +34,7 @@ export default function Feed(props) {
     savedIds = [],
     isSaved,
     onToggleSave,
+    onBrowseSaved,
   } = props
   const fallbackSavedLookup = useMemo(() => new Set(savedIds), [savedIds])
   const storyReadLookup = useMemo(() => readLookup ?? new Set(readStoryIds), [readLookup, readStoryIds])
@@ -53,19 +42,30 @@ export default function Feed(props) {
   const toggleStorySaved = (id) => {
     if (onToggleSave) onToggleSave(id)
   }
-  const sourceStories = allStories?.length ? allStories : stories
+  const emptyEdition = !allStories.length ? (
+      <section aria-labelledby="empty-edition-heading" className="my-4 rounded-xl border border-border-subtle bg-surface-card p-4">
+        <h2 id="empty-edition-heading" className="font-display text-lead font-semibold text-text-primary">
+          No stories are available in this edition
+        </h2>
+        <p className="mt-2 text-meta text-text-secondary">Your saved stories and catch-ups are still available.</p>
+        <button type="button" onClick={onBrowseSaved} className="mt-3 min-h-11 rounded-full border border-border bg-surface px-4 py-2 text-meta font-semibold text-text-primary">
+          Go to Saved
+        </button>
+      </section>
+  ) : null
 
-  if (activeCategory !== 'all') {
+  if (activeCategory !== ALL_CATEGORIES) {
     const category = categories.find((entry) => entry.key === activeCategory)
-    const scopedStories = category
-      ? storiesForCategory(category, stories)
-      : (stories || []).filter((story) => story?.category === activeCategory).sort(byRank)
+    const scopedStories = storiesForCategory(category)
+    const sectionId = categoryDomId(activeCategory)
 
     if (!scopedStories.length) {
       return (
-        <section id={`section-${activeCategory}`} aria-labelledby={`heading-${activeCategory}`}>
+        <>
+        {emptyEdition}
+        <section id={`section-${sectionId}`} aria-labelledby={`heading-${sectionId}`}>
           <h2
-            id={`heading-${activeCategory}`}
+            id={`heading-${sectionId}`}
             className="m-0 text-[11px] font-semibold uppercase tracking-[0.16em]"
             style={{ color: `var(${category?.accent || '--text-tertiary'})` }}
           >
@@ -73,6 +73,7 @@ export default function Feed(props) {
           </h2>
           <EmptyState label={category?.label || activeCategory} />
         </section>
+        </>
       )
     }
 
@@ -80,9 +81,9 @@ export default function Feed(props) {
     const remaining = scopedStories.slice(1)
 
     return (
-      <section id={`section-${activeCategory}`} aria-labelledby={`heading-${activeCategory}`}>
+      <section id={`section-${sectionId}`} aria-labelledby={`heading-${sectionId}`}>
         <h2
-          id={`heading-${activeCategory}`}
+          id={`heading-${sectionId}`}
           className="m-0 text-[11px] font-semibold uppercase tracking-[0.16em]"
           style={{ color: `var(${category?.accent || '--text-tertiary'})` }}
         >
@@ -121,26 +122,28 @@ export default function Feed(props) {
   }
 
   const eagerCategory = categories.find((category) => {
-    const lead = storiesForCategory(category, sourceStories)[0]
+    const lead = storiesForCategory(category)[0]
     return typeof lead?.image === 'string' && Boolean(lead.image.trim())
   })
 
   return (
     <div className="space-y-4">
+      {emptyEdition}
       {categories.map((category) => {
-        const scopedStories = storiesForCategory(category, sourceStories)
+        const scopedStories = storiesForCategory(category)
+        const sectionId = categoryDomId(category.key)
         const leadStory = scopedStories[0]
         const remaining = scopedStories.slice(1)
 
         return (
           <section
             key={category.key}
-            id={`section-${category.key}`}
-            aria-labelledby={`heading-${category.key}`}
+            id={`section-${sectionId}`}
+            aria-labelledby={`heading-${sectionId}`}
             className="first:mt-0"
           >
             <h2
-              id={`heading-${category.key}`}
+              id={`heading-${sectionId}`}
               className="m-0 text-[11px] font-semibold uppercase tracking-[0.16em]"
               style={{ color: `var(${category.accent || '--text-tertiary'})` }}
             >
