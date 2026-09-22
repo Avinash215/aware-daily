@@ -40,14 +40,20 @@ const toggleClass = (on) =>
  */
 export default function YourTake({ liked = false, followed = false, note = '', onToggleLike, onToggleFollow, onSaveNote, canFollow = true }) {
   const noteId = useId()
-  // The parent keys this component by story, so the draft starts from that story's note.
-  const [draft, setDraft] = useState(note)
+  // The field shows the stored note until the reader edits it here, so a note
+  // saved from another tab is never overwritten by a stale local copy.
+  const [draft, setDraft] = useState(null)
   const [savedAt, setSavedAt] = useState(null)
+  const value = draft ?? note
 
-  const dirty = draft !== note
+  const dirty = draft !== null && draft !== note
   const save = () => {
-    if (!dirty) return
+    if (!dirty) {
+      setDraft(null)
+      return
+    }
     onSaveNote?.(draft)
+    setDraft(null)
     setSavedAt(Date.now())
   }
 
@@ -81,7 +87,7 @@ export default function YourTake({ liked = false, followed = false, note = '', o
       </label>
       <textarea
         id={noteId}
-        value={draft}
+        value={value}
         maxLength={1000}
         rows={3}
         onChange={(event) => setDraft(event.target.value)}

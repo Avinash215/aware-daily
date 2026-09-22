@@ -38,7 +38,9 @@ export default function PersonalSettings({
   const baseId = useId()
   const { prefs, updatePrefs, likes, removeLike, follows, removeFollow, quizScore, message } = personal
   const [keywordDraft, setKeywordDraft] = useState('')
-  const [instructions, setInstructions] = useState(prefs.instructions)
+  // Local only while the reader is editing, so another tab's saved text is not overwritten.
+  const [instructionsDraft, setInstructionsDraft] = useState(null)
+  const instructions = instructionsDraft ?? prefs.instructions
   const [copyState, setCopyState] = useState('')
 
   const board = useMemo(() => likeLeaderboard(likes), [likes])
@@ -71,7 +73,8 @@ export default function PersonalSettings({
   }
 
   const saveInstructions = () => {
-    if (instructions !== prefs.instructions) updatePrefs({ instructions })
+    if (instructionsDraft !== null && instructionsDraft !== prefs.instructions) updatePrefs({ instructions: instructionsDraft })
+    setInstructionsDraft(null)
   }
 
   const copySettings = async () => {
@@ -177,7 +180,7 @@ export default function PersonalSettings({
               value={instructions}
               maxLength={1000}
               rows={3}
-              onChange={(event) => setInstructions(event.target.value)}
+              onChange={(event) => setInstructionsDraft(event.target.value)}
               onBlur={saveInstructions}
               placeholder="For example: more on AI regulation and India, fewer celebrity stories, explain market moves plainly."
               className="mt-1.5 block w-full resize-y rounded-lg border border-border bg-surface px-3 py-2 text-[15px] leading-[1.45] text-text-primary placeholder:text-text-muted"

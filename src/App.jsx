@@ -129,7 +129,8 @@ export default function App() {
       ...near.map((match) => match.story.id),
       ...interests.map((match) => match.story.id),
     ])
-    return { following, near, interests, count: ids.size }
+    // Each followed story is one entry in the tab, whether or not it has news today.
+    return { following, near, interests, count: ids.size + following.length }
   }, [editionKey, follows, likes, prefs])
 
   const readStories = useMemo(() => stories.filter((story) => readLookup.has(story.id)), [readLookup])
@@ -266,7 +267,10 @@ export default function App() {
   const closeQuiz = useCallback(() => setQuizOpen(false), [])
 
   // Likes, notes and follows on a saved copy belong to the edition it came from.
-  const readerEdition = openSelection?.archived ? openSelection.snapshot?.edition?.date || '' : editionKey
+  const archivedEdition = openSelection?.snapshot?.edition
+  const readerEdition = openSelection?.archived
+    ? archivedEdition?.date || archivedEdition?.generatedAt || 'unknown-edition'
+    : editionKey
   const readerTake = openStory ? {
     liked: personal.isLiked(openStory.id, readerEdition),
     followed: personal.isFollowed(openStory.id, readerEdition),
