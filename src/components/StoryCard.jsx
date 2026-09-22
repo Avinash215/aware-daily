@@ -13,13 +13,6 @@ function clampLines(lines) {
   }
 }
 
-function tintBackground(accent) {
-  if (typeof accent === 'string' && accent.startsWith('--accent-')) {
-    return `var(${accent}-light, var(--surface-raised))`
-  }
-  return 'var(--surface-raised)'
-}
-
 function FlagRow({ countries = [] }) {
   const shortList = countries.slice(0, 3)
   if (!shortList.length) return null
@@ -28,7 +21,7 @@ function FlagRow({ countries = [] }) {
     <ul className="m-0 flex list-none items-center gap-1 p-0" aria-label="Countries covered">
       {shortList.map((country, index) => (
         <li key={`${country.name || 'country'}-${index}`}>
-          <span role="img" aria-label={country?.name || 'Country'} className="text-[14px] leading-4">
+          <span role="img" aria-label={country?.name || 'Country'} title={country?.name || undefined} className="text-[13px] leading-4">
             {country?.flag || '🌐'}
           </span>
         </li>
@@ -37,6 +30,18 @@ function FlagRow({ countries = [] }) {
   )
 }
 
+/**
+ * A standard story row.
+ *
+ * Every row renders inside its own section, so the category is already named
+ * by the section header; the row's kicker carries the region in that
+ * section's accent instead of repeating the category on every line.
+ *
+ * Mobile stacks kicker, reporting and a meta row, with Save pinned top right.
+ * From `lg` the row becomes an editorial list entry: kicker, meta and the
+ * read toggle in a narrow left rail, the reporting in a readable middle
+ * column, and Save on the right.
+ */
 export default function StoryCard({
   story,
   category,
@@ -58,9 +63,10 @@ export default function StoryCard({
     timing,
     sourceCount > 0 ? `${sourceCount} ${sourceCount === 1 ? 'source' : 'sources'}` : '',
   ].filter(Boolean)
+  const region = typeof story.region === 'string' ? story.region.trim() : ''
 
   // Skim strips the card back to a headline and its meta row. Full swaps the
-  // dek — a teaser the exporter cuts mid-clause — for the whole paragraph it
+  // dek, a teaser the exporter cuts mid-clause, for the whole paragraph it
   // was cut from, then picks the reporting up at paragraph two.
   const showContext = depth !== 'skim'
   const isFull = depth === 'full'
@@ -68,89 +74,105 @@ export default function StoryCard({
     ? fullTextFor(story.body, story.dek)
     : { opening: '', rest: [] }
   const leadText = isFull ? opening : clamp(story.dek, 180)
+  const bodyTone = isRead ? 'var(--text-muted)' : 'var(--text-secondary)'
+  // The desktop rail layout only pays off when there is reporting beside it.
+  // Skim rows are a headline and a meta line, so they keep the stacked layout.
+  const wide = showContext
 
   return (
-    <article className="border-b py-3" style={{ borderColor: 'var(--border)' }} aria-labelledby={headlineId}>
-      <div className="flex items-start gap-3">
-        <div className="min-w-0 flex-1">
-          <div className="mb-0.5 flex items-center gap-2">
-          <span
-            className="rounded px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.08em]"
-            style={{ color: `var(${accent})`, backgroundColor: tintBackground(accent) }}
-          >
-            {category?.label || story.category || 'Story'}
-          </span>
-          {story.region ? (
-            <span className="truncate text-[11px]" style={{ color: 'var(--text-tertiary)' }}>
-              {story.region}
-            </span>
-          ) : null}
-          </div>
+    <article
+      className={`relative border-b border-border-subtle py-3.5 last:border-b-0 ${
+        wide ? 'lg:grid lg:grid-cols-[8.5rem_minmax(0,1fr)_2.75rem] lg:grid-rows-[auto_1fr] lg:gap-x-6 lg:py-4' : ''
+      }`}
+      aria-labelledby={headlineId}
+    >
+      {region ? (
+        <p
+          className={`m-0 mb-1 truncate pr-12 text-[11px] leading-4 font-semibold uppercase tracking-[0.08em] ${
+            wide ? 'lg:col-start-1 lg:row-start-1 lg:mb-0 lg:whitespace-normal lg:pt-0.5 lg:pr-0' : ''
+          }`}
+          style={{ color: `var(${accent})` }}
+        >
+          {region}
+        </p>
+      ) : null}
 
-          <h3
+      <div className={`min-w-0 pr-12 ${wide ? 'lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:max-w-[40rem] lg:pr-0' : ''}`}>
+        <h3
           id={headlineId}
-          className="m-0 text-[15px] font-semibold"
-          style={{ color: 'var(--text-primary)', fontFamily: "'Newsreader', Georgia, serif" }}
+          className="m-0 text-row font-semibold lg:text-row-lg"
+          style={{ color: isRead ? 'var(--text-secondary)' : 'var(--text-primary)', fontFamily: 'var(--font-display)' }}
+        >
+          <button
+            type="button"
+            onClick={(event) => onOpenStory?.(story.id, event.currentTarget)}
+            className="block w-full cursor-pointer border-0 bg-transparent p-0 text-left text-row leading-[1.3] hover:underline hover:decoration-1 hover:underline-offset-[3px] lg:text-row-lg [scroll-margin-top:5.5rem]"
+            style={clampLines(3)}
           >
-            <button
-              type="button"
-              onClick={(event) => onOpenStory?.(story.id, event.currentTarget)}
-              className="block w-full cursor-pointer border-0 bg-transparent p-0 text-left text-[15px] leading-[1.3] [scroll-margin-top:5.5rem]"
-              style={clampLines(3)}
-            >
-              {story.headline?.trim() ? story.headline : 'Untitled story'}
-            </button>
-          </h3>
+            {story.headline?.trim() ? story.headline : 'Untitled story'}
+          </button>
+        </h3>
 
-          {showContext && leadText ? (
+        {showContext && leadText ? (
           <p
-            className={`mt-0.5 mb-0 text-[13px] ${isFull ? 'leading-[1.45]' : 'leading-[1.2]'}`}
-            style={isFull ? { color: 'var(--text-secondary)' } : { ...clampLines(2), color: 'var(--text-secondary)' }}
+            className={`mt-1 mb-0 text-dek lg:text-dek-lg ${isFull ? 'leading-[1.5]' : 'line-clamp-2 leading-[1.4]'}`}
+            style={{ color: bodyTone }}
           >
             {leadText}
           </p>
-          ) : null}
+        ) : null}
 
-          {showContext && story.so_what ? (
+        {showContext && story.so_what ? (
           <p
-            className={`mt-0.5 mb-0 text-[13px] ${isFull ? 'leading-[1.45]' : 'leading-[1.15]'}`}
-            style={isFull ? { color: 'var(--text-secondary)' } : { ...clampLines(1), color: 'var(--text-secondary)' }}
+            className={`mt-1 mb-0 text-sowhat font-medium lg:text-sowhat-lg ${isFull ? 'leading-[1.5]' : 'line-clamp-1 leading-[1.4] lg:line-clamp-2'}`}
+            style={{ color: bodyTone }}
           >
-            <span className="mr-1 text-[10px] font-semibold uppercase tracking-[0.08em]" style={{ color: `var(${accent})` }}>
+            <span className="mr-1.5 text-[10px] font-semibold uppercase tracking-[0.08em]" style={{ color: `var(${accent})` }}>
               SO WHAT
             </span>
             {story.so_what}
           </p>
-          ) : null}
+        ) : null}
 
-          {bodyParagraphs.length ? (
-          <div className="mt-1.5 mb-0 space-y-2 text-[13px] leading-[1.45]" style={{ color: 'var(--text-secondary)' }}>
+        {bodyParagraphs.length ? (
+          <div className="mt-2 mb-0 flex flex-col gap-2 text-dek leading-[1.5] lg:text-dek-lg" style={{ color: bodyTone }}>
             {bodyParagraphs.map((paragraph, index) => (
               <p key={index} className="m-0">
                 {paragraph}
               </p>
             ))}
           </div>
-          ) : null}
-
-          <div className={`${bodyParagraphs.length ? 'mt-2' : 'mt-0.5'} flex items-center gap-2 text-[11px] leading-[1]`} style={{ color: 'var(--text-tertiary)' }}>
-          {metaParts.join(' · ')}
-          <FlagRow countries={countries} />
-          </div>
-        </div>
-
-        <SaveButton
-          saved={isSaved}
-          onToggle={() => onToggleSave?.(story.id)}
-          size="sm"
-          className="mt-0.5 [scroll-margin-top:5.5rem]"
-        />
+        ) : null}
       </div>
-      {onToggleRead ? (
-        <div className="mt-2 flex flex-wrap">
-          <ReadButton read={isRead} headline={story.headline} onToggle={() => onToggleRead(story.id)} />
+
+      <div
+        className={`mt-2 flex min-h-5 items-center justify-between gap-3 ${
+          wide ? 'lg:col-start-1 lg:row-start-2 lg:mt-2 lg:flex-col lg:items-start lg:justify-start lg:gap-3 lg:self-start' : ''
+        }`}
+      >
+        <div className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1 text-[11px] leading-4 text-text-muted">
+          {metaParts.length ? <span>{metaParts.join(' · ')}</span> : null}
+          <FlagRow countries={countries} />
         </div>
-      ) : null}
+        {onToggleRead ? (
+          <ReadButton
+            variant="inline"
+            read={isRead}
+            headline={story.headline}
+            onToggle={() => onToggleRead(story.id)}
+            className="shrink-0"
+          />
+        ) : null}
+      </div>
+
+      <SaveButton
+        saved={isSaved}
+        onToggle={() => onToggleSave?.(story.id)}
+        size="sm"
+        className={`absolute top-1.5 -right-2.5 [scroll-margin-top:5.5rem] ${
+          wide ? 'lg:static lg:col-start-3 lg:row-span-2 lg:row-start-1 lg:-mt-2.5 lg:self-start lg:justify-self-end' : ''
+        }`}
+      />
     </article>
   )
 }

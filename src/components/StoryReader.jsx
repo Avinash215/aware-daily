@@ -417,7 +417,7 @@ function Reader({ story, category, onClose, isSaved, onToggleSave, isRead, onTog
         className="sticky top-0 z-20 border-b border-border bg-surface"
         style={{ boxShadow: `inset 0 3px 0 0 ${accent}` }}
       >
-        <div className="mx-auto flex w-full max-w-[760px] items-center justify-between gap-2 px-4 py-1 sm:px-6 lg:px-8">
+        <div className="mx-auto flex w-full max-w-[760px] flex-wrap items-center justify-between gap-x-2 px-4 py-1 sm:px-6 lg:px-8">
           <button
             type="button"
             onClick={handleClose}
@@ -427,18 +427,24 @@ function Reader({ story, category, onClose, isSaved, onToggleSave, isRead, onTog
             {archiveEdition ? 'Back to saved' : 'Back to today’s briefing'}
           </button>
 
-          <SaveButton
-            saved={isStorySaved}
-            onToggle={handleToggleSave}
-            size="md"
-            className="-mr-2 inline-flex min-h-[44px] min-w-[44px] shrink-0 items-center justify-center"
-          />
-        </div>
-        {!archiveEdition && onToggleRead ? (
-          <div className="mx-auto flex w-full max-w-[760px] flex-wrap px-4 pb-2 sm:px-6 lg:px-8">
-            <ReadButton read={isRead} headline={story.headline} onToggle={() => onToggleRead(story.id)} />
+          <div className="-mr-2 ml-auto flex shrink-0 items-center gap-1">
+            {!archiveEdition && onToggleRead ? (
+              <ReadButton
+                variant="inline"
+                bleed={false}
+                read={isRead}
+                headline={story.headline}
+                onToggle={() => onToggleRead(story.id)}
+              />
+            ) : null}
+            <SaveButton
+              saved={isStorySaved}
+              onToggle={handleToggleSave}
+              size="md"
+              className="inline-flex min-h-[44px] min-w-[44px] shrink-0 items-center justify-center"
+            />
           </div>
-        ) : null}
+        </div>
         {!suspended && !activeTerm ? <SavedStoryStatus message={storageMessage} onRetry={onRetryStorage} canRetry={canRetryStorage} floating /> : null}
       </header>
 

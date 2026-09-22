@@ -8,26 +8,11 @@
   flex-wrap: wrap;
 }
 
-/* All notice states share a naturally wrapping footprint; clock changes cannot
-   move the feed. Sizing copies are inert, while the actual status is unclipped. */
-.edition-freshness,
-.edition-freshness-sizing {
-  display: grid;
+/* The edition-age notice wraps naturally; digits keep one width as the age changes. */
+.edition-freshness {
   min-width: 0;
   font-variant-numeric: tabular-nums;
   overflow-wrap: anywhere;
-}
-
-.edition-freshness > *,
-.edition-freshness-sizing > * {
-  grid-area: 1 / 1;
-  margin: 0;
-}
-
-.edition-freshness-sizing {
-  visibility: hidden;
-  pointer-events: none;
-  user-select: none;
 }
 
 /* ==========================================================================
@@ -45,8 +30,8 @@
      --text-primary       headlines and body
      --text-secondary     deks
      --text-muted         meta, timestamps, chips
-     --accent-{key}       eight category accents
-     --accent-{key}-light tinted chip background for the same eight
+     --accent-{key}       nine category accents
+     --accent-{key}-light tinted chip background for the same nine
      --shadow-card        the single card elevation
 
    Consume from JSX either as a Tailwind utility (`bg-surface-card`,
@@ -65,6 +50,7 @@
        technology  5.98 / 6.29 / 5.55      science    5.09 / 5.36 / 4.96
        climate     5.15 / 5.42 / 4.98      health     5.74 / 6.04 / 5.35
        sports      6.37 / 6.70 / 5.87      culture    6.64 / 6.98 / 6.10
+      justice     7.19 / 7.56 / 6.66
      text-primary on any -light tint: 15.34:1 - 16.26:1
 
    DARK
@@ -76,7 +62,8 @@
        technology  8.08 / 7.50 / 6.85     science    9.31 / 8.63 / 7.45
        climate     9.72 / 9.02 / 7.92     health     7.46 / 6.92 / 6.37
        sports      8.54 / 7.92 / 7.17     culture    8.11 / 7.52 / 6.93
-     text-primary on any -light tint: 13.41:1 - 14.32:1
+       justice     8.65 / 8.02 / 7.48
+     text-primary on any -light tint: 13.41:1 - 14.48:1
 
    Lowest ratio anywhere: 4.96:1 (light `--accent-science` on
    `--accent-science-light`). Dividers (--border, --border-subtle) are
@@ -110,6 +97,7 @@
   --accent-health: #be185d;
   --accent-sports: #1d4ed8;
   --accent-culture: #7e22ce;
+  --accent-justice: #3f5670;
 
   /* Category accent tints — chip / lead-image fallback backgrounds */
   --accent-geopolitics-light: #fdeeeb;
@@ -120,6 +108,7 @@
   --accent-health-light: #fdedf4;
   --accent-sports-light: #eaf0fe;
   --accent-culture-light: #f6ecfd;
+  --accent-justice-light: #ecf1f6;
 
   /* Elevation — the app has exactly one card shadow */
   --shadow-card: 0 1px 3px rgb(0 0 0 / 0.08), 0 1px 2px rgb(0 0 0 / 0.04);
@@ -155,6 +144,7 @@
     --accent-health: #f77ca4;
     --accent-sports: #82b1f7;
     --accent-culture: #d492ea;
+    --accent-justice: #9fb2cb;
 
     /* Dark tints stay dark: a chip fill, not a light wash */
     --accent-geopolitics-light: #33201b;
@@ -165,6 +155,7 @@
     --accent-health-light: #331a25;
     --accent-sports-light: #16233a;
     --accent-culture-light: #2a1c33;
+    --accent-justice-light: #1b212a;
 
     --shadow-card: 0 1px 3px rgb(0 0 0 / 0.5), 0 1px 2px rgb(0 0 0 / 0.35);
   }
@@ -195,6 +186,7 @@
   --accent-health: #f77ca4;
   --accent-sports: #82b1f7;
   --accent-culture: #d492ea;
+  --accent-justice: #9fb2cb;
 
   --accent-geopolitics-light: #33201b;
   --accent-business-light: #152a20;
@@ -204,6 +196,7 @@
   --accent-health-light: #331a25;
   --accent-sports-light: #16233a;
   --accent-culture-light: #2a1c33;
+  --accent-justice-light: #1b212a;
 
   --shadow-card: 0 1px 3px rgb(0 0 0 / 0.5), 0 1px 2px rgb(0 0 0 / 0.35);
 }
@@ -229,6 +222,7 @@
   --accent-health: #be185d;
   --accent-sports: #1d4ed8;
   --accent-culture: #7e22ce;
+  --accent-justice: #3f5670;
 
   --accent-geopolitics-light: #fdeeeb;
   --accent-business-light: #e9f6ee;
@@ -238,6 +232,7 @@
   --accent-health-light: #fdedf4;
   --accent-sports-light: #eaf0fe;
   --accent-culture-light: #f6ecfd;
+  --accent-justice-light: #ecf1f6;
 
   --shadow-card: 0 1px 3px rgb(0 0 0 / 0.08), 0 1px 2px rgb(0 0 0 / 0.04);
 }
@@ -309,6 +304,7 @@
   --color-accent-health: var(--accent-health);
   --color-accent-sports: var(--accent-sports);
   --color-accent-culture: var(--accent-culture);
+  --color-accent-justice: var(--accent-justice);
 
   /* Category accent tints */
   --color-accent-geopolitics-light: var(--accent-geopolitics-light);
@@ -319,6 +315,7 @@
   --color-accent-health-light: var(--accent-health-light);
   --color-accent-sports-light: var(--accent-sports-light);
   --color-accent-culture-light: var(--accent-culture-light);
+  --color-accent-justice-light: var(--accent-justice-light);
 
   /* Compatibility aliases (v1 utility names) */
   --color-surface-raised: var(--surface-card);

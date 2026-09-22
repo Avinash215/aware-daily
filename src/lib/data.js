@@ -19,6 +19,7 @@ const KNOWN_CATEGORY_KEYS = [
   'health',
   'sports',
   'culture',
+  'justice',
 ]
 
 const isObject = (value) => typeof value === 'object' && value !== null && !Array.isArray(value)

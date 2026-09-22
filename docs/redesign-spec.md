@@ -77,17 +77,32 @@ Both light and dark, via `prefers-color-scheme` AND an overriding
 
 ## Layout
 
-**Story row** — a list row, NOT a boxed card:
-`py-3` with a `border-b` hairline. Chip + region on one line, serif headline,
-2-line dek, `so_what` on one clamped line, meta row. Save button on the right.
-Target height 110-150px.
+**Story row:** a list row, NOT a boxed card:
+`py-3.5` with a `border-b` hairline. Region kicker in the section accent, serif
+headline, 2-line dek, `so_what` clamped to one line on mobile (two from `lg`),
+then a meta row with the inline Mark read toggle. Save pinned top right. The
+category is named once by the section header, so rows do not repeat it.
+Target height 110-180px at 390px. From `lg` the row becomes an editorial list
+entry: kicker, meta and Mark read in a 136px left rail, reporting in a
+~640px middle column, Save on the right. Skim keeps the stacked row.
 
-**Lead story** — one per section: rounded card, hero image `h-40` mobile /
-`h-56` desktop, `object-cover`, with a tinted accent block as fallback when no
-image exists. Never render a broken image icon.
+**Section header:** a 2px accent rule, the section name in the serif at
+19px (22px desktop) and a muted count that turns into read progress
+("3 of 13 read").
 
-**Chrome** — a fixed bottom tab bar (Today / Saved / You) on mobile, a top nav
-on desktop. Content gets bottom padding so the last row is never hidden.
+**Lead story:** one per section: rounded card, hero image `h-40` mobile /
+`h-56` tablet, `object-cover`, with a tinted accent block as fallback when no
+image exists. Never render a broken image icon. The edition's first lead is
+the front story (full-width photo, 22px / 32px desktop headline). Other
+section leads sit image-left, text-right from `lg`.
+
+**End of edition:** after the last section in All, a short block that says
+the briefing is finished, how many stories are marked read, and offers Mark
+all read (or Reset progress) and Back to top.
+
+**Chrome:** a fixed bottom tab bar (Today / Saved / You) on mobile, a top nav
+on desktop. The footer carries the tab bar's height as padding so the last
+line is never hidden.
 
 ## Rules
 

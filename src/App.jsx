@@ -236,47 +236,46 @@ export default function App() {
       </a>
 
       <header className="border-b border-border-subtle bg-surface">
-        <div className={`${SHELL} flex items-center justify-between gap-4 pt-3 pb-1 lg:pt-5`}>
-          <h1 className="m-0">
-            <Wordmark />
-          </h1>
+        <div className={`${SHELL} flex items-start justify-between gap-4 pt-4 lg:pt-6`}>
+          <div className="min-w-0">
+            <h1 className="m-0">
+              <Wordmark />
+            </h1>
+            <p className="mt-0.5 mb-0 pl-8 text-caption text-text-muted">
+              Automated summaries · no original reporting
+            </p>
+          </div>
           <TopNav activeTab={activeTab} onTabChange={handleTabChange} savedCount={savedCount} />
         </div>
-        <div className={`${SHELL} pb-2.5`}>
-          <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-0.5">
-            <div className="min-w-0">
-              {dateLabel ? (
-                <p className="m-0 text-meta text-text-secondary">
-                  <time dateTime={meta.date}>{dateLabel}</time>
-                </p>
-              ) : null}
-              {freshness ? (
-                <p className="mt-0.5 mb-0 text-caption text-text-muted">{freshness}</p>
-              ) : null}
-            </div>
-            {activeTab === 'today' ? (
-              <ErrorBoundary label="The reading-depth control" fallback={null}>
-                <DepthControl
-                  depth={depth}
-                  onChange={setDepth}
-                  minutes={DEPTH_MINUTES}
-                  className="-my-0.5 shrink-0"
-                />
-              </ErrorBoundary>
+        <div className={`${SHELL} flex flex-wrap items-end justify-between gap-x-6 gap-y-2 pt-4 pb-3 lg:pt-5 lg:pb-4`}>
+          <div className="min-w-0">
+            {dateLabel ? (
+              <p className="m-0 text-[15px] leading-5 font-semibold tracking-[-0.005em] text-text-primary">
+                <time dateTime={meta.date}>{dateLabel}</time>
+              </p>
             ) : null}
+            {freshness ? (
+              <p className="mt-0.5 mb-0 text-meta text-text-muted">{freshness}</p>
+            ) : null}
+            <EditionFreshness editionDate={meta.date} />
           </div>
-          <p className="mt-1 mb-0 text-caption text-text-muted">
-            Automated summaries · no original reporting
-          </p>
+          {activeTab === 'today' ? (
+            <ErrorBoundary label="The reading-depth control" fallback={null}>
+              <DepthControl
+                depth={depth}
+                onChange={setDepth}
+                minutes={DEPTH_MINUTES}
+                className="-ml-0.5 shrink-0"
+              />
+            </ErrorBoundary>
+          ) : null}
         </div>
       </header>
-
-      <EditionFreshness editionDate={meta.date} className={SHELL} />
 
       {activeTab === 'today' ? (
         <ErrorBoundary label="The category navigation">
           <div className="sticky top-0 z-20 border-b border-border-subtle bg-surface/95 backdrop-blur-md">
-            <nav className={`${SHELL} py-2`} aria-label="Categories">
+            <nav className={SHELL} aria-label="Categories">
               <CategoryNav
                 categories={categories}
                 activeCategory={activeCategory}
@@ -289,7 +288,7 @@ export default function App() {
 
       <main
         id="main-content"
-        className={`${SHELL} pb-[calc(5rem+env(safe-area-inset-bottom))] lg:pb-16`}
+        className={`${SHELL} pb-10 lg:pb-16`}
       >
         {!openSelection && !openRecap ? <SavedStoryStatus message={progressAndSavedMessage} onRetry={retryStorage} canRetry={canRetryStorage} floating="page" /> : null}
         {activeTab === 'today' ? (
@@ -358,8 +357,10 @@ export default function App() {
         ) : null}
       </main>
 
-      <footer className="border-t border-border-subtle bg-surface">
-        <p className={`${SHELL} py-3 text-caption text-text-muted`}>
+      {/* The mobile tab bar is fixed, so the page ends with its height in padding
+          and the footer disclaimer is never hidden underneath it. */}
+      <footer className="border-t border-border-subtle bg-surface pb-[calc(4.5rem+env(safe-area-inset-bottom))] lg:pb-0">
+        <p className={`${SHELL} my-0 py-4 text-caption text-text-muted`}>
           Automated daily briefing that summarizes reporting from named news organizations
           and links to original coverage; it does no original reporting.
         </p>

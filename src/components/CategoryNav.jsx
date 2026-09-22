@@ -1,9 +1,15 @@
-import { useMemo, useRef } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { ALL_CATEGORIES, categoryTabId } from '../lib/data.js'
 
-function chipBackground(accent) {
-  if (typeof accent !== 'string' || !accent.startsWith('--accent-')) return 'var(--surface-raised)'
-  return `var(${accent}-light, var(--surface-raised))`
+const FADE = '2.5rem'
+
+// The rail only fades an edge that actually has more tabs behind it, so a
+// fully visible rail is never dimmed and the last tab is never masked.
+function edgeMask({ start, end }) {
+  if (start && end) return `linear-gradient(to right, transparent, black ${FADE}, black calc(100% - ${FADE}), transparent)`
+  if (end) return `linear-gradient(to right, black calc(100% - ${FADE}), transparent)`
+  if (start) return `linear-gradient(to right, transparent, black ${FADE})`
+  return 'none'
 }
 
 function buildItems(categories) {
@@ -25,7 +31,42 @@ function buildItems(categories) {
 
 export default function CategoryNav({ categories = [], activeCategory = ALL_CATEGORIES, onSelect }) {
   const tabRefs = useRef([])
+  const scrollerRef = useRef(null)
+  const [overflow, setOverflow] = useState({ start: false, end: false })
   const items = useMemo(() => buildItems(categories), [categories])
+
+  const measure = useCallback(() => {
+    const node = scrollerRef.current
+    if (!node) return
+    const start = node.scrollLeft > 1
+    const end = node.scrollLeft + node.clientWidth < node.scrollWidth - 1
+    setOverflow((previous) => (previous.start === start && previous.end === end ? previous : { start, end }))
+  }, [])
+
+  useEffect(() => {
+    const node = scrollerRef.current
+    if (!node) return undefined
+    measure()
+    node.addEventListener('scroll', measure, { passive: true })
+    const observer = typeof ResizeObserver === 'function' ? new ResizeObserver(measure) : null
+    observer?.observe(node)
+    if (node.firstElementChild) observer?.observe(node.firstElementChild)
+    return () => {
+      node.removeEventListener('scroll', measure)
+      observer?.disconnect()
+    }
+  }, [measure, items])
+
+  useEffect(() => {
+    const index = items.findIndex((item) => item.key === activeCategory)
+    const tab = tabRefs.current[index]
+    const node = scrollerRef.current
+    if (!tab || !node) return
+    const left = tab.offsetLeft
+    const right = left + tab.offsetWidth
+    if (left < node.scrollLeft) node.scrollLeft = left - 16
+    else if (right > node.scrollLeft + node.clientWidth) node.scrollLeft = right - node.clientWidth + 16
+  }, [activeCategory, items])
 
   const moveFocus = (currentIndex, direction) => {
     if (!items.length) return
@@ -63,22 +104,17 @@ export default function CategoryNav({ categories = [], activeCategory = ALL_CATE
     }
   }
 
+  const mask = edgeMask(overflow)
+
   return (
-    <div className="overflow-x-auto pb-1 [scrollbar-width:thin]">
-      <div role="tablist" aria-label="Briefing categories" className="flex min-w-max gap-2.5">
+    <div
+      ref={scrollerRef}
+      className="scrollbar-none relative -mx-1 overflow-x-auto px-1"
+      style={{ maskImage: mask, WebkitMaskImage: mask }}
+    >
+      <div role="tablist" aria-label="Briefing categories" className="flex min-w-max gap-1 sm:gap-2">
         {items.map((item, index) => {
           const isActive = item.key === activeCategory
-          const chipStyle = isActive
-            ? {
-                color: `var(${item.accent})`,
-                borderColor: `var(${item.accent})`,
-                backgroundColor: chipBackground(item.accent),
-              }
-            : {
-                color: 'var(--text-secondary)',
-                borderColor: 'var(--border)',
-                backgroundColor: 'var(--surface-raised)',
-              }
 
           return (
             <button
@@ -91,21 +127,22 @@ export default function CategoryNav({ categories = [], activeCategory = ALL_CATE
               role="tab"
               aria-selected={isActive}
               aria-controls="feed-panel"
+              aria-label={`${item.label} (${item.count})`}
               disabled={item.disabled}
               tabIndex={isActive ? 0 : -1}
               onKeyDown={(event) => onKeyDown(event, index)}
               onClick={() => onSelect?.(item.key)}
-              style={chipStyle}
-              className={`min-h-11 shrink-0 rounded-full border px-3.5 py-2 text-[13px] leading-4 font-semibold transition-colors motion-reduce:transition-none focus-visible:outline-offset-1 ${
-                item.disabled
-                  ? 'cursor-not-allowed opacity-55'
-                  : 'cursor-pointer hover:text-text-primary hover:[background-color:var(--surface)]'
-              }`}
+              className={`relative inline-flex min-h-12 shrink-0 items-center gap-1.5 border-0 bg-transparent px-2.5 text-[13px] leading-4 transition-colors motion-reduce:transition-none focus-visible:outline-offset-[-3px] ${
+                isActive ? 'font-semibold text-text-primary' : 'font-medium text-text-secondary'
+              } ${item.disabled ? 'cursor-not-allowed opacity-55' : 'cursor-pointer hover:text-text-primary'}`}
             >
-              {item.label}{' '}
-              <span style={{ color: isActive ? `var(${item.accent})` : 'var(--text-tertiary)' }}>
-                ({item.count})
-              </span>
+              {item.label}
+              <span className="text-[11px] font-medium tabular-nums text-text-muted">{item.count}</span>
+              <span
+                aria-hidden="true"
+                className={`absolute inset-x-2.5 bottom-0 h-[3px] rounded-t-sm ${isActive ? '' : 'opacity-0'}`}
+                style={{ backgroundColor: `var(${item.accent})` }}
+              />
             </button>
           )
         })}

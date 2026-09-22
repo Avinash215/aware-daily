@@ -10,8 +10,8 @@ import { DEPTH_MODES, depthMode } from '../hooks/useReadingDepth.js'
  * actually costs sitting next to it.
  *
  * The visible chips stay small; each button pads out to a 44px touch target
- * and the group pulls that padding back with a negative margin so the control
- * costs the masthead about 32px of height rather than 46px.
+ * and pulls that padding back with its own negative margin, so the track is
+ * about 32px tall and the control costs the masthead that rather than 46px.
  *
  * The selected chip is painted with no transition on purpose. A colour
  * transition renders an interpolated value, so while it runs the painted
@@ -92,7 +92,7 @@ export default function DepthControl({ depth, onChange, minutes, className = '' 
               tabIndex={isActive ? 0 : -1}
               onClick={() => select(index)}
               onKeyDown={(event) => onKeyDown(event, index)}
-              className="inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center border-0 bg-transparent px-0.5 py-0"
+              className="-my-1.5 inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center border-0 bg-transparent px-0.5 py-0"
             >
               <span
                 className="inline-flex items-center rounded-full px-2.5 py-1 text-caption font-semibold tracking-[0.02em]"
