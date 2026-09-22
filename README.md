@@ -54,6 +54,24 @@ Every field is coerced to a safe shape on the way through. A missing, partial or
 wrongly-typed payload degrades to empty arrays — it never throws and never
 white-screens the app.
 
+## Browser-local personal features
+
+Nothing here is sent anywhere or changes what the pipeline publishes.
+
+| Feature | Where | Storage key |
+| --- | --- | --- |
+| Quiz on stories marked read (practice on section leads) | `lib/quiz.js`, `QuizView.jsx` | `aware-daily:quiz` (best score per edition) |
+| For you tab: follows, Near you, interest matches | `lib/personal.js`, `ForYou.jsx` | reads the keys below |
+| Like, Follow, private note in the reader | `YourTake.jsx` | `aware-daily:likes`, `aware-daily:follows` |
+| Interests, instructions, location, leaderboard | `PersonalSettings.jsx` on You | `aware-daily:prefs` |
+
+Stores use `lib/localStore.js`: `{ version: 1, data }`, reread before every
+write, synced across tabs, and never overwritten when unreadable. The quiz is
+deterministic and only uses published fields (`so_what`, `headline`, `dek`,
+`body`, `countries`); each answer shows the text it came from. Shared likes and
+comments, and reader settings reaching the cloud curation job, need a server
+or pipeline change and are not implemented.
+
 ## Browser-local saved stories
 
 `src/lib/savedStories.js` owns the version 1 archive at
