@@ -335,6 +335,13 @@
     background-color: var(--surface);
   }
 
+  /* Keyboard focus and scrolled-to targets never land under the fixed mobile tab bar. */
+  @media (width < 64rem) {
+    html {
+      scroll-padding-bottom: calc(4.5rem + env(safe-area-inset-bottom));
+    }
+  }
+
   body {
     margin: 0;
     background-color: var(--surface);

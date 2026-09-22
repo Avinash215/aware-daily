@@ -1,6 +1,8 @@
 import { useMemo } from 'react'
 import { ALL_CATEGORIES, categoryDomId, categoryTabId, categories as dataCategories, stories as dataStories } from '../lib/data.js'
 import { DEFAULT_DEPTH } from '../hooks/useReadingDepth.js'
+import { FOR_YOU } from '../lib/personal.js'
+import ForYou from './ForYou.jsx'
 import LeadStory from './LeadStory.jsx'
 import StoryCard from './StoryCard.jsx'
 
@@ -48,7 +50,7 @@ function SectionHeader({ id, label, accent, total, read }) {
   )
 }
 
-function EditionEnd({ total, read, onMarkAllRead, onResetRead }) {
+function EditionEnd({ total, read, onMarkAllRead, onResetRead, onOpenQuiz }) {
   if (!total) return null
   const allRead = read >= total
 
@@ -77,6 +79,15 @@ function EditionEnd({ total, read, onMarkAllRead, onResetRead }) {
           : `${read} of ${plural(total, 'story', 'stories')} marked read. There is nothing more to scroll.`}
       </p>
       <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
+        {onOpenQuiz ? (
+          <button
+            type="button"
+            onClick={onOpenQuiz}
+            className="inline-flex min-h-11 cursor-pointer items-center rounded-full bg-text-primary px-5 text-meta font-semibold text-surface"
+          >
+            {read >= 3 ? 'Quiz me on what I read' : 'Try the quiz'}
+          </button>
+        ) : null}
         <button
           type="button"
           onClick={allRead ? onResetRead : onMarkAllRead}
@@ -112,6 +123,12 @@ export default function Feed(props) {
     isSaved,
     onToggleSave,
     onBrowseSaved,
+    forYou,
+    prefs,
+    onOpenRecap,
+    onEditInterests,
+    onUnfollow,
+    onOpenQuiz,
   } = props
   const fallbackSavedLookup = useMemo(() => new Set(savedIds), [savedIds])
   const storyReadLookup = useMemo(() => readLookup ?? new Set(readStoryIds), [readLookup, readStoryIds])
@@ -168,6 +185,25 @@ export default function Feed(props) {
           </div>
         ) : null}
       </>
+    )
+  }
+
+  if (activeCategory === FOR_YOU && forYou && prefs) {
+    return (
+      <ForYou
+        forYou={forYou}
+        prefs={prefs}
+        depth={depth}
+        readLookup={storyReadLookup}
+        onToggleRead={onToggleRead}
+        onOpenStory={onOpenStory}
+        isSaved={isStorySaved}
+        onToggleSave={toggleStorySaved}
+        onOpenRecap={onOpenRecap}
+        onEditInterests={onEditInterests}
+        onUnfollow={onUnfollow}
+        onOpenQuiz={onOpenQuiz}
+      />
     )
   }
 
@@ -234,7 +270,7 @@ export default function Feed(props) {
           )
         })}
       </div>
-      <EditionEnd total={totalStories} read={totalRead} onMarkAllRead={onMarkAllRead} onResetRead={onResetRead} />
+      <EditionEnd total={totalStories} read={totalRead} onMarkAllRead={onMarkAllRead} onResetRead={onResetRead} onOpenQuiz={onOpenQuiz} />
     </div>
   )
 }

@@ -7,6 +7,7 @@ import SavedStoryStatus from './SavedStoryStatus.jsx'
 import SourceList from './SourceList.jsx'
 import StakesCallout from './StakesCallout.jsx'
 import VocabularyPanel from './VocabularyPanel.jsx'
+import YourTake from './YourTake.jsx'
 import { formatDate, readTime } from '../lib/format.js'
 import { annotateParagraphs, isExplainable } from '../lib/glossary.js'
 import { normaliseSources } from '../lib/sources.js'
@@ -42,6 +43,7 @@ const ACCENT_KEYS = [
   'health',
   'sports',
   'culture',
+  'justice',
 ]
 
 const FOCUSABLE = [
@@ -160,6 +162,7 @@ export default function StoryReader({
   storageMessage = '',
   onRetryStorage,
   canRetryStorage,
+  take = null,
 }) {
   if (!story || typeof story !== 'object' || Array.isArray(story)) return null
   return (
@@ -178,11 +181,12 @@ export default function StoryReader({
       storageMessage={storageMessage}
       onRetryStorage={onRetryStorage}
       canRetryStorage={canRetryStorage}
+      take={take}
     />
   )
 }
 
-function Reader({ story, category, onClose, isSaved, onToggleSave, isRead, onToggleRead, recap, onOpenRecap, suspended, archiveEdition, storageMessage, onRetryStorage, canRetryStorage }) {
+function Reader({ story, category, onClose, isSaved, onToggleSave, isRead, onToggleRead, recap, onOpenRecap, suspended, archiveEdition, storageMessage, onRetryStorage, canRetryStorage, take }) {
   const dialogRef = useRef(null)
   const recapCtaRef = useRef(null)
   const wasSuspended = useRef(false)
@@ -586,6 +590,8 @@ function Reader({ story, category, onClose, isSaved, onToggleSave, isRead, onTog
             <StakesCallout variant="so-what">{story.so_what}</StakesCallout>
             <StakesCallout variant="what-now">{story.what_now}</StakesCallout>
           </div>
+
+          {take ? <YourTake key={`${archiveEdition?.date || 'current'}:${storyId}`} {...take} /> : null}
 
           <div className="mt-8">
             <SourceList sources={sources} />

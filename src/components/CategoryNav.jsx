@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { ALL_CATEGORIES, categoryTabId } from '../lib/data.js'
+import { FOR_YOU } from '../lib/personal.js'
 
 const FADE = '2.5rem'
 
@@ -12,10 +13,14 @@ function edgeMask({ start, end }) {
   return 'none'
 }
 
-function buildItems(categories) {
+function buildItems(categories, forYouCount) {
   const allCount = categories.reduce((sum, category) => sum + (category?.stories?.length ?? 0), 0)
+  const personal = typeof forYouCount === 'number'
+    ? [{ key: FOR_YOU, label: 'For you', count: forYouCount, accent: '--text-primary', disabled: false }]
+    : []
   return [
     { key: ALL_CATEGORIES, label: 'All', count: allCount, accent: '--text-primary', disabled: false },
+    ...personal,
     ...categories.map((category) => {
       const count = category?.stories?.length ?? 0
       return {
@@ -29,11 +34,11 @@ function buildItems(categories) {
   ]
 }
 
-export default function CategoryNav({ categories = [], activeCategory = ALL_CATEGORIES, onSelect }) {
+export default function CategoryNav({ categories = [], activeCategory = ALL_CATEGORIES, onSelect, forYouCount = null }) {
   const tabRefs = useRef([])
   const scrollerRef = useRef(null)
   const [overflow, setOverflow] = useState({ start: false, end: false })
-  const items = useMemo(() => buildItems(categories), [categories])
+  const items = useMemo(() => buildItems(categories, forYouCount), [categories, forYouCount])
 
   const measure = useCallback(() => {
     const node = scrollerRef.current

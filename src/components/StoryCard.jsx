@@ -51,6 +51,8 @@ export default function StoryCard({
   onToggleRead,
   onOpenStory,
   depth = DEFAULT_DEPTH,
+  kicker = '',
+  reason = '',
 }) {
   const headlineId = useId()
   if (!story) return null
@@ -63,7 +65,7 @@ export default function StoryCard({
     timing,
     sourceCount > 0 ? `${sourceCount} ${sourceCount === 1 ? 'source' : 'sources'}` : '',
   ].filter(Boolean)
-  const region = typeof story.region === 'string' ? story.region.trim() : ''
+  const region = kicker || (typeof story.region === 'string' ? story.region.trim() : '')
 
   // Skim strips the card back to a headline and its meta row. Full swaps the
   // dek, a teaser the exporter cuts mid-clause, for the whole paragraph it
@@ -153,6 +155,7 @@ export default function StoryCard({
         <div className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1 text-[11px] leading-4 text-text-muted">
           {metaParts.length ? <span>{metaParts.join(' · ')}</span> : null}
           <FlagRow countries={countries} />
+          {reason ? <span className="basis-full font-medium text-text-secondary">{reason}</span> : null}
         </div>
         {onToggleRead ? (
           <ReadButton

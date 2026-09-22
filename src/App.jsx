@@ -5,12 +5,15 @@ import DepthControl from './components/DepthControl.jsx'
 import ErrorBoundary from './components/ErrorBoundary.jsx'
 import EditionFreshness from './components/EditionFreshness.jsx'
 import Feed from './components/Feed.jsx'
+import PersonalSettings from './components/PersonalSettings.jsx'
+import QuizView from './components/QuizView.jsx'
 import RecapView from './components/RecapView.jsx'
 import SavedPage from './components/SavedPage.jsx'
 import SavedStoryStatus from './components/SavedStoryStatus.jsx'
 import StoryReader from './components/StoryReader.jsx'
 import YouPage from './components/YouPage.jsx'
 import { estimateDepthMinutes, useReadingDepth } from './hooks/useReadingDepth.js'
+import { usePersonal } from './hooks/usePersonal.js'
 import { useReadProgress } from './hooks/useReadProgress.js'
 import { useSavedRecaps } from './hooks/useSavedRecaps.js'
 import { snapshotForCurrentStory, useSavedStories } from './hooks/useSavedStories.js'
@@ -18,13 +21,16 @@ import {
   categories,
   ALL_CATEGORIES,
   categoryTabId,
+  getCategory,
   getStoryCategory,
   getRecap,
   getStory,
   meta,
   partialEdition,
+  recaps,
   stories,
 } from './lib/data.js'
+import { followMatches, hasLocation, interestMatches, locationMatches } from './lib/personal.js'
 import { formatDate, formatUpdated, parseDateOnly } from './lib/format.js'
 
 const THEME_STORAGE_KEY = 'aware-daily:theme'
@@ -35,6 +41,13 @@ const THEME_STORAGE_KEY = 'aware-daily:theme'
  * once at module load.
  */
 const DEPTH_MINUTES = stories.length ? estimateDepthMinutes(stories) : null
+
+const EDITION_COUNTRIES = [...new Set(stories.flatMap((story) => story.countries.map((country) => country.name)).filter(Boolean))]
+
+// The quiz's practice pool: each section's lead, which every reader sees first.
+const PRACTICE_STORIES = categories.map((category) => category.stories[0]).filter(Boolean)
+
+const labelForCategory = (key) => getCategory(key)?.label || key
 
 /** One container width for the masthead, the rail and every page. */
 const SHELL = 'mx-auto w-full max-w-[720px] px-4 sm:px-5 lg:max-w-[960px] lg:px-8'
@@ -103,6 +116,24 @@ export default function App() {
   const editionKey = meta.date || 'unknown-edition'
   const { readStoryIds, readLookup, toggleRead, markAllRead, resetRead,
     storageMessage: readStorageMessage } = useReadProgress(editionKey, stories)
+  const personal = usePersonal(editionKey)
+  const [quizOpen, setQuizOpen] = useState(false)
+  const { prefs, likes, follows } = personal
+
+  const forYou = useMemo(() => {
+    const following = followMatches(stories, recaps, follows, editionKey)
+    const near = hasLocation(prefs) ? locationMatches(stories, prefs) : []
+    const interests = interestMatches(stories, prefs, likes, { labelFor: labelForCategory })
+    const ids = new Set([
+      ...following.flatMap((entry) => entry.related.map((match) => match.story.id)),
+      ...near.map((match) => match.story.id),
+      ...interests.map((match) => match.story.id),
+    ])
+    return { following, near, interests, count: ids.size }
+  }, [editionKey, follows, likes, prefs])
+
+  const readStories = useMemo(() => stories.filter((story) => readLookup.has(story.id)), [readLookup])
+
   const progressAndSavedMessage = [clearMessage, storageMessage, recapStorageMessage, readStorageMessage].filter(Boolean).join(' ')
   const canRetryStorage = pendingStories || pendingRecaps
   const retryStorage = useCallback(() => {
@@ -135,7 +166,7 @@ export default function App() {
     return null
   }, [openRecap, openSelection])
 
-  const recapBackLabel = openSelection ? 'Back to the story' : 'Back to saved'
+  const recapBackLabel = openSelection ? 'Back to the story' : activeTab === 'saved' ? 'Back to saved' : 'Back to the briefing'
 
   const freshness = [
     `${meta.publishedCount} ${meta.publishedCount === 1 ? 'story' : 'stories'}`,
@@ -226,6 +257,25 @@ export default function App() {
     if (typeof window !== 'undefined') window.scrollTo(0, 0)
   }, [])
 
+  const handleEditInterests = useCallback(() => {
+    handleTabChange('you')
+    requestAnimationFrame(() => document.getElementById('interests')?.scrollIntoView({ block: 'start' }))
+  }, [handleTabChange])
+
+  const openQuiz = useCallback(() => setQuizOpen(true), [])
+  const closeQuiz = useCallback(() => setQuizOpen(false), [])
+
+  // Likes, notes and follows on a saved copy belong to the edition it came from.
+  const readerEdition = openSelection?.archived ? openSelection.snapshot?.edition?.date || '' : editionKey
+  const readerTake = openStory ? {
+    liked: personal.isLiked(openStory.id, readerEdition),
+    followed: personal.isFollowed(openStory.id, readerEdition),
+    note: personal.noteFor(openStory.id, readerEdition),
+    onToggleLike: () => personal.toggleLike(openStory, openCategory, readerEdition),
+    onToggleFollow: () => personal.toggleFollow(openStory, openCategory, readerEdition),
+    onSaveNote: (note) => personal.setNote(openStory, openCategory, note, readerEdition),
+  } : null
+
   return (
     <div className="min-h-svh bg-surface text-text-primary">
       <a
@@ -280,6 +330,7 @@ export default function App() {
                 categories={categories}
                 activeCategory={activeCategory}
                 onSelect={setActiveCategory}
+                forYouCount={forYou.count}
               />
             </nav>
           </div>
@@ -319,6 +370,12 @@ export default function App() {
                 isSaved={isSaved}
                 onToggleSave={toggleSave}
                 onBrowseSaved={() => handleTabChange('saved')}
+                forYou={forYou}
+                prefs={prefs}
+                onOpenRecap={handleOpenRecap}
+                onEditInterests={handleEditInterests}
+                onUnfollow={personal.removeFollow}
+                onOpenQuiz={openQuiz}
               />
             </div>
           </ErrorBoundary>
@@ -352,7 +409,15 @@ export default function App() {
               onThemeChange={setTheme}
               dateLabel={dateLabel}
               updatedLabel={updatedLabel}
-            />
+            >
+              <PersonalSettings
+                categories={categories}
+                editionCountries={EDITION_COUNTRIES}
+                personal={personal}
+                onOpenQuiz={openQuiz}
+                readCount={readStories.length}
+              />
+            </YouPage>
           </ErrorBoundary>
         ) : null}
       </main>
@@ -407,6 +472,22 @@ export default function App() {
             storageMessage={progressAndSavedMessage}
             onRetryStorage={retryStorage}
             canRetryStorage={canRetryStorage}
+            take={readerTake}
+          />
+        ) : null}
+      </ErrorBoundary>
+
+      <ErrorBoundary label="The quiz">
+        {quizOpen ? (
+          <QuizView
+            readStories={readStories}
+            practiceStories={PRACTICE_STORIES}
+            editionStories={stories}
+            editionKey={editionKey}
+            best={personal.quizScore}
+            onFinish={personal.recordQuiz}
+            onClose={closeQuiz}
+            onOpenStory={handleOpenStory}
           />
         ) : null}
       </ErrorBoundary>

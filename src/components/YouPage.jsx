@@ -2,8 +2,8 @@ import { useMemo } from 'react'
 import { sanitizeReadIds } from '../lib/readProgress.js'
 
 /**
- * The You tab: reading progress (moved off the top of the feed), the theme
- * control, and this edition's provenance.
+ * The You tab: reading progress (moved off the top of the feed), the personal
+ * settings passed in as children, the theme control, and this edition's provenance.
  *
  * Progress reads the existing `aware-daily:read` store through props — this
  * component never touches storage itself.
@@ -18,6 +18,7 @@ const ACCENT_KEYS = new Set([
   'health',
   'sports',
   'culture',
+  'justice',
 ])
 
 const accentVar = (key) => (ACCENT_KEYS.has(key) ? `var(--accent-${key})` : 'var(--text-secondary)')
@@ -44,6 +45,7 @@ export default function YouPage({
   onThemeChange,
   dateLabel = '',
   updatedLabel = '',
+  children = null,
 }) {
   const { readCount, sections, sectionsComplete, storyTotal } = useMemo(() => {
     const safeCategories = Array.isArray(categories) ? categories : []
@@ -171,6 +173,8 @@ export default function YouPage({
         ) : null}
       </section>
 
+      {children}
+
       {/* Appearance ------------------------------------------------------- */}
       <section aria-labelledby="appearance-heading" className="mt-8">
         <h3
@@ -229,7 +233,7 @@ export default function YouPage({
               .join(' · ')}
           </p>
           <p className="mt-1 text-meta text-text-muted">
-            {savedCount} saved · progress and saved stories never leave this browser.
+            {savedCount} saved · progress, saved stories, likes, notes and interests never leave this browser.
           </p>
           <p className="mt-1 text-meta text-text-muted">
             Automated daily briefing that summarizes reporting from named news organizations and
