@@ -195,19 +195,23 @@ export function interestMatches(stories, prefs, likes = [], { labelFor = (key) =
 }
 
 /** Stories about the reader's chosen country, then others in their region. */
-export function locationMatches(stories, prefs, { limit = 10 } = {}) {
+export function locationMatches(stories, prefs, { limit = 5 } = {}) {
   const country = prefs.country
   const region = prefs.region
   const pattern = country ? wordPattern(country) : null
   const out = []
   const used = new Set()
 
+  // Only stories that are about the place: it is a principal actor, or the
+  // headline names it. A passing mention in the body (or a secondary tag on a
+  // big country that appears everywhere) does not make a story local to you.
   if (country) {
     for (const story of stories) {
-      const listed = (story.countries || []).some((entry) => entry.name?.toLowerCase() === country.toLowerCase())
-      const mentioned = pattern.test([story.headline, story.dek, story.body].join(' \n '))
-      if (listed || mentioned) {
-        out.push({ story, score: listed ? 2 : 1, reasons: [listed ? `About ${country}` : `Mentions ${country}`] })
+      const actor = (story.countries || []).some((entry) =>
+        entry.name?.toLowerCase() === country.toLowerCase() && (entry.role || 'actor') === 'actor')
+      const headline = pattern.test(story.headline || '')
+      if (actor || headline) {
+        out.push({ story, score: (actor ? 2 : 0) + (headline ? 1 : 0), reasons: [headline ? `Names ${country}` : `About ${country}`] })
         used.add(story.id)
       }
     }

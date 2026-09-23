@@ -11,6 +11,20 @@
 const PLACE = /^[\p{L}\p{N}][\p{L}\p{N} .,'’()-]{1,79}$/u
 const MAX_ITEMS = 8
 
+// Search results that are not news: listings, directories, film-location and
+// job sites, and bare fixture or box-score pages.
+const NOT_NEWS_SOURCE = /\b(realtor\.com|zillow|redfin|trulia|apartments\.com|homes\.com|rent\.com|movoto|loopnet|maxpreps|yelp|tripadvisor|eventbrite|movie locations|indeed|glassdoor|opentable)\b/i
+const ADDRESS_TITLE = /^\d+[a-z]?\s+\S.*\b(ave|avenue|st|street|rd|road|blvd|boulevard|dr|drive|ln|lane|way|pl|place|ct|court|ter|terrace|pkwy|parkway|hwy)\b.*(\bunit\b|\bapt\b|#\s*\w+|\b\d{5}(-\d{4})?\b)/i
+const FIXTURE_TITLE = /^[^:]{2,60}\s(vs\.?|@)\s[^:]{2,60}$/i
+const SCORE_PAGE = /\b(play-by-play|box score|live game updates|head-to-head)\b/i
+
+export function isNews(item) {
+  return !NOT_NEWS_SOURCE.test(item.source || '')
+    && !ADDRESS_TITLE.test(item.title)
+    && !FIXTURE_TITLE.test(item.title)
+    && !SCORE_PAGE.test(item.title)
+}
+
 // Google News editions that publish in English. Anything else uses the US edition.
 const EDITIONS = {
   'united states': 'US', 'united kingdom': 'GB', canada: 'CA', australia: 'AU', india: 'IN',
@@ -112,6 +126,7 @@ export function createLocalNews({ fetchImpl = fetch, now = () => Date.now() } = 
 
     const seen = new Set()
     const items = parseRss(xml)
+      .filter(isNews)
       .filter((item) => {
         const folded = item.title.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ').trim()
         if (seen.has(folded)) return false

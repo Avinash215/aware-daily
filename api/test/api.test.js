@@ -3,7 +3,7 @@ import { test } from 'node:test'
 import { defaultDisplayName, isModerator, moderatorList, readPrincipal } from '../src/lib/principal.js'
 import { createSocial, HttpError } from '../src/lib/social.js'
 import { createMemoryStore } from '../src/lib/store.js'
-import { createLocalNews, editionFor, parseRss, searchQuery, validPlace } from '../src/lib/local.js'
+import { createLocalNews, editionFor, isNews, parseRss, searchQuery, validPlace } from '../src/lib/local.js'
 
 const headerOf = (value) => ({ get: (name) => (name === 'x-ms-client-principal' ? value : null) })
 const encode = (object) => Buffer.from(JSON.stringify(object)).toString('base64')
@@ -182,6 +182,26 @@ test('local headlines validate the place, dedupe, sort and keep nothing between 
   assert.equal(calls, 2, 'the server holds no cache of readers\' places')
   await local({ place: 'Jersey City, NJ', country: 'United Kingdom' })
   assert.match(requested, /gl=GB&ceid=GB:en/)
+})
+
+test('listings, directories and fixture pages are not treated as local news', () => {
+  const keep = [
+    { title: 'New ferry terminal opens in Jersey City', source: 'PIX11' },
+    { title: '$51.1M Liberty State Park ferry terminal upgrade opens in Jersey City', source: 'News12 New Jersey' },
+    { title: 'Hudson County Takes Strides for Safety in Annual 5k Against Gun Violence', source: 'TAPinto' },
+    { title: 'Brennan takes sides in Jersey City school board race', source: 'New Jersey Globe' },
+    { title: '10 Downing Street says talks will resume', source: 'BBC' },
+  ]
+  const drop = [
+    { title: '132 Wilkinson Ave Unit 3, Jersey City, NJ 07305', source: 'Realtor.com' },
+    { title: '88 Morgan St #1204, Jersey City, NJ 07302', source: 'Some Brokerage' },
+    { title: 'Where was Disclosure Day filmed?', source: 'The Worldwide Guide To Movie Locations' },
+    { title: 'Fair Lawn Varsity Football @ Snyder', source: 'MaxPreps' },
+    { title: 'Leeds United vs. Nottingham Forest: Live game updates, stats, play-by-play', source: 'Yahoo' },
+    { title: 'Dickinson vs Snyder', source: 'Local Sports' },
+  ]
+  for (const item of keep) assert.equal(isNews(item), true, item.title)
+  for (const item of drop) assert.equal(isNews(item), false, item.title)
 })
 
 test('local helpers', () => {
