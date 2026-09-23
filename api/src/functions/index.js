@@ -114,12 +114,11 @@ app.http('socialModeration', {
 })
 
 app.http('localNews', {
-  methods: ['GET'],
+  methods: ['POST'],
   authLevel: 'anonymous',
   route: 'local',
   handler: handle(async (request) => {
-    const result = await localHeadlines({ place: query(request, 'place'), country: query(request, 'country') })
-    // The place is personal; shared caches must not keep it.
-    return json(200, result, { 'Cache-Control': 'private, max-age=600' })
+    const input = await body(request)
+    return json(200, await localHeadlines({ place: input.place, country: input.country }))
   }),
 })

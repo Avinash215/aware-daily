@@ -14,7 +14,7 @@ answer with JSON and every community surface stays hidden.
 | Report a comment | `POST /api/social/report` | `awarecomments` |
 | Readers' top stories, last 7 days | `GET /api/social/leaderboard` | `awarestorystats` |
 | Moderation queue and actions | `GET, POST /api/social/moderation` | `awarecomments` |
-| Local headlines for one reader's town | `GET /api/local?place=&country=` | none |
+| Local headlines for one reader's town | `POST /api/local` `{ place, country }` | none |
 
 ## Rules the API enforces
 
@@ -32,11 +32,13 @@ answer with JSON and every community surface stays hidden.
 - Writes require `Content-Type: application/json`, which a cross-site form
   cannot send without a preflight. Text is length-limited, control characters
   are stripped, and everything renders as plain text.
-- Readers get 10 comments an hour.
-- Local news: the reader's town is sent for one Google News RSS search and is
-  never stored or logged. Only headline, outlet, time and the original link are
-  returned, labelled as not summarised or checked by Aware. Results are cached
-  in memory for 20 minutes per town and edition.
+- Readers get 10 comments an hour, counted from stored comments so the limit
+  holds across requests and instances.
+- Local news: the reader's town travels in a POST body (never a URL, which
+  platforms log), is used for one Google News RSS search, and is not stored,
+  cached or logged by the API. Only headline, outlet, time and the original
+  link are returned, labelled as not summarised or checked by Aware. The
+  reader's own browser caches results for 20 minutes.
 
 ## App settings
 

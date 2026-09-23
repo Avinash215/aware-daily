@@ -68,9 +68,16 @@ Nothing here is sent anywhere or changes what the pipeline publishes.
 Stores use `lib/localStore.js`: `{ version: 1, data }`, reread before every
 write, synced across tabs, and never overwritten when unreadable. The quiz is
 deterministic and only uses published fields (`so_what`, `headline`, `dek`,
-`body`, `countries`); each answer shows the text it came from. Shared likes and
-comments, and reader settings reaching the cloud curation job, need a server
-or pipeline change and are not implemented.
+`body`, `countries`); each answer shows the text it came from.
+
+## Community and local news (managed API)
+
+`api/` is an Azure Static Web Apps managed Functions app: per-reader local
+headlines, shared likes, moderated comments, a readers' leaderboard and the
+moderation queue. Every community surface hides itself when `/api/me` is not
+there, so GitHub Pages and `npm run dev` work as before. See
+[`docs/community.md`](docs/community.md) for the rules, local run steps and
+the go-live runbook.
 
 ## Browser-local saved stories
 

@@ -1,14 +1,14 @@
 /**
  * Local headlines for one reader's chosen place.
  *
- * The place arrives with the request, is used for a single Google News RSS
- * search and is never stored or logged. Only headline, outlet, time and the
- * link to the original are returned; Aware does not summarise these.
+ * The place arrives in the body of a POST (never the URL, which platforms
+ * log), is used for a single Google News RSS search, and is not stored,
+ * cached or logged here. Only headline, outlet, time and the link to the
+ * original are returned; Aware does not summarise these. The reader's own
+ * browser caches its results.
  */
 
 const PLACE = /^[\p{L}\p{N}][\p{L}\p{N} .,'’()-]{1,79}$/u
-const TTL_MS = 20 * 60 * 1000
-const MAX_CACHE = 200
 const MAX_ITEMS = 8
 
 // Google News editions that publish in English. Anything else uses the US edition.
@@ -74,8 +74,6 @@ export function validPlace(value) {
 }
 
 export function createLocalNews({ fetchImpl = fetch, now = () => Date.now() } = {}) {
-  const cache = new Map()
-
   return async function localHeadlines({ place: rawPlace, country }) {
     const place = validPlace(rawPlace)
     if (!place) {
@@ -85,9 +83,6 @@ export function createLocalNews({ fetchImpl = fetch, now = () => Date.now() } = 
       throw error
     }
     const gl = editionFor(country)
-    const key = `${place.toLowerCase()}|${gl}`
-    const cached = cache.get(key)
-    if (cached && now() - cached.at < TTL_MS) return cached.value
 
     const url = `https://news.google.com/rss/search?q=${encodeURIComponent(searchQuery(place))}&hl=en-${gl}&gl=${gl}&ceid=${gl}:en`
     const controller = new AbortController()
@@ -126,9 +121,6 @@ export function createLocalNews({ fetchImpl = fetch, now = () => Date.now() } = 
       .sort((a, b) => (b.published || '').localeCompare(a.published || ''))
       .slice(0, MAX_ITEMS)
 
-    const value = { place, edition: gl, source: 'Google News', fetchedAt: new Date(now()).toISOString(), items }
-    cache.set(key, { at: now(), value })
-    if (cache.size > MAX_CACHE) cache.delete(cache.keys().next().value)
-    return value
+    return { place, edition: gl, source: 'Google News', fetchedAt: new Date(now()).toISOString(), items }
   }
 }

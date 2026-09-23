@@ -107,11 +107,22 @@ test('reports queue a visible comment and hiding removes it from the count', asy
   assert.equal((await social.moderationQueue(moderator)).reported.length, 0)
 })
 
-test('comment rate limit applies to readers, not moderators', async () => {
-  const social = createSocial({ store: createMemoryStore(), moderators: ['github:avinash215'] })
-  for (let index = 0; index < 10; index += 1) await social.addComment(reader(1), { ...ref, text: `comment ${index}` })
-  await rejects(social.addComment(reader(1), { ...ref, text: 'one more' }), 'slow_down')
-  for (let index = 0; index < 12; index += 1) await social.addComment(reader(9, 'Avinash215'), { ...ref, text: `note ${index}` })
+test('comment rate limit holds across requests, as production creates one handler per request', async () => {
+  const store = createMemoryStore()
+  const perRequest = () => createSocial({ store, moderators: ['github:avinash215'] })
+  for (let index = 0; index < 10; index += 1) await perRequest().addComment(reader(1), { ...ref, text: `comment ${index}` })
+  await rejects(perRequest().addComment(reader(1), { ...ref, text: 'one more' }), 'slow_down')
+  await perRequest().addComment(reader(2), { ...ref, text: 'a different reader is unaffected' })
+  for (let index = 0; index < 12; index += 1) await perRequest().addComment(reader(9, 'Avinash215'), { ...ref, text: `note ${index}` })
+})
+
+test('the hourly window moves: old comments stop counting', async () => {
+  const store = createMemoryStore()
+  let clock = Date.parse('2026-09-22T10:00:00Z')
+  const perRequest = () => createSocial({ store, now: () => clock })
+  for (let index = 0; index < 10; index += 1) await perRequest().addComment(reader(1), { ...ref, text: `comment ${index}` })
+  clock += 3_600_001
+  await perRequest().addComment(reader(1), { ...ref, text: 'an hour later' })
 })
 
 test('leaderboard ranks liked stories within the window', async () => {
@@ -142,7 +153,7 @@ test('RSS parsing strips outlet suffixes, decodes entities and drops unsafe link
   assert.equal(items[2].title, 'Council & mayor clash over ‘fixed assets’')
 })
 
-test('local headlines validate the place, dedupe, sort and cache', async () => {
+test('local headlines validate the place, dedupe, sort and keep nothing between calls', async () => {
   let calls = 0
   let requested = ''
   const fetchImpl = async (url) => {
@@ -157,10 +168,10 @@ test('local headlines validate the place, dedupe, sort and cache', async () => {
   assert.equal(result.items[0].source, 'Hudson County View')
   assert.match(decodeURIComponent(requested), /q="Jersey City" NJ when:3d/)
   assert.match(requested, /gl=US&ceid=US:en/)
-  await local({ place: 'jersey city,  nj', country: 'United States' })
-  assert.equal(calls, 1, 'case and spacing variants share one cached result')
+  await local({ place: 'Jersey City, NJ', country: 'United States' })
+  assert.equal(calls, 2, 'the server holds no cache of readers\' places')
   await local({ place: 'Jersey City, NJ', country: 'United Kingdom' })
-  assert.equal(calls, 2, 'a different Google News edition is fetched separately')
+  assert.match(requested, /gl=GB&ceid=GB:en/)
 })
 
 test('local helpers', () => {

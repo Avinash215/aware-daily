@@ -76,7 +76,18 @@ export const reportComment = (payload) => request('/api/social/report', { method
 export const getLeaderboard = (days, today) => request(`/api/social/leaderboard?${qs({ days, today })}`)
 export const getModeration = () => request('/api/social/moderation')
 export const moderateComment = (payload) => request('/api/social/moderation', { method: 'POST', body: payload })
-export const getLocalHeadlines = (place, country) => request(`/api/local?${qs({ place, country })}`)
+const localCache = new Map()
+const LOCAL_TTL_MS = 20 * 60 * 1000
+
+/** Local headlines for the reader's own town; the place goes in the body, never the URL. */
+export async function getLocalHeadlines(place, country) {
+  const key = `${String(place).trim().toLowerCase()}|${String(country || '').trim().toLowerCase()}`
+  const cached = localCache.get(key)
+  if (cached && Date.now() - cached.at < LOCAL_TTL_MS) return cached.value
+  const value = await request('/api/local', { method: 'POST', body: { place, country } })
+  localCache.set(key, { at: Date.now(), value })
+  return value
+}
 
 /** "3h ago", "2d ago", or a short date, for timestamps in lists. */
 export function timeAgo(value, now = Date.now()) {

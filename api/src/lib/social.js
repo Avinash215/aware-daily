@@ -61,7 +61,6 @@ function publicComment(entity, viewer) {
 }
 
 export function createSocial({ store, now = () => Date.now(), moderators, random = Math.random } = {}) {
-  const recent = new Map()
   const moderatorOf = (principal) => isModerator(principal, moderators)
   const pause = () => new Promise((resolve) => setTimeout(resolve, 5 + Math.floor(random() * 40)))
 
@@ -168,11 +167,10 @@ export function createSocial({ store, now = () => Date.now(), moderators, random
 
       const moderator = moderatorOf(user)
       if (!moderator) {
+        // Counted from stored comments, so the limit holds across requests and instances.
         const hourAgo = now() - 3_600_000
-        const times = (recent.get(user.userId) || []).filter((time) => time > hourAgo)
-        if (times.length >= COMMENTS_PER_HOUR) fail(429, 'slow_down', 'That is a lot of comments in an hour. Try again later.')
-        times.push(now())
-        recent.set(user.userId, times)
+        const lastHour = (await store.where('comments', 'userId', user.userId)).filter((row) => (row.createdAt || 0) > hourAgo)
+        if (lastHour.length >= COMMENTS_PER_HOUR) fail(429, 'slow_down', 'That is a lot of comments in an hour. Try again later.')
       }
 
       const createdAt = now()
