@@ -37,6 +37,17 @@ import { formatDate, formatUpdated, parseDateOnly } from './lib/format.js'
 
 const THEME_STORAGE_KEY = 'aware-daily:theme'
 
+function captureReaderOrigin(element) {
+  if (!(element instanceof HTMLElement)) return null
+  const anchor = element.closest('article') ?? element
+  return {
+    element,
+    anchor,
+    top: anchor.getBoundingClientRect().top,
+    openerTop: element.getBoundingClientRect().top,
+  }
+}
+
 /**
  * What each depth costs to read, measured from the edition on disk rather than
  * hardcoded. The briefing never changes shape at runtime, so this is computed
@@ -100,6 +111,7 @@ export default function App() {
   const [theme, setTheme] = useState(loadTheme)
   const [clearMessage, setClearMessage] = useState('')
   const originRef = useRef(null)
+  const returnSpaceRef = useRef(null)
 
   const { savedIds, savedStories, isSaved, isSnapshotSaved, toggleSave, toggleSnapshot,
     removeSnapshot, clearAll, storageMessage,
@@ -203,22 +215,51 @@ export default function App() {
   }, [openSelection])
 
   useEffect(() => {
-    if (openSelection || !originRef.current) return
-    originRef.current.focus({ preventScroll: true })
-    originRef.current = null
-  }, [openSelection])
+    if (returnSpaceRef.current) returnSpaceRef.current.style.height = '0px'
+  }, [activeTab, activeCategory, depth])
+
+  useEffect(() => {
+    if (openSelection || openRecap || quizOpen || !originRef.current) return
+    const { element, anchor, top, openerTop } = originRef.current
+    // Wait for dialog cleanups and the unlocked layout before measuring.
+    let frame
+    const restore = (settled = false) => {
+      if (settled) originRef.current = null
+      if (element.isConnected) element.focus({ preventScroll: true })
+      if (!anchor.isConnected) return
+      const cardDisplacement = anchor.getBoundingClientRect().top - top
+      // Desktop depth changes also move the headline within its card.
+      // Balance both origins to minimize their largest return displacement.
+      const openerDisplacement = element.isConnected
+        ? element.getBoundingClientRect().top - openerTop
+        : cardDisplacement
+      const displacement = (cardDisplacement + openerDisplacement) / 2
+      // A shorter feed can put the desired origin beyond its new scroll limit.
+      // Reserve only the missing space, until the next feed/depth change.
+      const space = returnSpaceRef.current
+      const shortfall = window.scrollY + displacement + window.innerHeight - document.documentElement.scrollHeight
+      if (space && shortfall > 0) {
+        space.style.height = `${space.offsetHeight + Math.ceil(shortfall)}px`
+      }
+      if (displacement) window.scrollBy({ top: displacement, behavior: 'instant' })
+      // Scroll anchoring can settle after the first unlocked layout.
+      if (!settled) frame = requestAnimationFrame(() => restore(true))
+    }
+    frame = requestAnimationFrame(() => restore())
+    return () => cancelAnimationFrame(frame)
+  }, [openSelection, openRecap, quizOpen])
 
   const handleOpenStory = useCallback((storyId, originElement) => {
     const story = getStory(storyId)
     if (!story) return
-    originRef.current = originElement ?? null
+    originRef.current = captureReaderOrigin(originElement)
     setOpenSelection({ story, category: getStoryCategory(story.id), recap: getRecap(story.recap_id),
       snapshot: snapshotForCurrentStory(storyId), archived: false })
   }, [])
 
   const handleOpenSavedStory = useCallback((entry, originElement) => {
     if (entry.status !== 'readable') return
-    originRef.current = originElement ?? null
+    originRef.current = captureReaderOrigin(originElement)
     setOpenSelection({ story: entry.story, category: entry.category, recap: entry.recap,
       snapshot: entry, archived: true })
   }, [])
@@ -460,6 +501,7 @@ export default function App() {
           and links to original coverage; it does no original reporting.
         </p>
       </footer>
+      <div ref={returnSpaceRef} aria-hidden="true" style={{ overflowAnchor: 'none' }} />
 
       <BottomNav activeTab={activeTab} onTabChange={handleTabChange} savedCount={savedCount} />
 
