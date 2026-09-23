@@ -201,7 +201,7 @@ function Catchup({ recap, category, backLabel, onClose, isSaved, onToggleSave, s
   useEffect(() => {
     function onKeyDown(event) {
       const node = dialogRef.current
-      if (!node) return
+      if (!node || event.isComposing || event.keyCode === 229) return
 
       if (event.key === 'Escape') {
         event.preventDefault()

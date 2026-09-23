@@ -54,6 +54,7 @@ const FOCUSABLE = [
   'input:not([disabled])',
   'select:not([disabled])',
   'textarea:not([disabled])',
+  '[contenteditable]:not([contenteditable="false"])',
   '[tabindex]:not([tabindex="-1"])',
 ].join(',')
 
@@ -196,8 +197,11 @@ function Reader({ story, category, onClose, isSaved, onToggleSave, isRead, onTog
   const [visible, setVisible] = useState(false)
   const [activeTerm, setActiveTerm] = useState(null)
   const termTriggerRef = useRef(null)
+  const privateNoteRef = useRef(null)
 
   const handleClose = useCallback(() => {
+    // Only the private note participates in dismissal, never Discussion.
+    privateNoteRef.current?.save()
     if (typeof onClose === 'function') onClose()
   }, [onClose])
 
@@ -246,13 +250,19 @@ function Reader({ story, category, onClose, isSaved, onToggleSave, isRead, onTog
 
     function onKeyDown(event) {
       const node = dialogRef.current
-      if (!node) return
+      if (!node || event.isComposing || event.keyCode === 229) return
 
       if (event.key === 'Escape') {
         event.preventDefault()
         handleClose()
         return
       }
+
+      // Editing/navigation belongs to the actual control, including shadow
+      // descendants. Tab still belongs to the topmost dialog's focus trap.
+      if (event.key !== 'Tab' && event.composedPath().some((target) =>
+        target instanceof HTMLElement && (target.isContentEditable || target.matches('input, textarea, select')),
+      )) return
 
       if (event.key === 'PageDown') {
         event.preventDefault()
@@ -594,7 +604,7 @@ function Reader({ story, category, onClose, isSaved, onToggleSave, isRead, onTog
             <StakesCallout variant="what-now">{story.what_now}</StakesCallout>
           </div>
 
-          {take ? <YourTake key={`${archiveEdition?.date || 'current'}:${storyId}`} {...take} /> : null}
+          {take ? <YourTake key={JSON.stringify([take.edition || archiveEdition?.date || archiveEdition?.generatedAt || 'current', storyId])} {...take} ref={privateNoteRef} /> : null}
           {discussion ? <Discussion key={`${discussion.edition}:${storyId}`} story={story} category={category} {...discussion} /> : null}
 
           <div className="mt-8">

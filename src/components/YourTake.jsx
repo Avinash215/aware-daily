@@ -1,4 +1,4 @@
-import { useId, useState } from 'react'
+import { useCallback, useId, useImperativeHandle, useState } from 'react'
 
 const NOTE_HINT = 'Notes stay in this browser. Writing one also likes the story.'
 
@@ -40,7 +40,7 @@ const toggleClass = (on) =>
  * The reader's own response to a story: like it, follow it into later
  * editions, and keep a private note. Nothing here is shared or sent.
  */
-export default function YourTake({ liked = false, followed = false, note = '', notePending = false, notePersisted = false, onToggleLike, onToggleFollow, onSaveNote, canFollow = true, sharedLikes = null, communityNote = '' }) {
+export default function YourTake({ ref, liked = false, followed = false, note = '', notePending = false, notePersisted = false, onToggleLike, onToggleFollow, onSaveNote, canFollow = true, sharedLikes = null, communityNote = '' }) {
   const noteId = useId()
   // The field shows the stored note until the reader edits it here, so a note
   // saved from another tab is never overwritten by a stale local copy.
@@ -49,15 +49,16 @@ export default function YourTake({ liked = false, followed = false, note = '', n
   const value = draft ?? note
 
   const dirty = draft !== null && draft !== note
-  const save = () => {
-    if (!dirty) {
+  const save = useCallback(() => {
+    if (!dirty && !notePending) {
       setDraft(null)
       return
     }
-    const persisted = onSaveNote?.(draft) === true
-    setSaveResult({ text: draft, persisted })
+    const persisted = onSaveNote?.(value) === true
+    setSaveResult({ text: value, persisted })
     if (persisted) setDraft(null)
-  }
+  }, [dirty, notePending, value, onSaveNote])
+  useImperativeHandle(ref, () => ({ save }), [save])
   const lastAttempt = saveResult?.text === value
   const sessionOnly = notePending || (lastAttempt && !saveResult.persisted && !(notePersisted && note === value))
   const noteStatus = sessionOnly
@@ -122,8 +123,7 @@ export default function YourTake({ liked = false, followed = false, note = '', n
         <button
           type="button"
           onClick={save}
-          disabled={!dirty}
-          className="inline-flex min-h-11 cursor-pointer items-center rounded-full border border-border bg-surface px-4 text-meta font-semibold text-text-primary disabled:cursor-default disabled:opacity-50"
+          className="inline-flex min-h-11 cursor-pointer items-center rounded-full border border-border bg-surface px-4 text-meta font-semibold text-text-primary"
         >
           Save note
         </button>

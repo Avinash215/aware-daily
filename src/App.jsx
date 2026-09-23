@@ -32,7 +32,7 @@ import {
   recaps,
   stories,
 } from './lib/data.js'
-import { followMatches, hasLocation, interestMatches, locationMatches } from './lib/personal.js'
+import { FOR_YOU, followMatches, hasLocation, interestMatches, locationMatches } from './lib/personal.js'
 import { formatDate, formatUpdated, parseDateOnly } from './lib/format.js'
 
 const THEME_STORAGE_KEY = 'aware-daily:theme'
@@ -104,6 +104,7 @@ export default function App() {
   const [activeTab, setActiveTab] = useState('today')
   const [activeCategory, setActiveCategory] = useState(ALL_CATEGORIES)
   const [openSelection, setOpenSelection] = useState(null)
+  const [forYouOrigin, setForYouOrigin] = useState(null)
   // The second overlay slot. It holds the whole recap object rather than an id,
   // because a saved catch-up must still open after `daily.json` has rotated and
   // `getRecap` no longer knows about it.
@@ -147,6 +148,13 @@ export default function App() {
     // Each followed story is one entry in the tab, whether or not it has news today.
     return { following, near, interests, count: ids.size + following.length }
   }, [editionKey, follows, likes, prefs])
+
+  // Keep the browsed list (and its exact opener) through reader saves and return.
+  // Navigation, changed preferences or an explicit feed unfollow refresh it.
+  const forYouContext = JSON.stringify([editionKey, prefs])
+  if (forYouOrigin && forYouOrigin.context !== forYouContext) setForYouOrigin(null)
+  const browsingForYou = forYouOrigin?.context === forYouContext
+    ? forYouOrigin.matches : forYou
 
   const readStories = useMemo(() => stories.filter((story) => readLookup.has(story.id)), [readLookup])
 
@@ -254,10 +262,13 @@ export default function App() {
   const handleOpenStory = useCallback((storyId, originElement) => {
     const story = getStory(storyId)
     if (!story) return
+    if (activeTab === 'today' && activeCategory === FOR_YOU) {
+      setForYouOrigin({ matches: browsingForYou, context: forYouContext })
+    }
     originRef.current = captureReaderOrigin(originElement)
     setOpenSelection({ story, category: getStoryCategory(story.id), recap: getRecap(story.recap_id),
       snapshot: snapshotForCurrentStory(storyId), archived: false })
-  }, [])
+  }, [activeTab, activeCategory, browsingForYou, forYouContext])
 
   const handleOpenSavedStory = useCallback((entry, originElement) => {
     if (entry.status !== 'readable') return
@@ -298,11 +309,22 @@ export default function App() {
   }, [clearAll, clearAllRecaps])
 
   const handleTabChange = useCallback((nextTab) => {
+    setForYouOrigin(null)
     setActiveTab(nextTab)
     setOpenSelection(null)
     setOpenRecap(null)
     if (typeof window !== 'undefined') window.scrollTo(0, 0)
   }, [])
+
+  const handleCategoryChange = useCallback((category) => {
+    setForYouOrigin(null)
+    setActiveCategory(category)
+  }, [])
+
+  const handleUnfollow = (key) => {
+    setForYouOrigin(null)
+    personal.removeFollow(key)
+  }
 
   const handleEditInterests = useCallback(() => {
     handleTabChange('you')
@@ -322,6 +344,7 @@ export default function App() {
   const privateLiked = openStory ? personal.isLiked(openStory.id, readerEdition) : false
   const sharedLiked = openStory && sharedReady ? community.likedShared(openStory.id, readerEdition) : false
   const readerTake = openStory ? {
+    edition: readerEdition,
     liked: privateLiked || sharedLiked,
     followed: personal.isFollowed(openStory.id, readerEdition),
     note: personal.noteFor(openStory.id, readerEdition),
@@ -400,8 +423,8 @@ export default function App() {
               <CategoryNav
                 categories={categories}
                 activeCategory={activeCategory}
-                onSelect={setActiveCategory}
-                forYouCount={forYou.count}
+                onSelect={handleCategoryChange}
+                forYouCount={browsingForYou.count}
               />
             </nav>
           </div>
@@ -441,11 +464,11 @@ export default function App() {
                 isSaved={isSaved}
                 onToggleSave={toggleSave}
                 onBrowseSaved={() => handleTabChange('saved')}
-                forYou={forYou}
+                forYou={browsingForYou}
                 prefs={prefs}
                 onOpenRecap={handleOpenRecap}
                 onEditInterests={handleEditInterests}
-                onUnfollow={personal.removeFollow}
+                onUnfollow={handleUnfollow}
                 onOpenQuiz={openQuiz}
                 community={communityMe}
                 editionDate={meta.date}

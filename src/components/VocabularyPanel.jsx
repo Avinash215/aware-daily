@@ -30,6 +30,7 @@ function ExplanationDialog({ entry, onClose, storageMessage, onRetryStorage, can
     const dialog = dialogRef.current
 
     function onKeyDown(event) {
+      if (event.isComposing || event.keyCode === 229) return
       if (event.key === 'Escape') {
         event.preventDefault()
         event.stopPropagation()
