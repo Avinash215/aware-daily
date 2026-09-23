@@ -6,7 +6,7 @@ import { TableClient, odata } from '@azure/data-tables'
  * unchanged. Entities use `partitionKey` / `rowKey`, as @azure/data-tables does.
  */
 
-export const TABLES = ['likes', 'userlikes', 'comments', 'storystats']
+export const TABLES = ['likes', 'userlikes', 'comments', 'storystats', 'ratelimits']
 
 const conflict = () => Object.assign(new Error('conflict'), { statusCode: 409 })
 const precondition = () => Object.assign(new Error('precondition failed'), { statusCode: 412 })

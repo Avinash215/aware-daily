@@ -100,6 +100,30 @@ export function createSocial({ store, now = () => Date.now(), moderators, random
     return totals
   }
 
+  /**
+   * Reserves one comment in the reader's current clock hour with a conditional
+   * write, so concurrent requests cannot all pass the check before any insert.
+   */
+  async function reserveCommentSlot(userId) {
+    const bucket = String(Math.floor(now() / 3_600_000))
+    for (let attempt = 0; attempt < 10; attempt += 1) {
+      const row = await store.get('ratelimits', userId, bucket)
+      try {
+        if (!row) {
+          await store.insert('ratelimits', { partitionKey: userId, rowKey: bucket, count: 1 })
+          return
+        }
+        if ((row.count || 0) >= COMMENTS_PER_HOUR) fail(429, 'slow_down', 'That is a lot of comments in an hour. Try again later.')
+        await store.replace('ratelimits', { ...row, count: (row.count || 0) + 1 }, row.etag)
+        return
+      } catch (error) {
+        if (error?.statusCode !== 409 && error?.statusCode !== 412) throw error
+        await pause()
+      }
+    }
+    fail(429, 'slow_down', 'Too many comments at once. Try again in a moment.')
+  }
+
   return {
     async me(principal) {
       if (!principal) return { signedIn: false, moderator: false }
@@ -166,12 +190,7 @@ export function createSocial({ store, now = () => Date.now(), moderators, random
       if (!name) name = defaultDisplayName(user)
 
       const moderator = moderatorOf(user)
-      if (!moderator) {
-        // Counted from stored comments, so the limit holds across requests and instances.
-        const hourAgo = now() - 3_600_000
-        const lastHour = (await store.where('comments', 'userId', user.userId)).filter((row) => (row.createdAt || 0) > hourAgo)
-        if (lastHour.length >= COMMENTS_PER_HOUR) fail(429, 'slow_down', 'That is a lot of comments in an hour. Try again later.')
-      }
+      if (!moderator) await reserveCommentSlot(user.userId)
 
       const createdAt = now()
       const suffix = Math.floor(random() * 36 ** 6).toString(36).padStart(6, '0').slice(-6)

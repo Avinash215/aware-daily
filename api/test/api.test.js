@@ -116,6 +116,16 @@ test('comment rate limit holds across requests, as production creates one handle
   for (let index = 0; index < 12; index += 1) await perRequest().addComment(reader(9, 'Avinash215'), { ...ref, text: `note ${index}` })
 })
 
+test('concurrent comments cannot slip past the hourly limit', async () => {
+  const store = createMemoryStore()
+  const results = await Promise.allSettled(Array.from({ length: 20 }, (_, index) =>
+    createSocial({ store }).addComment(reader(1), { ...ref, text: `burst ${index}` })))
+  const accepted = results.filter((result) => result.status === 'fulfilled').length
+  assert.ok(accepted >= 1 && accepted <= 10, `accepted ${accepted}`)
+  assert.ok(results.filter((result) => result.status === 'rejected').every((result) => result.reason.code === 'slow_down'))
+  assert.equal((await store.partition('comments', `${ref.edition}|${ref.storyId}`)).length, accepted)
+})
+
 test('the hourly window moves: old comments stop counting', async () => {
   const store = createMemoryStore()
   let clock = Date.parse('2026-09-22T10:00:00Z')

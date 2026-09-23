@@ -41,4 +41,11 @@ const many = Array.from({ length: 12 }, (_, index) => principal(100 + index, `re
 await Promise.all(many.map((reader) => social.toggleLike(reader, ref)))
 assert.equal((await social.stats(null, { edition: ref.edition })).stats[ref.storyId].likes, 13)
 
+// A burst of comments from one reader must not get past the hourly limit.
+const burster = principal(500, 'burster')
+const burst = await Promise.allSettled(Array.from({ length: 20 }, (_, index) =>
+  createSocial({ store }).addComment(burster, { ...ref, text: `burst ${index}` })))
+const accepted = burst.filter((result) => result.status === 'fulfilled').length
+assert.ok(accepted >= 1 && accepted <= 10, `accepted ${accepted}`)
+
 console.log('AZURITE INTEGRATION PASSED')
