@@ -3,12 +3,11 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 /**
  * Reading depth — how much of each story the FEED CARDS show.
  *
- * Today's edition is 55 stories: ~2 minutes as headlines, ~14 as headline +
- * dek + So what, ~51 with the reporting inline. The promise is "one finishable
- * briefing", so the reader picks the length. This module owns:
+ * The promise is "one finishable briefing", so the reader picks the length.
+ * This module owns:
  *
  *   - the three modes and the persisted choice (`aware-daily:depth`)
- *   - `bodyAfterDek`, the duplication guard Full mode depends on
+ *   - `fullTextFor`, the complete opening/rest composition for Full mode
  *   - `estimateDepthMinutes`, the read-time payoff, measured from real data
  *
  * The reader is deliberately not involved: once someone taps into a story they
@@ -19,12 +18,6 @@ const DEPTH_STORAGE_KEY = 'aware-daily:depth'
 
 /** Average adult reading speed for news prose. */
 const WORDS_PER_MINUTE = 230
-
-/** How much of the dek we fingerprint when matching it against paragraph one. */
-const FINGERPRINT_CHARS = 60
-
-/** A fingerprint shorter than this is too generic to trust as a match. */
-const MIN_FINGERPRINT_CHARS = 20
 
 export const DEFAULT_DEPTH = 'brief'
 
@@ -95,66 +88,47 @@ export function paragraphsOf(body) {
 /**
  * True when a paragraph is the source the dek was cut from.
  *
- * The comparison is on normalised, case-folded leading characters because the
- * two strings are generated separately — two stories in today's edition differ
- * only in straight versus curly quotes.
+ * Compare the entire normalised dek, not a fixed-length shared prefix.
+ * Only a trailing ellipsis may be removed: sentence punctuation must still
+ * match, and an excerpt must end at a boundary rather than inside a word.
  */
 function repeatsDek(paragraph, dek) {
-  const dekPrint = fingerprint(dek).replace(/[.…\s]+$/, '')
+  const dekPrint = fingerprint(dek).replace(/\.{3,}$/, '').trimEnd()
   if (!dekPrint) return false
 
   const opening = fingerprint(paragraph)
-  const key = dekPrint.slice(0, FINGERPRINT_CHARS)
-
-  // A very short dek is too generic for a prefix test, so it has to match the
-  // whole paragraph before we treat it as a repeat.
-  return key.length < MIN_FINGERPRINT_CHARS
-    ? opening.replace(/[.…\s]+$/, '') === dekPrint
-    : opening.startsWith(key)
+  return opening === dekPrint || (
+    opening.startsWith(dekPrint) &&
+    /^[\s.,!?;:)"'\]-]/.test(opening.slice(dekPrint.length))
+  )
 }
 
 /**
- * The paragraphs Full mode may safely add underneath the opening.
- *
- * `dek` is literally the opening sentence of `body` on 55 of today's 55
- * stories — the exporter derives it that way — so rendering the body whole
- * would make every card repeat its own first sentence. That bug shipped once
- * already. Guard rails, in order:
- *
- *   - a body with a single paragraph yields nothing extra, never a repeat
- *   - paragraph one is dropped when it opens with the dek
- *
- * Returns `[]` when there is nothing to add.
+ * The paragraphs following Full mode's composed opening. Delegate to the same
+ * composition used by cards and estimates so the opening and rest cannot drift.
  */
 export function bodyAfterDek(body, dek) {
-  const paragraphs = paragraphsOf(body)
-  if (paragraphs.length <= 1) return []
-  if (!fingerprint(dek).replace(/[.…\s]+$/, '')) return paragraphs.slice(1)
-
-  return repeatsDek(paragraphs[0], dek) ? paragraphs.slice(1) : paragraphs
+  return fullTextFor(body, dek).rest
 }
 
 /**
  * What Full mode renders: `{ opening, rest }`.
  *
- * The dek is a teaser — the exporter cuts it mid-clause and ends it in an
- * ellipsis — which is right for Skim and Brief and wrong for the one mode
- * where the reader has asked for everything. So Full swaps the teaser for the
- * paragraph it was cut from and picks the body up at paragraph two. A card
- * that has no body, or whose dek is a standfirst rather than a cut of
- * paragraph one, keeps the dek and loses nothing.
- *
- * Either way the opening text appears exactly once.
+ * An absent dek or a teaser derived from paragraph one uses that complete
+ * paragraph as the opening. A distinct standfirst keeps every body paragraph
+ * beneath it. With no body, retain the supplied dek. Later repeated paragraphs
+ * are reporting, not teasers, and are always preserved.
  */
 export function fullTextFor(body, dek) {
   const paragraphs = paragraphsOf(body)
   const dekText = String(dek ?? '').trim()
   const first = paragraphs[0] ?? ''
 
-  return {
-    opening: first && repeatsDek(first, dekText) ? first : dekText,
-    rest: bodyAfterDek(body, dek),
+  if (!dekText || repeatsDek(first, dekText)) {
+    return { opening: first, rest: paragraphs.slice(1) }
   }
+
+  return { opening: dekText, rest: paragraphs }
 }
 
 function countWords(value) {
