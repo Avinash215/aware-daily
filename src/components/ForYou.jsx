@@ -1,6 +1,8 @@
+import CommunityBoard from './CommunityBoard.jsx'
+import LocalHeadlines from './LocalHeadlines.jsx'
 import StoryCard from './StoryCard.jsx'
 import { DEFAULT_DEPTH } from '../hooks/useReadingDepth.js'
-import { getStoryCategory } from '../lib/data.js'
+import { getStory, getStoryCategory } from '../lib/data.js'
 import { formatDate } from '../lib/format.js'
 
 function Block({ id, title, detail, children }) {
@@ -37,10 +39,14 @@ export default function ForYou({
   onEditInterests,
   onUnfollow,
   onOpenQuiz,
+  community = null,
+  editionDate = '',
 }) {
   const { following, near, interests } = forYou
   const nothingSet = !following.length && !near.length && !interests.length
-    && !prefs.keywords.length && !prefs.sections.length && !prefs.country && !prefs.region
+    && !prefs.keywords.length && !prefs.sections.length && !prefs.country && !prefs.region && !prefs.place
+  const localNews = Boolean(community?.available && community?.localNews && prefs.place)
+  const board = Boolean(community?.available && community?.community)
 
   const row = (story, reason) => (
     <StoryCard
@@ -91,7 +97,7 @@ export default function ForYou({
           <p className="m-0 font-display text-[19px] leading-6 font-semibold text-text-primary">Nothing personal yet</p>
           <ul className="mt-2 mb-0 flex list-disc flex-col gap-1 pl-5 text-[14px] leading-[1.5] text-text-secondary">
             <li>Add topics or keywords you care about, such as “AI” or “Venezuela”.</li>
-            <li>Pick your country or region to see stories about where you are.</li>
+            <li>Add your town, country or region to see stories and local headlines for where you are.</li>
             <li>Open a story and choose Follow to track it into later editions.</li>
           </ul>
         </div>
@@ -152,6 +158,12 @@ export default function ForYou({
         </Block>
       ) : null}
 
+      {localNews ? (
+        <Block id="for-you-local" title={`Local headlines · ${prefs.place}`}>
+          <LocalHeadlines place={prefs.place} country={prefs.country} />
+        </Block>
+      ) : null}
+
       {prefs.country || prefs.region ? (
         <Block
           id="for-you-near"
@@ -162,8 +174,8 @@ export default function ForYou({
             <div className="mt-1">{near.map(({ story, reasons }) => row(story, reasons.join(' · ')))}</div>
           ) : (
             <p className="mt-3 mb-0 text-meta text-text-muted">
-              No story in this edition is about {prefs.country || prefs.region}. Aware’s edition covers national and
-              world news, not dedicated local reporting.
+              No story in this edition is about {prefs.country || prefs.region}.
+              {localNews ? '' : ' Aware’s edition covers national and world news; add your town on the You tab for local headlines.'}
             </p>
           )}
         </Block>
@@ -176,6 +188,12 @@ export default function ForYou({
           ) : (
             <p className="mt-3 mb-0 text-meta text-text-muted">Nothing in this edition matches your interests.</p>
           )}
+        </Block>
+      ) : null}
+
+      {board ? (
+        <Block id="for-you-readers" title="Readers’ top stories" detail="Last 7 days">
+          <CommunityBoard today={editionDate} isInEdition={(id) => Boolean(getStory(id))} onOpenStory={onOpenStory} />
         </Block>
       ) : null}
     </div>

@@ -38,7 +38,7 @@ const toggleClass = (on) =>
  * The reader's own response to a story: like it, follow it into later
  * editions, and keep a private note. Nothing here is shared or sent.
  */
-export default function YourTake({ liked = false, followed = false, note = '', onToggleLike, onToggleFollow, onSaveNote, canFollow = true }) {
+export default function YourTake({ liked = false, followed = false, note = '', onToggleLike, onToggleFollow, onSaveNote, canFollow = true, sharedLikes = null, communityNote = '' }) {
   const noteId = useId()
   // The field shows the stored note until the reader edits it here, so a note
   // saved from another tab is never overwritten by a stale local copy.
@@ -63,9 +63,18 @@ export default function YourTake({ liked = false, followed = false, note = '', o
         Your take
       </h2>
       <div className="mt-3 flex flex-wrap gap-2">
-        <button type="button" aria-pressed={liked} onClick={onToggleLike} className={toggleClass(liked)}>
+        <button
+          type="button"
+          aria-pressed={liked}
+          aria-label={`${liked ? 'Liked' : 'Like'}${typeof sharedLikes === 'number' && sharedLikes > 0 ? `, ${sharedLikes} ${sharedLikes === 1 ? 'reader' : 'readers'}` : ''}`}
+          onClick={onToggleLike}
+          className={toggleClass(liked)}
+        >
           <Heart filled={liked} />
           {liked ? 'Liked' : 'Like'}
+          {typeof sharedLikes === 'number' && sharedLikes > 0 ? (
+            <span aria-hidden="true" className="tabular-nums opacity-80">· {sharedLikes}</span>
+          ) : null}
         </button>
         {canFollow ? (
           <button type="button" aria-pressed={followed} onClick={onToggleFollow} className={toggleClass(followed)}>
@@ -74,6 +83,7 @@ export default function YourTake({ liked = false, followed = false, note = '', o
           </button>
         ) : null}
       </div>
+      {communityNote ? <p className="mt-2 mb-0 text-meta text-text-muted">{communityNote}</p> : null}
       {canFollow ? (
         <p className="mt-2 mb-0 text-meta text-text-muted">
           {followed

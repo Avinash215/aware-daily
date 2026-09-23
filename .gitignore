@@ -17,6 +17,10 @@ dist-ssr
 # is never committed, because a checked-in copy would be stale the next day.
 public/state/
 
+# Local Functions settings (emulator connection strings) and emulator data.
+api/local.settings.json
+.azurite/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

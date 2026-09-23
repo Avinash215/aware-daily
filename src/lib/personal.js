@@ -38,7 +38,7 @@ function uniqueStrings(list, max, length = 60) {
 
 /* ------------------------------------------------------------------ prefs */
 
-export const emptyPrefs = () => ({ sections: [], keywords: [], instructions: '', country: '', region: '' })
+export const emptyPrefs = () => ({ sections: [], keywords: [], instructions: '', country: '', region: '', place: '' })
 
 export function sanitizePrefs(raw) {
   const value = isObject(raw) ? raw : {}
@@ -48,11 +48,12 @@ export function sanitizePrefs(raw) {
     instructions: typeof value.instructions === 'string' ? value.instructions.slice(0, MAX_TEXT) : '',
     country: str(value.country, 60),
     region: str(value.region, 40),
+    place: str(value.place, 80),
   }
 }
 
 export const hasInterests = (prefs) => Boolean(prefs.sections.length || prefs.keywords.length)
-export const hasLocation = (prefs) => Boolean(prefs.country || prefs.region)
+export const hasLocation = (prefs) => Boolean(prefs.country || prefs.region || prefs.place)
 
 /** Splits "AI, Azure; India" into clean keywords. */
 export function parseKeywords(text) {
@@ -278,7 +279,7 @@ export function curationExport(prefs, likes) {
   const board = likeLeaderboard(likes)
   return JSON.stringify({
     interests: { sections: prefs.sections, keywords: prefs.keywords },
-    location: { country: prefs.country || null, region: prefs.region || null },
+    location: { place: prefs.place || null, country: prefs.country || null, region: prefs.region || null },
     instructions: prefs.instructions.trim() || null,
     liked_topics: board.topics.map((entry) => entry.label),
   }, null, 2)

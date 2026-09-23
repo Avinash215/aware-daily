@@ -34,6 +34,7 @@ export default function PersonalSettings({
   personal,
   onOpenQuiz,
   readCount = 0,
+  community = null,
 }) {
   const baseId = useId()
   const { prefs, updatePrefs, likes, removeLike, follows, removeFollow, quizScore, message } = personal
@@ -42,6 +43,14 @@ export default function PersonalSettings({
   const [instructionsDraft, setInstructionsDraft] = useState(null)
   const instructions = instructionsDraft ?? prefs.instructions
   const [copyState, setCopyState] = useState('')
+  const [placeDraft, setPlaceDraft] = useState(null)
+  const place = placeDraft ?? prefs.place
+  const localNews = Boolean(community?.available && community?.localNews)
+  const savePlace = (event) => {
+    event?.preventDefault?.()
+    if (placeDraft !== null && placeDraft.trim() !== prefs.place) updatePrefs({ place: placeDraft.trim() })
+    setPlaceDraft(null)
+  }
 
   const board = useMemo(() => likeLeaderboard(likes), [likes])
   const countries = useMemo(
@@ -209,7 +218,28 @@ export default function PersonalSettings({
       <section aria-labelledby={`${baseId}-location`} className="mt-8">
         <Heading id={`${baseId}-location`}>Your location</Heading>
         <div className={card}>
-          <div className="grid gap-3 sm:grid-cols-2">
+          <form onSubmit={savePlace}>
+            <label htmlFor={`${baseId}-place`} className="block text-meta font-semibold text-text-primary">
+              Town or city
+            </label>
+            <p className="mt-0.5 mb-0 text-meta text-text-muted">For example: Jersey City, NJ or Leeds. Add a state or county to tell same-named places apart.</p>
+            <div className="mt-2 flex gap-2">
+              <input
+                id={`${baseId}-place`}
+                type="text"
+                value={place}
+                maxLength={80}
+                onChange={(event) => setPlaceDraft(event.target.value)}
+                onBlur={savePlace}
+                placeholder="Your town or city"
+                className="min-h-11 min-w-0 flex-1 rounded-lg border border-border bg-surface px-3 text-[15px] text-text-primary placeholder:text-text-muted"
+              />
+              <button type="submit" className="inline-flex min-h-11 cursor-pointer items-center rounded-full border border-border bg-surface px-4 text-meta font-semibold text-text-primary">
+                Save
+              </button>
+            </div>
+          </form>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
             <label className="block">
               <span className="block text-meta font-semibold text-text-primary">Country</span>
               <select
@@ -234,8 +264,11 @@ export default function PersonalSettings({
             </label>
           </div>
           <p className="mt-3 mb-0 text-meta text-text-muted">
-            Chosen by you, never detected. For you then shows stories in each edition about this place. Aware covers
-            national and world news; it has no dedicated local reporting yet.
+            Chosen by you, never detected, and different for every reader. For you shows stories in each edition about
+            your country or region{localNews ? ', plus the latest headlines from outlets in your town' : ''}.
+            {localNews
+              ? ' To find those headlines, your town is sent to Aware’s server for that one lookup and is not stored.'
+              : ' Local headlines for your town appear on the published site.'}
           </p>
         </div>
       </section>
@@ -301,8 +334,7 @@ export default function PersonalSettings({
           ) : (
             <p className="m-0 text-meta text-text-secondary">
               Like stories from the reader to build your own ranking of the sections, countries and topics you
-              value most. A shared leaderboard with other readers needs accounts and a server, which Aware does not
-              have yet.
+              value most.{community?.community ? ' The readers’ leaderboard, built from signed-in likes, is under For you.' : ''}
             </p>
           )}
         </div>

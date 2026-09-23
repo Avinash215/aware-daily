@@ -7,6 +7,7 @@ import SavedStoryStatus from './SavedStoryStatus.jsx'
 import SourceList from './SourceList.jsx'
 import StakesCallout from './StakesCallout.jsx'
 import VocabularyPanel from './VocabularyPanel.jsx'
+import Discussion from './Discussion.jsx'
 import YourTake from './YourTake.jsx'
 import { formatDate, readTime } from '../lib/format.js'
 import { annotateParagraphs, isExplainable } from '../lib/glossary.js'
@@ -163,6 +164,7 @@ export default function StoryReader({
   onRetryStorage,
   canRetryStorage,
   take = null,
+  discussion = null,
 }) {
   if (!story || typeof story !== 'object' || Array.isArray(story)) return null
   return (
@@ -182,11 +184,12 @@ export default function StoryReader({
       onRetryStorage={onRetryStorage}
       canRetryStorage={canRetryStorage}
       take={take}
+      discussion={discussion}
     />
   )
 }
 
-function Reader({ story, category, onClose, isSaved, onToggleSave, isRead, onToggleRead, recap, onOpenRecap, suspended, archiveEdition, storageMessage, onRetryStorage, canRetryStorage, take }) {
+function Reader({ story, category, onClose, isSaved, onToggleSave, isRead, onToggleRead, recap, onOpenRecap, suspended, archiveEdition, storageMessage, onRetryStorage, canRetryStorage, take, discussion }) {
   const dialogRef = useRef(null)
   const recapCtaRef = useRef(null)
   const wasSuspended = useRef(false)
@@ -592,6 +595,7 @@ function Reader({ story, category, onClose, isSaved, onToggleSave, isRead, onTog
           </div>
 
           {take ? <YourTake key={`${archiveEdition?.date || 'current'}:${storyId}`} {...take} /> : null}
+          {discussion ? <Discussion key={`${discussion.edition}:${storyId}`} story={story} category={category} {...discussion} /> : null}
 
           <div className="mt-8">
             <SourceList sources={sources} />

@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import BottomNav, { TopNav } from './components/BottomNav.jsx'
 import CategoryNav from './components/CategoryNav.jsx'
+import CommunitySettings from './components/CommunitySettings.jsx'
 import DepthControl from './components/DepthControl.jsx'
 import ErrorBoundary from './components/ErrorBoundary.jsx'
 import EditionFreshness from './components/EditionFreshness.jsx'
@@ -13,6 +14,7 @@ import SavedStoryStatus from './components/SavedStoryStatus.jsx'
 import StoryReader from './components/StoryReader.jsx'
 import YouPage from './components/YouPage.jsx'
 import { estimateDepthMinutes, useReadingDepth } from './hooks/useReadingDepth.js'
+import { useCommunity } from './hooks/useCommunity.js'
 import { usePersonal } from './hooks/usePersonal.js'
 import { useReadProgress } from './hooks/useReadProgress.js'
 import { useSavedRecaps } from './hooks/useSavedRecaps.js'
@@ -117,6 +119,7 @@ export default function App() {
   const { readStoryIds, readLookup, toggleRead, markAllRead, resetRead,
     storageMessage: readStorageMessage } = useReadProgress(editionKey, stories)
   const personal = usePersonal(editionKey)
+  const community = useCommunity(editionKey)
   const [quizOpen, setQuizOpen] = useState(false)
   const { prefs, likes, follows } = personal
 
@@ -271,13 +274,32 @@ export default function App() {
   const readerEdition = openSelection?.archived
     ? archivedEdition?.date || archivedEdition?.generatedAt || 'unknown-edition'
     : editionKey
+  const communityMe = community.me
+  const sharedReady = communityMe.community && /^\d{4}-\d{2}-\d{2}$/.test(readerEdition)
+  const privateLiked = openStory ? personal.isLiked(openStory.id, readerEdition) : false
+  const sharedLiked = openStory && sharedReady ? community.likedShared(openStory.id, readerEdition) : false
   const readerTake = openStory ? {
-    liked: personal.isLiked(openStory.id, readerEdition),
+    liked: privateLiked || sharedLiked,
     followed: personal.isFollowed(openStory.id, readerEdition),
     note: personal.noteFor(openStory.id, readerEdition),
-    onToggleLike: () => personal.toggleLike(openStory, openCategory, readerEdition),
+    // One button, two records: the private like always, and the shared count
+    // when signed in. Both are moved to the same target state, never toggled apart.
+    onToggleLike: () => {
+      const target = !(privateLiked || sharedLiked)
+      if (privateLiked !== target) personal.toggleLike(openStory, openCategory, readerEdition)
+      if (sharedReady && communityMe.signedIn && sharedLiked !== target) community.toggleShared(openStory, openCategory, readerEdition)
+    },
     onToggleFollow: () => personal.toggleFollow(openStory, openCategory, readerEdition),
     onSaveNote: (note) => personal.setNote(openStory, openCategory, note, readerEdition),
+    sharedLikes: sharedReady ? community.likeCount(openStory.id, readerEdition) : null,
+    communityNote: sharedReady
+      ? community.message || (communityMe.signedIn ? '' : 'Your like is saved in this browser. Sign in below to add it to the readers’ count.')
+      : '',
+  } : null
+  const readerDiscussion = openStory && sharedReady ? {
+    me: communityMe,
+    edition: readerEdition,
+    onCountChange: (delta) => community.adjustComments(openStory.id, delta),
   } : null
 
   return (
@@ -380,6 +402,8 @@ export default function App() {
                 onEditInterests={handleEditInterests}
                 onUnfollow={personal.removeFollow}
                 onOpenQuiz={openQuiz}
+                community={communityMe}
+                editionDate={meta.date}
               />
             </div>
           </ErrorBoundary>
@@ -420,7 +444,9 @@ export default function App() {
                 personal={personal}
                 onOpenQuiz={openQuiz}
                 readCount={readStories.length}
+                community={communityMe}
               />
+              <CommunitySettings me={communityMe} onChanged={community.refreshStats} />
             </YouPage>
           </ErrorBoundary>
         ) : null}
@@ -477,6 +503,7 @@ export default function App() {
             onRetryStorage={retryStorage}
             canRetryStorage={canRetryStorage}
             take={readerTake}
+            discussion={readerDiscussion}
           />
         ) : null}
       </ErrorBoundary>

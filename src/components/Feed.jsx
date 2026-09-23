@@ -129,6 +129,8 @@ export default function Feed(props) {
     onEditInterests,
     onUnfollow,
     onOpenQuiz,
+    community,
+    editionDate,
   } = props
   const fallbackSavedLookup = useMemo(() => new Set(savedIds), [savedIds])
   const storyReadLookup = useMemo(() => readLookup ?? new Set(readStoryIds), [readLookup, readStoryIds])
@@ -203,6 +205,8 @@ export default function Feed(props) {
         onEditInterests={onEditInterests}
         onUnfollow={onUnfollow}
         onOpenQuiz={onOpenQuiz}
+        community={community}
+        editionDate={editionDate}
       />
     )
   }
