@@ -150,13 +150,15 @@ export default function App() {
 
   const readStories = useMemo(() => stories.filter((story) => readLookup.has(story.id)), [readLookup])
 
-  const progressAndSavedMessage = [clearMessage, storageMessage, recapStorageMessage, readStorageMessage].filter(Boolean).join(' ')
-  const canRetryStorage = pendingStories || pendingRecaps
+  const { retry: retryPersonal, hasPendingChanges: pendingPersonal } = personal
+  const progressAndSavedMessage = [clearMessage, storageMessage, recapStorageMessage, readStorageMessage, personal.message].filter(Boolean).join(' ')
+  const canRetryStorage = pendingStories || pendingRecaps || pendingPersonal
   const retryStorage = useCallback(() => {
     setClearMessage('')
     if (pendingStories) retryStories()
     if (pendingRecaps) retryRecaps()
-  }, [pendingStories, pendingRecaps, retryStories, retryRecaps])
+    if (pendingPersonal) retryPersonal()
+  }, [pendingStories, pendingRecaps, pendingPersonal, retryStories, retryRecaps, retryPersonal])
 
   // Unavailable legacy entries are visible and removable, so they also count.
   const savedCount = savedStories.length + savedRecaps.length
@@ -323,6 +325,8 @@ export default function App() {
     liked: privateLiked || sharedLiked,
     followed: personal.isFollowed(openStory.id, readerEdition),
     note: personal.noteFor(openStory.id, readerEdition),
+    notePending: personal.isNotePending(openStory.id, readerEdition),
+    notePersisted: personal.isNotePersisted(openStory.id, readerEdition),
     // One button, two records: the private like always, and the shared count
     // when signed in. Both are moved to the same target state, never toggled apart.
     onToggleLike: () => {
@@ -408,7 +412,7 @@ export default function App() {
         id="main-content"
         className={`${SHELL} pb-10 lg:pb-16`}
       >
-        {!openSelection && !openRecap ? <SavedStoryStatus message={progressAndSavedMessage} onRetry={retryStorage} canRetry={canRetryStorage} floating="page" /> : null}
+        {!openSelection && !openRecap && !quizOpen ? <SavedStoryStatus message={progressAndSavedMessage} onRetry={retryStorage} canRetry={canRetryStorage} floating="page" /> : null}
         {activeTab === 'today' ? (
           <ErrorBoundary label="The feed">
             <div
@@ -561,6 +565,9 @@ export default function App() {
             onFinish={personal.recordQuiz}
             onClose={closeQuiz}
             onOpenStory={handleOpenStory}
+            storageMessage={progressAndSavedMessage}
+            onRetryStorage={retryStorage}
+            canRetryStorage={canRetryStorage}
           />
         ) : null}
       </ErrorBoundary>

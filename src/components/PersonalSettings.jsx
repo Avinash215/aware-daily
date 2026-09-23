@@ -37,7 +37,7 @@ export default function PersonalSettings({
   community = null,
 }) {
   const baseId = useId()
-  const { prefs, updatePrefs, likes, removeLike, follows, removeFollow, quizScore, message } = personal
+  const { prefs, updatePrefs, likes, removeLike, follows, removeFollow, quizScore } = personal
   const [keywordDraft, setKeywordDraft] = useState('')
   // Local only while the reader is editing, so another tab's saved text is not overwritten.
   const [instructionsDraft, setInstructionsDraft] = useState(null)
@@ -98,12 +98,6 @@ export default function PersonalSettings({
 
   return (
     <>
-      {message ? (
-        <p role="status" className="mt-6 mb-0 rounded-xl border border-border bg-surface-card px-4 py-3 text-meta text-text-primary">
-          {message}
-        </p>
-      ) : null}
-
       {/* Quiz ------------------------------------------------------------ */}
       <section aria-labelledby={`${baseId}-quiz`} className="mt-8">
         <Heading id={`${baseId}-quiz`}>Quiz</Heading>

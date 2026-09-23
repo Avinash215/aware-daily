@@ -1,5 +1,7 @@
 import { useId, useState } from 'react'
 
+const NOTE_HINT = 'Notes stay in this browser. Writing one also likes the story.'
+
 function Heart({ filled }) {
   return (
     <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" aria-hidden="true" focusable="false">
@@ -38,12 +40,12 @@ const toggleClass = (on) =>
  * The reader's own response to a story: like it, follow it into later
  * editions, and keep a private note. Nothing here is shared or sent.
  */
-export default function YourTake({ liked = false, followed = false, note = '', onToggleLike, onToggleFollow, onSaveNote, canFollow = true, sharedLikes = null, communityNote = '' }) {
+export default function YourTake({ liked = false, followed = false, note = '', notePending = false, notePersisted = false, onToggleLike, onToggleFollow, onSaveNote, canFollow = true, sharedLikes = null, communityNote = '' }) {
   const noteId = useId()
   // The field shows the stored note until the reader edits it here, so a note
   // saved from another tab is never overwritten by a stale local copy.
   const [draft, setDraft] = useState(null)
-  const [savedAt, setSavedAt] = useState(null)
+  const [saveResult, setSaveResult] = useState(null)
   const value = draft ?? note
 
   const dirty = draft !== null && draft !== note
@@ -52,10 +54,17 @@ export default function YourTake({ liked = false, followed = false, note = '', o
       setDraft(null)
       return
     }
-    onSaveNote?.(draft)
-    setDraft(null)
-    setSavedAt(Date.now())
+    const persisted = onSaveNote?.(draft) === true
+    setSaveResult({ text: draft, persisted })
+    if (persisted) setDraft(null)
   }
+  const lastAttempt = saveResult?.text === value
+  const sessionOnly = notePending || (lastAttempt && !saveResult.persisted && !(notePersisted && note === value))
+  const noteStatus = sessionOnly
+    ? 'Session only, not persisted'
+    : dirty ? 'Unsaved'
+      : lastAttempt && (saveResult.persisted || notePersisted) ? 'Saved in this browser'
+        : NOTE_HINT
 
   return (
     <section aria-labelledby={`${noteId}-heading`} className="mt-8 max-w-[66ch] rounded-xl border border-border-subtle bg-surface-card p-4">
@@ -106,8 +115,9 @@ export default function YourTake({ liked = false, followed = false, note = '', o
         className="mt-1.5 block w-full resize-y rounded-lg border border-border bg-surface px-3 py-2 text-[15px] leading-[1.45] text-text-primary placeholder:text-text-muted focus-visible:outline-2 focus-visible:outline-offset-1"
       />
       <div className="mt-2 flex flex-wrap items-center justify-between gap-2">
-        <p className="m-0 text-meta text-text-muted" aria-live="polite">
-          {dirty ? 'Unsaved' : savedAt ? 'Saved in this browser' : 'Notes stay in this browser. Writing one also likes the story.'}
+        <p className="m-0 grid text-meta text-text-muted" aria-live="polite">
+          <span aria-hidden="true" className="invisible col-start-1 row-start-1">{NOTE_HINT}</span>
+          <span className="col-start-1 row-start-1">{noteStatus}</span>
         </p>
         <button
           type="button"

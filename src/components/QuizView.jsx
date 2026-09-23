@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { buildQuiz, QUIZ_MIN_READ } from '../lib/quiz.js'
+import SavedStoryStatus from './SavedStoryStatus.jsx'
 
 const FOCUSABLE = 'a[href],button:not([disabled]),input:not([disabled]),[tabindex]:not([tabindex="-1"])'
 
@@ -29,7 +30,7 @@ function Mark({ correct }) {
  * (or, when they explicitly choose practice, from each section's lead), and
  * every answer reveals the published text it is based on.
  */
-export default function QuizView({ readStories = [], practiceStories = [], editionStories = [], editionKey = '', best = null, onFinish, onClose, onOpenStory }) {
+export default function QuizView({ readStories = [], practiceStories = [], editionStories = [], editionKey = '', best = null, onFinish, onClose, onOpenStory, storageMessage = '', onRetryStorage, canRetryStorage }) {
   const dialogRef = useRef(null)
   const [mode, setMode] = useState(() => (readStories.length >= QUIZ_MIN_READ ? 'read' : 'intro'))
   const [attempt, setAttempt] = useState(0)
@@ -131,6 +132,7 @@ export default function QuizView({ readStories = [], practiceStories = [], editi
       tabIndex={-1}
       className="fixed inset-0 z-[55] overflow-y-auto overscroll-contain bg-surface"
     >
+      <SavedStoryStatus message={storageMessage} onRetry={onRetryStorage} canRetry={canRetryStorage} floating />
       <header className="sticky top-0 z-10 border-b border-border bg-surface">
         <div className="mx-auto flex w-full max-w-[680px] items-center justify-between gap-3 px-4 py-1 sm:px-6">
           <button

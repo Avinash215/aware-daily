@@ -19,9 +19,9 @@ function personalStores() {
   if (!stores) {
     stores = {
       prefs: createLocalStore({ key: 'aware-daily:prefs', empty: emptyPrefs, sanitize: sanitizePrefs }),
-      likes: createLocalStore({ key: 'aware-daily:likes', empty: emptyEntries, sanitize: sanitizeLikes }),
-      follows: createLocalStore({ key: 'aware-daily:follows', empty: emptyEntries, sanitize: sanitizeFollows }),
-      quiz: createLocalStore({ key: 'aware-daily:quiz', empty: emptyQuiz, sanitize: sanitizeQuiz }),
+      likes: createLocalStore({ key: 'aware-daily:likes', empty: emptyEntries, sanitize: sanitizeLikes, merge: 'entries' }),
+      follows: createLocalStore({ key: 'aware-daily:follows', empty: emptyEntries, sanitize: sanitizeFollows, merge: 'entries' }),
+      quiz: createLocalStore({ key: 'aware-daily:quiz', empty: emptyQuiz, sanitize: sanitizeQuiz, merge: 'editions' }),
     }
   }
   return stores
@@ -46,7 +46,7 @@ export function usePersonal(edition) {
   const followKeys = useMemo(() => new Set(follows.map((entry) => entry.key)), [follows])
 
   const updatePrefs = useCallback((patch) => {
-    prefsStore.update((current) => ({ ...current, ...(typeof patch === 'function' ? patch(current) : patch) }))
+    return prefsStore.update((current) => ({ ...current, ...(typeof patch === 'function' ? patch(current) : patch) }))
   }, [prefsStore])
 
   const isLiked = useCallback((id, storyEdition = edition) => likeKeys.has(entryKey(storyEdition, id)), [edition, likeKeys])
@@ -54,8 +54,8 @@ export function usePersonal(edition) {
 
   const toggleLike = useCallback((story, category, storyEdition = edition) => {
     const snapshot = storySnapshot(story, category, storyEdition)
-    if (!snapshot) return
-    likesStore.update((current) => {
+    if (!snapshot) return false
+    return likesStore.update((current) => {
       const exists = current.entries.some((entry) => entry.key === snapshot.key)
       return {
         entries: exists
@@ -66,15 +66,15 @@ export function usePersonal(edition) {
   }, [edition, likesStore])
 
   const removeLike = useCallback((key) => {
-    likesStore.update((current) => ({ entries: current.entries.filter((entry) => entry.key !== key) }))
+    return likesStore.update((current) => ({ entries: current.entries.filter((entry) => entry.key !== key) }))
   }, [likesStore])
 
   // Writing a note on a story you have not liked keeps it with a like, so the
   // note always has a home in the leaderboard and is never silently lost.
   const setNote = useCallback((story, category, note, storyEdition = edition) => {
     const snapshot = storySnapshot(story, category, storyEdition)
-    if (!snapshot) return
-    likesStore.update((current) => {
+    if (!snapshot) return false
+    return likesStore.update((current) => {
       const exists = current.entries.some((entry) => entry.key === snapshot.key)
       if (exists) {
         return { entries: current.entries.map((entry) => (entry.key === snapshot.key ? { ...entry, note } : entry)) }
@@ -89,10 +89,15 @@ export function usePersonal(edition) {
     return likes.find((entry) => entry.key === key)?.note || ''
   }, [edition, likes])
 
+  const isNotePending = useCallback((id, storyEdition = edition) =>
+    likesState.pendingKeys.includes(entryKey(storyEdition, id)), [edition, likesState.pendingKeys])
+  const isNotePersisted = useCallback((id, storyEdition = edition) =>
+    !likesState.message && !isNotePending(id, storyEdition), [edition, isNotePending, likesState.message])
+
   const toggleFollow = useCallback((story, category, storyEdition = edition) => {
     const snapshot = storySnapshot(story, category, storyEdition)
-    if (!snapshot) return
-    followsStore.update((current) => {
+    if (!snapshot) return false
+    return followsStore.update((current) => {
       const exists = current.entries.some((entry) => entry.key === snapshot.key)
       return {
         entries: exists
@@ -103,11 +108,11 @@ export function usePersonal(edition) {
   }, [edition, followsStore])
 
   const removeFollow = useCallback((key) => {
-    followsStore.update((current) => ({ entries: current.entries.filter((entry) => entry.key !== key) }))
+    return followsStore.update((current) => ({ entries: current.entries.filter((entry) => entry.key !== key) }))
   }, [followsStore])
 
   const recordQuiz = useCallback((score, total) => {
-    quizStore.update((current) => {
+    return quizStore.update((current) => {
       const previous = current.editions[edition] || { best: 0, total: 0, attempts: 0, lastAt: 0 }
       return {
         editions: {
@@ -123,6 +128,17 @@ export function usePersonal(edition) {
     })
   }, [edition, quizStore])
 
+  const retry = useCallback(() => {
+    let attempted = false
+    let succeeded = true
+    for (const store of [prefsStore, likesStore, followsStore, quizStore]) {
+      if (!store.getSnapshot().pending) continue
+      attempted = true
+      if (!store.retry()) succeeded = false
+    }
+    return attempted && succeeded
+  }, [prefsStore, likesStore, followsStore, quizStore])
+
   const message = [prefsState.message, likesState.message, followsState.message, quizState.message]
     .filter(Boolean)
     .filter((value, index, list) => list.indexOf(value) === index)
@@ -137,6 +153,8 @@ export function usePersonal(edition) {
     removeLike,
     setNote,
     noteFor,
+    isNotePending,
+    isNotePersisted,
     follows,
     isFollowed,
     toggleFollow,
@@ -144,5 +162,7 @@ export function usePersonal(edition) {
     quizScore: quizState.value.editions[edition] || null,
     recordQuiz,
     message,
+    retry,
+    hasPendingChanges: prefsState.pending || likesState.pending || followsState.pending || quizState.pending,
   }
 }
