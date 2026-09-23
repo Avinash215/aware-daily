@@ -30,7 +30,7 @@ function Mark({ correct }) {
  * (or, when they explicitly choose practice, from each section's lead), and
  * every answer reveals the published text it is based on.
  */
-export default function QuizView({ readStories = [], practiceStories = [], editionStories = [], editionKey = '', best = null, onFinish, onClose, onOpenStory, storageMessage = '', onRetryStorage, canRetryStorage }) {
+export default function QuizView({ readStories = [], practiceStories = [], editionStories = [], editionKey = '', best = null, onFinish, onClose, onOpenStory, storageMessage = '', onRetryStorage, canRetryStorage, returnFocus }) {
   const dialogRef = useRef(null)
   const [mode, setMode] = useState(() => (readStories.length >= QUIZ_MIN_READ ? 'read' : 'intro'))
   const [attempt, setAttempt] = useState(0)
@@ -50,15 +50,15 @@ export default function QuizView({ readStories = [], practiceStories = [], editi
   const score = questions.reduce((sum, entry) => sum + (answers[entry.id] === entry.answerId ? 1 : 0), 0)
 
   useEffect(() => {
-    const previous = document.activeElement
+    const previous = returnFocus ?? document.activeElement
     dialogRef.current?.focus()
     const overflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
+    if (returnFocus === undefined) document.body.style.overflow = 'hidden'
     return () => {
-      document.body.style.overflow = overflow
+      if (returnFocus === undefined) document.body.style.overflow = overflow
       if (previous instanceof HTMLElement && document.contains(previous)) previous.focus({ preventScroll: true })
     }
-  }, [])
+  }, [returnFocus])
 
   useEffect(() => {
     function onKeyDown(event) {

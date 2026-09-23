@@ -152,7 +152,7 @@ function Prose({ text }) {
   )
 }
 
-export default function RecapView({ recap, category, backLabel, onClose, isSaved, onToggleSave, storageMessage = '', onRetryStorage, canRetryStorage }) {
+export default function RecapView({ recap, category, backLabel, onClose, isSaved, onToggleSave, storageMessage = '', onRetryStorage, canRetryStorage, returnFocus }) {
   if (!recap || typeof recap !== 'object' || Array.isArray(recap)) return null
   return (
     <Catchup
@@ -165,11 +165,12 @@ export default function RecapView({ recap, category, backLabel, onClose, isSaved
       storageMessage={storageMessage}
       onRetryStorage={onRetryStorage}
       canRetryStorage={canRetryStorage}
+      returnFocus={returnFocus}
     />
   )
 }
 
-function Catchup({ recap, category, backLabel, onClose, isSaved, onToggleSave, storageMessage, onRetryStorage, canRetryStorage }) {
+function Catchup({ recap, category, backLabel, onClose, isSaved, onToggleSave, storageMessage, onRetryStorage, canRetryStorage, returnFocus }) {
   const dialogRef = useRef(null)
   const [visible, setVisible] = useState(false)
 
@@ -179,23 +180,25 @@ function Catchup({ recap, category, backLabel, onClose, isSaved, onToggleSave, s
 
   // Focus moves to the dialog on open and returns to the opener on close.
   useEffect(() => {
-    const previous = document.activeElement
+    const previous = returnFocus ?? document.activeElement
     dialogRef.current?.focus()
 
     return () => {
       if (previous instanceof HTMLElement && document.contains(previous)) previous.focus({ preventScroll: true })
     }
-  }, [])
+  }, [returnFocus])
 
   // The page behind must not scroll under the catch-up. The previous value is
   // restored rather than cleared, so a story reader underneath keeps its lock.
   useEffect(() => {
+    // Deferred dialogs share the shell's lock, including the loading interval.
+    if (returnFocus !== undefined) return undefined
     const previous = document.body.style.overflow
     document.body.style.overflow = 'hidden'
     return () => {
       document.body.style.overflow = previous
     }
-  }, [])
+  }, [returnFocus])
 
   // Escape closes; Tab is trapped inside the dialog.
   useEffect(() => {

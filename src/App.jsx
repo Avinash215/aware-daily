@@ -1,18 +1,13 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import BottomNav, { TopNav } from './components/BottomNav.jsx'
 import CategoryNav from './components/CategoryNav.jsx'
-import CommunitySettings from './components/CommunitySettings.jsx'
+import DeferredView from './components/DeferredView.jsx'
 import DepthControl from './components/DepthControl.jsx'
 import ErrorBoundary from './components/ErrorBoundary.jsx'
 import EditionFreshness from './components/EditionFreshness.jsx'
 import Feed from './components/Feed.jsx'
-import PersonalSettings from './components/PersonalSettings.jsx'
-import QuizView from './components/QuizView.jsx'
-import RecapView from './components/RecapView.jsx'
-import SavedPage from './components/SavedPage.jsx'
 import SavedStoryStatus from './components/SavedStoryStatus.jsx'
-import StoryReader from './components/StoryReader.jsx'
-import YouPage from './components/YouPage.jsx'
+import { readerView, recapView, quizView, savedView, youView } from './lib/deferredViews.js'
 import { estimateDepthMinutes, useReadingDepth } from './hooks/useReadingDepth.js'
 import { useCommunity } from './hooks/useCommunity.js'
 import { usePersonal } from './hooks/usePersonal.js'
@@ -111,6 +106,7 @@ export default function App() {
   const [openRecap, setOpenRecap] = useState(null)
   const [theme, setTheme] = useState(loadTheme)
   const [clearMessage, setClearMessage] = useState('')
+  const [editInterests, setEditInterests] = useState(false)
   const originRef = useRef(null)
   const returnSpaceRef = useRef(null)
 
@@ -134,6 +130,7 @@ export default function App() {
   const personal = usePersonal(editionKey)
   const community = useCommunity(editionKey)
   const [quizOpen, setQuizOpen] = useState(false)
+  const modalOpen = Boolean(openSelection || openRecap || quizOpen)
   const { prefs, likes, follows } = personal
 
   const forYou = useMemo(() => {
@@ -216,13 +213,13 @@ export default function App() {
   }, [theme])
 
   useEffect(() => {
-    if (!openSelection) return undefined
+    if (!modalOpen) return undefined
     const previous = document.body.style.overflow
     document.body.style.overflow = 'hidden'
     return () => {
       document.body.style.overflow = previous
     }
-  }, [openSelection])
+  }, [modalOpen])
 
   useEffect(() => {
     if (returnSpaceRef.current) returnSpaceRef.current.style.height = '0px'
@@ -309,10 +306,12 @@ export default function App() {
   }, [clearAll, clearAllRecaps])
 
   const handleTabChange = useCallback((nextTab) => {
+    setEditInterests(false)
     setForYouOrigin(null)
     setActiveTab(nextTab)
     setOpenSelection(null)
     setOpenRecap(null)
+    setQuizOpen(false)
     if (typeof window !== 'undefined') window.scrollTo(0, 0)
   }, [])
 
@@ -328,7 +327,7 @@ export default function App() {
 
   const handleEditInterests = useCallback(() => {
     handleTabChange('you')
-    requestAnimationFrame(() => document.getElementById('interests')?.scrollIntoView({ block: 'start' }))
+    setEditInterests(true)
   }, [handleTabChange])
 
   const openQuiz = useCallback(() => setQuizOpen(true), [])
@@ -472,6 +471,7 @@ export default function App() {
                 onOpenQuiz={openQuiz}
                 community={communityMe}
                 editionDate={meta.date}
+                onCancelForYou={() => handleCategoryChange(ALL_CATEGORIES)}
               />
             </div>
           </ErrorBoundary>
@@ -479,7 +479,8 @@ export default function App() {
 
         {activeTab === 'saved' ? (
           <ErrorBoundary label="Your saved stories">
-            <SavedPage
+            <DeferredView resource={savedView} label="Saved stories" onCancel={() => handleTabChange('today')}>
+              {(SavedPage) => <SavedPage
               stories={savedStories}
               recaps={savedRecaps}
               onOpenStory={handleOpenSavedStory}
@@ -488,13 +489,16 @@ export default function App() {
               onToggleSaveRecap={toggleSaveRecap}
               onClearAll={handleClearAllSaved}
               onBrowse={handleTabChange}
-            />
+              />}
+            </DeferredView>
           </ErrorBoundary>
         ) : null}
 
         {activeTab === 'you' ? (
           <ErrorBoundary label="Your reading progress">
-            <YouPage
+            <DeferredView resource={youView} label="Your settings" onCancel={() => handleTabChange('today')}>
+              {(YouPage) => <YouPage
+               focusInterests={editInterests}
               categories={categories}
               stories={stories}
               readStoryIds={readStoryIds}
@@ -505,17 +509,11 @@ export default function App() {
               onThemeChange={setTheme}
               dateLabel={dateLabel}
               updatedLabel={updatedLabel}
-            >
-              <PersonalSettings
-                categories={categories}
-                editionCountries={EDITION_COUNTRIES}
-                personal={personal}
-                onOpenQuiz={openQuiz}
-                readCount={readStories.length}
-                community={communityMe}
-              />
-              <CommunitySettings me={communityMe} onChanged={community.refreshStats} />
-            </YouPage>
+                personalSettings={{ categories, editionCountries: EDITION_COUNTRIES, personal,
+                  onOpenQuiz: openQuiz, readCount: readStories.length, community: communityMe }}
+                communitySettings={{ me: communityMe, onChanged: community.refreshStats }}
+              />}
+            </DeferredView>
           </ErrorBoundary>
         ) : null}
       </main>
@@ -540,7 +538,9 @@ export default function App() {
       */}
       <ErrorBoundary label="The catch-up">
         {openRecap ? (
-          <RecapView
+          <DeferredView resource={recapView} label="The catch-up" modal onCancel={handleCloseRecap}>
+            {(RecapView, returnFocus) => <RecapView
+            returnFocus={returnFocus}
             recap={openRecap}
             category={openRecapCategory}
             backLabel={recapBackLabel}
@@ -550,13 +550,16 @@ export default function App() {
             storageMessage={progressAndSavedMessage}
             onRetryStorage={retryStorage}
             canRetryStorage={canRetryStorage}
-          />
+            />}
+          </DeferredView>
         ) : null}
       </ErrorBoundary>
 
       <ErrorBoundary label="The story reader">
         {openStory ? (
-          <StoryReader
+          <DeferredView resource={readerView} label="The story reader" modal onCancel={handleCloseReader}>
+            {(StoryReader, returnFocus) => <StoryReader
+            returnFocus={returnFocus}
             story={openStory}
             category={openCategory}
             onClose={handleCloseReader}
@@ -573,13 +576,16 @@ export default function App() {
             canRetryStorage={canRetryStorage}
             take={readerTake}
             discussion={readerDiscussion}
-          />
+            />}
+          </DeferredView>
         ) : null}
       </ErrorBoundary>
 
       <ErrorBoundary label="The quiz">
         {quizOpen ? (
-          <QuizView
+          <DeferredView resource={quizView} label="The quiz" modal onCancel={closeQuiz}>
+            {(QuizView, returnFocus) => <QuizView
+            returnFocus={returnFocus}
             readStories={readStories}
             practiceStories={PRACTICE_STORIES}
             editionStories={stories}
@@ -591,7 +597,8 @@ export default function App() {
             storageMessage={progressAndSavedMessage}
             onRetryStorage={retryStorage}
             canRetryStorage={canRetryStorage}
-          />
+            />}
+          </DeferredView>
         ) : null}
       </ErrorBoundary>
     </div>

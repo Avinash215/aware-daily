@@ -2,7 +2,8 @@ import { useMemo } from 'react'
 import { ALL_CATEGORIES, categoryDomId, categoryTabId, categories as dataCategories, stories as dataStories } from '../lib/data.js'
 import { DEFAULT_DEPTH } from '../hooks/useReadingDepth.js'
 import { FOR_YOU } from '../lib/personal.js'
-import ForYou from './ForYou.jsx'
+import DeferredView from './DeferredView.jsx'
+import { forYouView } from '../lib/deferredViews.js'
 import LeadStory from './LeadStory.jsx'
 import StoryCard from './StoryCard.jsx'
 
@@ -131,6 +132,7 @@ export default function Feed(props) {
     onOpenQuiz,
     community,
     editionDate,
+    onCancelForYou,
   } = props
   const fallbackSavedLookup = useMemo(() => new Set(savedIds), [savedIds])
   const storyReadLookup = useMemo(() => readLookup ?? new Set(readStoryIds), [readLookup, readStoryIds])
@@ -192,7 +194,8 @@ export default function Feed(props) {
 
   if (activeCategory === FOR_YOU && forYou && prefs) {
     return (
-      <ForYou
+      <DeferredView resource={forYouView} label="For you" onCancel={onCancelForYou}>
+        {(ForYou) => <ForYou
         forYou={forYou}
         prefs={prefs}
         depth={depth}
@@ -207,7 +210,8 @@ export default function Feed(props) {
         onOpenQuiz={onOpenQuiz}
         community={community}
         editionDate={editionDate}
-      />
+        />}
+      </DeferredView>
     )
   }
 

@@ -166,6 +166,7 @@ export default function StoryReader({
   canRetryStorage,
   take = null,
   discussion = null,
+  returnFocus,
 }) {
   if (!story || typeof story !== 'object' || Array.isArray(story)) return null
   return (
@@ -186,11 +187,12 @@ export default function StoryReader({
       canRetryStorage={canRetryStorage}
       take={take}
       discussion={discussion}
+      returnFocus={returnFocus}
     />
   )
 }
 
-function Reader({ story, category, onClose, isSaved, onToggleSave, isRead, onToggleRead, recap, onOpenRecap, suspended, archiveEdition, storageMessage, onRetryStorage, canRetryStorage, take, discussion }) {
+function Reader({ story, category, onClose, isSaved, onToggleSave, isRead, onToggleRead, recap, onOpenRecap, suspended, archiveEdition, storageMessage, onRetryStorage, canRetryStorage, take, discussion, returnFocus }) {
   const dialogRef = useRef(null)
   const recapCtaRef = useRef(null)
   const wasSuspended = useRef(false)
@@ -234,13 +236,13 @@ function Reader({ story, category, onClose, isSaved, onToggleSave, isRead, onTog
 
   // Focus moves to the close control on open and returns to the opener on close.
   useEffect(() => {
-    const previous = document.activeElement
+    const previous = returnFocus ?? document.activeElement
     dialogRef.current?.focus()
 
     return () => {
       if (previous instanceof HTMLElement && document.contains(previous)) previous.focus({ preventScroll: true })
     }
-  }, [])
+  }, [returnFocus])
 
   // Escape closes; Tab is trapped inside the dialog. While a catch-up is open
   // on top, this reader owns neither: it is inert and the catch-up handles the
@@ -414,7 +416,8 @@ function Reader({ story, category, onClose, isSaved, onToggleSave, isRead, onTog
     <div
       ref={dialogRef}
       role="dialog"
-      aria-modal="true"
+      aria-modal={suspended || activeTerm ? undefined : true}
+      aria-hidden={suspended || activeTerm ? true : undefined}
       aria-labelledby="story-reader-headline"
       tabIndex={-1}
       inert={Boolean(suspended || activeTerm)}
