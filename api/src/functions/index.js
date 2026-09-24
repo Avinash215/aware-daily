@@ -1,7 +1,7 @@
 import { app } from '@azure/functions'
 import { createLocalNews } from '../lib/local.js'
 import { readPrincipal } from '../lib/principal.js'
-import { HttpError, createSocial } from '../lib/social.js'
+import { HttpError, communityMode, communityOpenTo, createSocial } from '../lib/social.js'
 import { configuredStore } from '../lib/store.js'
 
 /**
@@ -17,9 +17,10 @@ const json = (status, body, headers = {}) => ({
   headers: { 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff', ...headers },
 })
 
-function social() {
+function social(principal) {
   const store = configuredStore()
   if (!store) throw new HttpError(503, 'community_unavailable', 'Community storage is not configured.')
+  if (!communityOpenTo(principal)) throw new HttpError(503, 'community_unavailable', 'Community features are not open yet.')
   return createSocial({ store })
 }
 
@@ -57,8 +58,10 @@ app.http('me', {
   route: 'me',
   handler: handle(async (request, principal) => {
     const store = configuredStore()
+    const mode = communityMode()
     const me = await createSocial({ store: store || {} }).me(principal)
-    return json(200, { ...me, community: Boolean(store), localNews: true })
+    const community = Boolean(store) && communityOpenTo(principal, mode)
+    return json(200, { ...me, community, preview: community && mode === 'preview', localNews: true })
   }),
 })
 
@@ -66,14 +69,14 @@ app.http('socialStats', {
   methods: ['GET'],
   authLevel: 'anonymous',
   route: 'social/stats',
-  handler: handle(async (request, principal) => json(200, await social().stats(principal, { edition: query(request, 'edition') }))),
+  handler: handle(async (request, principal) => json(200, await social(principal).stats(principal, { edition: query(request, 'edition') }))),
 })
 
 app.http('socialLike', {
   methods: ['POST'],
   authLevel: 'anonymous',
   route: 'social/like',
-  handler: handle(async (request, principal) => json(200, await social().toggleLike(principal, await body(request)))),
+  handler: handle(async (request, principal) => json(200, await social(principal).toggleLike(principal, await body(request)))),
 })
 
 app.http('socialComments', {
@@ -81,8 +84,8 @@ app.http('socialComments', {
   authLevel: 'anonymous',
   route: 'social/comments',
   handler: handle(async (request, principal) => {
-    if (request.method === 'POST') return json(201, await social().addComment(principal, await body(request)))
-    return json(200, await social().listComments(principal, { edition: query(request, 'edition'), storyId: query(request, 'storyId') }))
+    if (request.method === 'POST') return json(201, await social(principal).addComment(principal, await body(request)))
+    return json(200, await social(principal).listComments(principal, { edition: query(request, 'edition'), storyId: query(request, 'storyId') }))
   }),
 })
 
@@ -90,14 +93,14 @@ app.http('socialReport', {
   methods: ['POST'],
   authLevel: 'anonymous',
   route: 'social/report',
-  handler: handle(async (request, principal) => json(200, await social().report(principal, await body(request)))),
+  handler: handle(async (request, principal) => json(200, await social(principal).report(principal, await body(request)))),
 })
 
 app.http('socialLeaderboard', {
   methods: ['GET'],
   authLevel: 'anonymous',
   route: 'social/leaderboard',
-  handler: handle(async (request, principal) => json(200, await social().leaderboard(principal, {
+  handler: handle(async (request, principal) => json(200, await social(principal).leaderboard(principal, {
     days: query(request, 'days'),
     today: query(request, 'today'),
   }))),
@@ -108,8 +111,8 @@ app.http('socialModeration', {
   authLevel: 'anonymous',
   route: 'social/moderation',
   handler: handle(async (request, principal) => {
-    if (request.method === 'POST') return json(200, await social().moderate(principal, await body(request)))
-    return json(200, await social().moderationQueue(principal))
+    if (request.method === 'POST') return json(200, await social(principal).moderate(principal, await body(request)))
+    return json(200, await social(principal).moderationQueue(principal))
   }),
 })
 

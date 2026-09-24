@@ -28,6 +28,23 @@ const fail = (status, code, message) => {
   throw new HttpError(status, code, message)
 }
 
+/**
+ * `AWARE_COMMUNITY`: `on` opens community features to everyone, `preview`
+ * only to moderators (a soft launch), `off` to nobody. Unset means `on`, so
+ * configuring storage alone behaves as it always has; anything else is `off`.
+ */
+export function communityMode(value = process.env.AWARE_COMMUNITY) {
+  const mode = String(value ?? '').trim().toLowerCase()
+  if (!mode) return 'on'
+  return mode === 'on' || mode === 'preview' ? mode : 'off'
+}
+
+export function communityOpenTo(principal, mode = communityMode(), moderators) {
+  if (mode === 'on') return true
+  if (mode === 'preview') return isModerator(principal, moderators)
+  return false
+}
+
 function cleanText(value, max) {
   if (typeof value !== 'string') return ''
   // Control characters other than newlines never reach storage or other readers.

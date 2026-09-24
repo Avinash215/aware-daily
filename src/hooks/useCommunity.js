@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { fetchMe, getStats, toggleLike as postLike } from '../lib/api.js'
 
-const UNKNOWN = { checked: false, available: false, community: false, localNews: false, signedIn: false, moderator: false, displayName: '', provider: '' }
+const UNKNOWN = { checked: false, available: false, community: false, preview: false, localNews: false, signedIn: false, moderator: false, displayName: '', provider: '' }
 
 /**
  * Who the reader is to the community API, and this edition's shared like and

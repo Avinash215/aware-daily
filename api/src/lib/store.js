@@ -1,4 +1,5 @@
 import { TableClient, odata } from '@azure/data-tables'
+import { DefaultAzureCredential, ManagedIdentityCredential } from '@azure/identity'
 
 /**
  * Storage for community data behind one small interface, so the handlers can
@@ -57,15 +58,24 @@ export function createMemoryStore() {
   }
 }
 
-export function createTableStore(connectionString) {
+/**
+ * `target` is either a connection string (Azurite, local runs) or
+ * `{ endpoint, credential }` for Microsoft Entra auth, which production uses
+ * because the subscription's policy turns shared-key access off.
+ */
+export function createTableStore(target) {
   const clients = new Map()
   const ready = new Map()
+  const connectionString = typeof target === 'string' ? target : ''
+  if (!connectionString && !(target?.endpoint && target?.credential)) throw new Error('table store needs a connection string or an endpoint and credential')
   const allowInsecureConnection = /UseDevelopmentStorage=true|127\.0\.0\.1|localhost/i.test(connectionString)
 
   function client(name) {
     if (!TABLES.includes(name)) throw new Error(`unknown table ${name}`)
     if (!clients.has(name)) {
-      clients.set(name, TableClient.fromConnectionString(connectionString, `aware${name}`, { allowInsecureConnection }))
+      clients.set(name, connectionString
+        ? TableClient.fromConnectionString(connectionString, `aware${name}`, { allowInsecureConnection })
+        : new TableClient(target.endpoint, `aware${name}`, target.credential))
     }
     return clients.get(name)
   }
@@ -143,10 +153,30 @@ export function createTableStore(connectionString) {
 
 let shared = null
 
+/**
+ * Where the tables live, from the environment:
+ * - `AWARE_STORAGE_CONNECTION`: a connection string (local development).
+ * - `AWARE_STORAGE_ACCOUNT`: an account name reached with a managed identity;
+ *   `AWARE_STORAGE_CLIENT_ID` picks a user-assigned identity.
+ * Returns `null` when neither is set or the account name is not valid.
+ */
+export function storageTarget(env = process.env) {
+  const connection = String(env.AWARE_STORAGE_CONNECTION || '').trim()
+  if (connection) return connection
+  const account = String(env.AWARE_STORAGE_ACCOUNT || '').trim().toLowerCase()
+  if (!/^[a-z0-9]{3,24}$/.test(account)) return null
+  const clientId = String(env.AWARE_STORAGE_CLIENT_ID || '').trim()
+  return {
+    endpoint: `https://${account}.table.core.windows.net`,
+    credential: clientId ? new ManagedIdentityCredential({ clientId }) : new DefaultAzureCredential(),
+  }
+}
+
 /** The configured store, or `null` when community storage is not configured. */
 export function configuredStore() {
-  const connection = process.env.AWARE_STORAGE_CONNECTION
-  if (!connection) return null
-  if (!shared) shared = createTableStore(connection)
+  if (shared) return shared
+  const target = storageTarget()
+  if (!target) return null
+  shared = createTableStore(target)
   return shared
 }

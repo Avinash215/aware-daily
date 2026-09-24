@@ -1,8 +1,9 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
+import { ManagedIdentityCredential } from '@azure/identity'
 import { defaultDisplayName, isModerator, moderatorList, readPrincipal } from '../src/lib/principal.js'
-import { createSocial, HttpError } from '../src/lib/social.js'
-import { createMemoryStore } from '../src/lib/store.js'
+import { communityMode, communityOpenTo, createSocial, HttpError } from '../src/lib/social.js'
+import { createMemoryStore, createTableStore, storageTarget } from '../src/lib/store.js'
 import { createLocalNews, editionFor, isNews, parseRss, searchQuery, validPlace } from '../src/lib/local.js'
 
 const headerOf = (value) => ({ get: (name) => (name === 'x-ms-client-principal' ? value : null) })
@@ -37,6 +38,37 @@ test('moderators come from roles or AWARE_MODERATORS entries', () => {
 test('display names never expose an email address', () => {
   assert.equal(defaultDisplayName(reader(1, 'octocat')), 'octocat')
   assert.match(defaultDisplayName(reader(2, 'person@example.com', 'aad')), /^Reader user2a/)
+})
+
+test('community mode: unset is on, preview opens only to moderators, anything unknown is off', () => {
+  assert.equal(communityMode(undefined), 'on')
+  assert.equal(communityMode(''), 'on')
+  assert.equal(communityMode(' Preview '), 'preview')
+  assert.equal(communityMode('ON'), 'on')
+  assert.equal(communityMode('off'), 'off')
+  assert.equal(communityMode('yes please'), 'off')
+  const list = moderatorList('github:Avinash215')
+  const moderator = reader(1, 'Avinash215')
+  const other = reader(2, 'someone')
+  assert.equal(communityOpenTo(null, 'on', list), true)
+  assert.equal(communityOpenTo(other, 'on', list), true)
+  assert.equal(communityOpenTo(moderator, 'preview', list), true)
+  assert.equal(communityOpenTo(other, 'preview', list), false)
+  assert.equal(communityOpenTo(null, 'preview', list), false)
+  assert.equal(communityOpenTo(moderator, 'off', list), false)
+})
+
+test('storage target: connection string first, else a valid account reached with a managed identity', () => {
+  assert.equal(storageTarget({}), null)
+  assert.equal(storageTarget({ AWARE_STORAGE_CONNECTION: 'UseDevelopmentStorage=true', AWARE_STORAGE_ACCOUNT: 'abc' }), 'UseDevelopmentStorage=true')
+  assert.equal(storageTarget({ AWARE_STORAGE_ACCOUNT: 'Not_Valid!' }), null)
+  assert.equal(storageTarget({ AWARE_STORAGE_ACCOUNT: 'ab' }), null)
+  const target = storageTarget({ AWARE_STORAGE_ACCOUNT: 'AwareDailyCommunity', AWARE_STORAGE_CLIENT_ID: '00000000-0000-0000-0000-000000000001' })
+  assert.equal(target.endpoint, 'https://awaredailycommunity.table.core.windows.net')
+  assert.ok(target.credential instanceof ManagedIdentityCredential)
+  assert.equal(typeof storageTarget({ AWARE_STORAGE_ACCOUNT: 'awaredailycommunity' }).credential.getToken, 'function')
+  assert.throws(() => createTableStore({}), /connection string or an endpoint/)
+  assert.ok(createTableStore(target))
 })
 
 test('likes toggle per reader and keep one shared count', async () => {

@@ -48,6 +48,7 @@ export async function fetchMe() {
     return {
       available: true,
       community: Boolean(me.community),
+      preview: Boolean(me.community && me.preview),
       localNews: Boolean(me.localNews),
       signedIn: Boolean(me.signedIn),
       moderator: Boolean(me.moderator),
@@ -55,7 +56,7 @@ export async function fetchMe() {
       provider: typeof me.provider === 'string' ? me.provider : '',
     }
   } catch {
-    return { available: false, community: false, localNews: false, signedIn: false, moderator: false, displayName: '', provider: '' }
+    return { available: false, community: false, preview: false, localNews: false, signedIn: false, moderator: false, displayName: '', provider: '' }
   }
 }
 

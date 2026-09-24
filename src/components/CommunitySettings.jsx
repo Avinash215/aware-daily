@@ -108,6 +108,11 @@ export default function CommunitySettings({ me, onChanged }) {
               </div>
             </>
           )}
+          {me.preview ? (
+            <p className="mt-3 mb-0 text-meta text-text-muted">
+              Preview: only moderators can see community features. Readers see none of them until they are switched on.
+            </p>
+          ) : null}
         </div>
       </section>
 
