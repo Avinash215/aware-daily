@@ -429,6 +429,12 @@ function Reader({ story, category, onClose, isSaved, onToggleSave, isRead, onTog
     >
       <a
         href="#story-reader-body"
+        onClick={(event) => {
+          // Move focus without navigating: a fragment change here would push a
+          // history entry over the story link, and Back would reopen the story.
+          event.preventDefault()
+          document.getElementById('story-reader-body')?.focus()
+        }}
         className="absolute top-3 left-3 z-30 inline-flex min-h-[44px] -translate-y-[300%] items-center rounded-lg border border-border bg-surface-raised px-4 py-3 text-[0.9375rem] leading-[1.25rem] font-semibold text-text-primary focus:translate-y-0"
       >
         Skip to the reporting

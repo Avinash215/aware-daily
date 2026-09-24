@@ -25,6 +25,13 @@ export function searchable(query) {
   return fold(query).replace(/[^\p{L}\p{N}]+/gu, '').length >= MIN_QUERY
 }
 
+/** What the results say, for the status region that screen readers hear. */
+export function searchAnnouncement(query, count) {
+  if (!searchable(query)) return ''
+  if (!count) return 'No stories match. Try fewer or different words.'
+  return `${count} ${count === 1 ? 'story matches' : 'stories match'}.`
+}
+
 function fieldsOf(story, categoryLabel) {
   return {
     headline: fold(story.headline),

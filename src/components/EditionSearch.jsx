@@ -1,13 +1,22 @@
-import { forwardRef } from 'react'
+import { forwardRef, useEffect, useState } from 'react'
 import { searchable } from '../lib/search.js'
 import StoryCard from './StoryCard.jsx'
 
 /**
  * The edition search field. Escape clears it; the app focuses it on "/".
+ * The status region is mounted with the field so it exists before the first
+ * query, and speaks only once typing pauses.
  */
-export const SearchField = forwardRef(function SearchField({ value, onChange, total }, ref) {
+export const SearchField = forwardRef(function SearchField({ value, onChange, total, announcement = '' }, ref) {
+  const [spoken, setSpoken] = useState('')
+  useEffect(() => {
+    const timer = setTimeout(() => setSpoken(announcement), announcement ? 700 : 0)
+    return () => clearTimeout(timer)
+  }, [announcement])
+
   return (
     <div role="search" className="relative pt-4">
+      <p role="status" className="sr-only">{spoken}</p>
       <label htmlFor="edition-search" className="sr-only">Search today’s stories</label>
       <svg
         viewBox="0 0 24 24"

@@ -30,7 +30,7 @@ import {
 } from './lib/data.js'
 import { FOR_YOU, followMatches, hasLocation, interestMatches, locationMatches } from './lib/personal.js'
 import { formatDate, formatUpdated, parseDateOnly } from './lib/format.js'
-import { searchable, searchStories } from './lib/search.js'
+import { searchAnnouncement, searchable, searchStories } from './lib/search.js'
 import { isStoryHash, storyHash, storyIdFromHash } from './lib/storyLink.js'
 
 const THEME_STORAGE_KEY = 'aware-daily:theme'
@@ -258,7 +258,9 @@ export default function App() {
   // The address bar names the open story, so it can be copied or shared; it
   // is replaced, never pushed, so Back still leaves the page as before.
   const linkedStoryId = openSelection && !openSelection.archived ? openSelection.story?.id : null
+  const linkedStoryRef = useRef(linkedStoryId)
   useEffect(() => {
+    linkedStoryRef.current = linkedStoryId
     const wanted = linkedStoryId ? storyHash(linkedStoryId) : ''
     const current = window.location.hash
     if (wanted && current !== wanted) replaceHash(wanted)
@@ -272,8 +274,9 @@ export default function App() {
       const id = storyIdFromHash(hash)
       const story = id ? getStory(id) : null
       if (!story) {
+        // Keep naming the story that is still open; the notice shows once it closes.
         setLinkNotice(NOT_IN_EDITION)
-        replaceHash('')
+        replaceHash(linkedStoryRef.current ? storyHash(linkedStoryRef.current) : '')
         return
       }
       setLinkNotice('')
@@ -531,7 +534,8 @@ export default function App() {
           </div>
         ) : null}
         {activeTab === 'today' && stories.length ? (
-          <SearchField ref={searchRef} value={searchQuery} onChange={setSearchQuery} total={stories.length} />
+          <SearchField ref={searchRef} value={searchQuery} onChange={setSearchQuery} total={stories.length}
+            announcement={searchAnnouncement(searchQuery, searchResults.length)} />
         ) : null}
         {activeTab === 'today' ? (
           <ErrorBoundary label="The feed">
@@ -670,6 +674,7 @@ export default function App() {
         {openStory ? (
           <DeferredView resource={readerView} label="The story reader" modal onCancel={handleCloseReader}>
             {(StoryReader, returnFocus) => <StoryReader
+            key={openSelection.archived ? `saved:${openStory.id}` : openStory.id}
             returnFocus={returnFocus}
             story={openStory}
             category={openCategory}
