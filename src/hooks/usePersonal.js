@@ -1,5 +1,6 @@
-import { useCallback, useMemo } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { createLocalStore } from '../lib/localStore.js'
+import { INVALID_QUIZ_RESULT, recordQuizResult, validQuizResult } from '../lib/quizResults.js'
 import {
   emptyEntries,
   emptyPrefs,
@@ -37,6 +38,7 @@ export function usePersonal(edition) {
   const likesState = useLocalStore(likesStore)
   const followsState = useLocalStore(followsStore)
   const quizState = useLocalStore(quizStore)
+  const [quizError, setQuizError] = useState('')
 
   const prefs = prefsState.value
   const likes = likesState.value.entries
@@ -111,18 +113,18 @@ export function usePersonal(edition) {
     return followsStore.update((current) => ({ entries: current.entries.filter((entry) => entry.key !== key) }))
   }, [followsStore])
 
-  const recordQuiz = useCallback((score, total) => {
+  const recordQuiz = useCallback((score, total, attemptEdition = edition) => {
+    if (!validQuizResult(score, total) || typeof attemptEdition !== 'string' ||
+        !attemptEdition || attemptEdition.length > 40) {
+      setQuizError(INVALID_QUIZ_RESULT)
+      return false
+    }
+    setQuizError('')
     return quizStore.update((current) => {
-      const previous = current.editions[edition] || { best: 0, total: 0, attempts: 0, lastAt: 0 }
       return {
         editions: {
           ...current.editions,
-          [edition]: {
-            best: Math.max(previous.best, score),
-            total: Math.max(previous.total, total),
-            attempts: previous.attempts + 1,
-            lastAt: Date.now(),
-          },
+          [attemptEdition]: recordQuizResult(current.editions[attemptEdition], score, total, Date.now()),
         },
       }
     })
@@ -139,7 +141,7 @@ export function usePersonal(edition) {
     return attempted && succeeded
   }, [prefsStore, likesStore, followsStore, quizStore])
 
-  const message = [prefsState.message, likesState.message, followsState.message, quizState.message]
+  const message = [prefsState.message, likesState.message, followsState.message, quizState.message, quizError]
     .filter(Boolean)
     .filter((value, index, list) => list.indexOf(value) === index)
     .join(' ')

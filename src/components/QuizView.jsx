@@ -1,5 +1,6 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { buildQuiz, QUIZ_MIN_READ } from '../lib/quiz.js'
+import { quizScoreLabel } from '../lib/quizResults.js'
 import SavedStoryStatus from './SavedStoryStatus.jsx'
 
 const FOCUSABLE = 'a[href],button:not([disabled]),input:not([disabled]),[tabindex]:not([tabindex="-1"])'
@@ -9,6 +10,19 @@ const TYPE_LABEL = {
   which: 'Which story',
   number: 'The figure',
   country: 'Where',
+}
+
+function createAttempt(mode, ordinal, editionKey, pool, editionStories, best) {
+  const seed = `${editionKey}:${mode}:${ordinal}`
+  const questions = mode === 'intro' ? [] : buildQuiz(pool, editionStories, { seed, count: 5 })
+  return Object.freeze({
+    mode, ordinal, editionKey, seed, best,
+    questions: Object.freeze(questions.map((question) => Object.freeze({
+      ...question,
+      options: Object.freeze(question.options.map((option) => Object.freeze({ ...option }))),
+      evidence: question.evidence ? Object.freeze({ ...question.evidence }) : undefined,
+    }))),
+  })
 }
 
 function Mark({ correct }) {
@@ -30,27 +44,28 @@ function Mark({ correct }) {
  * (or, when they explicitly choose practice, from each section's lead), and
  * every answer reveals the published text it is based on.
  */
-export default function QuizView({ readStories = [], practiceStories = [], editionStories = [], editionKey = '', best = null, onFinish, onClose, onOpenStory, storageMessage = '', onRetryStorage, canRetryStorage, returnFocus }) {
+export default function QuizView({ readStories = [], practiceStories = [], editionStories = [], editionKey = '', best = null, initialStart, onFinish, onClose, onOpenStory, storageMessage = '', onRetryStorage, canRetryStorage, returnFocus }) {
   const dialogRef = useRef(null)
-  const [mode, setMode] = useState(() => (readStories.length >= QUIZ_MIN_READ ? 'read' : 'intro'))
-  const [attempt, setAttempt] = useState(0)
+  const [opener] = useState(() => returnFocus ?? document.activeElement)
+  const [attempt, setAttempt] = useState(() => {
+    const initial = initialStart || { readStories, editionKey, best }
+    return createAttempt(initial.readStories.length >= QUIZ_MIN_READ ? 'read' : 'intro',
+      0, initial.editionKey, initial.readStories, editionStories, initial.best)
+  })
+  const { mode, questions } = attempt
   const [index, setIndex] = useState(0)
   const [answers, setAnswers] = useState({})
   const [finished, setFinished] = useState(false)
+  const progressRef = useRef({ index: 0, answers: {}, finished: false })
   const nextRef = useRef(null)
   const headingRef = useRef(null)
 
-  const pool = mode === 'practice' ? practiceStories : readStories
-  const questions = useMemo(
-    () => (mode === 'intro' ? [] : buildQuiz(pool, editionStories, { seed: `${editionKey}:${mode}:${attempt}`, count: 5 })),
-    [attempt, editionKey, editionStories, mode, pool],
-  )
   const question = questions[index]
   const chosen = question ? answers[question.id] : undefined
   const score = questions.reduce((sum, entry) => sum + (answers[entry.id] === entry.answerId ? 1 : 0), 0)
 
   useEffect(() => {
-    const previous = returnFocus ?? document.activeElement
+    const previous = opener
     dialogRef.current?.focus()
     const overflow = document.body.style.overflow
     if (returnFocus === undefined) document.body.style.overflow = 'hidden'
@@ -58,7 +73,7 @@ export default function QuizView({ readStories = [], practiceStories = [], editi
       if (returnFocus === undefined) document.body.style.overflow = overflow
       if (previous instanceof HTMLElement && document.contains(previous)) previous.focus({ preventScroll: true })
     }
-  }, [returnFocus])
+  }, [returnFocus, opener])
 
   useEffect(() => {
     function onKeyDown(event) {
@@ -66,6 +81,7 @@ export default function QuizView({ readStories = [], practiceStories = [], editi
       if (!node) return
       if (event.key === 'Escape') {
         event.preventDefault()
+        event.stopPropagation()
         onClose?.()
         return
       }
@@ -92,33 +108,45 @@ export default function QuizView({ readStories = [], practiceStories = [], editi
 
   useEffect(() => {
     headingRef.current?.focus({ preventScroll: true })
-  }, [index, finished, mode])
+  }, [index, finished, attempt])
 
-  const start = useCallback((nextMode) => {
-    setMode(nextMode)
-    setAttempt((value) => value + 1)
+  const start = (nextMode) => {
+    const eligibleMode = nextMode === 'read' && readStories.length < QUIZ_MIN_READ ? 'intro' : nextMode
+    setAttempt(createAttempt(eligibleMode, attempt.ordinal + 1, editionKey,
+      nextMode === 'practice' ? practiceStories : readStories, editionStories, best))
+    progressRef.current = { index: 0, answers: {}, finished: false }
     setIndex(0)
     setAnswers({})
     setFinished(false)
-  }, [])
+  }
 
   const choose = (optionId) => {
-    if (!question || chosen !== undefined) return
-    setAnswers((current) => ({ ...current, [question.id]: optionId }))
+    const progress = progressRef.current
+    if (!question || progress.finished || progress.index !== index ||
+        progress.answers[question.id] !== undefined) return
+    progress.answers = { ...progress.answers, [question.id]: optionId }
+    setAnswers(progress.answers)
   }
 
   const next = () => {
+    const progress = progressRef.current
+    if (!question || progress.finished || progress.index !== index ||
+        progress.answers[question.id] === undefined) return
     if (index + 1 < questions.length) {
+      progress.index = index + 1
       setIndex(index + 1)
       return
     }
+    progress.finished = true
     setFinished(true)
-    if (mode === 'read') onFinish?.(score, questions.length)
+    const finalScore = questions.reduce((sum, entry) => sum + (progress.answers[entry.id] === entry.answerId ? 1 : 0), 0)
+    if (mode === 'read') onFinish?.(finalScore, questions.length, attempt.editionKey)
   }
 
-  const openStory = (storyId, element) => {
+  const openStory = (storyId) => {
     onClose?.()
-    requestAnimationFrame(() => onOpenStory?.(storyId, element))
+    // Wait for both deferred-dialog cleanups, then capture the surviving feed opener.
+    requestAnimationFrame(() => onOpenStory?.(storyId, opener))
   }
 
   const progressLabel = question && !finished ? `Question ${index + 1} of ${questions.length}` : ''
@@ -174,6 +202,11 @@ export default function QuizView({ readStories = [], practiceStories = [], editi
               Every question comes from published story text, and the answer shows where it came from.
             </p>
             <div className="mt-6 flex flex-wrap gap-2">
+              {readStories.length >= QUIZ_MIN_READ ? (
+                <button type="button" onClick={() => start('read')} className="inline-flex min-h-11 cursor-pointer items-center rounded-full bg-text-primary px-5 text-meta font-semibold text-surface">
+                  Start quiz from read stories
+                </button>
+              ) : null}
               <button
                 type="button"
                 disabled={practiceStories.length < 2}
@@ -211,9 +244,9 @@ export default function QuizView({ readStories = [], practiceStories = [], editi
             <p className="mt-2 mb-0 text-[15px] leading-6 text-text-secondary">
               {score === questions.length ? 'Every one. You read this edition closely.' : score >= questions.length - 1 ? 'Nearly all of it stuck.' : 'Worth another look at the stories you missed.'}
             </p>
-            {mode === 'read' && best ? (
+            {mode === 'read' ? (
               <p className="mt-1 mb-0 text-meta text-text-muted">
-                Best this edition: {Math.max(best.best, score)} of {Math.max(best.total, questions.length)}
+                {quizScoreLabel(editionKey === attempt.editionKey ? best : attempt.best, { score, total: questions.length })}
               </p>
             ) : null}
             <ul className="mx-auto mt-6 mb-0 max-w-[34rem] list-none p-0 text-left">
@@ -227,7 +260,7 @@ export default function QuizView({ readStories = [], practiceStories = [], editi
                     </span>
                     <button
                       type="button"
-                      onClick={(event) => openStory(entry.storyId, event.currentTarget)}
+                      onClick={() => openStory(entry.storyId)}
                       className="min-h-11 cursor-pointer border-0 bg-transparent p-0 text-left font-display text-[15px] leading-5 font-semibold text-text-primary hover:underline"
                     >
                       {entry.headline}

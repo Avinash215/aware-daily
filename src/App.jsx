@@ -33,7 +33,7 @@ import { formatDate, formatUpdated, parseDateOnly } from './lib/format.js'
 const THEME_STORAGE_KEY = 'aware-daily:theme'
 
 function captureReaderOrigin(element) {
-  if (!(element instanceof HTMLElement)) return null
+  if (!(element instanceof HTMLElement) || !element.isConnected || element.closest('[role="dialog"]')) return null
   const anchor = element.closest('article') ?? element
   return {
     element,
@@ -330,7 +330,8 @@ export default function App() {
     setEditInterests(true)
   }, [handleTabChange])
 
-  const openQuiz = useCallback(() => setQuizOpen(true), [])
+  const openQuiz = useCallback(() => setQuizOpen({ readStories, editionKey, best: personal.quizScore }),
+    [readStories, editionKey, personal.quizScore])
   const closeQuiz = useCallback(() => setQuizOpen(false), [])
 
   // Likes, notes and follows on a saved copy belong to the edition it came from.
@@ -587,6 +588,7 @@ export default function App() {
             {(QuizView, returnFocus) => <QuizView
             returnFocus={returnFocus}
             readStories={readStories}
+            initialStart={quizOpen}
             practiceStories={PRACTICE_STORIES}
             editionStories={stories}
             editionKey={editionKey}

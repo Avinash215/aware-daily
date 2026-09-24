@@ -1,6 +1,7 @@
 import { useId, useMemo, useState } from 'react'
 import { curationExport, likeLeaderboard, parseKeywords } from '../lib/personal.js'
 import { formatDate } from '../lib/format.js'
+import { quizScoreLabel } from '../lib/quizResults.js'
 
 const REGIONS = ['Africa', 'Americas', 'Asia Pacific', 'Europe', 'Middle East']
 
@@ -104,7 +105,7 @@ export default function PersonalSettings({
         <div className={`${card} flex flex-wrap items-center justify-between gap-3`}>
           <div className="min-w-0">
             <p className="m-0 text-row font-semibold text-text-primary">
-              {quizScore ? `Best this edition: ${quizScore.best} of ${quizScore.total}` : 'Test yourself on what you read'}
+              {quizScoreLabel(quizScore)}
             </p>
             <p className="mt-0.5 mb-0 text-meta text-text-muted">
               {readCount >= 3

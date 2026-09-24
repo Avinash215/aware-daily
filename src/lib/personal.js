@@ -8,6 +8,8 @@
  * was made so the UI can show why a story appears.
  */
 
+import { QUIZ_RESULT_FORMAT, validQuizResult } from './quizResults.js'
+
 /** The category-rail key for the personal view; never a real category key. */
 export const FOR_YOU = '__aware_for_you'
 
@@ -125,16 +127,36 @@ export const entryKey = (edition, id) => `${edition || 'unknown'}::${id}`
 
 export const emptyQuiz = () => ({ editions: {} })
 
+function sanitizeQuizRecord(value) {
+  const record = {
+    best: Math.max(0, Math.floor(num(value.best))),
+    total: Math.max(0, Math.floor(num(value.total))),
+    attempts: Math.max(0, Math.floor(num(value.attempts))),
+    lastAt: num(value.lastAt),
+  }
+  // Old four-field records must round-trip unchanged through the strict read gate.
+  // Only a new completed attempt introduces evidence; old maxima stay unverified.
+  if (value.format === QUIZ_RESULT_FORMAT && validQuizResult(value.best, value.total) &&
+      Number.isFinite(value.bestAt)) {
+    record.format = QUIZ_RESULT_FORMAT
+    record.bestAt = value.bestAt
+    if (isObject(value.legacy)) {
+      record.legacy = {
+        best: Math.max(0, Math.floor(num(value.legacy.best))),
+        total: Math.max(0, Math.floor(num(value.legacy.total))),
+        attempts: Math.max(0, Math.floor(num(value.legacy.attempts))),
+        lastAt: num(value.legacy.lastAt),
+      }
+    }
+  }
+  return record
+}
+
 export function sanitizeQuiz(raw) {
   const editions = isObject(raw?.editions) ? raw.editions : {}
   const rows = Object.entries(editions)
     .filter(([key, value]) => typeof key === 'string' && key && isObject(value))
-    .map(([key, value]) => [key.slice(0, 40), {
-      best: Math.max(0, Math.floor(num(value.best))),
-      total: Math.max(0, Math.floor(num(value.total))),
-      attempts: Math.max(0, Math.floor(num(value.attempts))),
-      lastAt: num(value.lastAt),
-    }])
+    .map(([key, value]) => [key.slice(0, 40), sanitizeQuizRecord(value)])
     .sort((a, b) => a[1].lastAt - b[1].lastAt)
     .slice(-MAX_QUIZ_EDITIONS)
   return { editions: Object.fromEntries(rows) }
