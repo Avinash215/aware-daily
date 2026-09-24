@@ -1,9 +1,14 @@
 # Community and local news
 
-Aware's shared features run on the Azure Static Web Apps **managed Functions
-API** in `api/`. Everything else in the app stays static and browser-local.
-When the API is absent (GitHub Pages, `npm run dev`), `/api/me` does not
-answer with JSON and every community surface stays hidden.
+Aware's shared features run on an Azure Functions API in `api/`. In
+production it is a **separately deployed Flex Consumption Function App linked
+to the Static Web App** ("bring your own functions"), because the
+subscription's policy disables shared-key and public network access on
+storage and managed functions support neither managed identity nor virtual
+networks. Locally the same code runs under `func start` or the SWA CLI.
+Everything else in the app stays static and browser-local. When the API is
+absent (GitHub Pages, `npm run dev`), `/api/me` does not answer with JSON and
+every community surface stays hidden.
 
 | Feature | Endpoint | Storage |
 | --- | --- | --- |
@@ -19,8 +24,11 @@ answer with JSON and every community surface stays hidden.
 ## Rules the API enforces
 
 - Sign-in uses the Static Web Apps built-in providers (GitHub, Microsoft Entra
-  ID). The API reads the `x-ms-client-principal` header and never trusts the
-  browser for identity.
+  ID). The API never trusts the browser for identity: behind the linked
+  Function App it reads the `prn` claim of the Static Web Apps token that App
+  Service has validated, and only when the platform-set principal ID matches
+  the token (`api/src/lib/principal.js`); under managed functions it reads
+  `x-ms-client-principal`. Direct calls to the Function App are refused.
 - Comments from anyone but a moderator are **pending** until approved, and are
   visible only to their author until then. Moderators' comments publish at
   once. Readers can report visible comments; reported comments return to the
@@ -40,20 +48,25 @@ answer with JSON and every community surface stays hidden.
   link are returned, labelled as not summarised or checked by Aware. The
   reader's own browser caches results for 20 minutes.
 
-## App settings
+
+## App settings (on the Function App)
 
 | Setting | Value |
 | --- | --- |
-| `AWARE_STORAGE_CONNECTION` | Connection string of the storage account holding the tables. Without it the community endpoints answer 503 and the UI hides itself; local news still works. |
+| `AWARE_STORAGE_ACCOUNT` | Storage account holding the tables, reached with a managed identity (`awaredailycommunity`). |
+| `AWARE_STORAGE_CLIENT_ID` | Client ID of the user-assigned identity `id-aware-api`. Without it, `DefaultAzureCredential` is used. |
+| `AWARE_STORAGE_CONNECTION` | Local development only (Azurite). Takes precedence over the account name. |
 | `AWARE_MODERATORS` | Comma list, e.g. `github:Avinash215`. |
+| `AWARE_COMMUNITY` | `on` (everyone), `preview` (moderators only, a soft launch), or `off`. Unset means `on`; anything else means `off`. |
 
-The Node runtime comes from `public/staticwebapp.config.json`
-(`platform.apiRuntime = node:22`).
+Without storage settings the community endpoints answer 503 and the UI hides
+itself; local news still works. Static Web Apps' own app settings do not reach
+a linked Function App.
 
 ## Run it locally
 
 ```powershell
-npx azurite --location .azurite --silent --skipApiVersionCheck   # storage emulator
+npx azurite --location .azurite --skipApiVersionCheck --loose     # storage emulator
 cd api; npm install; cd ..
 npm run build
 swa start dist --api-location api                                  # http://localhost:4280
@@ -66,52 +79,76 @@ swa start dist --api-location api                                  # http://loca
   "FUNCTIONS_WORKER_RUNTIME": "node",
   "AzureWebJobsStorage": "UseDevelopmentStorage=true",
   "AWARE_STORAGE_CONNECTION": "UseDevelopmentStorage=true",
-  "AWARE_MODERATORS": "github:avinash215" } }
+  "AWARE_MODERATORS": "github:avinash215",
+  "AWARE_COMMUNITY": "on" } }
 ```
 
 The SWA CLI emulates sign-in at `/.auth/login/github`. Unit tests:
 `cd api; npm test`.
 
-## Going live (needs the owner's approval: new resource, push and deploy)
+## Production
 
-The published site comes from the `aware-daily-job` container image, which
-clones this repo's `main` from GitHub at build time, and the daily run replaces
-the whole site with `swa deploy`. So the API only survives the next daily run
-if it is inside the image. The pipeline's `entrypoint.py` now passes
-`--api-location` whenever `api/package.json` exists, and its `Dockerfile`
-installs the API's production dependencies.
+All in `rg-aware-daily`, East US 2, tagged `app=aware-daily purpose=community`.
+The layout follows Microsoft's `functions-quickstart-javascript-azd` sample
+with `vnetEnabled`.
+
+| Resource | Purpose |
+| --- | --- |
+| `vnet-aware-daily` 10.61.0.0/24 | `snet-pe` 10.61.0.0/26 for private endpoints; `snet-func` 10.61.0.64/27 delegated to `Microsoft.App/environments`, default outbound access on so local news can reach Google News. |
+| `awaredailycommunity` | Tables (`aware*`) and the Function App's host and deployment storage (container `app-package`). Policy keeps shared keys and public network access off. |
+| `pe-awaredailycommunity-blob`, `-table` | Private endpoints, with `privatelink.blob` and `privatelink.table` DNS zones linked to the VNet. |
+| `id-aware-api` | User-assigned identity: Storage Blob Data Owner and Storage Table Data Contributor on the account, Monitoring Metrics Publisher on `appi-aware-api`. |
+| `func-aware-daily-api` | Flex Consumption, Node 22, 512 MB, at most 10 instances, VNet-integrated. Host storage uses `AzureWebJobsStorage__credential=managedidentity`, `__clientId` and `__blobServiceUri`. |
+| `appi-aware-api` | Application Insights on the existing workspace, local auth off. |
+
+The Function App is linked to the Static Web App, so `/api/*` on the site is
+proxied to it and linking adds an auth provider that turns away direct calls.
+The daily job (`aware-daily-job`) runs with `AWARE_API_MODE=linked`, so its
+`swa deploy` uploads the site only: Static Web Apps refuses a linked backend
+while managed functions exist.
+
+### Deploying API changes
+
+The daily job does not deploy the API. After changing `api/`:
 
 ```powershell
-$SUB = "c0d9f6ea-0bc0-4857-a1d2-c2fe5b4cb852"; $RG = "rg-aware-daily"; $LOC = "eastus2"
-$SA  = "awaredailycommunity"                     # globally unique; change if taken
-az account set --subscription $SUB
-
-# 1. Storage for the community tables.
-az storage account create --name $SA --resource-group $RG --location $LOC --sku Standard_LRS --kind StorageV2 --min-tls-version TLS1_2 --allow-blob-public-access false
-
-# 2. App settings on the Static Web App. The connection string is read and set in one
-#    pipeline so it never lands in a file or the shell history.
-az staticwebapp appsettings set --name aware-daily --resource-group $RG --setting-names "AWARE_STORAGE_CONNECTION=$(az storage account show-connection-string --name $SA --resource-group $RG --query connectionString -o tsv)" "AWARE_MODERATORS=github:Avinash215"
-
-# 3. Publish the frontend + API source the image clones.
-cd C:/Users/avinashswami/scout/aware-daily; git push origin main
-
-# 4. Rebuild the job image (see aware-local/docs/azure-job.md section 4) and point the job at it.
-cd C:/Users/avinashswami/scout/aware-local
-az acr build --registry <acr> --resource-group $RG --image "aware-daily-job:<tag>" --image "aware-daily-job:latest" --file Dockerfile .
-az containerapp job update --name aware-daily-job --resource-group $RG --image "<acr>.azurecr.io/aware-daily-job:<tag>"
-
-# 5. Run it once and check.
-az containerapp job start --name aware-daily-job --resource-group $RG
+cd api; npm ci; npm test
+func azure functionapp publish func-aware-daily-api --javascript
 ```
 
-Then sign in on the live site with GitHub as the moderator, like a story,
-comment, and open You, then Moderation. Roll back by pointing the job at the
-previous image tag (azure-job.md section 8); the app settings and tables can
-stay.
+### Opening community to readers
 
-Cost: the Static Web App is already on the Standard plan, which includes the
-managed API. Table Storage (Standard LRS, East US 2, Azure Retail Prices API,
-checked 2026-09-22) is $0.045 per GB-month and $0.00036 per 10,000
-operations, so a personal-scale community costs cents a month. Prices vary by
-agreement; check the portal.
+The soft launch runs with `AWARE_COMMUNITY=preview`: only moderators see the
+features, with a notice on the You page. Sign in at
+`https://green-ocean-07d95e00f.3.azurestaticapps.net/.auth/login/github`, then
+open You. To open it to everyone:
+
+```powershell
+az functionapp config appsettings set -g rg-aware-daily -n func-aware-daily-api --settings AWARE_COMMUNITY=on
+```
+
+`off` closes it again at any time; stored likes and comments are kept.
+
+### Rollback to managed functions
+
+Unlink the backend (`az staticwebapp backends unlink --name aware-daily -g rg-aware-daily`),
+remove `AWARE_API_MODE` from the job and re-run it: the next upload carries
+`api/` as managed functions again, which serve local news; community stays
+off because managed functions cannot reach this storage account.
+
+## Cost
+
+Verified with the Azure Retail Prices API on 2026-09-23 (list prices; your
+agreement may differ):
+
+- Private endpoints: $0.01 per hour each, two of them, about $14.60 a month,
+  plus $0.01 per GB processed.
+- Private DNS zones: $0.50 per zone per month, two zones.
+- Flex Consumption on demand: the first 100,000 GB-seconds and 250,000
+  executions a month are free, then $0.000026 per GB-second and $0.000004 per
+  10 executions. A personal site stays inside the free grant.
+- Table Storage (Standard LRS): $0.045 per GB-month and $0.00036 per 10,000
+  operations (checked 2026-09-22).
+- Log Analytics: the first 5 GB a month are free, then $2.76 per GB.
+
+Expect roughly $16 a month, almost all of it the two private endpoints.

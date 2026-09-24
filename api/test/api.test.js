@@ -26,6 +26,38 @@ test('principal parsing rejects missing, malformed and anonymous headers', () =>
   assert.equal(principal.userDetails, 'reader1')
 })
 
+const linkedHeaders = ({ idp = 'azureStaticWebApps', id, sub = id, prn, exp = Math.floor(Date.now() / 1000) + 600, legacy } = {}) => {
+  const claims = Buffer.from(JSON.stringify({ sub, prn: prn === undefined ? undefined : Buffer.from(JSON.stringify(prn)).toString('base64'), exp })).toString('base64url')
+  const values = {
+    'x-ms-client-principal-idp': idp,
+    'x-ms-client-principal-id': id,
+    'x-ms-auth-token': `e30.${claims}.signature`,
+    'x-ms-client-principal': legacy,
+  }
+  return { get: (name) => values[name] ?? null }
+}
+const AUTH_ON = { env: { WEBSITE_AUTH_ENABLED: 'True' } }
+
+test('linked backend: the reader comes from the validated SWA token, matched to the platform principal', () => {
+  const user = { identityProvider: 'github', userId: 'abc123', userDetails: 'Avinash215', userRoles: ['anonymous', 'authenticated'] }
+  const principal = readPrincipal(linkedHeaders({ id: 'abc123', prn: user }), AUTH_ON)
+  assert.deepEqual(principal, { userId: 'abc123', provider: 'github', userDetails: 'Avinash215', roles: ['anonymous', 'authenticated'] })
+  assert.equal(isModerator(principal, moderatorList('github:Avinash215')), true)
+  assert.equal(readPrincipal(linkedHeaders({ id: 'anonymous', prn: null }), AUTH_ON), null)
+  assert.equal(readPrincipal(linkedHeaders({ id: 'someone-else', sub: 'abc123', prn: user }), AUTH_ON), null)
+  assert.equal(readPrincipal(linkedHeaders({ id: 'abc123', prn: user, idp: 'aad' }), AUTH_ON), null)
+  assert.equal(readPrincipal(linkedHeaders({ id: 'abc123', prn: user, exp: 1 }), AUTH_ON), null)
+  assert.equal(readPrincipal(linkedHeaders({ id: 'abc123', prn: { ...user, userRoles: ['anonymous'] } }), AUTH_ON), null)
+  assert.equal(readPrincipal({ get: () => null }, AUTH_ON), null)
+})
+
+test('with App Service auth on, a client-supplied x-ms-client-principal is never trusted', () => {
+  const forged = encode({ identityProvider: 'github', userId: 'x', userDetails: 'Avinash215', userRoles: ['authenticated', 'moderator'] })
+  assert.equal(readPrincipal(linkedHeaders({ id: 'anonymous', prn: null, legacy: forged }), AUTH_ON), null)
+  assert.equal(readPrincipal(headerOf(forged), AUTH_ON), null)
+  assert.equal(readPrincipal(headerOf(forged), { env: {} }).userDetails, 'Avinash215')
+})
+
 test('moderators come from roles or AWARE_MODERATORS entries', () => {
   const list = moderatorList('github:Avinash215, someone@example.com')
   assert.equal(isModerator(reader(1, 'Avinash215'), list), true)
