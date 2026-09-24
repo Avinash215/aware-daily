@@ -5,6 +5,7 @@ import DeferredView from './components/DeferredView.jsx'
 import DepthControl from './components/DepthControl.jsx'
 import ErrorBoundary from './components/ErrorBoundary.jsx'
 import EditionFreshness from './components/EditionFreshness.jsx'
+import { SearchField, SearchResults } from './components/EditionSearch.jsx'
 import Feed from './components/Feed.jsx'
 import SavedStoryStatus from './components/SavedStoryStatus.jsx'
 import { readerView, recapView, quizView, savedView, youView } from './lib/deferredViews.js'
@@ -29,8 +30,38 @@ import {
 } from './lib/data.js'
 import { FOR_YOU, followMatches, hasLocation, interestMatches, locationMatches } from './lib/personal.js'
 import { formatDate, formatUpdated, parseDateOnly } from './lib/format.js'
+import { searchable, searchStories } from './lib/search.js'
+import { isStoryHash, storyHash, storyIdFromHash } from './lib/storyLink.js'
 
 const THEME_STORAGE_KEY = 'aware-daily:theme'
+
+const NOT_IN_EDITION = 'That link is to a story that is not in today’s edition. Story links open stories from the current edition only.'
+
+const selectionFor = (story) => ({ story, category: getStoryCategory(story.id), recap: getRecap(story.recap_id),
+  snapshot: snapshotForCurrentStory(story.id), archived: false })
+
+const hashNow = () => (typeof window === 'undefined' ? '' : window.location.hash)
+
+/** A `#story=<id>` link opens that story over today's feed on first load. */
+function linkedSelection() {
+  const id = storyIdFromHash(hashNow())
+  const story = id ? getStory(id) : null
+  return story ? selectionFor(story) : null
+}
+
+function linkedNotice() {
+  const hash = hashNow()
+  if (!isStoryHash(hash)) return ''
+  const id = storyIdFromHash(hash)
+  return id && getStory(id) ? '' : NOT_IN_EDITION
+}
+
+function replaceHash(hash) {
+  const { pathname, search } = window.location
+  window.history.replaceState(window.history.state, '', `${pathname}${search}${hash}`)
+}
+
+const labelForStory = (story) => getStoryCategory(story.id)?.label || ''
 
 function captureReaderOrigin(element) {
   if (!(element instanceof HTMLElement) || !element.isConnected || element.closest('[role="dialog"]')) return null
@@ -98,7 +129,10 @@ function Wordmark() {
 export default function App() {
   const [activeTab, setActiveTab] = useState('today')
   const [activeCategory, setActiveCategory] = useState(ALL_CATEGORIES)
-  const [openSelection, setOpenSelection] = useState(null)
+  const [openSelection, setOpenSelection] = useState(linkedSelection)
+  const [linkNotice, setLinkNotice] = useState(linkedNotice)
+  const [searchQuery, setSearchQuery] = useState('')
+  const searchRef = useRef(null)
   const [forYouOrigin, setForYouOrigin] = useState(null)
   // The second overlay slot. It holds the whole recap object rather than an id,
   // because a saved catch-up must still open after `daily.json` has rotated and
@@ -221,6 +255,56 @@ export default function App() {
     }
   }, [modalOpen])
 
+  // The address bar names the open story, so it can be copied or shared; it
+  // is replaced, never pushed, so Back still leaves the page as before.
+  const linkedStoryId = openSelection && !openSelection.archived ? openSelection.story?.id : null
+  useEffect(() => {
+    const wanted = linkedStoryId ? storyHash(linkedStoryId) : ''
+    const current = window.location.hash
+    if (wanted && current !== wanted) replaceHash(wanted)
+    else if (!wanted && isStoryHash(current)) replaceHash('')
+  }, [linkedStoryId])
+
+  useEffect(() => {
+    const onHashChange = () => {
+      const hash = window.location.hash
+      if (!isStoryHash(hash)) return
+      const id = storyIdFromHash(hash)
+      const story = id ? getStory(id) : null
+      if (!story) {
+        setLinkNotice(NOT_IN_EDITION)
+        replaceHash('')
+        return
+      }
+      setLinkNotice('')
+      setOpenRecap(null)
+      setQuizOpen(false)
+      setOpenSelection((current) => (current && !current.archived && current.story?.id === id ? current : selectionFor(story)))
+    }
+    window.addEventListener('hashchange', onHashChange)
+    return () => window.removeEventListener('hashchange', onHashChange)
+  }, [])
+
+  useEffect(() => {
+    if (activeTab !== 'today' || modalOpen || !stories.length) return undefined
+    const onKeyDown = (event) => {
+      if (event.key !== '/' || event.ctrlKey || event.metaKey || event.altKey || event.isComposing) return
+      const target = event.target
+      if (target instanceof HTMLElement && (target.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName))) return
+      event.preventDefault()
+      searchRef.current?.focus()
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [activeTab, modalOpen])
+
+  const searching = activeTab === 'today' && searchable(searchQuery)
+  const searchResults = useMemo(() => (searchable(searchQuery) ? searchStories(stories, searchQuery, labelForStory) : []), [searchQuery])
+  const clearSearch = useCallback(() => {
+    setSearchQuery('')
+    searchRef.current?.focus()
+  }, [])
+
   useEffect(() => {
     if (returnSpaceRef.current) returnSpaceRef.current.style.height = '0px'
   }, [activeTab, activeCategory, depth])
@@ -263,8 +347,8 @@ export default function App() {
       setForYouOrigin({ matches: browsingForYou, context: forYouContext })
     }
     originRef.current = captureReaderOrigin(originElement)
-    setOpenSelection({ story, category: getStoryCategory(story.id), recap: getRecap(story.recap_id),
-      snapshot: snapshotForCurrentStory(storyId), archived: false })
+    setLinkNotice('')
+    setOpenSelection(selectionFor(story))
   }, [activeTab, activeCategory, browsingForYou, forYouContext])
 
   const handleOpenSavedStory = useCallback((entry, originElement) => {
@@ -308,6 +392,7 @@ export default function App() {
   const handleTabChange = useCallback((nextTab) => {
     setEditInterests(false)
     setForYouOrigin(null)
+    setSearchQuery('')
     setActiveTab(nextTab)
     setOpenSelection(null)
     setOpenRecap(null)
@@ -317,6 +402,7 @@ export default function App() {
 
   const handleCategoryChange = useCallback((category) => {
     setForYouOrigin(null)
+    setSearchQuery('')
     setActiveCategory(category)
   }, [])
 
@@ -436,6 +522,17 @@ export default function App() {
         className={`${SHELL} pb-10 lg:pb-16`}
       >
         {!openSelection && !openRecap && !quizOpen ? <SavedStoryStatus message={progressAndSavedMessage} onRetry={retryStorage} canRetry={canRetryStorage} floating="page" /> : null}
+        {linkNotice ? (
+          <div role="status" className="mt-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 rounded-xl border border-border-subtle bg-surface-card px-4 py-2 text-meta text-text-secondary">
+            <span className="min-w-0">{linkNotice}</span>
+            <button type="button" onClick={() => setLinkNotice('')} className="min-h-11 cursor-pointer border-0 bg-transparent p-0 font-semibold text-text-primary">
+              Dismiss
+            </button>
+          </div>
+        ) : null}
+        {activeTab === 'today' && stories.length ? (
+          <SearchField ref={searchRef} value={searchQuery} onChange={setSearchQuery} total={stories.length} />
+        ) : null}
         {activeTab === 'today' ? (
           <ErrorBoundary label="The feed">
             <div
@@ -449,7 +546,20 @@ export default function App() {
                   This edition is incomplete. Available stories are shown; some records or section details could not be used.
                 </p>
               ) : null}
-              <Feed
+              {searching ? (
+                <SearchResults
+                  query={searchQuery}
+                  results={searchResults}
+                  categoryFor={(story) => getStoryCategory(story.id)}
+                  depth={depth}
+                  readLookup={readLookup}
+                  isSaved={isSaved}
+                  onToggleRead={toggleRead}
+                  onToggleSave={toggleSave}
+                  onOpenStory={handleOpenStory}
+                  onClear={clearSearch}
+                />
+              ) : <Feed
                 categories={categories}
                 allStories={stories}
                 activeCategory={activeCategory}
@@ -473,7 +583,7 @@ export default function App() {
                 community={communityMe}
                 editionDate={meta.date}
                 onCancelForYou={() => handleCategoryChange(ALL_CATEGORIES)}
-              />
+              />}
             </div>
           </ErrorBoundary>
         ) : null}

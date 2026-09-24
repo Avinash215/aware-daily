@@ -8,6 +8,7 @@ import SourceList from './SourceList.jsx'
 import StakesCallout from './StakesCallout.jsx'
 import VocabularyPanel from './VocabularyPanel.jsx'
 import Discussion from './Discussion.jsx'
+import ReaderTools from './ReaderTools.jsx'
 import YourTake from './YourTake.jsx'
 import { formatDate, readTime } from '../lib/format.js'
 import { annotateParagraphs, isExplainable } from '../lib/glossary.js'
@@ -563,6 +564,8 @@ function Reader({ story, category, onClose, isSaved, onToggleSave, isRead, onTog
         </div>
 
         <div className="px-4 sm:px-6 lg:px-8">
+          <ReaderTools key={`${storyId}:${suspended ? 'covered' : 'open'}`} story={story} shareable={!archiveEdition} />
+
           {linkedRecap ? (
             <button
               type="button"
